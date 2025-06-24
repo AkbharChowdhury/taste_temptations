@@ -1,5 +1,6 @@
 import express from 'express'
 import dotenv from 'dotenv';
+import { mealTypes } from './food.js';
 
 const app = express();
 // configure statis folder
@@ -9,7 +10,10 @@ app.use(express.urlencoded({ extended: true }));
 // Parse JSON bodies (as send by API clients)
 app.use(express.json());
 
-
+const titleCase = (sentance) => sentance.toLowerCase() 
+           .split(' ') 
+           .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+           .join(' ');
 const getFoodAPIKey = () => {
     dotenv.config();
     return process.env.FOOD_API_KEY;
@@ -18,13 +22,15 @@ const getFoodAPIKey = () => {
 }
 app.listen(3000, () => {
     console.log('Server listening on port 3000');
+    console.log('list of meals', mealTypes())
 
 });
-async function fetchRecipes(q) {
+async function fetchRecipes(q, meal='') {
     const FOOD_API_KEY = getFoodAPIKey();
     const limit = 9;
-    const response = await fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${FOOD_API_KEY}&query=${q}&number=${limit}`);
+    const response = await fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${FOOD_API_KEY}&query=${q}&number=${limit}&meal=${meal}`);
     const recipes = await response.json();
+
     return recipes;
 }
 
@@ -53,7 +59,7 @@ const recipeCard = (recipe, index) => {
     <div class="card" style="width: 18rem;">
         <img src="${image}" class="card-img-top" alt="${title}">
         <div class="card-body">
-            <h5 class="card-title">${title}| ${id}</h5>
+            <h5 class="card-title">${title}</h5>
             <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p> -->
         </div>
         <div class="card-body">
@@ -62,9 +68,18 @@ const recipeCard = (recipe, index) => {
     </div>
 </div>`;
 }
+
+app.get('/meals', (req, res) => {
+    let html=/*html*/` <option selected>No preference</option>`;           
+    mealTypes().forEach(meal => html+=/*html*/`<option value="${meal}">${titleCase(meal)}</option>`)
+    res.send(html);
+
+});
+
 app.post('/search', (req, res) => {
     const term = req.body.recipeSearchText;
-    fetchRecipes(term)
+    const meal = req.body.meal ?? '';
+    fetchRecipes(term, meal)
         .then(recipes => {
             if (recipes.results.length === 0) {
                 res.send(errorMessage(`Whoops, we couldn't find anything for "${term}"`));
@@ -78,7 +93,6 @@ app.post('/search', (req, res) => {
             recipes.results.forEach((recipe, index) => html += recipeCard(recipe, index));
             // .row
             html +=/*html*/`</div>`;
-
 
             res.send(html)
 
