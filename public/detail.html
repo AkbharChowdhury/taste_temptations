@@ -34,6 +34,13 @@
             <!-- <div class="text-muted fst-italic mb-2">Posted on January 1, 2023 by Start Bootstrap</div> -->
             <!-- Post categories-->
              <div id="dishTypes">
+               
+        
+
+           
+
+
+
              </div>
             
           </header>
@@ -43,9 +50,14 @@
           <section class="mb-5">
             <p class="fs-5 mb-4" id="recipe-summary"></p>
 
+            <h2 class="fw-bolder mb-4 mt-5">Ingredients</h2>
+            <p class="fs-5 mb-4" id="IngredientsList"></p>
             <h2 class="fw-bolder mb-4 mt-5">Instructions</h2>
+            <p class="fs-5 mb-4" id="stepsListContainer">
+              
+            </p>
 
-            <p class="fs-5 mb-4" id="IngredientsList">Ingredients:</p>
+
  
             <!-- summary -->
             <!-- <p class="fs-5 mb-4">If you get asteroids about a kilometer in size, those are large enough and carry enough energy into our system to disrupt transportation, communication, the food chains, and that can be a really bad day on Earth.</p>
@@ -171,26 +183,26 @@
       let html = /*html*/`<ul>`;
       ingredientlist.map(ingredient => html += /*html*/`<li>${ingredient}</li>`);
       html += /*html*/`</ul>`;
-      ingredientListDiv.insertAdjacentHTML("afterbegin", html);
+      ingredientListDiv.innerHTML = html;
 
     }
 
-// dishTypes
-
   function showDishTypeTags(dishes) {
-      let html = /*html*/``;
-      dishes.map(dish => html+=`<a class="badge bg-secondary text-decoration-none link-light" href="#!">${dish}</a>`);
+      let html = '';
+      dishes.forEach(dish => html+= `<a class="badge bg-secondary text-decoration-none link-light" href="#!">${dish}</a>`)
       return html;
 
     }
 
+  
+
 
     function showInstructions(Instructions) {
-      const ingredientListDiv = document.querySelector('#IngredientsList');
-      let html = /*html*/`<ul>`;
-      ingredientlist.map(ingredient => html += /*html*/`<li>${ingredient}</li>`);
-      html += /*html*/`</ul>`;
-      ingredientListDiv.insertAdjacentHTML("afterbegin", html);
+      // const instructionListDiv = document.querySelector('#InstructionList');
+      // let html = /*html*/`<ol>`;
+      // Instructions.steps.map(data => html += /*html*/`<li>${data.step}</li>`);
+      // html += /*html*/`</ol>`;
+      // instructionListDiv.innerHTML = html;
 
     }
     async function fetchRecipeDetails(recipeID) {
@@ -217,6 +229,8 @@
       console.error('recipe id cannot be found')
 
     } else {
+
+
      populatePage();
 
 
@@ -231,12 +245,33 @@
         image.setAttribute('src', data.image)
         image.setAttribute('alt', data.title)
         document.getElementById('addtional-details').innerHTML = /*html*/`
-        ${data.readyInMinutes} minutes, serves ${data.servings}
-          
-         `
+        ${data.readyInMinutes} minutes, serves ${data.servings} `
          document.getElementById('recipe-summary').innerHTML = data.summary;
         
          document.getElementById('dishTypes').innerHTML = showDishTypeTags(data.dishTypes);
+
+        // // showInstructions(data.analyzedInstructions)
+        // console.log(data.analyzedInstructions)
+        console.log('steps: ')
+          console.log(data.analyzedInstructions[0])
+          // console.log()
+
+          let htmlSteps = '<ol>';
+          data.analyzedInstructions[0]['steps'].forEach(step => {
+           htmlSteps+= `<li>${step.step}</li>`
+            
+          });
+          htmlSteps+= '</ol>';
+          console.log({htmlSteps})
+
+
+
+
+        
+        document.getElementById('stepsListContainer').innerHTML = htmlSteps;
+
+
+
 
       });
     }
