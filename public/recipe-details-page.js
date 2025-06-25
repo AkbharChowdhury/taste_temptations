@@ -4,9 +4,8 @@ function fetchRecipeID() {
     if (searchParams.has(recipeID)) return parseInt(searchParams.get(recipeID));
     return 0;
 }
-
-async function getSelectedRecipeDetails(recipeID) {
-    const response = await fetch('/detail', {
+async function fetchRequestJSON(recipeID, url) {
+    const response = await fetch(url, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -19,61 +18,44 @@ async function getSelectedRecipeDetails(recipeID) {
     const data = await response.json();
     return data;
 
+}
 
+
+
+
+
+function displaySimilarRecipes(recipeList) {
+    let outputHtml = '';
+    recipeList.forEach((recipe, index) => {
+        const columnClassLookup = {
+            0: 'col-sm-6 mb-3 mb-sm-0',
+            1: 'col-sm-6',
+            'default': () => 'col-sm-6 mt-2'
+        };
+        let columnClass = columnClassLookup[index] || columnClassLookup['default']();
+
+        const title = recipe.title;
+        outputHtml += /*html*/`
+      <div class="${columnClass}">
+    <div class="card">
+      <img src="${recipe.image}" class="card-img-top" alt="${title}">
+      <div class="card-body">
+        <h5 class="card-title">${title}</h5>
+        <p class="card-text">Ready in ${recipe.readyInMinutes} mins | servings ${recipe.servings}</p>
+        <a href="detail.html?recipeID=${recipe.id}" target="_blank" class="btn btn-primary">View</a>
+      </div>
+    </div>
+  </div>
+    `;
+
+        document.getElementById('similar-recipe-list').innerHTML = outputHtml;
+
+    })
 
 }
 
 
 
-async function showSimilarRecipes(recipeID) {
-    const response = await fetch('/similarRecipes', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            'recipeID': recipeID
-
-        }),
-    });
-    const data = await response.text();
-    return data;
-
-
-
-}
-async function getSimilars(id) {
-
-
-    const response = await fetch('/similarRecipes', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            'recipeID': id
-
-        }),
-    });
-    const data = await response.json();
-    console.log('similar recipes')
-    console.log(data)
-    return data
-    
-}
-
-
-
-// async function showSimilarRecipes(recipeID) {
-//     const FOOD_API_KEY = 'e4676fffe7a44c199a14a757dab8b587';
-//     const limit = 9;
-//     const response = await fetch(`https://api.spoonacular.com/recipes/${recipeID}/similar?apiKey=${FOOD_API_KEY}&number=${limit}`);
-//     const data = await response.json();
-//     return data;
-    
-// }
-
-// similar-recipes
 
 
 function showIngredientList(ingredientlist) {
@@ -99,21 +81,9 @@ function getSteps(steps) {
     return htmlSteps += '</ol>';
 }
 const recipeID = fetchRecipeID()
-showSimilarRecipes(recipeID).then(data =>{
- document.getElementById('similar-recipes').innerHTML = data;
-})
-getSimilars(recipeID).then(data =>{
-    let html =`
-        <h1>You might also be interested in</h1>
-          <hr>
-     `;
-     
 
-    //  similar-recipes
-    document.getElementById('similar-recipes').innerHTML = html;
-})
-getSelectedRecipeDetails(recipeID).then(data => {
-
+// get recipe details
+fetchRequestJSON(recipeID, '/detail').then(data => {
 
     const title = document.querySelector('#item-title');
     const image = document.querySelector('#item-image');
@@ -135,7 +105,8 @@ getSelectedRecipeDetails(recipeID).then(data => {
         document.getElementById('instructions-header').style.display = 'none';
     }
 
-
-
-
 });
+
+fetchRequestJSON(recipeID, '/similarRecipes').then(data => displaySimilarRecipes(data));
+
+

@@ -83,34 +83,34 @@ async function getRandomRecipes() {
 
 async function getSimilarRecipes(recipeID) {
     const FOOD_API_KEY = getFoodAPIKey();
-    const limit = 9;
+    const limit = 6;
     const response = await fetch(`https://api.spoonacular.com/recipes/${recipeID}/similar?apiKey=${FOOD_API_KEY}&number=${limit}`);
     const data = await response.json();
     return data;
+
+
+
+
+    // const FOOD_API_KEY = 'a02c3b1687e9422da7f70510409c5fa9'
+    // const limit = 6;
+    // const response = await fetch(`https://api.spoonacular.com/recipes/${recipeID}/similar?apiKey=${FOOD_API_KEY}&number=${limit}`);
+    // const data = await response.json();
     
 }
 
 
 app.post('/similarRecipes', async (req, res) => {
     const recipeID = req.body.recipeID;
-    const FOOD_API_KEY = getFoodAPIKey();
-    const limit = 9;
-    const response = await fetch(`https://api.spoonacular.com/recipes/${recipeID}/similar?apiKey=${FOOD_API_KEY}&number=${limit}`);
-    const data = await response.json();
-    return data;
+    getSimilarRecipes(recipeID).then(data => res.send(data))
+    // const recipeID = req.body.recipeID;
+    // const FOOD_API_KEY = getFoodAPIKey()
+    // const limit = 6;
+    // const response = await fetch(`https://api.spoonacular.com/recipes/${recipeID}/similar?apiKey=${FOOD_API_KEY}&number=${limit}`);
+    // const data = await response.json();
+    // console.log("The similar recipes are " + data)
+    // return data;
 
-    // res.send('the user has selected ' + recipeID)
 
-    // getSimilarRecipes(recipeID).then(data =>{
-
-
-    // let html =/*html*/`<div class="row">`;
-    // data.forEach((recipe, index) => html += recipeCard(recipe, index));
-    // // .row
-    // html +=/*html*/`</div>`;
-    // res.send(html)
-
-    // })
    
 });
 app.get('/randomrecipes', async (req, res) => {
