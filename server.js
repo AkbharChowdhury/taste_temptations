@@ -23,7 +23,7 @@ app.listen(3000, () => {
     console.log('Server listening on port 3000');
 
 });
-async function fetchRecipes(q, meal='') {
+async function fetchRecipes(q, meal = '') {
     const FOOD_API_KEY = getFoodAPIKey();
     const limit = 9;
     const response = await fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${FOOD_API_KEY}&query=${q}&number=${limit}&meal=${meal}`);
@@ -36,11 +36,11 @@ async function fetchRecipes(q, meal='') {
 async function fetchRandomRecipes() {
     // https://spoonacular.com/food-api/docs#Get-Random-Recipes
     const FOOD_API_KEY = getFoodAPIKey();
-    const TAGS = ['vegetarian','dessert'];
+    const TAGS = ['vegetarian', 'dessert'];
     const limit = 9;
     const response = await fetch(`https://api.spoonacular.com/recipes/random?number=${limit}&include-tags=${TAGS.join()}&apiKey=${FOOD_API_KEY}`);
-    const recipes = await response.json();
-    return recipes;
+    return await response.json();
+
 }
 
 
@@ -70,50 +70,56 @@ const recipeCard = (recipe, index) => {
         <img src="${image}" class="card-img-top" alt="${title}">
         <div class="card-body">
             <h5 class="card-title">${title}</h5>
-            <h2>recipe ID: ${recipeID}</h2>
             <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p> -->
         </div>
         <div class="card-body">
-            <a href="detail.html?recipeID=${recipeID}" class="card-link">View More</a>
+            <a href="detail.html?recipeID=${recipeID}" class="card-link" target="_blank">View More</a>
         </div>
     </div>
 </div>`;
 }
 
 app.get('/meals', (req, res) => {
-    let html=/*html*/` <option selected>No preference</option>`;           
-    mealTypes().forEach(meal => html+=/*html*/`<option value="${meal}">${titleCase(meal)}</option>`)
+    let html =/*html*/` <option selected>No preference</option>`;
+    mealTypes().forEach(meal => html +=/*html*/`<option value="${meal}">${titleCase(meal)}</option>`)
     res.send(html);
 
 });
 
-app.get('/randomrecipes', (req, res) => {
-   const html = '<h1>homepage data</h1>'
-    res.send(html);
+async function getRandomRecipes() {
+    const FOOD_API_KEY = 'e4676fffe7a44c199a14a757dab8b587';
+    const TAGS = ['vegetarian', 'dessert'];
+    const limit = 9;
+    const response = await fetch(`https://api.spoonacular.com/recipes/random?number=${limit}&include-tags=${TAGS.join()}&apiKey=${FOOD_API_KEY}`);
+    const data = await response.json();
+    return data;
+    
+}
+app.get('/randomrecipes', async (req, res) => {
 
-});
-// https://api.spoonacular.com/recipes/random?number=1&include-tags=vegetarian,dessert&exclude-tags=quinoa
- app.post('/detail', async (req, res) => {
-    // const recipeID = req.body.recipeID;
+    
 
-    const FOOD_API_KEY = getFoodAPIKey();
-    const response = await fetch(`https://api.spoonacular.com/recipes/${recipeID}/information?apiKey=${FOOD_API_KEY}`);
-    // // url ='https://api.spoonacular.com/recipes/638893/information?apiKey=e4676fffe7a44c199a14a757dab8b587'
-    // // const response = await fetch(url);
-    const recipes = await response.json();
-    const list = {
-        'recipes': recipes
-    }
-     res.send(list);
-    // fetchRecipeDetails().then(data =>{
-    //     res.send(data);
-        
-    // })
+    getRandomRecipes().then(data =>{
+         let html =/*html*/`<div class="row">`;
+    data['recipes'].forEach((recipe, index) => html += recipeCard(recipe, index));
+    // .row
+    html +=/*html*/`</div>`;
+    res.send(html)
 
-
+    })
 
    
 
+
+
+});
+// https://api.spoonacular.com/recipes/random?number=1&include-tags=vegetarian,dessert&exclude-tags=quinoa
+app.post('/detail', async (req, res) => {
+    const recipeID = req.body.recipeID;
+    const FOOD_API_KEY = getFoodAPIKey();
+    const response = await fetch(`https://api.spoonacular.com/recipes/${recipeID}/information?apiKey=${FOOD_API_KEY}`);
+    const data = await response.json();
+    res.send(data);
 });
 
 

@@ -1,0 +1,767 @@
+{
+  "id": 638893,
+  "image": "https://img.spoonacular.com/recipes/638893-556x370.jpg",
+  "imageType": "jpg",
+  "title": "Chocolate Cherry Cheesecake",
+  "readyInMinutes": 45,
+  "servings": 6,
+  "sourceUrl": "http://www.foodista.com/recipe/YPZN3Z4H/chocolate-cherry-cheesecake",
+  "vegetarian": false,
+  "vegan": false,
+  "glutenFree": false,
+  "dairyFree": false,
+  "veryHealthy": false,
+  "cheap": false,
+  "veryPopular": false,
+  "sustainable": false,
+  "lowFodmap": false,
+  "weightWatcherSmartPoints": 33,
+  "gaps": "no",
+  "preparationMinutes": null,
+  "cookingMinutes": null,
+  "aggregateLikes": 2,
+  "healthScore": 7,
+  "creditsText": "Foodista.com â€“ The Cooking Encyclopedia Everyone Can Edit",
+  "license": "CC BY 3.0",
+  "sourceName": "Foodista",
+  "pricePerServing": 385.84,
+  "extendedIngredients": [
+    {
+      "id": 19165,
+      "aisle": "Baking",
+      "image": "cocoa-powder.png",
+      "consistency": "SOLID",
+      "name": "baking cocoa",
+      "nameClean": "baking cocoa",
+      "original": "1 teaspoon Baking cocoa",
+      "originalName": "Baking cocoa",
+      "amount": 1,
+      "unit": "teaspoon",
+      "meta": [],
+      "measures": {
+        "us": {
+          "amount": 1,
+          "unitShort": "tsp",
+          "unitLong": "teaspoon"
+        },
+        "metric": {
+          "amount": 1,
+          "unitShort": "tsp",
+          "unitLong": "teaspoon"
+        }
+      }
+    },
+    {
+      "id": 18369,
+      "aisle": "Baking",
+      "image": "white-powder.jpg",
+      "consistency": "SOLID",
+      "name": "baking powder",
+      "nameClean": "baking powder",
+      "original": "7 grams Baking powder",
+      "originalName": "Baking powder",
+      "amount": 7,
+      "unit": "grams",
+      "meta": [],
+      "measures": {
+        "us": {
+          "amount": 0.247,
+          "unitShort": "oz",
+          "unitLong": "ounces"
+        },
+        "metric": {
+          "amount": 7,
+          "unitShort": "g",
+          "unitLong": "grams"
+        }
+      }
+    },
+    {
+      "id": 19903,
+      "aisle": "Sweet Snacks",
+      "image": "dark-chocolate-pieces.jpg",
+      "consistency": "SOLID",
+      "name": "bittersweet chocolate",
+      "nameClean": "bittersweet chocolate",
+      "original": "450 grams Bittersweet chocolate, chopped small",
+      "originalName": "Bittersweet chocolate, chopped small",
+      "amount": 450,
+      "unit": "grams",
+      "meta": [
+        "chopped"
+      ],
+      "measures": {
+        "us": {
+          "amount": 15.873,
+          "unitShort": "oz",
+          "unitLong": "ounces"
+        },
+        "metric": {
+          "amount": 450,
+          "unitShort": "g",
+          "unitLong": "grams"
+        }
+      }
+    },
+    {
+      "id": 1001,
+      "aisle": "Milk, Eggs, Other Dairy",
+      "image": "butter-sliced.jpg",
+      "consistency": "SOLID",
+      "name": "butter",
+      "nameClean": "butter",
+      "original": "1 tbsp butter",
+      "originalName": "butter",
+      "amount": 1,
+      "unit": "tbsp",
+      "meta": [],
+      "measures": {
+        "us": {
+          "amount": 1,
+          "unitShort": "Tbsp",
+          "unitLong": "Tbsp"
+        },
+        "metric": {
+          "amount": 1,
+          "unitShort": "Tbsp",
+          "unitLong": "Tbsp"
+        }
+      }
+    },
+    {
+      "id": 9070,
+      "aisle": "Produce",
+      "image": "cherries.jpg",
+      "consistency": "SOLID",
+      "name": "cherries",
+      "nameClean": "cherries",
+      "original": "200 grams Canned red cherries",
+      "originalName": "Canned red cherries",
+      "amount": 200,
+      "unit": "grams",
+      "meta": [
+        "red",
+        "canned"
+      ],
+      "measures": {
+        "us": {
+          "amount": 7.055,
+          "unitShort": "oz",
+          "unitLong": "ounces"
+        },
+        "metric": {
+          "amount": 200,
+          "unitShort": "g",
+          "unitLong": "grams"
+        }
+      }
+    },
+    {
+      "id": 93677,
+      "aisle": "Beverages",
+      "image": "cherry-juice.jpg",
+      "consistency": "LIQUID",
+      "name": "cherry juice",
+      "nameClean": "cherry juice",
+      "original": "80 grams Cherry juice",
+      "originalName": "Cherry juice",
+      "amount": 80,
+      "unit": "grams",
+      "meta": [],
+      "measures": {
+        "us": {
+          "amount": 2.822,
+          "unitShort": "oz",
+          "unitLong": "ounces"
+        },
+        "metric": {
+          "amount": 80,
+          "unitShort": "g",
+          "unitLong": "grams"
+        }
+      }
+    },
+    {
+      "id": 20027,
+      "aisle": "Baking",
+      "image": "white-powder.jpg",
+      "consistency": "SOLID",
+      "name": "cornstarch",
+      "nameClean": "cornstarch",
+      "original": "2 tablespoons Cornstarch",
+      "originalName": "Cornstarch",
+      "amount": 2,
+      "unit": "tablespoons",
+      "meta": [],
+      "measures": {
+        "us": {
+          "amount": 2,
+          "unitShort": "Tbsps",
+          "unitLong": "Tbsps"
+        },
+        "metric": {
+          "amount": 2,
+          "unitShort": "Tbsps",
+          "unitLong": "Tbsps"
+        }
+      }
+    },
+    {
+      "id": 1017,
+      "aisle": "Cheese",
+      "image": "cream-cheese.jpg",
+      "consistency": "SOLID",
+      "name": "philadelphia regular cream cheese",
+      "nameClean": "philadelphia regular cream cheese",
+      "original": "200 grams Philadelphia regular cream cheese",
+      "originalName": "Philadelphia regular cream cheese",
+      "amount": 200,
+      "unit": "grams",
+      "meta": [],
+      "measures": {
+        "us": {
+          "amount": 7.055,
+          "unitShort": "oz",
+          "unitLong": "ounces"
+        },
+        "metric": {
+          "amount": 200,
+          "unitShort": "g",
+          "unitLong": "grams"
+        }
+      }
+    },
+    {
+      "id": 1123,
+      "aisle": "Milk, Eggs, Other Dairy",
+      "image": "egg.png",
+      "consistency": "SOLID",
+      "name": "egg",
+      "nameClean": "egg",
+      "original": "1 Egg",
+      "originalName": "Egg",
+      "amount": 1,
+      "unit": "",
+      "meta": [],
+      "measures": {
+        "us": {
+          "amount": 1,
+          "unitShort": "",
+          "unitLong": ""
+        },
+        "metric": {
+          "amount": 1,
+          "unitShort": "",
+          "unitLong": ""
+        }
+      }
+    },
+    {
+      "id": 1123,
+      "aisle": "Milk, Eggs, Other Dairy",
+      "image": "egg.png",
+      "consistency": "SOLID",
+      "name": "eggs",
+      "nameClean": "eggs",
+      "original": "4 eggs, beaten",
+      "originalName": "eggs, beaten",
+      "amount": 4,
+      "unit": "",
+      "meta": [
+        "beaten"
+      ],
+      "measures": {
+        "us": {
+          "amount": 4,
+          "unitShort": "",
+          "unitLong": ""
+        },
+        "metric": {
+          "amount": 4,
+          "unitShort": "",
+          "unitLong": ""
+        }
+      }
+    },
+    {
+      "id": 20081,
+      "aisle": "Baking",
+      "image": "flour.png",
+      "consistency": "SOLID",
+      "name": "flour",
+      "nameClean": "flour",
+      "original": "1/4 cup flour",
+      "originalName": "flour",
+      "amount": 0.25,
+      "unit": "cup",
+      "meta": [],
+      "measures": {
+        "us": {
+          "amount": 0.25,
+          "unitShort": "cups",
+          "unitLong": "cups"
+        },
+        "metric": {
+          "amount": 31.25,
+          "unitShort": "g",
+          "unitLong": "grams"
+        }
+      }
+    },
+    {
+      "id": 9152,
+      "aisle": "Produce",
+      "image": "lemon-juice.jpg",
+      "consistency": "LIQUID",
+      "name": "lemon juice",
+      "nameClean": "lemon juice",
+      "original": "1 tablespoon Lemon juice",
+      "originalName": "Lemon juice",
+      "amount": 1,
+      "unit": "tablespoon",
+      "meta": [],
+      "measures": {
+        "us": {
+          "amount": 1,
+          "unitShort": "Tbsp",
+          "unitLong": "Tbsp"
+        },
+        "metric": {
+          "amount": 1,
+          "unitShort": "Tbsp",
+          "unitLong": "Tbsp"
+        }
+      }
+    },
+    {
+      "id": 93676,
+      "aisle": "Milk, Eggs, Other Dairy",
+      "image": "white-cream-fluffy.jpg",
+      "consistency": "SOLID",
+      "name": "german quark",
+      "nameClean": "german quark",
+      "original": "500 grams German Quark",
+      "originalName": "German Quark",
+      "amount": 500,
+      "unit": "grams",
+      "meta": [],
+      "measures": {
+        "us": {
+          "amount": 1.102,
+          "unitShort": "lb",
+          "unitLong": "pounds"
+        },
+        "metric": {
+          "amount": 500,
+          "unitShort": "g",
+          "unitLong": "grams"
+        }
+      }
+    },
+    {
+      "id": 2047,
+      "aisle": "Spices and Seasonings",
+      "image": "salt.jpg",
+      "consistency": "SOLID",
+      "name": "salt",
+      "nameClean": "salt",
+      "original": "1/5 teaspoon Salt",
+      "originalName": "Salt",
+      "amount": 0.2,
+      "unit": "teaspoon",
+      "meta": [],
+      "measures": {
+        "us": {
+          "amount": 0.2,
+          "unitShort": "tsps",
+          "unitLong": "teaspoons"
+        },
+        "metric": {
+          "amount": 0.2,
+          "unitShort": "tsps",
+          "unitLong": "teaspoons"
+        }
+      }
+    },
+    {
+      "id": 19335,
+      "aisle": "Baking",
+      "image": "sugar-in-bowl.png",
+      "consistency": "SOLID",
+      "name": "caster sugar",
+      "nameClean": "caster sugar",
+      "original": "60 grams Caster sugar",
+      "originalName": "Caster sugar",
+      "amount": 60,
+      "unit": "grams",
+      "meta": [],
+      "measures": {
+        "us": {
+          "amount": 2.116,
+          "unitShort": "oz",
+          "unitLong": "ounces"
+        },
+        "metric": {
+          "amount": 60,
+          "unitShort": "g",
+          "unitLong": "grams"
+        }
+      }
+    },
+    {
+      "id": 2050,
+      "aisle": "Baking",
+      "image": "vanilla-extract.jpg",
+      "consistency": "LIQUID",
+      "name": "vanilla extract",
+      "nameClean": "vanilla extract",
+      "original": "1 teaspoon Vanilla extract",
+      "originalName": "Vanilla extract",
+      "amount": 1,
+      "unit": "teaspoon",
+      "meta": [],
+      "measures": {
+        "us": {
+          "amount": 1,
+          "unitShort": "tsp",
+          "unitLong": "teaspoon"
+        },
+        "metric": {
+          "amount": 1,
+          "unitShort": "tsp",
+          "unitLong": "teaspoon"
+        }
+      }
+    },
+    {
+      "id": 10319335,
+      "aisle": "Baking",
+      "image": "vanilla-sugar.jpg",
+      "consistency": "SOLID",
+      "name": "vanilla sugar",
+      "nameClean": "vanilla sugar",
+      "original": "8 grams Vanilla sugar",
+      "originalName": "Vanilla sugar",
+      "amount": 8,
+      "unit": "grams",
+      "meta": [],
+      "measures": {
+        "us": {
+          "amount": 0.282,
+          "unitShort": "oz",
+          "unitLong": "ounces"
+        },
+        "metric": {
+          "amount": 8,
+          "unitShort": "g",
+          "unitLong": "grams"
+        }
+      }
+    }
+  ],
+  "summary": "Chocolate Cherry Cheesecake takes about <b>45 minutes</b> from beginning to end. This recipe makes 6 servings with <b>781 calories</b>, <b>22g of protein</b>, and <b>46g of fat</b> each. For <b>$3.86 per serving</b>, this recipe <b>covers 19%</b> of your daily requirements of vitamins and minerals. 2 people were glad they tried this recipe. Only a few people really liked this dessert. It is brought to you by Foodista. Head to the store and pick up flour, cherries, salt, and a few other things to make it today. With a spoonacular <b>score of 41%</b>, this dish is good. Try <a href=\"https://spoonacular.com/recipes/chocolate-cherry-cheesecake-554137\">Chocolate Cherry Cheesecake</a>, <a href=\"https://spoonacular.com/recipes/chocolate-cherry-cheesecake-1371817\">Chocolate Cherry Cheesecake</a>, and <a href=\"https://spoonacular.com/recipes/chocolate-cherry-cheesecake-1341633\">Chocolate Cherry Cheesecake</a> for similar recipes.",
+  "cuisines": [],
+  "dishTypes": [
+    "dessert"
+  ],
+  "diets": [],
+  "occasions": [],
+  "instructions": "<ol><li>Grease a 10 inch springform pan and line with a baking paper. To prepare the curst, combine and sieve first five ingredients first in a bowl, cut in butter and egg until a smooth dough forms. Press firmly on the bottom and sides of prepare pan. Use a fork to prick the crust in regular intervals. Cover and chill the crust for 30 minutes.</li><li>Pre-heat oven to 200C/400F. Stir chopped chocolate and sugar in a heatproof bowl set over a pan of simmering water until melted and smooth. Remove bowl from over water and stir in the vanilla extract. Let cool briefly until lukewarm but still pourable.</li><li>Blend quark and cream cheese in another bowl until smooth. Add in cocoa powder and 1 tbsp cornstarch. Stir to combine. Blend in eggs, one at a time. Gently stir in lukewarm chocolate until completely blended. Pour filling over crust. Press cherries lightly into chocolate mixture if using. Bake until the filling is set, about 50 minutes. Turn off the oven and let cool in oven with door ajar for about 1 hour. Take out and cool completely. Chill the cake overnight.</li><li>In a pot, combine sugar and 1 tbsp cornstarch. Add in cherry, lemon juice and stir until smooth. Cook over medium heat, stirring, until the mixture boils and thickens. Remove from heat and let cool. Drizzle the chocolate cheesecake with cherry sauce or simply just dust with icing sugar.</li></ol>",
+  "analyzedInstructions": [
+    {
+      "name": "",
+      "steps": [
+        {
+          "number": 1,
+          "step": "Grease a 10 inch springform pan and line with a baking paper. To prepare the curst, combine and sieve first five ingredients first in a bowl, cut in butter and egg until a smooth dough forms. Press firmly on the bottom and sides of prepare pan. Use a fork to prick the crust in regular intervals. Cover and chill the crust for 30 minutes.Pre-heat oven to 200C/400F. Stir chopped chocolate and sugar in a heatproof bowl set over a pan of simmering water until melted and smooth.",
+          "ingredients": [
+            {
+              "id": 19081,
+              "name": "chocolate",
+              "localizedName": "chocolate",
+              "image": "milk-chocolate.jpg"
+            },
+            {
+              "id": 1001,
+              "name": "butter",
+              "localizedName": "butter",
+              "image": "butter-sliced.jpg"
+            },
+            {
+              "id": 0,
+              "name": "crust",
+              "localizedName": "crust",
+              "image": ""
+            },
+            {
+              "id": 0,
+              "name": "dough",
+              "localizedName": "dough",
+              "image": "pizza-dough"
+            },
+            {
+              "id": 19335,
+              "name": "sugar",
+              "localizedName": "sugar",
+              "image": "sugar-in-bowl.png"
+            },
+            {
+              "id": 14412,
+              "name": "water",
+              "localizedName": "water",
+              "image": "water.png"
+            },
+            {
+              "id": 1123,
+              "name": "egg",
+              "localizedName": "egg",
+              "image": "egg.png"
+            }
+          ],
+          "equipment": [
+            {
+              "id": 404650,
+              "name": "springform pan",
+              "localizedName": "springform pan",
+              "image": "https://spoonacular.com/cdn/equipment_100x100/cake-pan.png"
+            },
+            {
+              "id": 404770,
+              "name": "baking paper",
+              "localizedName": "baking paper",
+              "image": "https://spoonacular.com/cdn/equipment_100x100/baking-paper.jpg"
+            },
+            {
+              "id": 405600,
+              "name": "sieve",
+              "localizedName": "sieve",
+              "image": "https://spoonacular.com/cdn/equipment_100x100/strainer.png"
+            },
+            {
+              "id": 404783,
+              "name": "bowl",
+              "localizedName": "bowl",
+              "image": "https://spoonacular.com/cdn/equipment_100x100/bowl.jpg"
+            },
+            {
+              "id": 404784,
+              "name": "oven",
+              "localizedName": "oven",
+              "image": "https://spoonacular.com/cdn/equipment_100x100/oven.jpg",
+              "temperature": {
+                "number": 200,
+                "unit": "Celsius"
+              }
+            }
+          ],
+          "length": {
+            "number": 30,
+            "unit": "minutes"
+          }
+        },
+        {
+          "number": 2,
+          "step": "Remove bowl from over water and stir in the vanilla extract.",
+          "ingredients": [
+            {
+              "id": 2050,
+              "name": "vanilla extract",
+              "localizedName": "vanilla extract",
+              "image": "vanilla-extract.jpg"
+            },
+            {
+              "id": 14412,
+              "name": "water",
+              "localizedName": "water",
+              "image": "water.png"
+            }
+          ],
+          "equipment": [
+            {
+              "id": 404783,
+              "name": "bowl",
+              "localizedName": "bowl",
+              "image": "https://spoonacular.com/cdn/equipment_100x100/bowl.jpg"
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "step": "Let cool briefly until lukewarm but still pourable.Blend quark and cream cheese in another bowl until smooth.",
+          "ingredients": [
+            {
+              "id": 1017,
+              "name": "cream cheese",
+              "localizedName": "cream cheese",
+              "image": "cream-cheese.jpg"
+            },
+            {
+              "id": 93676,
+              "name": "quark",
+              "localizedName": "quark",
+              "image": "white-cream-fluffy.jpg"
+            }
+          ],
+          "equipment": [
+            {
+              "id": 404783,
+              "name": "bowl",
+              "localizedName": "bowl",
+              "image": "https://spoonacular.com/cdn/equipment_100x100/bowl.jpg"
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "step": "Add in cocoa powder and 1 tbsp cornstarch. Stir to combine. Blend in eggs, one at a time. Gently stir in lukewarm chocolate until completely blended.",
+          "ingredients": [
+            {
+              "id": 19165,
+              "name": "cocoa powder",
+              "localizedName": "cocoa powder",
+              "image": "cocoa-powder.png"
+            },
+            {
+              "id": 20027,
+              "name": "corn starch",
+              "localizedName": "corn starch",
+              "image": "white-powder.jpg"
+            },
+            {
+              "id": 19081,
+              "name": "chocolate",
+              "localizedName": "chocolate",
+              "image": "milk-chocolate.jpg"
+            },
+            {
+              "id": 1123,
+              "name": "egg",
+              "localizedName": "egg",
+              "image": "egg.png"
+            }
+          ],
+          "equipment": []
+        },
+        {
+          "number": 5,
+          "step": "Pour filling over crust. Press cherries lightly into chocolate mixture if using.",
+          "ingredients": [
+            {
+              "id": 19081,
+              "name": "chocolate",
+              "localizedName": "chocolate",
+              "image": "milk-chocolate.jpg"
+            },
+            {
+              "id": 9070,
+              "name": "cherries",
+              "localizedName": "cherries",
+              "image": "cherries.jpg"
+            },
+            {
+              "id": 0,
+              "name": "crust",
+              "localizedName": "crust",
+              "image": ""
+            }
+          ],
+          "equipment": []
+        },
+        {
+          "number": 6,
+          "step": "Bake until the filling is set, about 50 minutes. Turn off the oven and let cool in oven with door ajar for about 1 hour. Take out and cool completely. Chill the cake overnight.In a pot, combine sugar and 1 tbsp cornstarch.",
+          "ingredients": [
+            {
+              "id": 20027,
+              "name": "corn starch",
+              "localizedName": "corn starch",
+              "image": "white-powder.jpg"
+            },
+            {
+              "id": 19335,
+              "name": "sugar",
+              "localizedName": "sugar",
+              "image": "sugar-in-bowl.png"
+            }
+          ],
+          "equipment": [
+            {
+              "id": 404784,
+              "name": "oven",
+              "localizedName": "oven",
+              "image": "https://spoonacular.com/cdn/equipment_100x100/oven.jpg"
+            },
+            {
+              "id": 404752,
+              "name": "pot",
+              "localizedName": "pot",
+              "image": "https://spoonacular.com/cdn/equipment_100x100/stock-pot.jpg"
+            }
+          ],
+          "length": {
+            "number": 110,
+            "unit": "minutes"
+          }
+        },
+        {
+          "number": 7,
+          "step": "Add in cherry, lemon juice and stir until smooth. Cook over medium heat, stirring, until the mixture boils and thickens.",
+          "ingredients": [
+            {
+              "id": 9152,
+              "name": "lemon juice",
+              "localizedName": "lemon juice",
+              "image": "lemon-juice.jpg"
+            },
+            {
+              "id": 9070,
+              "name": "cherries",
+              "localizedName": "cherries",
+              "image": "cherries.jpg"
+            }
+          ],
+          "equipment": []
+        },
+        {
+          "number": 8,
+          "step": "Remove from heat and let cool.",
+          "ingredients": [],
+          "equipment": []
+        },
+        {
+          "number": 9,
+          "step": "Drizzle the chocolate cheesecake with cherry sauce or simply just dust with icing sugar.",
+          "ingredients": [
+            {
+              "id": 19336,
+              "name": "powdered sugar",
+              "localizedName": "powdered sugar",
+              "image": "https://spoonacular.com/cdn/ingredients_100x100/powdered-sugar.jpg"
+            },
+            {
+              "id": 19081,
+              "name": "chocolate",
+              "localizedName": "chocolate",
+              "image": "milk-chocolate.jpg"
+            },
+            {
+              "id": 9070,
+              "name": "cherries",
+              "localizedName": "cherries",
+              "image": "cherries.jpg"
+            },
+            {
+              "id": 0,
+              "name": "sauce",
+              "localizedName": "sauce",
+              "image": ""
+            }
+          ],
+          "equipment": []
+        }
+      ]
+    }
+  ],
+  "spoonacularScore": 47.798065185546875,
+  "spoonacularSourceUrl": "https://spoonacular.com/chocolate-cherry-cheesecake-638893"
+}
