@@ -99,19 +99,19 @@ function getSteps(steps) {
     return htmlSteps += '</ol>';
 }
 const recipeID = fetchRecipeID()
-showSimilarRecipes(recipeID).then(data =>{
- document.getElementById('similar-recipes').innerHTML = data;
-})
-getSimilars(recipeID).then(data =>{
-    let html =`
-        <h1>You might also be interested in</h1>
-          <hr>
-     `;
-     
+// showSimilarRecipes(recipeID).then(data =>{
+//  document.getElementById('similar-recipes').innerHTML = data;
+// })
+// getSimilars(recipeID).then(data =>{
+//     let html =`
+//         <h1>You might also be interested in</h1>
+//           <hr>
+//           ${data}
+//      `;
 
-    //  similar-recipes
-    document.getElementById('similar-recipes').innerHTML = html;
-})
+//     //  similar-recipes
+//     document.getElementById('similar-recipes').innerHTML = html;
+// })
 getSelectedRecipeDetails(recipeID).then(data => {
 
 
