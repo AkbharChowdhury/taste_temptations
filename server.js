@@ -50,12 +50,13 @@ async function fetchRecipeDetails(recipeId) {
     const recipes = await response.json();
     return recipes;
 }
+
 const errorMessage = (msg) => /*html */`<div class="alert alert-danger" role="alert">${msg}</div>`;
 
 const recipeCard = (recipe, index) => {
     const title = recipe.title;
     const image = recipe.image;
-    const id = recipe.id;
+    const recipeID = recipe.id;
 
     // return `      <div class="col-sm-6 col-md-4">
     //         <div class="card border-white">
@@ -69,10 +70,11 @@ const recipeCard = (recipe, index) => {
         <img src="${image}" class="card-img-top" alt="${title}">
         <div class="card-body">
             <h5 class="card-title">${title}</h5>
+            <h2>recipe ID: ${recipeID}</h2>
             <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p> -->
         </div>
         <div class="card-body">
-            <a href="#" class="card-link">View More</a>
+            <a href="detail.html?recipeID=${recipeID}" class="card-link">View More</a>
         </div>
     </div>
 </div>`;
@@ -91,11 +93,26 @@ app.get('/randomrecipes', (req, res) => {
 
 });
 // https://api.spoonacular.com/recipes/random?number=1&include-tags=vegetarian,dessert&exclude-tags=quinoa
-app.post('/detail', (req, res) => {
-    const recipeID = req.body.recipeID;
-    const html = `<p> the user has selected ${recipeID} </p>`
+ app.post('/detail', async (req, res) => {
+    // const recipeID = req.body.recipeID;
 
-    res.send(html);
+    const FOOD_API_KEY = getFoodAPIKey();
+    const response = await fetch(`https://api.spoonacular.com/recipes/${recipeID}/information?apiKey=${FOOD_API_KEY}`);
+    // // url ='https://api.spoonacular.com/recipes/638893/information?apiKey=e4676fffe7a44c199a14a757dab8b587'
+    // // const response = await fetch(url);
+    const recipes = await response.json();
+    const list = {
+        'recipes': recipes
+    }
+     res.send(list);
+    // fetchRecipeDetails().then(data =>{
+    //     res.send(data);
+        
+    // })
+
+
+
+   
 
 });
 
