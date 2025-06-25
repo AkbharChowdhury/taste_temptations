@@ -20,10 +20,9 @@
     </div>
   </nav>
 
+
   <div class="container">
     <h1>search recipes</h1>
-  </div>
-  <div class="container">
     <form class="d-flex" role="search" hx-trigger="submit" hx-post="/search" hx-target="#result">
       <input class="form-control me-2" type="search" placeholder="search recipes..." aria-label="Search"
         name="recipeSearchText" id="recipeSearchText" />
@@ -70,6 +69,19 @@
 
 
 </body>
+
+<script>
+  async function getRandomRecipes() {
+    const response = await fetch('/randomrecipes');
+    const data = await response.text();
+    console.log({data})
+     document.getElementById('result').innerHTML = data;
+    // document.getElementById('result').insertAdjacentHTML("afterbegin", data);
+
+}
+getRandomRecipes();
+</script>
 <script src="meals.js"></script>
+
 
 </html>

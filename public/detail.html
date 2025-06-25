@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Taste Temptations: Recipe details</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+</head>
+
+<body>
+
+  <nav class="navbar bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <img src="logo.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+        <span style="color: #7B3F00;">Taste Temptations</span>
+      </a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <h1 class="text-capitalize">recipe details</h1>
+    <hr>
+    <div id="content"></div>
+  </div>
+
+
+
+
+
+
+
+   <div class="container mt-5">
+            <div class="row">
+                <div class="col-lg-8">
+                    <!-- Post content-->
+                    <article>
+                        <!-- Post header-->
+                        <header class="mb-4">
+                            <!-- Post title-->
+                            <h1 class="fw-bolder mb-1">Blender Carrot Soup</h1>
+                            <!-- Post meta content-->
+                            <div class="text-muted fst-italic mb-2">Posted on January 1, 2023 by Start Bootstrap</div>
+                            <!-- Post categories-->
+                            <a class="badge bg-secondary text-decoration-none link-light" href="#!">Web Design</a>
+                            <a class="badge bg-secondary text-decoration-none link-light" href="#!">Freebies</a>
+                        </header>
+                        <!-- Preview image figure-->
+                        <figure class="mb-4"><img class="img-fluid rounded w-100" 
+                          
+                          src="data:image/jpeg;base64,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"
+                           alt="belnder-carrot-soup" /></figure>
+                        <!-- Post content-->
+                        <section class="mb-5">
+                        <h2 class="fw-bolder mb-4 mt-5">Ingredients</h2>
+
+                            <p class="fs-5 mb-4">Ingredients:</p>
+                            <p class="fs-5 mb-4">blender carrot cake description</p>
+                            <!-- <p class="fs-5 mb-4">If you get asteroids about a kilometer in size, those are large enough and carry enough energy into our system to disrupt transportation, communication, the food chains, and that can be a really bad day on Earth.</p>
+                            <h2 class="fw-bolder mb-4 mt-5">I have odd cosmic thoughts every day</h2>
+                            <p class="fs-5 mb-4">For me, the most fascinating interface is Twitter. I have odd cosmic thoughts every day and I realized I could hold them to myself or share them with people who might be interested.</p>
+                            <p class="fs-5 mb-4">Venus has a runaway greenhouse effect. I kind of want to know what happened there because we're twirling knobs here on Earth without knowing the consequences of it. Mars once had running water. It's bone dry today. Something bad happened there as well.</p> -->
+                        </section>
+                    </article>
+                    <!-- Comments section-->
+                    <section class="mb-5">
+                        <div class="card bg-light">
+                            <div class="card-body">
+                                <!-- Comment form-->
+                                <form class="mb-4"><textarea class="form-control" rows="3" placeholder="Join the discussion and leave a comment!"></textarea></form>
+                                <!-- Comment with nested comments-->
+                                <div class="d-flex mb-4">
+                                    <!-- Parent comment-->
+                                    <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
+                                    <div class="ms-3">
+                                        <div class="fw-bold">Commenter Name</div>
+                                        If you're going to lead a space frontier, it has to be government; it'll never be private enterprise. Because the space frontier is dangerous, and it's expensive, and it has unquantified risks.
+                                        <!-- Child comment 1-->
+                                        <div class="d-flex mt-4">
+                                            <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
+                                            <div class="ms-3">
+                                                <div class="fw-bold">Commenter Name</div>
+                                                And under those conditions, you cannot establish a capital-market evaluation of that enterprise. You can't get investors.
+                                            </div>
+                                        </div>
+                                        <!-- Child comment 2-->
+                                        <div class="d-flex mt-4">
+                                            <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
+                                            <div class="ms-3">
+                                                <div class="fw-bold">Commenter Name</div>
+                                                When you put money directly to a problem, it makes a good headline.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Single comment-->
+                                <div class="d-flex">
+                                    <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
+                                    <div class="ms-3">
+                                        <div class="fw-bold">Commenter Name</div>
+                                        When I look at the universe and all the ways the universe wants to kill us, I find it hard to reconcile that with statements of beneficence.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <!-- Side widgets-->
+                <div class="col-lg-4">
+                    <!-- Search widget-->
+                    <!-- <div class="card mb-4">
+                        <div class="card-header">Search</div>
+                        <div class="card-body">
+                            <div class="input-group">
+                                <input class="form-control" type="text" placeholder="Enter search term..." aria-label="Enter search term..." aria-describedby="button-search" />
+                                <button class="btn btn-primary" id="button-search" type="button">Go!</button>
+                            </div>
+                        </div>
+                    </div> -->
+                    <!-- Categories widget-->
+                    <!-- <div class="card mb-4">
+                        <div class="card-header">Categories</div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <ul class="list-unstyled mb-0">
+                                        <li><a href="#!">Web Design</a></li>
+                                        <li><a href="#!">HTML</a></li>
+                                        <li><a href="#!">Freebies</a></li>
+                                    </ul>
+                                </div>
+                                <div class="col-sm-6">
+                                    <ul class="list-unstyled mb-0">
+                                        <li><a href="#!">JavaScript</a></li>
+                                        <li><a href="#!">CSS</a></li>
+                                        <li><a href="#!">Tutorials</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+                    <!-- Side widget-->
+                    <div class="card mb-4">
+                        <div class="card-header">Details</div>
+                        <div class="card-body">You can put anything you want inside of these side widgets. They are easy to use, and feature the Bootstrap 5 card component!</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/htmx.org@2.0.5/dist/htmx.min.js"
+    integrity="sha384-t4DxZSyQK+0Uv4jzy5B0QyHyWQD2GFURUmxKMBVww9+e2EJ0ei/vCvv7+79z0fkr"
+    crossorigin="anonymous"></script>
+
+<script src="detail.js"></script>
+</body>
+
+</html>

@@ -1,6 +1,8 @@
 import express from 'express'
 import dotenv from 'dotenv';
 import { mealTypes } from './food.js';
+import { titleCase } from './utils.js';
+
 
 const app = express();
 // configure statis folder
@@ -10,10 +12,7 @@ app.use(express.urlencoded({ extended: true }));
 // Parse JSON bodies (as send by API clients)
 app.use(express.json());
 
-const titleCase = (sentance) => sentance.toLowerCase() 
-           .split(' ') 
-           .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-           .join(' ');
+
 const getFoodAPIKey = () => {
     dotenv.config();
     return process.env.FOOD_API_KEY;
@@ -22,7 +21,6 @@ const getFoodAPIKey = () => {
 }
 app.listen(3000, () => {
     console.log('Server listening on port 3000');
-    console.log('list of meals', mealTypes())
 
 });
 async function fetchRecipes(q, meal='') {
@@ -31,6 +29,17 @@ async function fetchRecipes(q, meal='') {
     const response = await fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${FOOD_API_KEY}&query=${q}&number=${limit}&meal=${meal}`);
     const recipes = await response.json();
 
+    return recipes;
+}
+
+
+async function fetchRandomRecipes() {
+    // https://spoonacular.com/food-api/docs#Get-Random-Recipes
+    const FOOD_API_KEY = getFoodAPIKey();
+    const TAGS = ['vegetarian','dessert'];
+    const limit = 9;
+    const response = await fetch(`https://api.spoonacular.com/recipes/random?number=${limit}&include-tags=${TAGS.join()}&apiKey=${FOOD_API_KEY}`);
+    const recipes = await response.json();
     return recipes;
 }
 
@@ -76,6 +85,21 @@ app.get('/meals', (req, res) => {
 
 });
 
+app.get('/randomrecipes', (req, res) => {
+   const html = '<h1>homepage data</h1>'
+    res.send(html);
+
+});
+// https://api.spoonacular.com/recipes/random?number=1&include-tags=vegetarian,dessert&exclude-tags=quinoa
+app.post('/detail', (req, res) => {
+    const recipeID = req.body.recipeID;
+    const html = `<p> the user has selected ${recipeID} </p>`
+
+    res.send(html);
+
+});
+
+
 app.post('/search', (req, res) => {
     const term = req.body.recipeSearchText;
     const meal = req.body.meal ?? '';
@@ -88,12 +112,9 @@ app.post('/search', (req, res) => {
 
             let html = '';
             html =/*html*/`<div class="row">`;
-
-
             recipes.results.forEach((recipe, index) => html += recipeCard(recipe, index));
             // .row
             html +=/*html*/`</div>`;
-
             res.send(html)
 
         })
