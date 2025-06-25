@@ -33,23 +33,6 @@ async function fetchRecipes(q, meal = '') {
 }
 
 
-async function fetchRandomRecipes() {
-    // https://spoonacular.com/food-api/docs#Get-Random-Recipes
-    const FOOD_API_KEY = getFoodAPIKey();
-    const TAGS = ['vegetarian', 'dessert'];
-    const limit = 9;
-    const response = await fetch(`https://api.spoonacular.com/recipes/random?number=${limit}&include-tags=${TAGS.join()}&apiKey=${FOOD_API_KEY}`);
-    return await response.json();
-
-}
-
-
-async function fetchRecipeDetails(recipeId) {
-    const FOOD_API_KEY = getFoodAPIKey();
-    const response = await fetch(`https://api.spoonacular.com/recipes/${recipeId}/information?apiKey=${FOOD_API_KEY}`);
-    const recipes = await response.json();
-    return recipes;
-}
 
 const errorMessage = (msg) => /*html */`<div class="alert alert-danger" role="alert">${msg}</div>`;
 
@@ -87,7 +70,7 @@ app.get('/meals', (req, res) => {
 });
 
 async function getRandomRecipes() {
-    const FOOD_API_KEY = 'e4676fffe7a44c199a14a757dab8b587';
+    const FOOD_API_KEY = getFoodAPIKey();
     const TAGS = ['vegetarian', 'dessert'];
     const limit = 9;
     const response = await fetch(`https://api.spoonacular.com/recipes/random?number=${limit}&include-tags=${TAGS.join()}&apiKey=${FOOD_API_KEY}`);
