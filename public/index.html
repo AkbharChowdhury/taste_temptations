@@ -32,9 +32,10 @@
       <div class="col-md-6">
 
         <div class="form-floating">
-          <select class="form-select" id="meal_type" name="meal" aria-label="meal types" name="mealType"
+          <select class="form-select" id="meal-type" name="meal" aria-label="meal types"
             hx-post="/search" hx-trigger="change" hx-target="#result"
-            hx-vals="js:{recipeSearchText: document.querySelector('#recipeSearchText').value}">
+            hx-vals="js:{recipeSearchText: document.querySelector('#recipeSearchText').value}"
+            >
           </select>
           <label for="meal_type">Meal</label>
         </div>

@@ -1,3 +1,5 @@
+"use strict";
+
 function fetchRecipeID() {
     const recipeID = 'recipeID';
     const searchParams = new URLSearchParams(window.location.search);
@@ -70,7 +72,7 @@ function showIngredientList(ingredientlist) {
 
 function showDishTypeTags(dishes) {
     let html = '';
-    dishes.forEach(dish => html += `<a class="badge bg-secondary text-decoration-none link-light" href="#!">${dish}</a>`)
+    dishes.forEach(dish => html += `<span class="badge bg-secondary text-decoration-none link-light m-2">${dish}</span>`)
     return html;
 
 }
@@ -84,6 +86,7 @@ const recipeID = fetchRecipeID()
 
 // get recipe details
 fetchRequestJSON(recipeID, '/detail').then(data => {
+    console.log(data)
 
     const title = document.querySelector('#item-title');
     const image = document.querySelector('#item-image');
@@ -91,11 +94,18 @@ fetchRequestJSON(recipeID, '/detail').then(data => {
     showIngredientList(ingredientlist)
     title.textContent = data.title;
     image.setAttribute('src', data.image)
-    image.setAttribute('alt', data.title)
-    document.getElementById('addtional-details').innerHTML = /*html*/`
-        ${data.readyInMinutes} minutes, serves ${data.servings} `
+    image.setAttribute('alt', data.title);
+    const cuisines = data.cuisines;
+
+    document.getElementById('additional-details').innerHTML = `
+     <p class="fs-5 mb-4">Serves ${data.servings}, ready in ${data.readyInMinutes} minutes | ${cuisines.join(', ')}</p>
+
+    
+    `;
+    // document.getElementById('addtional-details').innerHTML = /*html*/`
+    //     ${data.readyInMinutes} minutes, serves ${data.servings} `
     document.getElementById('recipe-summary').innerHTML = data.summary;
-    document.getElementById('dishTypes').innerHTML = showDishTypeTags(data.dishTypes);
+    document.getElementById('dish-types').innerHTML = showDishTypeTags(data.dishTypes);
 
     if (data.analyzedInstructions[0] != undefined) {
         const steps = data.analyzedInstructions[0]['steps'];

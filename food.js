@@ -14,3 +14,19 @@ export const mealTypes = _ =>[
     'snack',
     'drink'
 ];
+
+export const cuisines = _ =>[
+    'African',
+    'Asian',
+    'American',
+    'British',
+    'Caribbean',
+    'European',
+    'Korean',
+    'Middle Eastern',
+    'Thai',
+    'Indian',
+    'French'
+];
+
+// cuisines

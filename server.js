@@ -1,15 +1,12 @@
 import express from 'express'
 import dotenv from 'dotenv';
-import { mealTypes } from './food.js';
+import { mealTypes, cuisines } from './food.js';
 import { titleCase } from './utils.js';
 
 
 const app = express();
-// configure statis folder
 app.use(express.static('public'));
-// Parse URL-encoded bodies (as sent by HTML forms)
 app.use(express.urlencoded({ extended: true }));
-// Parse JSON bodies (as send by API clients)
 app.use(express.json());
 
 
@@ -19,16 +16,29 @@ const getFoodAPIKey = () => {
 
 
 }
-app.listen(3000, () => {
-    console.log('Server listening on port 3000');
+app.listen(3000, () => console.log('Server listening on port 3000'));
+// async function fetchRecipes(query, meal) {
+//     const FOOD_API_KEY = getFoodAPIKey();
+//     const limit = 9;
+//     const response = await fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${FOOD_API_KEY}&query=${query}&number=${limit}&meal=${meal}`);
+//     const recipes = await response.json();
+//     return recipes;
+// }
 
-});
-async function fetchRecipes(q, meal = '') {
+function constructSearchURL(url, searchParams){
+    if(searchParams.query) url+= `&query=${searchParams.query}`;
+    if(searchParams.meal) url+= `&type=${searchParams.meal}`;
+    if(searchParams.cuisines.length !== 0) url+= `&cuisine=${searchParams.cuisines.join()}`;
+    return url;
+
+}
+
+async function searchRecipes(searchParams) {
     const FOOD_API_KEY = getFoodAPIKey();
     const limit = 9;
-    const response = await fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${FOOD_API_KEY}&query=${q}&number=${limit}&meal=${meal}`);
+    const url = constructSearchURL(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${FOOD_API_KEY}&number=${limit}`, searchParams)
+    const response = await fetch(url);
     const recipes = await response.json();
-
     return recipes;
 }
 
@@ -53,7 +63,6 @@ const recipeCard = (recipe, index) => {
         <img src="${image}" class="card-img-top" alt="${title}">
         <div class="card-body">
             <h5 class="card-title">${title}</h5>
-            <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p> -->
         </div>
         <div class="card-body">
             <a href="detail.html?recipeID=${recipeID}" class="card-link" target="_blank">View More</a>
@@ -63,11 +72,32 @@ const recipeCard = (recipe, index) => {
 }
 
 app.get('/meals', (req, res) => {
-    let html =/*html*/` <option selected>No preference</option>`;
+    let html =/*html*/` <option selected value="">No preference</option>`;
     mealTypes().forEach(meal => html +=/*html*/`<option value="${meal}">${titleCase(meal)}</option>`)
     res.send(html);
 
 });
+
+
+
+
+app.get('/cuisines', (req, res) => {
+    let html = '';
+    cuisines().forEach(cuisine => html +=/*html*/`
+        
+             <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="${cuisine}" id="${cuisine}" name="cuisines">
+                                            <label class="form-check-label" for="${cuisine}">
+                                                ${cuisine}
+                                            </label>
+                                        </div>
+        
+        `)
+    res.send(html);
+
+});
+
+
 
 async function getRandomRecipes() {
     const FOOD_API_KEY = getFoodAPIKey();
@@ -139,13 +169,46 @@ app.post('/detail', async (req, res) => {
 });
 
 
+// app.post('/search', (req, res) => {
+//     const query = req.body.recipeSearchText;
+//     const meal = 'drink';
+//     fetchRecipes(query, meal)
+//         .then(recipes => {
+//             if (recipes.results.length === 0) {
+//                 res.send(errorMessage(`Whoops, we couldn't find anything for "${query}"`));
+//                 return;
+//             }
+
+//             let html = '';
+//             html =/*html*/`<div class="row">`;
+//             recipes.results.forEach((recipe, index) => html += recipeCard(recipe, index));
+//             // .row
+//             html +=/*html*/`</div>`;
+//             res.send(html)
+
+//         })
+//         .catch(err => console.error(`there was an error fetching recipes ${err}`))
+
+
+
+
+// });
+
+
+
 app.post('/search', (req, res) => {
-    const term = req.body.recipeSearchText;
-    const meal = req.body.meal ?? '';
-    fetchRecipes(term, meal)
-        .then(recipes => {
+    const query = req.body.query;
+    const meal = req.body.meal;
+    const cuisines = req.body.cuisines;
+    const searchParams = Object.freeze({ query, meal, cuisines });
+
+
+
+
+
+    searchRecipes(searchParams).then(recipes => {
             if (recipes.results.length === 0) {
-                res.send(errorMessage(`Whoops, we couldn't find anything for "${term}"`));
+                res.send(errorMessage(`Whoops, we couldn't find anything for "${query}"`));
                 return;
             }
 
