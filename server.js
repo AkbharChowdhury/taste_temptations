@@ -13,46 +13,19 @@ app.use(express.json());
 const getFoodAPIKey = () => {
     dotenv.config();
     return process.env.FOOD_API_KEY;
-
-
 }
 app.listen(3000, () => console.log('Server listening on port 3000'));
 
-function constructSearchURL(url, searchParams) {
-    if (searchParams.query) url += `&query=${searchParams.query}`;
-    if (searchParams.meal) url += `&type=${searchParams.meal}`;
-    if (searchParams.cuisines.length !== 0) url += `&cuisine=${searchParams.cuisines.join()}`;
-    return url;
 
-}
 
-async function searchRecipes(searchParams) {
+async function searchRecipes(urlSearchParams) {
     const FOOD_API_KEY = getFoodAPIKey();
     const limit = 9;
-    const url = constructSearchURL(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${FOOD_API_KEY}&number=${limit}`, searchParams)
+    const url = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${FOOD_API_KEY}&number=${limit}${urlSearchParams}`;
     const response = await fetch(url);
     return await response.json();
    
 }
-
-
-
-const errorMessage = (msg) => /*html */`<div class="alert alert-danger" role="alert">${msg}</div>`;
-const recipeCard = (recipe) => {
-    return  /*html*/`
-     <div class="col-sm-6 col-md-4 mt-5">
-            <div class="card h-100">
-                <img src="${recipe.image}" class="card-img-top" alt="${recipe.title}">
-                <div class="card-body">
-                  <h5 class="card-title">${title}</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="detail.html?recipeID=${recipe.id}" class="card-link" target="_blank">View More</a>
-                </div>
-              </div>
-        </div>
-`;
-};
-
 
 app.get('/meals', (req, res) => {
     let html =/*html*/` <option selected value="">No preference</option>`;
@@ -60,8 +33,6 @@ app.get('/meals', (req, res) => {
     res.send(html);
 
 });
-
-
 
 
 app.get('/cuisines', (req, res) => {
@@ -109,9 +80,8 @@ async function getRandomRecipes() {
         const limit = 9;
         const response = await fetch(`https://api.spoonacular.com/recipes/random?number=${limit}&include-tags=${TAGS.join()}&apiKey=${FOOD_API_KEY}`);
         return await response.json();
-        // res.send(data);
     } catch(error){
-        res.send('there was an error fetching random recipes from server side ' + error.message)
+        res.send(`There was an error fetching random recipes from server side ${error.message}`)
     }
     
 }
@@ -128,10 +98,8 @@ app.post('/detail', async (req, res) => {
 
 
 app.post('/search', (req, res) => {
-    const query = req.body.query;
-    const meal = req.body.meal;
-    const cuisines = req.body.cuisines;
-    const searchParams = Object.freeze({ query, meal, cuisines });
-    searchRecipes(searchParams).then(recipes => res.send(recipes))
-    .catch(err => console.error(`there was an error fetching recipes ${err.message}`))
+
+    const urlSearchParams = req.body.urlSearchParams;
+    searchRecipes(urlSearchParams).then(recipes => res.send(recipes))
+    .catch(error => console.error(`there was an error fetching recipes ${error.message}`))
 });
