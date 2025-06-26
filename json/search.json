@@ -1,0 +1,31 @@
+{
+  "results": [
+    {
+      "id": 656817,
+      "title": "Pork Schnitzel And Apple Salad",
+      "image": "https://img.spoonacular.com/recipes/656817-312x231.jpg",
+      "imageType": "jpg"
+    },
+    {
+      "id": 650946,
+      "title": "Maple-Nut Oatmeal Cream Pies",
+      "image": "https://img.spoonacular.com/recipes/650946-312x231.jpg",
+      "imageType": "jpg"
+    },
+    {
+      "id": 633419,
+      "title": "Baked Apple",
+      "image": "https://img.spoonacular.com/recipes/633419-312x231.jpg",
+      "imageType": "jpg"
+    },
+    {
+      "id": 57810,
+      "title": "Choucroute Garni",
+      "image": "https://img.spoonacular.com/recipes/57810-312x231.jpg",
+      "imageType": "jpg"
+    }
+  ],
+  "offset": 0,
+  "number": 4,
+  "totalResults": 390
+}
