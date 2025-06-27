@@ -26,6 +26,7 @@ export const cuisines = _ =>[
     'Middle Eastern',
     'Thai',
     'Indian',
-    'French'
+    'French',
+    'Italian'
 ];
 

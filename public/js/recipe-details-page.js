@@ -1,5 +1,5 @@
 "use strict";
-
+document.title = 'Taste Temptations'
 function fetchRecipeID() {
     const recipeID = 'recipeID';
     const searchParams = new URLSearchParams(window.location.search);

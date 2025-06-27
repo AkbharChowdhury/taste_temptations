@@ -1,11 +1,12 @@
 import express from 'express'
 import dotenv from 'dotenv';
 import { mealTypes, cuisines } from './food.js';
-import { titleCase } from './utils.js';
+import { titleCase, sortedArray } from './utils.js';
 
 
 const app = express();
 app.use(express.static('public'));
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
@@ -21,15 +22,18 @@ app.listen(3000, () => console.log('Server listening on port 3000'));
 async function searchRecipes(urlSearchParams) {
     const FOOD_API_KEY = getFoodAPIKey();
     const limit = 9;
-    const url = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${FOOD_API_KEY}&number=${limit}${urlSearchParams}`;
+    // const url = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${FOOD_API_KEY}&number=${limit}${urlSearchParams}`;
+    const url = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${FOOD_API_KEY}${urlSearchParams}`;
+
     const response = await fetch(url);
     return await response.json();
    
 }
 
 app.get('/meals', (req, res) => {
+    const sortedMeals = sortedArray(mealTypes());
     let html =/*html*/` <option selected value="">No preference</option>`;
-    mealTypes().forEach(meal => html +=/*html*/`<option value="${meal}">${titleCase(meal)}</option>`)
+    sortedMeals.forEach(meal => html +=/*html*/`<option value="${meal}">${titleCase(meal)}</option>`)
     res.send(html);
 
 });
@@ -37,7 +41,9 @@ app.get('/meals', (req, res) => {
 
 app.get('/cuisines', (req, res) => {
     let html = '';
-    cuisines().forEach(cuisine => html +=/*html*/`
+    const sortedCuisines = sortedArray(cuisines());
+
+    sortedCuisines.forEach(cuisine => html +=/*html*/`
         
          <div class="form-check">
             <input class="form-check-input" type="checkbox" value="${cuisine}" id="${cuisine}" name="cuisines">
@@ -76,7 +82,7 @@ async function getRandomRecipes() {
 
     try {
         const FOOD_API_KEY = getFoodAPIKey()
-        const TAGS = ['vegetarian', 'dessert'];
+        const TAGS = ['Asian', 'dessert'];
         const limit = 9;
         const response = await fetch(`https://api.spoonacular.com/recipes/random?number=${limit}&include-tags=${TAGS.join()}&apiKey=${FOOD_API_KEY}`);
         return await response.json();

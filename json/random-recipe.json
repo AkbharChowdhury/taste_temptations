@@ -1,0 +1,4577 @@
+{
+  "recipes": [
+    {
+      "id": 631785,
+      "image": "https://img.spoonacular.com/recipes/631785-556x370.jpg",
+      "imageType": "jpg",
+      "title": "Impossible\" Coconut Pie",
+      "readyInMinutes": 45,
+      "servings": 10,
+      "sourceUrl": "https://www.foodista.com/recipe/CBTKCKX4/impossible-coconut-pie",
+      "vegetarian": true,
+      "vegan": false,
+      "glutenFree": false,
+      "dairyFree": false,
+      "veryHealthy": false,
+      "cheap": false,
+      "veryPopular": false,
+      "sustainable": false,
+      "lowFodmap": false,
+      "weightWatcherSmartPoints": 15,
+      "gaps": "no",
+      "preparationMinutes": null,
+      "cookingMinutes": null,
+      "aggregateLikes": 7,
+      "healthScore": 4,
+      "creditsText": "Foodista.com – The Cooking Encyclopedia Everyone Can Edit",
+      "license": "CC BY 3.0",
+      "sourceName": "Foodista",
+      "pricePerServing": 103.95,
+      "extendedIngredients": [
+        {
+          "id": 1123,
+          "aisle": "Milk, Eggs, Other Dairy",
+          "image": "egg.png",
+          "consistency": "SOLID",
+          "name": "eggs",
+          "nameClean": "eggs",
+          "original": "3 Eggs",
+          "originalName": "Eggs",
+          "amount": 3,
+          "unit": "",
+          "meta": [],
+          "measures": {
+            "us": {
+              "amount": 3,
+              "unitShort": "",
+              "unitLong": ""
+            },
+            "metric": {
+              "amount": 3,
+              "unitShort": "",
+              "unitLong": ""
+            }
+          }
+        },
+        {
+          "id": 19335,
+          "aisle": "Baking",
+          "image": "sugar-in-bowl.png",
+          "consistency": "SOLID",
+          "name": "sugar",
+          "nameClean": "sugar",
+          "original": "130g Sugar",
+          "originalName": "Sugar",
+          "amount": 130,
+          "unit": "g",
+          "meta": [],
+          "measures": {
+            "us": {
+              "amount": 4.586,
+              "unitShort": "oz",
+              "unitLong": "ounces"
+            },
+            "metric": {
+              "amount": 130,
+              "unitShort": "g",
+              "unitLong": "grams"
+            }
+          }
+        },
+        {
+          "id": 1001,
+          "aisle": "Milk, Eggs, Other Dairy",
+          "image": "butter-sliced.jpg",
+          "consistency": "SOLID",
+          "name": "butter",
+          "nameClean": "butter",
+          "original": "75g Butter, softened",
+          "originalName": "Butter, softened",
+          "amount": 75,
+          "unit": "g",
+          "meta": [
+            "softened"
+          ],
+          "measures": {
+            "us": {
+              "amount": 2.646,
+              "unitShort": "oz",
+              "unitLong": "ounces"
+            },
+            "metric": {
+              "amount": 75,
+              "unitShort": "g",
+              "unitLong": "grams"
+            }
+          }
+        },
+        {
+          "id": 12108,
+          "aisle": "Baking",
+          "image": "shredded-coconut.jpg",
+          "consistency": "SOLID",
+          "name": "desiccated coconut",
+          "nameClean": "desiccated coconut",
+          "original": "60g Desiccated coconut",
+          "originalName": "Desiccated coconut",
+          "amount": 60,
+          "unit": "g",
+          "meta": [],
+          "measures": {
+            "us": {
+              "amount": 2.116,
+              "unitShort": "oz",
+              "unitLong": "ounces"
+            },
+            "metric": {
+              "amount": 60,
+              "unitShort": "g",
+              "unitLong": "grams"
+            }
+          }
+        },
+        {
+          "id": 9156,
+          "aisle": "Produce",
+          "image": "zest-lemon.jpg",
+          "consistency": "SOLID",
+          "name": "lemon zest",
+          "nameClean": "lemon zest",
+          "original": "11/2 tbsp Lemon zest",
+          "originalName": "Lemon zest",
+          "amount": 5.5,
+          "unit": "tbsp",
+          "meta": [],
+          "measures": {
+            "us": {
+              "amount": 5.5,
+              "unitShort": "Tbsps",
+              "unitLong": "Tbsps"
+            },
+            "metric": {
+              "amount": 5.5,
+              "unitShort": "Tbsps",
+              "unitLong": "Tbsps"
+            }
+          }
+        },
+        {
+          "id": 9216,
+          "aisle": "Produce",
+          "image": "orange-zest.png",
+          "consistency": "SOLID",
+          "name": "orange zest",
+          "nameClean": "orange zest",
+          "original": "1 1/2 tbsp Orange zest",
+          "originalName": "Orange zest",
+          "amount": 1.5,
+          "unit": "tbsp",
+          "meta": [],
+          "measures": {
+            "us": {
+              "amount": 1.5,
+              "unitShort": "Tbsps",
+              "unitLong": "Tbsps"
+            },
+            "metric": {
+              "amount": 1.5,
+              "unitShort": "Tbsps",
+              "unitLong": "Tbsps"
+            }
+          }
+        },
+        {
+          "id": 9152,
+          "aisle": "Produce",
+          "image": "lemon-juice.jpg",
+          "consistency": "LIQUID",
+          "name": "lemon juice",
+          "nameClean": "lemon juice",
+          "original": "60ml Lemon juice (or add to taste)",
+          "originalName": "Lemon juice (or add to taste)",
+          "amount": 60,
+          "unit": "ml",
+          "meta": [
+            "to taste",
+            "(or add )"
+          ],
+          "measures": {
+            "us": {
+              "amount": 2.093,
+              "unitShort": "fl. oz",
+              "unitLong": "fl. ozs"
+            },
+            "metric": {
+              "amount": 60,
+              "unitShort": "ml",
+              "unitLong": "milliliters"
+            }
+          }
+        },
+        {
+          "id": 9206,
+          "aisle": "Beverages",
+          "image": "orange-juice.jpg",
+          "consistency": "LIQUID",
+          "name": "m orange juice",
+          "nameClean": "m orange juice",
+          "original": "125m Orange juice",
+          "originalName": "125m Orange juice",
+          "amount": 10,
+          "unit": "servings",
+          "meta": [],
+          "measures": {
+            "us": {
+              "amount": 10,
+              "unitShort": "servings",
+              "unitLong": "servings"
+            },
+            "metric": {
+              "amount": 10,
+              "unitShort": "servings",
+              "unitLong": "servings"
+            }
+          }
+        },
+        {
+          "id": 12118,
+          "aisle": "Milk, Eggs, Other Dairy",
+          "image": "coconut-milk.png",
+          "consistency": "LIQUID",
+          "name": "coconut milk",
+          "nameClean": "coconut milk",
+          "original": "200ml Thick coconut milk",
+          "originalName": "Thick coconut milk",
+          "amount": 200,
+          "unit": "ml",
+          "meta": [
+            "thick"
+          ],
+          "measures": {
+            "us": {
+              "amount": 6.461,
+              "unitShort": "fl. oz",
+              "unitLong": "fl. ozs"
+            },
+            "metric": {
+              "amount": 200,
+              "unitShort": "ml",
+              "unitLong": "milliliters"
+            }
+          }
+        },
+        {
+          "id": 20081,
+          "aisle": "Baking",
+          "image": "flour.png",
+          "consistency": "SOLID",
+          "name": "flour",
+          "nameClean": "flour",
+          "original": "70g Plain flour, sifted",
+          "originalName": "Plain flour, sifted",
+          "amount": 70,
+          "unit": "g",
+          "meta": [
+            "plain",
+            "sifted"
+          ],
+          "measures": {
+            "us": {
+              "amount": 2.469,
+              "unitShort": "oz",
+              "unitLong": "ounces"
+            },
+            "metric": {
+              "amount": 70,
+              "unitShort": "g",
+              "unitLong": "grams"
+            }
+          }
+        }
+      ],
+      "summary": "Need a \u003Cb\u003Elacto ovo vegetarian dessert\u003C/b\u003E? Impossible\" Coconut Pie could be an excellent recipe to try. This recipe makes 10 servings with \u003Cb\u003E306 calories\u003C/b\u003E, \u003Cb\u003E5g of protein\u003C/b\u003E, and \u003Cb\u003E16g of fat\u003C/b\u003E each. For \u003Cb\u003E$1.04 per serving\u003C/b\u003E, this recipe \u003Cb\u003Ecovers 12%\u003C/b\u003E of your daily requirements of vitamins and minerals. Head to the store and pick up eggs, flour, coconut milk, and a few other things to make it today. 7 people have made this recipe and would make it again. From preparation to the plate, this recipe takes around \u003Cb\u003E45 minutes\u003C/b\u003E. It is brought to you by Foodista. Overall, this recipe earns a \u003Cb\u003Enot so great spoonacular score of 20%\u003C/b\u003E. Similar recipes include \u003Ca href=\"https://spoonacular.com/recipes/impossible-coconut-pie-560495\"\u003EImpossible Coconut Pie\u003C/a\u003E, \u003Ca href=\"https://spoonacular.com/recipes/impossible-pie-327867\"\u003EImpossible Pie\u003C/a\u003E, and \u003Ca href=\"https://spoonacular.com/recipes/impossible-pie-69739\"\u003EImpossible Pie\u003C/a\u003E.",
+      "cuisines": [],
+      "dishTypes": [
+        "dessert"
+      ],
+      "diets": [
+        "lacto ovo vegetarian"
+      ],
+      "occasions": [],
+      "instructions": "Preheat oven to 170C.\nPlace the eggs, sugar, butter, desiccated coconut, lemon and orange zest and juice, coconut milk and flour in a food processor and blend until well combined. Pour into a buttered 22cm (9 inch) pie tray.\nPlace pie tray at the lower rack of the oven and bake for 60 - 80 minutes. Loosely cover with aluminium foil when you find the pie turning brown during half way of baking.  Set aside to cool, then refrigerate for 1 hour to chill.\nSlice and serve with a little whipped cream and passionfruit or  blueberry jam and sprinkle some toasted desiccated coconut over it.",
+      "analyzedInstructions": [
+        {
+          "name": "",
+          "steps": [
+            {
+              "number": 1,
+              "step": "Preheat oven to 170C.",
+              "ingredients": [],
+              "equipment": [
+                {
+                  "id": 404784,
+                  "name": "oven",
+                  "localizedName": "oven",
+                  "image": "https://spoonacular.com/cdn/equipment_100x100/oven.jpg",
+                  "temperature": {
+                    "number": 170,
+                    "unit": "Celsius"
+                  }
+                }
+              ]
+            },
+            {
+              "number": 2,
+              "step": "Place the eggs, sugar, butter, desiccated coconut, lemon and orange zest and juice, coconut milk and flour in a food processor and blend until well combined.",
+              "ingredients": [
+                {
+                  "id": 12108,
+                  "name": "desiccated coconut",
+                  "localizedName": "desiccated coconut",
+                  "image": "shredded-coconut.jpg"
+                },
+                {
+                  "id": 12118,
+                  "name": "coconut milk",
+                  "localizedName": "coconut milk",
+                  "image": "coconut-milk.png"
+                },
+                {
+                  "id": 9216,
+                  "name": "orange zest",
+                  "localizedName": "orange zest",
+                  "image": "orange-zest.png"
+                },
+                {
+                  "id": 1001,
+                  "name": "butter",
+                  "localizedName": "butter",
+                  "image": "butter-sliced.jpg"
+                },
+                {
+                  "id": 20081,
+                  "name": "all purpose flour",
+                  "localizedName": "all purpose flour",
+                  "image": "flour.png"
+                },
+                {
+                  "id": 1019016,
+                  "name": "juice",
+                  "localizedName": "juice",
+                  "image": "apple-juice.jpg"
+                },
+                {
+                  "id": 9150,
+                  "name": "lemon",
+                  "localizedName": "lemon",
+                  "image": "lemon.png"
+                },
+                {
+                  "id": 19335,
+                  "name": "sugar",
+                  "localizedName": "sugar",
+                  "image": "sugar-in-bowl.png"
+                },
+                {
+                  "id": 1123,
+                  "name": "egg",
+                  "localizedName": "egg",
+                  "image": "egg.png"
+                }
+              ],
+              "equipment": [
+                {
+                  "id": 404771,
+                  "name": "food processor",
+                  "localizedName": "food processor",
+                  "image": "https://spoonacular.com/cdn/equipment_100x100/food-processor.png"
+                }
+              ]
+            },
+            {
+              "number": 3,
+              "step": "Pour into a buttered 22cm (9 inch) pie tray.",
+              "ingredients": [],
+              "equipment": []
+            },
+            {
+              "number": 4,
+              "step": "Place pie tray at the lower rack of the oven and bake for 60 - 80 minutes. Loosely cover with aluminium foil when you find the pie turning brown during half way of baking.  Set aside to cool, then refrigerate for 1 hour to chill.",
+              "ingredients": [],
+              "equipment": [
+                {
+                  "id": 404765,
+                  "name": "aluminum foil",
+                  "localizedName": "aluminum foil",
+                  "image": "https://spoonacular.com/cdn/equipment_100x100/aluminum-foil.png"
+                },
+                {
+                  "id": 404784,
+                  "name": "oven",
+                  "localizedName": "oven",
+                  "image": "https://spoonacular.com/cdn/equipment_100x100/oven.jpg"
+                }
+              ],
+              "length": {
+                "number": 140,
+                "unit": "minutes"
+              }
+            },
+            {
+              "number": 5,
+              "step": "Slice and serve with a little whipped cream and passionfruit or  blueberry jam and sprinkle some toasted desiccated coconut over it.",
+              "ingredients": [
+                {
+                  "id": 12108,
+                  "name": "desiccated coconut",
+                  "localizedName": "desiccated coconut",
+                  "image": "shredded-coconut.jpg"
+                },
+                {
+                  "id": 11119297,
+                  "name": "blueberry jam",
+                  "localizedName": "blueberry jam",
+                  "image": "blueberry-jam.jpg"
+                },
+                {
+                  "id": 1054,
+                  "name": "whipped cream",
+                  "localizedName": "whipped cream",
+                  "image": "whipped-cream.jpg"
+                },
+                {
+                  "id": 9231,
+                  "name": "passion fruit",
+                  "localizedName": "passion fruit",
+                  "image": "passion-fruit"
+                }
+              ],
+              "equipment": []
+            }
+          ]
+        }
+      ],
+      "originalId": null,
+      "spoonacularScore": 44.0674705505371,
+      "spoonacularSourceUrl": "https://spoonacular.com/impossible-coconut-pie-631785"
+    },
+    {
+      "id": 729532,
+      "image": "https://img.spoonacular.com/recipes/729532-556x370.jpg",
+      "imageType": "jpg",
+      "title": "Gluten Free Almond Blueberry Coffee Cake",
+      "readyInMinutes": 60,
+      "servings": 8,
+      "sourceUrl": "https://www.pinkwhen.com/gluten-free-almond-blueberry-coffee-cake/",
+      "vegetarian": true,
+      "vegan": false,
+      "glutenFree": true,
+      "dairyFree": false,
+      "veryHealthy": false,
+      "cheap": false,
+      "veryPopular": false,
+      "sustainable": false,
+      "lowFodmap": false,
+      "weightWatcherSmartPoints": 10,
+      "gaps": "no",
+      "preparationMinutes": null,
+      "cookingMinutes": null,
+      "aggregateLikes": 39,
+      "healthScore": 1,
+      "creditsText": "Jen West",
+      "license": null,
+      "sourceName": "Pink When",
+      "pricePerServing": 67.9,
+      "extendedIngredients": [
+        {
+          "id": 10112061,
+          "aisle": "Baking",
+          "image": "almonds.jpg",
+          "consistency": "SOLID",
+          "name": "almonds",
+          "nameClean": "almonds",
+          "original": "3 tablespoons sliced almonds",
+          "originalName": "sliced almonds",
+          "amount": 3,
+          "unit": "tablespoons",
+          "meta": [
+            "sliced"
+          ],
+          "measures": {
+            "us": {
+              "amount": 3,
+              "unitShort": "Tbsps",
+              "unitLong": "Tbsps"
+            },
+            "metric": {
+              "amount": 3,
+              "unitShort": "Tbsps",
+              "unitLong": "Tbsps"
+            }
+          }
+        },
+        {
+          "id": 18369,
+          "aisle": "Baking",
+          "image": "white-powder.jpg",
+          "consistency": "SOLID",
+          "name": "baking powder",
+          "nameClean": "baking powder",
+          "original": "3 teaspoons baking powder (without wheat starch)",
+          "originalName": "baking powder (without wheat starch)",
+          "amount": 3,
+          "unit": "teaspoons",
+          "meta": [
+            "(without wheat starch)"
+          ],
+          "measures": {
+            "us": {
+              "amount": 3,
+              "unitShort": "tsps",
+              "unitLong": "teaspoons"
+            },
+            "metric": {
+              "amount": 3,
+              "unitShort": "tsps",
+              "unitLong": "teaspoons"
+            }
+          }
+        },
+        {
+          "id": 9050,
+          "aisle": "Produce",
+          "image": "blueberries.jpg",
+          "consistency": "SOLID",
+          "name": "blueberries",
+          "nameClean": "blueberries",
+          "original": "1½ cup frozen blueberries",
+          "originalName": "frozen blueberries",
+          "amount": 1.5,
+          "unit": "cup",
+          "meta": [
+            "frozen"
+          ],
+          "measures": {
+            "us": {
+              "amount": 1.5,
+              "unitShort": "cups",
+              "unitLong": "cups"
+            },
+            "metric": {
+              "amount": 222,
+              "unitShort": "g",
+              "unitLong": "grams"
+            }
+          }
+        },
+        {
+          "id": 1014582,
+          "aisle": "Oil, Vinegar, Salad Dressing",
+          "image": "vegetable-oil.jpg",
+          "consistency": "LIQUID",
+          "name": "canola oil",
+          "nameClean": "canola oil",
+          "original": "¼ cup canola oil",
+          "originalName": "canola oil",
+          "amount": 0.25,
+          "unit": "cup",
+          "meta": [],
+          "measures": {
+            "us": {
+              "amount": 0.25,
+              "unitShort": "cups",
+              "unitLong": "cups"
+            },
+            "metric": {
+              "amount": 56,
+              "unitShort": "ml",
+              "unitLong": "milliliters"
+            }
+          }
+        },
+        {
+          "id": 1123,
+          "aisle": "Milk, Eggs, Other Dairy",
+          "image": "egg.png",
+          "consistency": "SOLID",
+          "name": "egg",
+          "nameClean": "egg",
+          "original": "1 large egg",
+          "originalName": "egg",
+          "amount": 1,
+          "unit": "large",
+          "meta": [],
+          "measures": {
+            "us": {
+              "amount": 1,
+              "unitShort": "large",
+              "unitLong": "large"
+            },
+            "metric": {
+              "amount": 1,
+              "unitShort": "large",
+              "unitLong": "large"
+            }
+          }
+        },
+        {
+          "id": 93620,
+          "aisle": "Baking",
+          "image": "gluten-free-flour.jpg",
+          "consistency": "SOLID",
+          "name": "flour",
+          "nameClean": "flour",
+          "original": "2 cups gluten free all-purpose flour + 1 tablespoon",
+          "originalName": "gluten free all-purpose flour + 1 tablespoon",
+          "amount": 2,
+          "unit": "cups",
+          "meta": [
+            "gluten free",
+            "all-purpose"
+          ],
+          "measures": {
+            "us": {
+              "amount": 2,
+              "unitShort": "cups",
+              "unitLong": "cups"
+            },
+            "metric": {
+              "amount": 272,
+              "unitShort": "g",
+              "unitLong": "grams"
+            }
+          }
+        },
+        {
+          "id": 10719335,
+          "aisle": "Baking",
+          "image": "sugar-in-bowl.png",
+          "consistency": "SOLID",
+          "name": "granulated sugar",
+          "nameClean": "granulated sugar",
+          "original": "½ cup granulated sugar",
+          "originalName": "granulated sugar",
+          "amount": 0.5,
+          "unit": "cup",
+          "meta": [],
+          "measures": {
+            "us": {
+              "amount": 0.5,
+              "unitShort": "cups",
+              "unitLong": "cups"
+            },
+            "metric": {
+              "amount": 100,
+              "unitShort": "g",
+              "unitLong": "grams"
+            }
+          }
+        },
+        {
+          "id": 1012047,
+          "aisle": "Spices and Seasonings",
+          "image": "salt.jpg",
+          "consistency": "SOLID",
+          "name": "sea salt",
+          "nameClean": "sea salt",
+          "original": "½ teaspoon fine sea salt",
+          "originalName": "fine sea salt",
+          "amount": 0.5,
+          "unit": "teaspoon",
+          "meta": [
+            "fine"
+          ],
+          "measures": {
+            "us": {
+              "amount": 0.5,
+              "unitShort": "tsps",
+              "unitLong": "teaspoons"
+            },
+            "metric": {
+              "amount": 0.5,
+              "unitShort": "tsps",
+              "unitLong": "teaspoons"
+            }
+          }
+        },
+        {
+          "id": 19908,
+          "aisle": "Baking",
+          "image": "raw-brown-sugar.png",
+          "consistency": "SOLID",
+          "name": "turbinado sugar",
+          "nameClean": "turbinado sugar",
+          "original": "3 tablespoons raw turbinado sugar",
+          "originalName": "raw turbinado sugar",
+          "amount": 3,
+          "unit": "tablespoons",
+          "meta": [
+            "raw"
+          ],
+          "measures": {
+            "us": {
+              "amount": 3,
+              "unitShort": "Tbsps",
+              "unitLong": "Tbsps"
+            },
+            "metric": {
+              "amount": 3,
+              "unitShort": "Tbsps",
+              "unitLong": "Tbsps"
+            }
+          }
+        },
+        {
+          "id": 1119,
+          "aisle": "Milk, Eggs, Other Dairy",
+          "image": "vanilla-yogurt.png",
+          "consistency": "LIQUID",
+          "name": "vanilla yogurt",
+          "nameClean": "vanilla yogurt",
+          "original": "½ cup vanilla yogurt",
+          "originalName": "vanilla yogurt",
+          "amount": 0.5,
+          "unit": "cup",
+          "meta": [],
+          "measures": {
+            "us": {
+              "amount": 0.5,
+              "unitShort": "cups",
+              "unitLong": "cups"
+            },
+            "metric": {
+              "amount": 122.5,
+              "unitShort": "ml",
+              "unitLong": "milliliters"
+            }
+          }
+        },
+        {
+          "id": 1011077,
+          "aisle": "Milk, Eggs, Other Dairy",
+          "image": "milk.png",
+          "consistency": "LIQUID",
+          "name": "milk",
+          "nameClean": "milk",
+          "original": "½ cup whole milk",
+          "originalName": "whole milk",
+          "amount": 0.5,
+          "unit": "cup",
+          "meta": [
+            "whole"
+          ],
+          "measures": {
+            "us": {
+              "amount": 0.5,
+              "unitShort": "cups",
+              "unitLong": "cups"
+            },
+            "metric": {
+              "amount": 122,
+              "unitShort": "ml",
+              "unitLong": "milliliters"
+            }
+          }
+        },
+        {
+          "id": 93626,
+          "aisle": "Baking",
+          "image": "white-powder.jpg",
+          "consistency": "SOLID",
+          "name": "xanthan gum",
+          "nameClean": "xanthan gum",
+          "original": "1 teaspoon xanthan gum",
+          "originalName": "xanthan gum",
+          "amount": 1,
+          "unit": "teaspoon",
+          "meta": [],
+          "measures": {
+            "us": {
+              "amount": 1,
+              "unitShort": "tsp",
+              "unitLong": "teaspoon"
+            },
+            "metric": {
+              "amount": 1,
+              "unitShort": "tsp",
+              "unitLong": "teaspoon"
+            }
+          }
+        }
+      ],
+      "summary": "You can never have too many breakfast recipes, so give Gluten Free Almond Blueberry Coffee Cake a try. Watching your figure? This gluten free and lacto ovo vegetarian recipe has \u003Cb\u003E299 calories\u003C/b\u003E, \u003Cb\u003E6g of protein\u003C/b\u003E, and \u003Cb\u003E11g of fat\u003C/b\u003E per serving. This recipe serves 8. For \u003Cb\u003E68 cents per serving\u003C/b\u003E, this recipe \u003Cb\u003Ecovers 6%\u003C/b\u003E of your daily requirements of vitamins and minerals. It is brought to you by Pink When. A couple people made this recipe, and 39 would say it hit the spot. Head to the store and pick up almonds, baking powder, milk, and a few other things to make it today. From preparation to the plate, this recipe takes approximately \u003Cb\u003E1 hour\u003C/b\u003E. All things considered, we decided this recipe \u003Cb\u003Edeserves a spoonacular score of 29%\u003C/b\u003E. This score is rather bad. Try \u003Ca href=\"https://spoonacular.com/recipes/gluten-free-blueberry-coffee-cake-541568\"\u003EGluten-free Blueberry Coffee Cake\u003C/a\u003E, \u003Ca href=\"https://spoonacular.com/recipes/gluten-free-blueberry-coffee-cake-1726819\"\u003EGluten-Free Blueberry Coffee Cake\u003C/a\u003E, and \u003Ca href=\"https://spoonacular.com/recipes/gluten-free-almond-and-raspberry-coffee-cake-553169\"\u003EGluten free almond and raspberry coffee cake\u003C/a\u003E for similar recipes.",
+      "cuisines": [],
+      "dishTypes": [
+        "morning meal",
+        "dessert",
+        "brunch",
+        "breakfast"
+      ],
+      "diets": [
+        "gluten free",
+        "lacto ovo vegetarian"
+      ],
+      "occasions": [],
+      "instructions": "\u003Col\u003E\u003Cli\u003EPreheat your oven to 375 degrees F and spray a 9\" springform pan with a nonstick spray. Set aside.\u003C/li\u003E\u003Cli\u003EIn a large bowl, whisk together the egg, whole milk, vanilla yogurt and canola oil. Set aside.\u003C/li\u003E\u003Cli\u003EIn a separate medium bowl, whisk together 2 cups of the flour, granulated sugar, baking powder, xantham gum and fine sea salt.\u003C/li\u003E\u003Cli\u003EAdd the dry ingredients to the wet and mix to combine until just moistened. Do not overmix.\u003C/li\u003E\u003Cli\u003EIn a small bowl, combine 1 cup of the blueberries with the remaining 1 tablespoon flour. Fold the blueberries into the batter very gently until dispersed evenly. It is OK if they bleed just a little bit.\u003C/li\u003E\u003Cli\u003EPour the batter into the prepared pan and flatten and even out with a spatula. Top with the remaining blueberries.\u003C/li\u003E\u003Cli\u003EIn a small bowl toss the turbinado sugar and almonds together. Sprinkle on top of the cake. Transfer the cake to the oven ad bake for 30-35 minutes or until a toothpick comes out with just a few crumbs. Remove from heat and let cool in the pan for 15 minutes. Release the sides and transfer the cake to a wire rack to cool the rest of the way.\u003C/li\u003E\u003Cli\u003EEnjoy immediately or cover with plastic wrap and eat within 2 days.\u003C/li\u003E\u003C/ol\u003E",
+      "analyzedInstructions": [
+        {
+          "name": "",
+          "steps": [
+            {
+              "number": 1,
+              "step": "Preheat your oven to 375 degrees F and spray a 9\" springform pan with a nonstick spray. Set aside.In a large bowl, whisk together the egg, whole milk, vanilla yogurt and canola oil. Set aside.In a separate medium bowl, whisk together 2 cups of the flour, granulated sugar, baking powder, xantham gum and fine sea salt.",
+              "ingredients": [
+                {
+                  "id": 10719335,
+                  "name": "granulated sugar",
+                  "localizedName": "granulated sugar",
+                  "image": "sugar-in-bowl.png"
+                },
+                {
+                  "id": 1119,
+                  "name": "vanilla yogurt",
+                  "localizedName": "vanilla yogurt",
+                  "image": "vanilla-yogurt.png"
+                },
+                {
+                  "id": 18369,
+                  "name": "baking powder",
+                  "localizedName": "baking powder",
+                  "image": "white-powder.jpg"
+                },
+                {
+                  "id": 1012047,
+                  "name": "fine sea salt",
+                  "localizedName": "fine sea salt",
+                  "image": "salt.jpg"
+                },
+                {
+                  "id": 1014582,
+                  "name": "canola oil",
+                  "localizedName": "canola oil",
+                  "image": "vegetable-oil.jpg"
+                },
+                {
+                  "id": 1011077,
+                  "name": "whole milk",
+                  "localizedName": "whole milk",
+                  "image": "milk.png"
+                },
+                {
+                  "id": 20081,
+                  "name": "all purpose flour",
+                  "localizedName": "all purpose flour",
+                  "image": "flour.png"
+                },
+                {
+                  "id": 1123,
+                  "name": "egg",
+                  "localizedName": "egg",
+                  "image": "egg.png"
+                }
+              ],
+              "equipment": [
+                {
+                  "id": 404650,
+                  "name": "springform pan",
+                  "localizedName": "springform pan",
+                  "image": "https://spoonacular.com/cdn/equipment_100x100/cake-pan.png"
+                },
+                {
+                  "id": 404661,
+                  "name": "whisk",
+                  "localizedName": "whisk",
+                  "image": "https://spoonacular.com/cdn/equipment_100x100/whisk.png"
+                },
+                {
+                  "id": 404783,
+                  "name": "bowl",
+                  "localizedName": "bowl",
+                  "image": "https://spoonacular.com/cdn/equipment_100x100/bowl.jpg"
+                },
+                {
+                  "id": 404784,
+                  "name": "oven",
+                  "localizedName": "oven",
+                  "image": "https://spoonacular.com/cdn/equipment_100x100/oven.jpg",
+                  "temperature": {
+                    "number": 375,
+                    "unit": "Fahrenheit"
+                  }
+                }
+              ]
+            },
+            {
+              "number": 2,
+              "step": "Add the dry ingredients to the wet and mix to combine until just moistened. Do not overmix.In a small bowl, combine 1 cup of the blueberries with the remaining 1 tablespoon flour. Fold the blueberries into the batter very gently until dispersed evenly. It is OK if they bleed just a little bit.",
+              "ingredients": [
+                {
+                  "id": 9050,
+                  "name": "blueberries",
+                  "localizedName": "blueberries",
+                  "image": "https://spoonacular.com/cdn/ingredients_100x100/blueberries.jpg"
+                },
+                {
+                  "id": 20081,
+                  "name": "all purpose flour",
+                  "localizedName": "all purpose flour",
+                  "image": "flour.png"
+                }
+              ],
+              "equipment": [
+                {
+                  "id": 404783,
+                  "name": "bowl",
+                  "localizedName": "bowl",
+                  "image": "https://spoonacular.com/cdn/equipment_100x100/bowl.jpg"
+                }
+              ]
+            },
+            {
+              "number": 3,
+              "step": "Pour the batter into the prepared pan and flatten and even out with a spatula. Top with the remaining blueberries.In a small bowl toss the turbinado sugar and almonds together.",
+              "ingredients": [
+                {
+                  "id": 19908,
+                  "name": "turbinado sugar",
+                  "localizedName": "turbinado sugar",
+                  "image": "raw-brown-sugar.png"
+                },
+                {
+                  "id": 9050,
+                  "name": "blueberries",
+                  "localizedName": "blueberries",
+                  "image": "https://spoonacular.com/cdn/ingredients_100x100/blueberries.jpg"
+                },
+                {
+                  "id": 12061,
+                  "name": "almonds",
+                  "localizedName": "almonds",
+                  "image": "almonds.jpg"
+                }
+              ],
+              "equipment": [
+                {
+                  "id": 404642,
+                  "name": "spatula",
+                  "localizedName": "spatula",
+                  "image": "https://spoonacular.com/cdn/equipment_100x100/spatula-or-turner.jpg"
+                },
+                {
+                  "id": 404783,
+                  "name": "bowl",
+                  "localizedName": "bowl",
+                  "image": "https://spoonacular.com/cdn/equipment_100x100/bowl.jpg"
+                },
+                {
+                  "id": 404645,
+                  "name": "frying pan",
+                  "localizedName": "frying pan",
+                  "image": "https://spoonacular.com/cdn/equipment_100x100/pan.png"
+                }
+              ]
+            },
+            {
+              "number": 4,
+              "step": "Sprinkle on top of the cake.",
+              "ingredients": [],
+              "equipment": []
+            },
+            {
+              "number": 5,
+              "step": "Transfer the cake to the oven ad bake for 30-35 minutes or until a toothpick comes out with just a few crumbs.",
+              "ingredients": [],
+              "equipment": [
+                {
+                  "id": 404644,
+                  "name": "toothpicks",
+                  "localizedName": "toothpicks",
+                  "image": "https://spoonacular.com/cdn/equipment_100x100/toothpicks.jpg"
+                },
+                {
+                  "id": 404784,
+                  "name": "oven",
+                  "localizedName": "oven",
+                  "image": "https://spoonacular.com/cdn/equipment_100x100/oven.jpg"
+                }
+              ],
+              "length": {
+                "number": 35,
+                "unit": "minutes"
+              }
+            },
+            {
+              "number": 6,
+              "step": "Remove from heat and let cool in the pan for 15 minutes. Release the sides and transfer the cake to a wire rack to cool the rest of the way.Enjoy immediately or cover with plastic wrap and eat within 2 days.",
+              "ingredients": [
+                {
+                  "id": 10018364,
+                  "name": "wrap",
+                  "localizedName": "wrap",
+                  "image": "flour-tortilla.jpg"
+                }
+              ],
+              "equipment": [
+                {
+                  "id": 404730,
+                  "name": "plastic wrap",
+                  "localizedName": "plastic wrap",
+                  "image": "https://spoonacular.com/cdn/equipment_100x100/plastic-wrap.jpg"
+                },
+                {
+                  "id": 405900,
+                  "name": "wire rack",
+                  "localizedName": "wire rack",
+                  "image": "https://spoonacular.com/cdn/equipment_100x100/wire-rack.jpg"
+                },
+                {
+                  "id": 404645,
+                  "name": "frying pan",
+                  "localizedName": "frying pan",
+                  "image": "https://spoonacular.com/cdn/equipment_100x100/pan.png"
+                }
+              ],
+              "length": {
+                "number": 15,
+                "unit": "minutes"
+              }
+            }
+          ]
+        }
+      ],
+      "originalId": null,
+      "spoonacularScore": 30.9728660583496,
+      "spoonacularSourceUrl": "https://spoonacular.com/gluten-free-almond-blueberry-coffee-cake-729532"
+    },
+    {
+      "id": 665203,
+      "image": "https://img.spoonacular.com/recipes/665203-556x370.jpg",
+      "imageType": "jpg",
+      "title": "White chocolate-cranberry ice cream",
+      "readyInMinutes": 45,
+      "servings": 6,
+      "sourceUrl": "https://www.foodista.com/recipe/HSYFZTRN/white-chocolate-cranberries-ice-cream",
+      "vegetarian": true,
+      "vegan": false,
+      "glutenFree": true,
+      "dairyFree": false,
+      "veryHealthy": false,
+      "cheap": false,
+      "veryPopular": false,
+      "sustainable": false,
+      "lowFodmap": false,
+      "weightWatcherSmartPoints": 20,
+      "gaps": "no",
+      "preparationMinutes": null,
+      "cookingMinutes": null,
+      "aggregateLikes": 16,
+      "healthScore": 1,
+      "creditsText": "Foodista.com – The Cooking Encyclopedia Everyone Can Edit",
+      "license": "CC BY 3.0",
+      "sourceName": "Foodista",
+      "pricePerServing": 144.62,
+      "extendedIngredients": [
+        {
+          "id": 1011053,
+          "aisle": "Milk, Eggs, Other Dairy",
+          "image": "white-cream.png",
+          "consistency": "LIQUID",
+          "name": "double cream",
+          "nameClean": "double cream",
+          "original": "200ml double cream",
+          "originalName": "double cream",
+          "amount": 200,
+          "unit": "ml",
+          "meta": [],
+          "measures": {
+            "us": {
+              "amount": 6.804,
+              "unitShort": "fl. oz",
+              "unitLong": "fl. ozs"
+            },
+            "metric": {
+              "amount": 200,
+              "unitShort": "ml",
+              "unitLong": "milliliters"
+            }
+          }
+        },
+        {
+          "id": 9079,
+          "aisle": "Produce",
+          "image": "dried-cranberries.jpg",
+          "consistency": "SOLID",
+          "name": "cranberries",
+          "nameClean": "cranberries",
+          "original": "¼ cup dried cranberries",
+          "originalName": "dried cranberries",
+          "amount": 0.25,
+          "unit": "cup",
+          "meta": [
+            "dried"
+          ],
+          "measures": {
+            "us": {
+              "amount": 0.25,
+              "unitShort": "cups",
+              "unitLong": "cups"
+            },
+            "metric": {
+              "amount": 30.303,
+              "unitShort": "g",
+              "unitLong": "grams"
+            }
+          }
+        },
+        {
+          "id": 1125,
+          "aisle": "Milk, Eggs, Other Dairy",
+          "image": "egg-yolk.jpg",
+          "consistency": "SOLID",
+          "name": "egg yolks",
+          "nameClean": "egg yolks",
+          "original": "4 egg yolks",
+          "originalName": "egg yolks",
+          "amount": 4,
+          "unit": "",
+          "meta": [],
+          "measures": {
+            "us": {
+              "amount": 4,
+              "unitShort": "",
+              "unitLong": ""
+            },
+            "metric": {
+              "amount": 4,
+              "unitShort": "",
+              "unitLong": ""
+            }
+          }
+        },
+        {
+          "id": 1011077,
+          "aisle": "Milk, Eggs, Other Dairy",
+          "image": "milk.png",
+          "consistency": "LIQUID",
+          "name": "full fat milk",
+          "nameClean": "full fat milk",
+          "original": "300ml full fat milk",
+          "originalName": "full fat milk",
+          "amount": 300,
+          "unit": "ml",
+          "meta": [],
+          "measures": {
+            "us": {
+              "amount": 1.268,
+              "unitShort": "cups",
+              "unitLong": "cups"
+            },
+            "metric": {
+              "amount": 300,
+              "unitShort": "ml",
+              "unitLong": "milliliters"
+            }
+          }
+        },
+        {
+          "id": 19335,
+          "aisle": "Baking",
+          "image": "sugar-in-bowl.png",
+          "consistency": "SOLID",
+          "name": "caster sugar",
+          "nameClean": "caster sugar",
+          "original": "75g caster sugar",
+          "originalName": "caster sugar",
+          "amount": 75,
+          "unit": "g",
+          "meta": [],
+          "measures": {
+            "us": {
+              "amount": 2.646,
+              "unitShort": "oz",
+              "unitLong": "ounces"
+            },
+            "metric": {
+              "amount": 75,
+              "unitShort": "g",
+              "unitLong": "grams"
+            }
+          }
+        },
+        {
+          "id": 2050,
+          "aisle": "Baking",
+          "image": "vanilla-extract.jpg",
+          "consistency": "LIQUID",
+          "name": "vanilla extract",
+          "nameClean": "vanilla extract",
+          "original": "1 tsp vanilla extract",
+          "originalName": "vanilla extract",
+          "amount": 1,
+          "unit": "tsp",
+          "meta": [],
+          "measures": {
+            "us": {
+              "amount": 1,
+              "unitShort": "tsp",
+              "unitLong": "teaspoon"
+            },
+            "metric": {
+              "amount": 1,
+              "unitShort": "tsp",
+              "unitLong": "teaspoon"
+            }
+          }
+        },
+        {
+          "id": 19087,
+          "aisle": "Baking",
+          "image": "white-chocolate.jpg",
+          "consistency": "SOLID",
+          "name": "chocolate",
+          "nameClean": "chocolate",
+          "original": "200g white chocolate, coarsely chopped",
+          "originalName": "white chocolate, coarsely chopped",
+          "amount": 200,
+          "unit": "g",
+          "meta": [
+            "white",
+            "coarsely chopped"
+          ],
+          "measures": {
+            "us": {
+              "amount": 7.055,
+              "unitShort": "oz",
+              "unitLong": "ounces"
+            },
+            "metric": {
+              "amount": 200,
+              "unitShort": "g",
+              "unitLong": "grams"
+            }
+          }
+        }
+      ],
+      "summary": "If you want to add more \u003Cb\u003Egluten free and lacto ovo vegetarian\u003C/b\u003E recipes to your repertoire, White chocolate-cranberry ice cream might be a recipe you should try. One serving contains \u003Cb\u003E429 calories\u003C/b\u003E, \u003Cb\u003E7g of protein\u003C/b\u003E, and \u003Cb\u003E28g of fat\u003C/b\u003E. This recipe serves 6 and costs $1.45 per serving. 16 people were impressed by this recipe. It will be a hit at your \u003Cb\u003ESummer\u003C/b\u003E event. It works well as a rather inexpensive dessert. If you have chocolate, vanillan extract, caster sugar, and a few other ingredients on hand, you can make it. From preparation to the plate, this recipe takes approximately \u003Cb\u003E45 minutes\u003C/b\u003E. It is brought to you by Foodista. With a spoonacular \u003Cb\u003Escore of 27%\u003C/b\u003E, this dish is not so spectacular. Similar recipes are \u003Ca href=\"https://spoonacular.com/recipes/the-secret-ingredient-cranberry-cranberry-ice-cream-with-white-chocolate-chunks-207558\"\u003EThe Secret Ingredient (Cranberry): Cranberry Ice Cream with White Chocolate Chunks\u003C/a\u003E, \u003Ca href=\"https://spoonacular.com/recipes/white-chocolate-vanilla-ice-creamwithout-the-ice-cream-maker-78914\"\u003EWhite Chocolate Vanillan Ice Cream...without The Ice Cream Maker\u003C/a\u003E, and \u003Ca href=\"https://spoonacular.com/recipes/white-chocolate-buttermint-ice-cream-524879\"\u003EWhite Chocolate Buttermint Ice Cream\u003C/a\u003E.",
+      "cuisines": [],
+      "dishTypes": [
+        "dessert"
+      ],
+      "diets": [
+        "gluten free",
+        "lacto ovo vegetarian"
+      ],
+      "occasions": [
+        "summer"
+      ],
+      "instructions": "\u003Col\u003E\u003Cli\u003EIn a medium saucepan boil the milk until it starts to bubble gently. Remove from flame and set aside.\u003C/li\u003E\u003Cli\u003EMeanwhile whisk the egg yolks and sugar together for 3 minutes until pale yellow and double in volume.\u003C/li\u003E\u003Cli\u003EPour the milk on to the egg mixture and stir and then gently pour the mixture back in to the saucepan and simmer very lightly. Stir continuously until the custard mix thickens or coats the back of a wooden spoon.\u003C/li\u003E\u003Cli\u003EAdd the chopped chocolate stirring until the heat melts the chocolate.\u003C/li\u003E\u003Cli\u003ECool the mixture, stir in the vanilla extract and put it in the fridge to chill.\u003C/li\u003E\u003Cli\u003EOnce chilled, add the cream to the mixture. Stir and combine.\u003C/li\u003E\u003Cli\u003EPour the mixture into an ice cream machine and churn until frozen.\u003C/li\u003E\u003Cli\u003EAdd  dried cranberries in the last 5 minutes of churning and let the machine stir them in.\u003C/li\u003E\u003Cli\u003ETransfer to plastic container and place in the freezer for 3 hours before serving.\u003C/li\u003E\u003C/ol\u003E",
+      "analyzedInstructions": [
+        {
+          "name": "",
+          "steps": [
+            {
+              "number": 1,
+              "step": "In a medium saucepan boil the milk until it starts to bubble gently.",
+              "ingredients": [
+                {
+                  "id": 1077,
+                  "name": "milk",
+                  "localizedName": "milk",
+                  "image": "milk.png"
+                }
+              ],
+              "equipment": [
+                {
+                  "id": 404669,
+                  "name": "sauce pan",
+                  "localizedName": "sauce pan",
+                  "image": "https://spoonacular.com/cdn/equipment_100x100/sauce-pan.jpg"
+                }
+              ]
+            },
+            {
+              "number": 2,
+              "step": "Remove from flame and set aside.Meanwhile whisk the egg yolks and sugar together for 3 minutes until pale yellow and double in volume.",
+              "ingredients": [
+                {
+                  "id": 1125,
+                  "name": "egg yolk",
+                  "localizedName": "egg yolk",
+                  "image": "egg-yolk.jpg"
+                },
+                {
+                  "id": 19335,
+                  "name": "sugar",
+                  "localizedName": "sugar",
+                  "image": "sugar-in-bowl.png"
+                }
+              ],
+              "equipment": [
+                {
+                  "id": 404661,
+                  "name": "whisk",
+                  "localizedName": "whisk",
+                  "image": "https://spoonacular.com/cdn/equipment_100x100/whisk.png"
+                }
+              ],
+              "length": {
+                "number": 3,
+                "unit": "minutes"
+              }
+            },
+            {
+              "number": 3,
+              "step": "Pour the milk on to the egg mixture and stir and then gently pour the mixture back in to the saucepan and simmer very lightly. Stir continuously until the custard mix thickens or coats the back of a wooden spoon.",
+              "ingredients": [
+                {
+                  "id": 19169,
+                  "name": "custard powder",
+                  "localizedName": "custard powder",
+                  "image": "custard.png"
+                },
+                {
+                  "id": 1077,
+                  "name": "milk",
+                  "localizedName": "milk",
+                  "image": "milk.png"
+                },
+                {
+                  "id": 1123,
+                  "name": "egg",
+                  "localizedName": "egg",
+                  "image": "egg.png"
+                }
+              ],
+              "equipment": [
+                {
+                  "id": 404732,
+                  "name": "wooden spoon",
+                  "localizedName": "wooden spoon",
+                  "image": "https://spoonacular.com/cdn/equipment_100x100/wooden-spoon.jpg"
+                },
+                {
+                  "id": 404669,
+                  "name": "sauce pan",
+                  "localizedName": "sauce pan",
+                  "image": "https://spoonacular.com/cdn/equipment_100x100/sauce-pan.jpg"
+                }
+              ]
+            },
+            {
+              "number": 4,
+              "step": "Add the chopped chocolate stirring until the heat melts the chocolate.Cool the mixture, stir in the vanilla extract and put it in the fridge to chill.Once chilled, add the cream to the mixture. Stir and combine.",
+              "ingredients": [
+                {
+                  "id": 2050,
+                  "name": "vanilla extract",
+                  "localizedName": "vanilla extract",
+                  "image": "vanilla-extract.jpg"
+                },
+                {
+                  "id": 19081,
+                  "name": "chocolate",
+                  "localizedName": "chocolate",
+                  "image": "milk-chocolate.jpg"
+                },
+                {
+                  "id": 1053,
+                  "name": "cream",
+                  "localizedName": "cream",
+                  "image": "fluid-cream.jpg"
+                }
+              ],
+              "equipment": []
+            },
+            {
+              "number": 5,
+              "step": "Pour the mixture into an ice cream machine and churn until frozen.",
+              "ingredients": [
+                {
+                  "id": 19095,
+                  "name": "ice cream",
+                  "localizedName": "ice cream",
+                  "image": "https://spoonacular.com/cdn/ingredients_100x100/vanilla-ice-cream.png"
+                }
+              ],
+              "equipment": [
+                {
+                  "id": 404791,
+                  "name": "ice cream machine",
+                  "localizedName": "ice cream machine",
+                  "image": "https://spoonacular.com/cdn/equipment_100x100/ice-cream-machine.jpg"
+                }
+              ]
+            },
+            {
+              "number": 6,
+              "step": "Add  dried cranberries in the last 5 minutes of churning and let the machine stir them in.",
+              "ingredients": [
+                {
+                  "id": 9079,
+                  "name": "dried cranberries",
+                  "localizedName": "dried cranberries",
+                  "image": "dried-cranberries.jpg"
+                }
+              ],
+              "equipment": [],
+              "length": {
+                "number": 5,
+                "unit": "minutes"
+              }
+            },
+            {
+              "number": 7,
+              "step": "Transfer to plastic container and place in the freezer for 3 hours before serving.",
+              "ingredients": [],
+              "equipment": [],
+              "length": {
+                "number": 180,
+                "unit": "minutes"
+              }
+            }
+          ]
+        }
+      ],
+      "originalId": null,
+      "spoonacularScore": 30.5096683502197,
+      "spoonacularSourceUrl": "https://spoonacular.com/white-chocolate-cranberry-ice-cream-665203"
+    },
+    {
+      "id": 632552,
+      "image": "https://img.spoonacular.com/recipes/632552-556x370.jpg",
+      "imageType": "jpg",
+      "title": "Apple Hand Pies",
+      "readyInMinutes": 45,
+      "servings": 16,
+      "sourceUrl": "http://www.foodista.com/recipe/TQVW7MTF/apple-hand-pies",
+      "vegetarian": true,
+      "vegan": false,
+      "glutenFree": false,
+      "dairyFree": false,
+      "veryHealthy": false,
+      "cheap": false,
+      "veryPopular": false,
+      "sustainable": false,
+      "lowFodmap": false,
+      "weightWatcherSmartPoints": 27,
+      "gaps": "no",
+      "preparationMinutes": null,
+      "cookingMinutes": null,
+      "aggregateLikes": 22,
+      "healthScore": 0,
+      "creditsText": "Foodista.com – The Cooking Encyclopedia Everyone Can Edit",
+      "license": "CC BY 3.0",
+      "sourceName": "Foodista",
+      "pricePerServing": 67.09,
+      "extendedIngredients": [
+        {
+          "id": 9003,
+          "aisle": "Produce",
+          "image": "apple.jpg",
+          "consistency": "SOLID",
+          "name": "apples",
+          "nameClean": "apples",
+          "original": "2 large apples, peeled and diced",
+          "originalName": "apples, peeled and diced",
+          "amount": 2,
+          "unit": "large",
+          "meta": [
+            "diced",
+            "peeled"
+          ],
+          "measures": {
+            "us": {
+              "amount": 2,
+              "unitShort": "large",
+              "unitLong": "larges"
+            },
+            "metric": {
+              "amount": 2,
+              "unitShort": "large",
+              "unitLong": "larges"
+            }
+          }
+        },
+        {
+          "id": 19334,
+          "aisle": "Baking",
+          "image": "light-brown-sugar.jpg",
+          "consistency": "SOLID",
+          "name": "brown sugar",
+          "nameClean": "brown sugar",
+          "original": "1 tablespoon brown sugar",
+          "originalName": "brown sugar",
+          "amount": 1,
+          "unit": "tablespoon",
+          "meta": [],
+          "measures": {
+            "us": {
+              "amount": 1,
+              "unitShort": "Tbsp",
+              "unitLong": "Tbsp"
+            },
+            "metric": {
+              "amount": 1,
+              "unitShort": "Tbsp",
+              "unitLong": "Tbsp"
+            }
+          }
+        },
+        {
+          "id": 1017,
+          "aisle": "Cheese",
+          "image": "cream-cheese.jpg",
+          "consistency": "SOLID",
+          "name": "cream cheese",
+          "nameClean": "cream cheese",
+          "original": "4 ounces cream cheese, very cold and cubed",
+          "originalName": "cream cheese, very cold and cubed",
+          "amount": 4,
+          "unit": "ounces",
+          "meta": [
+            "very cold",
+            "cubed"
+          ],
+          "measures": {
+            "us": {
+              "amount": 4,
+              "unitShort": "oz",
+              "unitLong": "ounces"
+            },
+            "metric": {
+              "amount": 113.398,
+              "unitShort": "g",
+              "unitLong": "grams"
+            }
+          }
+        },
+        {
+          "id": 1125,
+          "aisle": "Milk, Eggs, Other Dairy",
+          "image": "egg-yolk.jpg",
+          "consistency": "SOLID",
+          "name": "egg yolk",
+          "nameClean": "egg yolk",
+          "original": "1 egg yolk",
+          "originalName": "egg yolk",
+          "amount": 1,
+          "unit": "",
+          "meta": [],
+          "measures": {
+            "us": {
+              "amount": 1,
+              "unitShort": "",
+              "unitLong": ""
+            },
+            "metric": {
+              "amount": 1,
+              "unitShort": "",
+              "unitLong": ""
+            }
+          }
+        },
+        {
+          "id": 18338,
+          "aisle": "Frozen",
+          "image": "filo-dough.png",
+          "consistency": "SOLID",
+          "name": "dough",
+          "nameClean": "dough",
+          "original": "Dough",
+          "originalName": "Dough",
+          "amount": 16,
+          "unit": "servings",
+          "meta": [],
+          "measures": {
+            "us": {
+              "amount": 16,
+              "unitShort": "servings",
+              "unitLong": "servings"
+            },
+            "metric": {
+              "amount": 16,
+              "unitShort": "servings",
+              "unitLong": "servings"
+            }
+          }
+        },
+        {
+          "id": 20081,
+          "aisle": "Baking",
+          "image": "flour.png",
+          "consistency": "SOLID",
+          "name": "flour",
+          "nameClean": "flour",
+          "original": "cups flour",
+          "originalName": "flour",
+          "amount": 1,
+          "unit": "cups",
+          "meta": [],
+          "measures": {
+            "us": {
+              "amount": 1,
+              "unitShort": "cup",
+              "unitLong": "cup"
+            },
+            "metric": {
+              "amount": 125,
+              "unitShort": "g",
+              "unitLong": "grams"
+            }
+          }
+        },
+        {
+          "id": 1022001,
+          "aisle": "Spices and Seasonings",
+          "image": "allspice-ground.jpg",
+          "consistency": "SOLID",
+          "name": "ground allspice",
+          "nameClean": "ground allspice",
+          "original": "1/4 teaspoon ground allspice",
+          "originalName": "ground allspice",
+          "amount": 0.25,
+          "unit": "teaspoon",
+          "meta": [],
+          "measures": {
+            "us": {
+              "amount": 0.25,
+              "unitShort": "tsps",
+              "unitLong": "teaspoons"
+            },
+            "metric": {
+              "amount": 0.25,
+              "unitShort": "tsps",
+              "unitLong": "teaspoons"
+            }
+          }
+        },
+        {
+          "id": 1032006,
+          "aisle": "Spices and Seasonings",
+          "image": "cardamom-ground.jpg",
+          "consistency": "SOLID",
+          "name": "ground cardamom",
+          "nameClean": "ground cardamom",
+          "original": "1/8 teaspoon ground cardamom",
+          "originalName": "ground cardamom",
+          "amount": 0.125,
+          "unit": "teaspoon",
+          "meta": [],
+          "measures": {
+            "us": {
+              "amount": 0.125,
+              "unitShort": "tsps",
+              "unitLong": "teaspoons"
+            },
+            "metric": {
+              "amount": 0.125,
+              "unitShort": "tsps",
+              "unitLong": "teaspoons"
+            }
+          }
+        },
+        {
+          "id": 1012010,
+          "aisle": "Spices and Seasonings",
+          "image": "cinnamon.jpg",
+          "consistency": "SOLID",
+          "name": "ground cinnamon",
+          "nameClean": "ground cinnamon",
+          "original": "1/2 teaspoon ground cinnamon",
+          "originalName": "ground cinnamon",
+          "amount": 0.5,
+          "unit": "teaspoon",
+          "meta": [],
+          "measures": {
+            "us": {
+              "amount": 0.5,
+              "unitShort": "tsps",
+              "unitLong": "teaspoons"
+            },
+            "metric": {
+              "amount": 0.5,
+              "unitShort": "tsps",
+              "unitLong": "teaspoons"
+            }
+          }
+        },
+        {
+          "id": 2021,
+          "aisle": "Spices and Seasonings",
+          "image": "ginger.png",
+          "consistency": "SOLID",
+          "name": "ground ginger",
+          "nameClean": "ground ginger",
+          "original": "1/2 teaspoon ground ginger",
+          "originalName": "ground ginger",
+          "amount": 0.5,
+          "unit": "teaspoon",
+          "meta": [],
+          "measures": {
+            "us": {
+              "amount": 0.5,
+              "unitShort": "tsps",
+              "unitLong": "teaspoons"
+            },
+            "metric": {
+              "amount": 0.5,
+              "unitShort": "tsps",
+              "unitLong": "teaspoons"
+            }
+          }
+        },
+        {
+          "id": 9152,
+          "aisle": "Produce",
+          "image": "lemon-juice.jpg",
+          "consistency": "LIQUID",
+          "name": "juice of lemon",
+          "nameClean": "juice of lemon",
+          "original": "Juice of 1/2 a lemon",
+          "originalName": "Juice a lemon",
+          "amount": 0.5,
+          "unit": "",
+          "meta": [],
+          "measures": {
+            "us": {
+              "amount": 0.5,
+              "unitShort": "",
+              "unitLong": ""
+            },
+            "metric": {
+              "amount": 0.5,
+              "unitShort": "",
+              "unitLong": ""
+            }
+          }
+        },
+        {
+          "id": 19911,
+          "aisle": "Cereal",
+          "image": "maple-syrup.png",
+          "consistency": "LIQUID",
+          "name": "maple syrup",
+          "nameClean": "maple syrup",
+          "original": "2 tablespoons maple syrup",
+          "originalName": "maple syrup",
+          "amount": 2,
+          "unit": "tablespoons",
+          "meta": [],
+          "measures": {
+            "us": {
+              "amount": 2,
+              "unitShort": "Tbsps",
+              "unitLong": "Tbsps"
+            },
+            "metric": {
+              "amount": 2,
+              "unitShort": "Tbsps",
+              "unitLong": "Tbsps"
+            }
+          }
+        },
+        {
+          "id": 1077,
+          "aisle": "Milk, Eggs, Other Dairy",
+          "image": "milk.png",
+          "consistency": "LIQUID",
+          "name": "milk",
+          "nameClean": "milk",
+          "original": "2 tablespoons milk",
+          "originalName": "milk",
+          "amount": 2,
+          "unit": "tablespoons",
+          "meta": [],
+          "measures": {
+            "us": {
+              "amount": 2,
+              "unitShort": "Tbsps",
+              "unitLong": "Tbsps"
+            },
+            "metric": {
+              "amount": 2,
+              "unitShort": "Tbsps",
+              "unitLong": "Tbsps"
+            }
+          }
+        },
+        {
+          "id": 19336,
+          "aisle": "Baking",
+          "image": "powdered-sugar.jpg",
+          "consistency": "SOLID",
+          "name": "powdered sugar",
+          "nameClean": "powdered sugar",
+          "original": "1/8 cup powdered sugar",
+          "originalName": "powdered sugar",
+          "amount": 0.125,
+          "unit": "cup",
+          "meta": [],
+          "measures": {
+            "us": {
+              "amount": 0.125,
+              "unitShort": "cups",
+              "unitLong": "cups"
+            },
+            "metric": {
+              "amount": 15,
+              "unitShort": "g",
+              "unitLong": "grams"
+            }
+          }
+        },
+        {
+          "id": 19335,
+          "aisle": "Baking",
+          "image": "sugar-in-bowl.png",
+          "consistency": "SOLID",
+          "name": "sugar",
+          "nameClean": "sugar",
+          "original": "7 c.s sugar",
+          "originalName": "s sugar",
+          "amount": 7,
+          "unit": "c",
+          "meta": [],
+          "measures": {
+            "us": {
+              "amount": 7,
+              "unitShort": "cups",
+              "unitLong": "cups"
+            },
+            "metric": {
+              "amount": 1.4,
+              "unitShort": "kgs",
+              "unitLong": "kgs"
+            }
+          }
+        },
+        {
+          "id": 1145,
+          "aisle": "Milk, Eggs, Other Dairy",
+          "image": "butter-sliced.jpg",
+          "consistency": "SOLID",
+          "name": "butter",
+          "nameClean": "butter",
+          "original": "1/2 cup unsalted butter, very cold and cubed",
+          "originalName": "unsalted butter, very cold and cubed",
+          "amount": 0.5,
+          "unit": "cup",
+          "meta": [
+            "unsalted",
+            "very cold",
+            "cubed"
+          ],
+          "measures": {
+            "us": {
+              "amount": 0.5,
+              "unitShort": "cups",
+              "unitLong": "cups"
+            },
+            "metric": {
+              "amount": 113.5,
+              "unitShort": "g",
+              "unitLong": "grams"
+            }
+          }
+        },
+        {
+          "id": -1,
+          "aisle": "?",
+          "image": null,
+          "consistency": "SOLID",
+          "name": "frangelico",
+          "nameClean": "frangelico",
+          "original": "1 teaspoon Frangelico (or vanilla or rum)",
+          "originalName": "Frangelico (or vanilla or rum)",
+          "amount": 1,
+          "unit": "teaspoon",
+          "meta": [
+            "(or vanilla or rum)"
+          ],
+          "measures": {
+            "us": {
+              "amount": 1,
+              "unitShort": "tsp",
+              "unitLong": "teaspoon"
+            },
+            "metric": {
+              "amount": 1,
+              "unitShort": "tsp",
+              "unitLong": "teaspoon"
+            }
+          }
+        },
+        {
+          "id": -1,
+          "aisle": "?",
+          "image": null,
+          "consistency": "SOLID",
+          "name": "frangelico",
+          "nameClean": "frangelico",
+          "original": "1 teaspoon Frangelico (or vanilla or rum)",
+          "originalName": "Frangelico (or vanilla or rum)",
+          "amount": 1,
+          "unit": "teaspoon",
+          "meta": [
+            "(or vanilla or rum)"
+          ],
+          "measures": {
+            "us": {
+              "amount": 1,
+              "unitShort": "tsp",
+              "unitLong": "teaspoon"
+            },
+            "metric": {
+              "amount": 1,
+              "unitShort": "tsp",
+              "unitLong": "teaspoon"
+            }
+          }
+        }
+      ],
+      "summary": "Apple Hand Pies could be just the \u003Cb\u003Elacto ovo vegetarian\u003C/b\u003E recipe you've been looking for. This hor d'oeuvre has \u003Cb\u003E531 calories\u003C/b\u003E, \u003Cb\u003E3g of protein\u003C/b\u003E, and \u003Cb\u003E10g of fat\u003C/b\u003E per serving. This recipe serves 16 and costs 67 cents per serving. From preparation to the plate, this recipe takes approximately \u003Cb\u003E45 minutes\u003C/b\u003E. Head to the store and pick up ground cinnamon, maple syrup, sugar, and a few other things to make it today. 22 people were impressed by this recipe. It is brought to you by Foodista. Overall, this recipe earns a \u003Cb\u003Erather bad spoonacular score of 16%\u003C/b\u003E. If you like this recipe, take a look at these similar recipes: \u003Ca href=\"https://spoonacular.com/recipes/apple-hand-pies-797339\"\u003EApple Hand Pies\u003C/a\u003E, \u003Ca href=\"https://spoonacular.com/recipes/apple-hand-pies-706227\"\u003EApple Hand Pies\u003C/a\u003E, and \u003Ca href=\"https://spoonacular.com/recipes/apple-hand-pies-1745015\"\u003EApple Hand Pies\u003C/a\u003E.",
+      "cuisines": [],
+      "dishTypes": [
+        "antipasti",
+        "starter",
+        "dessert",
+        "snack",
+        "appetizer",
+        "antipasto",
+        "hor d'oeuvre"
+      ],
+      "diets": [
+        "lacto ovo vegetarian"
+      ],
+      "occasions": [],
+      "instructions": "\u003Col\u003E\u003Cli\u003EStart dough by whisking dry ingredients in a medium sized bowl. Add butter and incorporate with a pastry blender until coarse crumbs develop. Add cream cheese and incorporate well.\u003C/li\u003E\u003Cli\u003EPlop in egg yolk and stir with a fork until dough comes together into a ball.\u003C/li\u003E\u003Cli\u003ETurn dough out onto a floured surface and roll into a uniform ball. Slightly press flat with the palm of your hand and wrap in plastic wrap. Chill at least one hour.\u003C/li\u003E\u003Cli\u003EOnce dough has chilled, set it on a floured surface and roll it out to about 10 x 12. Cut into sixteen even squares. Lay the dough squares on a parchment paper covered baking sheet and set in the freezer to chill.\u003C/li\u003E\u003Cli\u003EIn a separate bowl, toss the apples with the lemon juice, maple syrup, spices and brown sugar. Make sure to cover all of the apple pieces.\u003C/li\u003E\u003Cli\u003ETake dough out of freezer. Drop about 1 tablespoon of filling into the center of each piece of dough. Fold one pointed edge towards its opposite corner to form a triangle.  Crimp edges with a fork along the seams. Repeat with all of the dough.\u003C/li\u003E\u003Cli\u003EBrush a little milk over the top of each turnover and sprinkle with extra sugar if desired. (Pop back into the freezer for a quick chill if the dough is soft.). Bake in a preheated oven at 400 degrees for 20 minutes or until browned.\u003C/li\u003E\u003C/ol\u003E",
+      "analyzedInstructions": [
+        {
+          "name": "",
+          "steps": [
+            {
+              "number": 1,
+              "step": "Start dough by whisking dry ingredients in a medium sized bowl.",
+              "ingredients": [
+                {
+                  "id": 0,
+                  "name": "dough",
+                  "localizedName": "dough",
+                  "image": "pizza-dough"
+                }
+              ],
+              "equipment": [
+                {
+                  "id": 404661,
+                  "name": "whisk",
+                  "localizedName": "whisk",
+                  "image": "https://spoonacular.com/cdn/equipment_100x100/whisk.png"
+                },
+                {
+                  "id": 404783,
+                  "name": "bowl",
+                  "localizedName": "bowl",
+                  "image": "https://spoonacular.com/cdn/equipment_100x100/bowl.jpg"
+                }
+              ]
+            },
+            {
+              "number": 2,
+              "step": "Add butter and incorporate with a pastry blender until coarse crumbs develop.",
+              "ingredients": [
+                {
+                  "id": 1001,
+                  "name": "butter",
+                  "localizedName": "butter",
+                  "image": "butter-sliced.jpg"
+                }
+              ],
+              "equipment": [
+                {
+                  "id": 404726,
+                  "name": "blender",
+                  "localizedName": "blender",
+                  "image": "https://spoonacular.com/cdn/equipment_100x100/blender.png"
+                }
+              ]
+            },
+            {
+              "number": 3,
+              "step": "Add cream cheese and incorporate well.Plop in egg yolk and stir with a fork until dough comes together into a ball.Turn dough out onto a floured surface and roll into a uniform ball. Slightly press flat with the palm of your hand and wrap in plastic wrap. Chill at least one hour.Once dough has chilled, set it on a floured surface and roll it out to about 10 x 1",
+              "ingredients": [
+                {
+                  "id": 1017,
+                  "name": "cream cheese",
+                  "localizedName": "cream cheese",
+                  "image": "cream-cheese.jpg"
+                },
+                {
+                  "id": 1125,
+                  "name": "egg yolk",
+                  "localizedName": "egg yolk",
+                  "image": "egg-yolk.jpg"
+                },
+                {
+                  "id": 0,
+                  "name": "dough",
+                  "localizedName": "dough",
+                  "image": "pizza-dough"
+                },
+                {
+                  "id": 0,
+                  "name": "roll",
+                  "localizedName": "roll",
+                  "image": "dinner-yeast-rolls.jpg"
+                },
+                {
+                  "id": 10018364,
+                  "name": "wrap",
+                  "localizedName": "wrap",
+                  "image": "flour-tortilla.jpg"
+                }
+              ],
+              "equipment": [
+                {
+                  "id": 404730,
+                  "name": "plastic wrap",
+                  "localizedName": "plastic wrap",
+                  "image": "https://spoonacular.com/cdn/equipment_100x100/plastic-wrap.jpg"
+                }
+              ],
+              "length": {
+                "number": 60,
+                "unit": "minutes"
+              }
+            },
+            {
+              "number": 4,
+              "step": "Cut into sixteen even squares.",
+              "ingredients": [],
+              "equipment": []
+            },
+            {
+              "number": 5,
+              "step": "Lay the dough squares on a parchment paper covered baking sheet and set in the freezer to chill.In a separate bowl, toss the apples with the lemon juice, maple syrup, spices and brown sugar. Make sure to cover all of the apple pieces.Take dough out of freezer. Drop about 1 tablespoon of filling into the center of each piece of dough. Fold one pointed edge towards its opposite corner to form a triangle.  Crimp edges with a fork along the seams. Repeat with all of the dough.",
+              "ingredients": [
+                {
+                  "id": 19334,
+                  "name": "brown sugar",
+                  "localizedName": "brown sugar",
+                  "image": "dark-brown-sugar.png"
+                },
+                {
+                  "id": 9152,
+                  "name": "lemon juice",
+                  "localizedName": "lemon juice",
+                  "image": "lemon-juice.jpg"
+                },
+                {
+                  "id": 19911,
+                  "name": "maple syrup",
+                  "localizedName": "maple syrup",
+                  "image": "https://spoonacular.com/cdn/ingredients_100x100/maple-syrup.png"
+                },
+                {
+                  "id": 9003,
+                  "name": "apple",
+                  "localizedName": "apple",
+                  "image": "https://spoonacular.com/cdn/ingredients_100x100/apple.jpg"
+                },
+                {
+                  "id": 2035,
+                  "name": "spices",
+                  "localizedName": "spices",
+                  "image": "spices.png"
+                },
+                {
+                  "id": 0,
+                  "name": "dough",
+                  "localizedName": "dough",
+                  "image": "pizza-dough"
+                }
+              ],
+              "equipment": [
+                {
+                  "id": 404770,
+                  "name": "baking paper",
+                  "localizedName": "baking paper",
+                  "image": "https://spoonacular.com/cdn/equipment_100x100/baking-paper.jpg"
+                },
+                {
+                  "id": 404727,
+                  "name": "baking sheet",
+                  "localizedName": "baking sheet",
+                  "image": "https://spoonacular.com/cdn/equipment_100x100/baking-sheet.jpg"
+                },
+                {
+                  "id": 404783,
+                  "name": "bowl",
+                  "localizedName": "bowl",
+                  "image": "https://spoonacular.com/cdn/equipment_100x100/bowl.jpg"
+                }
+              ]
+            },
+            {
+              "number": 6,
+              "step": "Brush a little milk over the top of each turnover and sprinkle with extra sugar if desired. (Pop back into the freezer for a quick chill if the dough is soft.).",
+              "ingredients": [
+                {
+                  "id": 0,
+                  "name": "dough",
+                  "localizedName": "dough",
+                  "image": "pizza-dough"
+                },
+                {
+                  "id": 19335,
+                  "name": "sugar",
+                  "localizedName": "sugar",
+                  "image": "sugar-in-bowl.png"
+                },
+                {
+                  "id": 1077,
+                  "name": "milk",
+                  "localizedName": "milk",
+                  "image": "milk.png"
+                },
+                {
+                  "id": 0,
+                  "name": "pop",
+                  "localizedName": "soft drink",
+                  "image": ""
+                }
+              ],
+              "equipment": []
+            },
+            {
+              "number": 7,
+              "step": "Bake in a preheated oven at 400 degrees for 20 minutes or until browned.",
+              "ingredients": [],
+              "equipment": [
+                {
+                  "id": 404784,
+                  "name": "oven",
+                  "localizedName": "oven",
+                  "image": "https://spoonacular.com/cdn/equipment_100x100/oven.jpg"
+                }
+              ],
+              "length": {
+                "number": 20,
+                "unit": "minutes"
+              }
+            }
+          ]
+        }
+      ],
+      "originalId": null,
+      "spoonacularScore": 6.4940333366394,
+      "spoonacularSourceUrl": "https://spoonacular.com/apple-hand-pies-632552"
+    },
+    {
+      "id": 632115,
+      "image": "https://img.spoonacular.com/recipes/632115-556x370.jpg",
+      "imageType": "jpg",
+      "title": "Almond Coffee Cupcakes with Kahlua Liqueur",
+      "readyInMinutes": 45,
+      "servings": 6,
+      "sourceUrl": "http://www.foodista.com/recipe/MRKT5WMR/almond-coffee-cake-with-kahlua-liqueur",
+      "vegetarian": true,
+      "vegan": false,
+      "glutenFree": false,
+      "dairyFree": false,
+      "veryHealthy": false,
+      "cheap": false,
+      "veryPopular": false,
+      "sustainable": false,
+      "lowFodmap": false,
+      "weightWatcherSmartPoints": 13,
+      "gaps": "no",
+      "preparationMinutes": null,
+      "cookingMinutes": null,
+      "aggregateLikes": 22,
+      "healthScore": 0,
+      "creditsText": "Foodista.com – The Cooking Encyclopedia Everyone Can Edit",
+      "license": "CC BY 3.0",
+      "sourceName": "Foodista",
+      "pricePerServing": 114.16,
+      "extendedIngredients": [
+        {
+          "id": 93740,
+          "aisle": "Gluten Free",
+          "image": "almond-meal-or-almond-flour.jpg",
+          "consistency": "SOLID",
+          "name": "almond meal - 30g",
+          "nameClean": "almond meal - 30g",
+          "original": "1/4 cup Almond meal - 30g",
+          "originalName": "Almond meal - 30g",
+          "amount": 0.25,
+          "unit": "cup",
+          "meta": [],
+          "measures": {
+            "us": {
+              "amount": 0.25,
+              "unitShort": "cups",
+              "unitLong": "cups"
+            },
+            "metric": {
+              "amount": 28,
+              "unitShort": "g",
+              "unitLong": "grams"
+            }
+          }
+        },
+        {
+          "id": 1001,
+          "aisle": "Milk, Eggs, Other Dairy",
+          "image": "butter-sliced.jpg",
+          "consistency": "SOLID",
+          "name": "butter",
+          "nameClean": "butter",
+          "original": "40g Butter, melted",
+          "originalName": "Butter, melted",
+          "amount": 40,
+          "unit": "g",
+          "meta": [
+            "melted"
+          ],
+          "measures": {
+            "us": {
+              "amount": 1.411,
+              "unitShort": "oz",
+              "unitLong": "ounces"
+            },
+            "metric": {
+              "amount": 40,
+              "unitShort": "g",
+              "unitLong": "grams"
+            }
+          }
+        },
+        {
+          "id": 93716,
+          "aisle": "Alcoholic Beverages",
+          "image": "coffee-liqueur.jpg",
+          "consistency": "SOLID",
+          "name": "kahlua coffee liqueur",
+          "nameClean": "kahlua coffee liqueur",
+          "original": "1/4 cup Kahlua coffee liqueur",
+          "originalName": "Kahlua coffee liqueur",
+          "amount": 0.25,
+          "unit": "cup",
+          "meta": [],
+          "measures": {
+            "us": {
+              "amount": 0.25,
+              "unitShort": "cups",
+              "unitLong": "cups"
+            },
+            "metric": {
+              "amount": 59,
+              "unitShort": "ml",
+              "unitLong": "milliliters"
+            }
+          }
+        },
+        {
+          "id": 1124,
+          "aisle": "Milk, Eggs, Other Dairy",
+          "image": "egg-white.jpg",
+          "consistency": "SOLID",
+          "name": "egg whites - 80g",
+          "nameClean": "egg whites - 80g",
+          "original": "2 Egg whites - 80g",
+          "originalName": "Egg whites - 80g",
+          "amount": 2,
+          "unit": "",
+          "meta": [],
+          "measures": {
+            "us": {
+              "amount": 2,
+              "unitShort": "",
+              "unitLong": ""
+            },
+            "metric": {
+              "amount": 2,
+              "unitShort": "",
+              "unitLong": ""
+            }
+          }
+        },
+        {
+          "id": 10019230,
+          "aisle": "Baking",
+          "image": "frosting-or-icing.png",
+          "consistency": "SOLID",
+          "name": "chocolate icing",
+          "nameClean": "chocolate icing",
+          "original": "chocolate icing",
+          "originalName": "chocolate icing",
+          "amount": 6,
+          "unit": "servings",
+          "meta": [],
+          "measures": {
+            "us": {
+              "amount": 6,
+              "unitShort": "servings",
+              "unitLong": "servings"
+            },
+            "metric": {
+              "amount": 6,
+              "unitShort": "servings",
+              "unitLong": "servings"
+            }
+          }
+        },
+        {
+          "id": 19336,
+          "aisle": "Baking",
+          "image": "powdered-sugar.jpg",
+          "consistency": "SOLID",
+          "name": "icing sugar - 55g",
+          "nameClean": "icing sugar - 55g",
+          "original": "1/2 cup Icing sugar - 55g",
+          "originalName": "Icing sugar - 55g",
+          "amount": 0.5,
+          "unit": "cup",
+          "meta": [],
+          "measures": {
+            "us": {
+              "amount": 0.5,
+              "unitShort": "cups",
+              "unitLong": "cups"
+            },
+            "metric": {
+              "amount": 60,
+              "unitShort": "g",
+              "unitLong": "grams"
+            }
+          }
+        },
+        {
+          "id": 14214,
+          "aisle": "Tea and Coffee",
+          "image": "instant-coffee-or-instant-espresso.png",
+          "consistency": "SOLID",
+          "name": "coffee powder",
+          "nameClean": "coffee powder",
+          "original": "2 tsp Instant coffee powder",
+          "originalName": "Instant coffee powder",
+          "amount": 2,
+          "unit": "tsp",
+          "meta": [
+            "instant"
+          ],
+          "measures": {
+            "us": {
+              "amount": 2,
+              "unitShort": "tsps",
+              "unitLong": "teaspoons"
+            },
+            "metric": {
+              "amount": 2,
+              "unitShort": "tsps",
+              "unitLong": "teaspoons"
+            }
+          }
+        },
+        {
+          "id": 20081,
+          "aisle": "Baking",
+          "image": "flour.png",
+          "consistency": "SOLID",
+          "name": "flour",
+          "nameClean": "flour",
+          "original": "2 tbsp Plain flour, sifted",
+          "originalName": "Plain flour, sifted",
+          "amount": 2,
+          "unit": "tbsp",
+          "meta": [
+            "plain",
+            "sifted"
+          ],
+          "measures": {
+            "us": {
+              "amount": 2,
+              "unitShort": "Tbsps",
+              "unitLong": "Tbsps"
+            },
+            "metric": {
+              "amount": 2,
+              "unitShort": "Tbsps",
+              "unitLong": "Tbsps"
+            }
+          }
+        }
+      ],
+      "summary": "If you want to add more \u003Cb\u003Elacto ovo vegetarian\u003C/b\u003E recipes to your recipe box, Almond Coffee Cupcakes with Kahlua Liqueur might be a recipe you should try. This recipe serves 6. One serving contains \u003Cb\u003E279 calories\u003C/b\u003E, \u003Cb\u003E2g of protein\u003C/b\u003E, and \u003Cb\u003E12g of fat\u003C/b\u003E. For \u003Cb\u003E$1.14 per serving\u003C/b\u003E, this recipe \u003Cb\u003Ecovers 2%\u003C/b\u003E of your daily requirements of vitamins and minerals. It is an \u003Cb\u003Eaffordable\u003C/b\u003E recipe for fans of American food. From preparation to the plate, this recipe takes roughly \u003Cb\u003E45 minutes\u003C/b\u003E. Head to the store and pick up almond meal - 30g, butter, kahlua coffee liqueur, and a few other things to make it today. 22 people found this recipe to be delicious and satisfying. It works well as a dessert. It is brought to you by Foodista. Taking all factors into account, this recipe \u003Cb\u003Eearns a spoonacular score of 9%\u003C/b\u003E, which is improvable. Similar recipes are \u003Ca href=\"https://spoonacular.com/recipes/better-than-kahlua-how-to-make-coffee-liqueur-522955\"\u003EBetter than Kahlua – How to Make Coffee Liqueur\u003C/a\u003E, \u003Ca href=\"https://spoonacular.com/recipes/gluten-free-coffee-liqueur-aka-likuah-or-kahlua-1022885\"\u003EGluten Free Coffee Liqueur (aka Likuah) or Kahlua\u003C/a\u003E, and \u003Ca href=\"https://spoonacular.com/recipes/kahlua-chocolate-cupcakes-with-kahlua-frosting-648692\"\u003EKahlua Chocolate Cupcakes With Kahlua Frosting\u003C/a\u003E.",
+      "cuisines": [
+        "American"
+      ],
+      "dishTypes": [
+        "dessert"
+      ],
+      "diets": [
+        "lacto ovo vegetarian"
+      ],
+      "occasions": [],
+      "instructions": "\u003Col\u003E\u003Cli\u003EPreheat oven to 180C (335F). Place the flour, sugar, almond meal, coffee, butter and egg whites in a bowl and mix well combine with a hand whisk.\u003C/li\u003E\u003Cli\u003ESpoon mixture into 6 lightly greased or use cooking spray on medium size muffin pan or 12 mini muffin pan and bake for 20-25 minutes or until cooked when tested with a skewer.\u003C/li\u003E\u003Cli\u003EDrizzle with the liqueur (about 1/2 tablespoon on each cake) and set aside for 2 minutes before turning out on a wire rack to cool.\u003C/li\u003E\u003Cli\u003EDecorate with chocolate icing on top (I used Wiltion chocolate icing) or just dust with some icing sugar.\u003C/li\u003E\u003Cli\u003EYou can serve them warm or store it in an airtight container for 2-3 days.\u003C/li\u003E\u003C/ol\u003E",
+      "analyzedInstructions": [
+        {
+          "name": "",
+          "steps": [
+            {
+              "number": 1,
+              "step": "Preheat oven to 180C (335F).",
+              "ingredients": [],
+              "equipment": [
+                {
+                  "id": 404784,
+                  "name": "oven",
+                  "localizedName": "oven",
+                  "image": "https://spoonacular.com/cdn/equipment_100x100/oven.jpg",
+                  "temperature": {
+                    "number": 180,
+                    "unit": "Celsius"
+                  }
+                }
+              ]
+            },
+            {
+              "number": 2,
+              "step": "Place the flour, sugar, almond meal, coffee, butter and egg whites in a bowl and mix well combine with a hand whisk.Spoon mixture into 6 lightly greased or use cooking spray on medium size muffin pan or 12 mini muffin pan and bake for 20-25 minutes or until cooked when tested with a skewer.",
+              "ingredients": [
+                {
+                  "id": 4679,
+                  "name": "cooking spray",
+                  "localizedName": "cooking spray",
+                  "image": "cooking-spray.png"
+                },
+                {
+                  "id": 10093740,
+                  "name": "almond flour",
+                  "localizedName": "almond flour",
+                  "image": "almond-meal-or-almond-flour.jpg"
+                },
+                {
+                  "id": 1124,
+                  "name": "egg whites",
+                  "localizedName": "egg whites",
+                  "image": "egg-white.jpg"
+                },
+                {
+                  "id": 1001,
+                  "name": "butter",
+                  "localizedName": "butter",
+                  "image": "butter-sliced.jpg"
+                },
+                {
+                  "id": 14209,
+                  "name": "coffee",
+                  "localizedName": "coffee",
+                  "image": "https://spoonacular.com/cdn/ingredients_100x100/brewed-coffee.jpg"
+                },
+                {
+                  "id": 20081,
+                  "name": "all purpose flour",
+                  "localizedName": "all purpose flour",
+                  "image": "flour.png"
+                },
+                {
+                  "id": 19335,
+                  "name": "sugar",
+                  "localizedName": "sugar",
+                  "image": "sugar-in-bowl.png"
+                }
+              ],
+              "equipment": [
+                {
+                  "id": 405905,
+                  "name": "mini muffin tray",
+                  "localizedName": "mini muffin tray",
+                  "image": "https://spoonacular.com/cdn/equipment_100x100/mini-muffin-tray.jpg"
+                },
+                {
+                  "id": 404671,
+                  "name": "muffin tray",
+                  "localizedName": "muffin tray",
+                  "image": "https://spoonacular.com/cdn/equipment_100x100/muffin-tray.jpg"
+                },
+                {
+                  "id": 404784,
+                  "name": "oven",
+                  "localizedName": "oven",
+                  "image": "https://spoonacular.com/cdn/equipment_100x100/oven.jpg"
+                },
+                {
+                  "id": 3065,
+                  "name": "skewers",
+                  "localizedName": "skewers",
+                  "image": "https://spoonacular.com/cdn/equipment_100x100/wooden-skewers.jpg"
+                },
+                {
+                  "id": 404661,
+                  "name": "whisk",
+                  "localizedName": "whisk",
+                  "image": "https://spoonacular.com/cdn/equipment_100x100/whisk.png"
+                },
+                {
+                  "id": 404783,
+                  "name": "bowl",
+                  "localizedName": "bowl",
+                  "image": "https://spoonacular.com/cdn/equipment_100x100/bowl.jpg"
+                }
+              ],
+              "length": {
+                "number": 25,
+                "unit": "minutes"
+              }
+            },
+            {
+              "number": 3,
+              "step": "Drizzle with the liqueur (about 1/2 tablespoon on each cake) and set aside for 2 minutes before turning out on a wire rack to cool.Decorate with chocolate icing on top (I used Wiltion chocolate icing) or just dust with some icing sugar.You can serve them warm or store it in an airtight container for 2-3 days.",
+              "ingredients": [
+                {
+                  "id": 19336,
+                  "name": "powdered sugar",
+                  "localizedName": "powdered sugar",
+                  "image": "https://spoonacular.com/cdn/ingredients_100x100/powdered-sugar.jpg"
+                },
+                {
+                  "id": 19081,
+                  "name": "chocolate",
+                  "localizedName": "chocolate",
+                  "image": "milk-chocolate.jpg"
+                },
+                {
+                  "id": 0,
+                  "name": "liqueur",
+                  "localizedName": "liqueur",
+                  "image": "rum-dark.jpg"
+                },
+                {
+                  "id": 10019230,
+                  "name": "icing",
+                  "localizedName": "icing",
+                  "image": "frosting-or-icing.png"
+                }
+              ],
+              "equipment": [
+                {
+                  "id": 405900,
+                  "name": "wire rack",
+                  "localizedName": "wire rack",
+                  "image": "https://spoonacular.com/cdn/equipment_100x100/wire-rack.jpg"
+                }
+              ],
+              "length": {
+                "number": 2,
+                "unit": "minutes"
+              }
+            }
+          ]
+        }
+      ],
+      "originalId": null,
+      "spoonacularScore": 13.6437845230103,
+      "spoonacularSourceUrl": "https://spoonacular.com/almond-coffee-cupcakes-with-kahlua-liqueur-632115"
+    },
+    {
+      "id": 632525,
+      "image": "https://img.spoonacular.com/recipes/632525-556x370.jpg",
+      "imageType": "jpg",
+      "title": "Apple Custard Pie With Oatmeal Crust",
+      "readyInMinutes": 45,
+      "servings": 10,
+      "sourceUrl": "https://www.foodista.com/recipe/RDPWKNZP/apple-custard-pie-with-oatmeal-crust",
+      "vegetarian": true,
+      "vegan": false,
+      "glutenFree": false,
+      "dairyFree": false,
+      "veryHealthy": false,
+      "cheap": false,
+      "veryPopular": false,
+      "sustainable": false,
+      "lowFodmap": false,
+      "weightWatcherSmartPoints": 27,
+      "gaps": "no",
+      "preparationMinutes": null,
+      "cookingMinutes": null,
+      "aggregateLikes": 2,
+      "healthScore": 2,
+      "creditsText": "Foodista.com – The Cooking Encyclopedia Everyone Can Edit",
+      "license": "CC BY 3.0",
+      "sourceName": "Foodista",
+      "pricePerServing": 67.15,
+      "extendedIngredients": [
+        {
+          "id": 9003,
+          "aisle": "Produce",
+          "image": "apple.jpg",
+          "consistency": "SOLID",
+          "name": "apples - &",
+          "nameClean": "apples - &",
+          "original": "3 apples – peeled & cut into wedges",
+          "originalName": "apples – peeled & cut into wedges",
+          "amount": 3,
+          "unit": "",
+          "meta": [
+            "peeled",
+            "cut into wedges"
+          ],
+          "measures": {
+            "us": {
+              "amount": 3,
+              "unitShort": "",
+              "unitLong": ""
+            },
+            "metric": {
+              "amount": 3,
+              "unitShort": "",
+              "unitLong": ""
+            }
+          }
+        },
+        {
+          "id": 19334,
+          "aisle": "Baking",
+          "image": "light-brown-sugar.jpg",
+          "consistency": "SOLID",
+          "name": "brown sugar",
+          "nameClean": "brown sugar",
+          "original": "1 cup packed brown sugar",
+          "originalName": "packed brown sugar",
+          "amount": 1,
+          "unit": "cup",
+          "meta": [
+            "packed"
+          ],
+          "measures": {
+            "us": {
+              "amount": 1,
+              "unitShort": "cup",
+              "unitLong": "cup"
+            },
+            "metric": {
+              "amount": 220,
+              "unitShort": "g",
+              "unitLong": "grams"
+            }
+          }
+        },
+        {
+          "id": 1001,
+          "aisle": "Milk, Eggs, Other Dairy",
+          "image": "butter-sliced.jpg",
+          "consistency": "SOLID",
+          "name": "butter",
+          "nameClean": "butter",
+          "original": "200g Butter",
+          "originalName": "Butter",
+          "amount": 200,
+          "unit": "g",
+          "meta": [],
+          "measures": {
+            "us": {
+              "amount": 7.055,
+              "unitShort": "oz",
+              "unitLong": "ounces"
+            },
+            "metric": {
+              "amount": 200,
+              "unitShort": "g",
+              "unitLong": "grams"
+            }
+          }
+        },
+        {
+          "id": 2010,
+          "aisle": "Spices and Seasonings",
+          "image": "cinnamon.jpg",
+          "consistency": "SOLID",
+          "name": "cinnamon",
+          "nameClean": "cinnamon",
+          "original": "1 teaspoon cinnamon",
+          "originalName": "cinnamon",
+          "amount": 1,
+          "unit": "teaspoon",
+          "meta": [],
+          "measures": {
+            "us": {
+              "amount": 1,
+              "unitShort": "tsp",
+              "unitLong": "teaspoon"
+            },
+            "metric": {
+              "amount": 1,
+              "unitShort": "tsp",
+              "unitLong": "teaspoon"
+            }
+          }
+        },
+        {
+          "id": 1123,
+          "aisle": "Milk, Eggs, Other Dairy",
+          "image": "egg.png",
+          "consistency": "SOLID",
+          "name": "eggs",
+          "nameClean": "eggs",
+          "original": "3 eggs",
+          "originalName": "eggs",
+          "amount": 3,
+          "unit": "",
+          "meta": [],
+          "measures": {
+            "us": {
+              "amount": 3,
+              "unitShort": "",
+              "unitLong": ""
+            },
+            "metric": {
+              "amount": 3,
+              "unitShort": "",
+              "unitLong": ""
+            }
+          }
+        },
+        {
+          "id": 20081,
+          "aisle": "Baking",
+          "image": "flour.png",
+          "consistency": "SOLID",
+          "name": "flour",
+          "nameClean": "flour",
+          "original": "3 cups flour",
+          "originalName": "flour",
+          "amount": 3,
+          "unit": "cups",
+          "meta": [],
+          "measures": {
+            "us": {
+              "amount": 3,
+              "unitShort": "cups",
+              "unitLong": "cups"
+            },
+            "metric": {
+              "amount": 375,
+              "unitShort": "g",
+              "unitLong": "grams"
+            }
+          }
+        },
+        {
+          "id": 1077,
+          "aisle": "Milk, Eggs, Other Dairy",
+          "image": "milk.png",
+          "consistency": "LIQUID",
+          "name": "milk",
+          "nameClean": "milk",
+          "original": "1/2 cup milk",
+          "originalName": "milk",
+          "amount": 0.5,
+          "unit": "cup",
+          "meta": [],
+          "measures": {
+            "us": {
+              "amount": 0.5,
+              "unitShort": "cups",
+              "unitLong": "cups"
+            },
+            "metric": {
+              "amount": 122,
+              "unitShort": "ml",
+              "unitLong": "milliliters"
+            }
+          }
+        },
+        {
+          "id": 8120,
+          "aisle": "Cereal",
+          "image": "rolled-oats.jpg",
+          "consistency": "SOLID",
+          "name": "oats",
+          "nameClean": "oats",
+          "original": "1 cup oats",
+          "originalName": "oats",
+          "amount": 1,
+          "unit": "cup",
+          "meta": [],
+          "measures": {
+            "us": {
+              "amount": 1,
+              "unitShort": "cup",
+              "unitLong": "cup"
+            },
+            "metric": {
+              "amount": 81.081,
+              "unitShort": "g",
+              "unitLong": "grams"
+            }
+          }
+        },
+        {
+          "id": 19335,
+          "aisle": "Baking",
+          "image": "sugar-in-bowl.png",
+          "consistency": "SOLID",
+          "name": "sugar",
+          "nameClean": "sugar",
+          "original": "2 cups sugar",
+          "originalName": "sugar",
+          "amount": 2,
+          "unit": "cups",
+          "meta": [],
+          "measures": {
+            "us": {
+              "amount": 2,
+              "unitShort": "cups",
+              "unitLong": "cups"
+            },
+            "metric": {
+              "amount": 400,
+              "unitShort": "g",
+              "unitLong": "grams"
+            }
+          }
+        },
+        {
+          "id": 2050,
+          "aisle": "Baking",
+          "image": "vanilla-extract.jpg",
+          "consistency": "LIQUID",
+          "name": "vanilla extract",
+          "nameClean": "vanilla extract",
+          "original": "1/2 teaspoon vanilla extract",
+          "originalName": "vanilla extract",
+          "amount": 0.5,
+          "unit": "teaspoon",
+          "meta": [],
+          "measures": {
+            "us": {
+              "amount": 0.5,
+              "unitShort": "tsps",
+              "unitLong": "teaspoons"
+            },
+            "metric": {
+              "amount": 0.5,
+              "unitShort": "tsps",
+              "unitLong": "teaspoons"
+            }
+          }
+        }
+      ],
+      "summary": "Apple Custard Pie With Oatmeal Crust might be just the dessert you are searching for. This recipe makes 10 servings with \u003Cb\u003E604 calories\u003C/b\u003E, \u003Cb\u003E7g of protein\u003C/b\u003E, and \u003Cb\u003E19g of fat\u003C/b\u003E each. For \u003Cb\u003E67 cents per serving\u003C/b\u003E, this recipe \u003Cb\u003Ecovers 10%\u003C/b\u003E of your daily requirements of vitamins and minerals. 2 people have tried and liked this recipe. From preparation to the plate, this recipe takes around \u003Cb\u003E45 minutes\u003C/b\u003E. It is a good option if you're following a \u003Cb\u003Elacto ovo vegetarian\u003C/b\u003E diet. A mixture of milk, brown sugar, cinnamon, and a handful of other ingredients are all it takes to make this recipe so flavorful. It is brought to you by Foodista. Taking all factors into account, this recipe \u003Cb\u003Eearns a spoonacular score of 28%\u003C/b\u003E, which is not so spectacular. If you like this recipe, take a look at these similar recipes: \u003Ca href=\"https://spoonacular.com/recipes/apple-custard-pie-with-oatmeal-crust-758947\"\u003EApple Custard Pie with Oatmeal Crust\u003C/a\u003E, \u003Ca href=\"https://spoonacular.com/recipes/apple-custard-pie-with-oatmeal-crust-1366813\"\u003EApple Custard Pie With Oatmeal Crust\u003C/a\u003E, and \u003Ca href=\"https://spoonacular.com/recipes/apple-custard-pie-with-oatmeal-crust-1550331\"\u003EApple Custard Pie With Oatmeal Crust\u003C/a\u003E.",
+      "cuisines": [],
+      "dishTypes": [
+        "dessert"
+      ],
+      "diets": [
+        "lacto ovo vegetarian"
+      ],
+      "occasions": [],
+      "instructions": "\u003Col\u003E\u003Cli\u003EPreheat Oven 350 degrees:\u003C/li\u003E\u003Cli\u003EIn a food processor combine oats, flour, cinnamon and brown sugar and give a few good chops until oats are ground.\u003C/li\u003E\u003Cli\u003EIn a bowl combine butter and add mixture from the food processor and mix until dough is crumbly.\u003C/li\u003E\u003Cli\u003EButter the bottom of a pie plate and press the dough to the bottom and sides.  Place pan in the oven and bake 15 minutes or until crust is slightly golden.\u003C/li\u003E\u003Cli\u003EFor the filling beat together eggs,  cup sugar and vanilla.  Beat in the milk until smooth.\u003C/li\u003E\u003Cli\u003EArrange the apple wedges on the bottom of the crust and pour the filling into the crust.  Sprinkle the combined topping on the pie and return to the oven for another 30-40 minutes, or until the filling is set.\u003C/li\u003E\u003C/ol\u003E",
+      "analyzedInstructions": [
+        {
+          "name": "",
+          "steps": [
+            {
+              "number": 1,
+              "step": "Preheat Oven 350 degrees:In a food processor combine oats, flour, cinnamon and brown sugar and give a few good chops until oats are ground.In a bowl combine butter and add mixture from the food processor and mix until dough is crumbly.Butter the bottom of a pie plate and press the dough to the bottom and sides.",
+              "ingredients": [
+                {
+                  "id": 19334,
+                  "name": "brown sugar",
+                  "localizedName": "brown sugar",
+                  "image": "dark-brown-sugar.png"
+                },
+                {
+                  "id": 2010,
+                  "name": "cinnamon",
+                  "localizedName": "cinnamon",
+                  "image": "https://spoonacular.com/cdn/ingredients_100x100/cinnamon.jpg"
+                },
+                {
+                  "id": 1001,
+                  "name": "butter",
+                  "localizedName": "butter",
+                  "image": "butter-sliced.jpg"
+                },
+                {
+                  "id": 0,
+                  "name": "dough",
+                  "localizedName": "dough",
+                  "image": "pizza-dough"
+                },
+                {
+                  "id": 20081,
+                  "name": "all purpose flour",
+                  "localizedName": "all purpose flour",
+                  "image": "flour.png"
+                },
+                {
+                  "id": 8120,
+                  "name": "oats",
+                  "localizedName": "oats",
+                  "image": "rolled-oats.jpg"
+                }
+              ],
+              "equipment": [
+                {
+                  "id": 404771,
+                  "name": "food processor",
+                  "localizedName": "food processor",
+                  "image": "https://spoonacular.com/cdn/equipment_100x100/food-processor.png"
+                },
+                {
+                  "id": 404783,
+                  "name": "bowl",
+                  "localizedName": "bowl",
+                  "image": "https://spoonacular.com/cdn/equipment_100x100/bowl.jpg"
+                },
+                {
+                  "id": 404784,
+                  "name": "oven",
+                  "localizedName": "oven",
+                  "image": "https://spoonacular.com/cdn/equipment_100x100/oven.jpg"
+                }
+              ]
+            },
+            {
+              "number": 2,
+              "step": "Place pan in the oven and bake 15 minutes or until crust is slightly golden.For the filling beat together eggs,  cup sugar and vanilla.  Beat in the milk until smooth.Arrange the apple wedges on the bottom of the crust and pour the filling into the crust.",
+              "ingredients": [
+                {
+                  "id": 1052050,
+                  "name": "vanilla",
+                  "localizedName": "vanilla",
+                  "image": "vanilla.jpg"
+                },
+                {
+                  "id": 9003,
+                  "name": "apple",
+                  "localizedName": "apple",
+                  "image": "https://spoonacular.com/cdn/ingredients_100x100/apple.jpg"
+                },
+                {
+                  "id": 0,
+                  "name": "crust",
+                  "localizedName": "crust",
+                  "image": ""
+                },
+                {
+                  "id": 19335,
+                  "name": "sugar",
+                  "localizedName": "sugar",
+                  "image": "sugar-in-bowl.png"
+                },
+                {
+                  "id": 1123,
+                  "name": "egg",
+                  "localizedName": "egg",
+                  "image": "egg.png"
+                },
+                {
+                  "id": 1077,
+                  "name": "milk",
+                  "localizedName": "milk",
+                  "image": "milk.png"
+                }
+              ],
+              "equipment": [
+                {
+                  "id": 404784,
+                  "name": "oven",
+                  "localizedName": "oven",
+                  "image": "https://spoonacular.com/cdn/equipment_100x100/oven.jpg"
+                },
+                {
+                  "id": 404645,
+                  "name": "frying pan",
+                  "localizedName": "frying pan",
+                  "image": "https://spoonacular.com/cdn/equipment_100x100/pan.png"
+                }
+              ],
+              "length": {
+                "number": 15,
+                "unit": "minutes"
+              }
+            },
+            {
+              "number": 3,
+              "step": "Sprinkle the combined topping on the pie and return to the oven for another 30-40 minutes, or until the filling is set.",
+              "ingredients": [],
+              "equipment": [
+                {
+                  "id": 404784,
+                  "name": "oven",
+                  "localizedName": "oven",
+                  "image": "https://spoonacular.com/cdn/equipment_100x100/oven.jpg"
+                }
+              ],
+              "length": {
+                "number": 40,
+                "unit": "minutes"
+              }
+            }
+          ]
+        }
+      ],
+      "originalId": null,
+      "spoonacularScore": 8.99184989929199,
+      "spoonacularSourceUrl": "https://spoonacular.com/apple-custard-pie-with-oatmeal-crust-632525"
+    },
+    {
+      "id": 661765,
+      "image": "https://img.spoonacular.com/recipes/661765-556x370.jpg",
+      "imageType": "jpg",
+      "title": "Strawberry Brie Tartlets",
+      "readyInMinutes": 45,
+      "servings": 40,
+      "sourceUrl": "https://www.foodista.com/recipe/SMZPX55W/strawberry-brie-tartlets",
+      "vegetarian": true,
+      "vegan": false,
+      "glutenFree": false,
+      "dairyFree": false,
+      "veryHealthy": false,
+      "cheap": false,
+      "veryPopular": false,
+      "sustainable": false,
+      "lowFodmap": false,
+      "weightWatcherSmartPoints": 4,
+      "gaps": "no",
+      "preparationMinutes": null,
+      "cookingMinutes": null,
+      "aggregateLikes": 4,
+      "healthScore": 0,
+      "creditsText": "Foodista.com – The Cooking Encyclopedia Everyone Can Edit",
+      "license": "CC BY 3.0",
+      "sourceName": "Foodista",
+      "pricePerServing": 30.37,
+      "extendedIngredients": [
+        {
+          "id": 1006,
+          "aisle": "Cheese",
+          "image": "brie.jpg",
+          "consistency": "SOLID",
+          "name": "brie",
+          "nameClean": "brie",
+          "original": "6 ounces soft ripe brie",
+          "originalName": "soft ripe brie",
+          "amount": 6,
+          "unit": "ounces",
+          "meta": [
+            "ripe",
+            "soft"
+          ],
+          "measures": {
+            "us": {
+              "amount": 6,
+              "unitShort": "oz",
+              "unitLong": "ounces"
+            },
+            "metric": {
+              "amount": 170.097,
+              "unitShort": "g",
+              "unitLong": "grams"
+            }
+          }
+        },
+        {
+          "id": 14412,
+          "aisle": "Beverages",
+          "image": "water.png",
+          "consistency": "LIQUID",
+          "name": "egg",
+          "nameClean": "egg",
+          "original": "1 egg + 1 Tb. water",
+          "originalName": "egg + 1 Tb. water",
+          "amount": 1,
+          "unit": "",
+          "meta": [],
+          "measures": {
+            "us": {
+              "amount": 1,
+              "unitShort": "",
+              "unitLong": ""
+            },
+            "metric": {
+              "amount": 1,
+              "unitShort": "",
+              "unitLong": ""
+            }
+          }
+        },
+        {
+          "id": 1012049,
+          "aisle": "Produce",
+          "image": "thyme.jpg",
+          "consistency": "SOLID",
+          "name": "thyme",
+          "nameClean": "thyme",
+          "original": "8 sprigs of fresh thyme",
+          "originalName": "fresh thyme",
+          "amount": 8,
+          "unit": "sprigs",
+          "meta": [
+            "fresh"
+          ],
+          "measures": {
+            "us": {
+              "amount": 8,
+              "unitShort": "sprigs",
+              "unitLong": "sprigs"
+            },
+            "metric": {
+              "amount": 8,
+              "unitShort": "sprigs",
+              "unitLong": "sprigs"
+            }
+          }
+        },
+        {
+          "id": 19296,
+          "aisle": "Nut butters, Jams, and Honey",
+          "image": "honey.png",
+          "consistency": "LIQUID",
+          "name": "honey",
+          "nameClean": "honey",
+          "original": "Honey for drizzling",
+          "originalName": "Honey for drizzling",
+          "amount": 40,
+          "unit": "servings",
+          "meta": [
+            "for drizzling"
+          ],
+          "measures": {
+            "us": {
+              "amount": 40,
+              "unitShort": "servings",
+              "unitLong": "servings"
+            },
+            "metric": {
+              "amount": 40,
+              "unitShort": "servings",
+              "unitLong": "servings"
+            }
+          }
+        },
+        {
+          "id": 18337,
+          "aisle": "Frozen",
+          "image": "puff-pastry.png",
+          "consistency": "SOLID",
+          "name": "puff pastry",
+          "nameClean": "puff pastry",
+          "original": "2 sheets (1 box) frozen puff pastry, thawed",
+          "originalName": "(1 box) frozen puff pastry, thawed",
+          "amount": 2,
+          "unit": "sheets",
+          "meta": [
+            "frozen",
+            "thawed",
+            "(1 box)"
+          ],
+          "measures": {
+            "us": {
+              "amount": 2,
+              "unitShort": "sheets",
+              "unitLong": "sheets"
+            },
+            "metric": {
+              "amount": 2,
+              "unitShort": "sheets",
+              "unitLong": "sheets"
+            }
+          }
+        },
+        {
+          "id": 2047,
+          "aisle": "Spices and Seasonings",
+          "image": "salt.jpg",
+          "consistency": "SOLID",
+          "name": "salt",
+          "nameClean": "salt",
+          "original": "Salt",
+          "originalName": "Salt",
+          "amount": 40,
+          "unit": "servings",
+          "meta": [],
+          "measures": {
+            "us": {
+              "amount": 40,
+              "unitShort": "servings",
+              "unitLong": "servings"
+            },
+            "metric": {
+              "amount": 40,
+              "unitShort": "servings",
+              "unitLong": "servings"
+            }
+          }
+        },
+        {
+          "id": 9316,
+          "aisle": "Produce",
+          "image": "strawberries.png",
+          "consistency": "SOLID",
+          "name": "strawberries",
+          "nameClean": "strawberries",
+          "original": "10 ripe strawberries",
+          "originalName": "ripe strawberries",
+          "amount": 10,
+          "unit": "",
+          "meta": [
+            "ripe"
+          ],
+          "measures": {
+            "us": {
+              "amount": 10,
+              "unitShort": "",
+              "unitLong": ""
+            },
+            "metric": {
+              "amount": 10,
+              "unitShort": "",
+              "unitLong": ""
+            }
+          }
+        }
+      ],
+      "summary": "Strawberry Brie Tartlets might be a good recipe to expand your hor d'oeuvre recipe box. This lacto ovo vegetarian recipe serves 40 and costs \u003Cb\u003E30 cents per serving\u003C/b\u003E. One serving contains \u003Cb\u003E104 calories\u003C/b\u003E, \u003Cb\u003E2g of protein\u003C/b\u003E, and \u003Cb\u003E6g of fat\u003C/b\u003E. This recipe from Foodista requires puff pastry, egg, strawberries, and salt. From preparation to the plate, this recipe takes roughly \u003Cb\u003E45 minutes\u003C/b\u003E. 4 people were impressed by this recipe. It can be enjoyed any time, but it is especially good for \u003Cb\u003EMother's Day\u003C/b\u003E. With a spoonacular \u003Cb\u003Escore of 16%\u003C/b\u003E, this dish is rather bad. Similar recipes are \u003Ca href=\"https://spoonacular.com/recipes/strawberry-brie-tartlets-58423\"\u003EStrawberry Brie Tartlets\u003C/a\u003E, \u003Ca href=\"https://spoonacular.com/recipes/apricot-brie-tartlets-1559651\"\u003EApricot Brie Tartlets\u003C/a\u003E, and \u003Ca href=\"https://spoonacular.com/recipes/brie-and-walnut-tartlets-453959\"\u003EBrie and Walnut Tartlets\u003C/a\u003E.",
+      "cuisines": [],
+      "dishTypes": [
+        "fingerfood",
+        "antipasti",
+        "starter",
+        "dessert",
+        "snack",
+        "appetizer",
+        "antipasto",
+        "hor d'oeuvre"
+      ],
+      "diets": [
+        "lacto ovo vegetarian"
+      ],
+      "occasions": [
+        "mother's day"
+      ],
+      "instructions": "\u003Col\u003E\u003Cli\u003EPreheat the oven to 400 F. \u003C/li\u003E\u003Cli\u003EUsing a 2 inch cookie cutter, cut out at least 40 pieces of pastry dough and lay them on parchment paper-lined baking sheets.\u003C/li\u003E\u003Cli\u003EUse a fork to poke holes in the center of each piece of dough to keep the centers from rising too much.\u003C/li\u003E\u003Cli\u003EWhisk together 1 egg and 1 Tb. of water. Brush the egg wash over each piece of dough. Bake the dough for 8-10 minutes, until golden-brown.\u003C/li\u003E\u003Cli\u003EMeanwhile, slice each strawberry into 4-5 thins slices. Scrape off the rind and slice the brie into thin rectangles. Pull the thyme leaves off the stems.\u003C/li\u003E\u003Cli\u003EWhen the puff pastry is golden, remove it from the oven and allow the centers to collapse a little. If they don't, poke them down with a fork! Then layer the brie over each pastry, followed by a strawberry slice, a few thyme leaves and a sprinkle of salt.\u003C/li\u003E\u003Cli\u003EBake another 2-3 minutes until the brie has melted.\u003C/li\u003E\u003Cli\u003EDrizzle with a scant amount of honey before serving.\u003C/li\u003E\u003Cli\u003EServe warm or at room temperature!\u003C/li\u003E\u003C/ol\u003E",
+      "analyzedInstructions": [
+        {
+          "name": "",
+          "steps": [
+            {
+              "number": 1,
+              "step": "Preheat the oven to 400 F. Using a 2 inch cookie cutter, cut out at least 40 pieces of pastry dough and lay them on parchment paper-lined baking sheets.Use a fork to poke holes in the center of each piece of dough to keep the centers from rising too much.",
+              "ingredients": [
+                {
+                  "id": 10018338,
+                  "name": "pastry dough",
+                  "localizedName": "pastry dough",
+                  "image": "dough.jpg"
+                },
+                {
+                  "id": 10118192,
+                  "name": "cookies",
+                  "localizedName": "cookies",
+                  "image": "https://spoonacular.com/cdn/ingredients_100x100/shortbread-cookies.jpg"
+                },
+                {
+                  "id": 0,
+                  "name": "dough",
+                  "localizedName": "dough",
+                  "image": "pizza-dough"
+                }
+              ],
+              "equipment": [
+                {
+                  "id": 404770,
+                  "name": "baking paper",
+                  "localizedName": "baking paper",
+                  "image": "https://spoonacular.com/cdn/equipment_100x100/baking-paper.jpg"
+                },
+                {
+                  "id": 404727,
+                  "name": "baking sheet",
+                  "localizedName": "baking sheet",
+                  "image": "https://spoonacular.com/cdn/equipment_100x100/baking-sheet.jpg"
+                },
+                {
+                  "id": 221429,
+                  "name": "cookie cutter",
+                  "localizedName": "cookie cutter",
+                  "image": "https://spoonacular.com/cdn/equipment_100x100/cookie-cutters.jpg"
+                },
+                {
+                  "id": 404784,
+                  "name": "oven",
+                  "localizedName": "oven",
+                  "image": "https://spoonacular.com/cdn/equipment_100x100/oven.jpg",
+                  "temperature": {
+                    "number": 400,
+                    "unit": "Fahrenheit"
+                  }
+                }
+              ]
+            },
+            {
+              "number": 2,
+              "step": "Whisk together 1 egg and 1 Tb. of water.",
+              "ingredients": [
+                {
+                  "id": 14412,
+                  "name": "water",
+                  "localizedName": "water",
+                  "image": "water.png"
+                },
+                {
+                  "id": 1123,
+                  "name": "egg",
+                  "localizedName": "egg",
+                  "image": "egg.png"
+                }
+              ],
+              "equipment": [
+                {
+                  "id": 404661,
+                  "name": "whisk",
+                  "localizedName": "whisk",
+                  "image": "https://spoonacular.com/cdn/equipment_100x100/whisk.png"
+                }
+              ]
+            },
+            {
+              "number": 3,
+              "step": "Brush the egg wash over each piece of dough.",
+              "ingredients": [
+                {
+                  "id": 0,
+                  "name": "dough",
+                  "localizedName": "dough",
+                  "image": "pizza-dough"
+                },
+                {
+                  "id": 1123,
+                  "name": "egg",
+                  "localizedName": "egg",
+                  "image": "egg.png"
+                }
+              ],
+              "equipment": []
+            },
+            {
+              "number": 4,
+              "step": "Bake the dough for 8-10 minutes, until golden-brown.Meanwhile, slice each strawberry into 4-5 thins slices. Scrape off the rind and slice the brie into thin rectangles. Pull the thyme leaves off the stems.When the puff pastry is golden, remove it from the oven and allow the centers to collapse a little. If they don't, poke them down with a fork! Then layer the brie over each pastry, followed by a strawberry slice, a few thyme leaves and a sprinkle of salt.",
+              "ingredients": [
+                {
+                  "id": 2049,
+                  "name": "thyme",
+                  "localizedName": "thyme",
+                  "image": "thyme.jpg"
+                },
+                {
+                  "id": 18337,
+                  "name": "puff pastry sheets",
+                  "localizedName": "puff pastry sheets",
+                  "image": "puff-pastry.png"
+                },
+                {
+                  "id": 9316,
+                  "name": "strawberries",
+                  "localizedName": "strawberries",
+                  "image": "strawberries.png"
+                },
+                {
+                  "id": 0,
+                  "name": "dough",
+                  "localizedName": "dough",
+                  "image": "pizza-dough"
+                },
+                {
+                  "id": 1006,
+                  "name": "brie",
+                  "localizedName": "brie",
+                  "image": "brie.jpg"
+                },
+                {
+                  "id": 2047,
+                  "name": "salt",
+                  "localizedName": "salt",
+                  "image": "salt.jpg"
+                }
+              ],
+              "equipment": [
+                {
+                  "id": 404784,
+                  "name": "oven",
+                  "localizedName": "oven",
+                  "image": "https://spoonacular.com/cdn/equipment_100x100/oven.jpg"
+                }
+              ],
+              "length": {
+                "number": 10,
+                "unit": "minutes"
+              }
+            },
+            {
+              "number": 5,
+              "step": "Bake another 2-3 minutes until the brie has melted.",
+              "ingredients": [
+                {
+                  "id": 1006,
+                  "name": "brie",
+                  "localizedName": "brie",
+                  "image": "brie.jpg"
+                }
+              ],
+              "equipment": [
+                {
+                  "id": 404784,
+                  "name": "oven",
+                  "localizedName": "oven",
+                  "image": "https://spoonacular.com/cdn/equipment_100x100/oven.jpg"
+                }
+              ],
+              "length": {
+                "number": 3,
+                "unit": "minutes"
+              }
+            },
+            {
+              "number": 6,
+              "step": "Drizzle with a scant amount of honey before serving.",
+              "ingredients": [
+                {
+                  "id": 19296,
+                  "name": "honey",
+                  "localizedName": "honey",
+                  "image": "honey.png"
+                }
+              ],
+              "equipment": []
+            },
+            {
+              "number": 7,
+              "step": "Serve warm or at room temperature!",
+              "ingredients": [],
+              "equipment": []
+            }
+          ]
+        }
+      ],
+      "originalId": null,
+      "spoonacularScore": 3.25210213661194,
+      "spoonacularSourceUrl": "https://spoonacular.com/strawberry-brie-tartlets-661765"
+    },
+    {
+      "id": 658300,
+      "image": "https://img.spoonacular.com/recipes/658300-556x370.jpg",
+      "imageType": "jpg",
+      "title": "Rich Jelly Scones",
+      "readyInMinutes": 45,
+      "servings": 4,
+      "sourceUrl": "https://www.foodista.com/recipe/5GK2BSP6/rich-jelly-scones",
+      "vegetarian": true,
+      "vegan": false,
+      "glutenFree": false,
+      "dairyFree": false,
+      "veryHealthy": false,
+      "cheap": false,
+      "veryPopular": false,
+      "sustainable": false,
+      "lowFodmap": false,
+      "weightWatcherSmartPoints": 22,
+      "gaps": "no",
+      "preparationMinutes": null,
+      "cookingMinutes": null,
+      "aggregateLikes": 2,
+      "healthScore": 7,
+      "creditsText": "Foodista.com – The Cooking Encyclopedia Everyone Can Edit",
+      "license": "CC BY 3.0",
+      "sourceName": "Foodista",
+      "pricePerServing": 179.74,
+      "extendedIngredients": [
+        {
+          "id": 20081,
+          "aisle": "Baking",
+          "image": "flour.png",
+          "consistency": "SOLID",
+          "name": "all purpose flour",
+          "nameClean": "all purpose flour",
+          "original": "2 cups all purpose flour",
+          "originalName": "all purpose flour",
+          "amount": 2,
+          "unit": "cups",
+          "meta": [],
+          "measures": {
+            "us": {
+              "amount": 2,
+              "unitShort": "cups",
+              "unitLong": "cups"
+            },
+            "metric": {
+              "amount": 250,
+              "unitShort": "g",
+              "unitLong": "grams"
+            }
+          }
+        },
+        {
+          "id": 10719335,
+          "aisle": "Baking",
+          "image": "sugar-in-bowl.png",
+          "consistency": "SOLID",
+          "name": "granulated sugar",
+          "nameClean": "granulated sugar",
+          "original": "1/4 cup granulated white sugar",
+          "originalName": "granulated white sugar",
+          "amount": 0.25,
+          "unit": "cup",
+          "meta": [
+            "white"
+          ],
+          "measures": {
+            "us": {
+              "amount": 0.25,
+              "unitShort": "cups",
+              "unitLong": "cups"
+            },
+            "metric": {
+              "amount": 50,
+              "unitShort": "g",
+              "unitLong": "grams"
+            }
+          }
+        },
+        {
+          "id": 18369,
+          "aisle": "Baking",
+          "image": "white-powder.jpg",
+          "consistency": "SOLID",
+          "name": "baking powder",
+          "nameClean": "baking powder",
+          "original": "2 teaspoons baking powder",
+          "originalName": "baking powder",
+          "amount": 2,
+          "unit": "teaspoons",
+          "meta": [],
+          "measures": {
+            "us": {
+              "amount": 2,
+              "unitShort": "tsps",
+              "unitLong": "teaspoons"
+            },
+            "metric": {
+              "amount": 2,
+              "unitShort": "tsps",
+              "unitLong": "teaspoons"
+            }
+          }
+        },
+        {
+          "id": 18372,
+          "aisle": "Baking",
+          "image": "white-powder.jpg",
+          "consistency": "SOLID",
+          "name": "baking soda",
+          "nameClean": "baking soda",
+          "original": "1/4 teaspoon baking soda",
+          "originalName": "baking soda",
+          "amount": 0.25,
+          "unit": "teaspoon",
+          "meta": [],
+          "measures": {
+            "us": {
+              "amount": 0.25,
+              "unitShort": "tsps",
+              "unitLong": "teaspoons"
+            },
+            "metric": {
+              "amount": 0.25,
+              "unitShort": "tsps",
+              "unitLong": "teaspoons"
+            }
+          }
+        },
+        {
+          "id": 2047,
+          "aisle": "Spices and Seasonings",
+          "image": "salt.jpg",
+          "consistency": "SOLID",
+          "name": "salt",
+          "nameClean": "salt",
+          "original": "1/4 teaspoon salt",
+          "originalName": "salt",
+          "amount": 0.25,
+          "unit": "teaspoon",
+          "meta": [],
+          "measures": {
+            "us": {
+              "amount": 0.25,
+              "unitShort": "tsps",
+              "unitLong": "teaspoons"
+            },
+            "metric": {
+              "amount": 0.25,
+              "unitShort": "tsps",
+              "unitLong": "teaspoons"
+            }
+          }
+        },
+        {
+          "id": 1145,
+          "aisle": "Milk, Eggs, Other Dairy",
+          "image": "butter-sliced.jpg",
+          "consistency": "SOLID",
+          "name": "butter",
+          "nameClean": "butter",
+          "original": "1/2 cup unsalted butter, very cold",
+          "originalName": "unsalted butter, very cold",
+          "amount": 0.5,
+          "unit": "cup",
+          "meta": [
+            "unsalted",
+            "very cold"
+          ],
+          "measures": {
+            "us": {
+              "amount": 0.5,
+              "unitShort": "cups",
+              "unitLong": "cups"
+            },
+            "metric": {
+              "amount": 113.5,
+              "unitShort": "g",
+              "unitLong": "grams"
+            }
+          }
+        },
+        {
+          "id": 1123,
+          "aisle": "Milk, Eggs, Other Dairy",
+          "image": "egg.png",
+          "consistency": "SOLID",
+          "name": "eggs",
+          "nameClean": "eggs",
+          "original": "2 eggs",
+          "originalName": "eggs",
+          "amount": 2,
+          "unit": "",
+          "meta": [],
+          "measures": {
+            "us": {
+              "amount": 2,
+              "unitShort": "",
+              "unitLong": ""
+            },
+            "metric": {
+              "amount": 2,
+              "unitShort": "",
+              "unitLong": ""
+            }
+          }
+        },
+        {
+          "id": 1077,
+          "aisle": "Milk, Eggs, Other Dairy",
+          "image": "milk.png",
+          "consistency": "LIQUID",
+          "name": "milk",
+          "nameClean": "milk",
+          "original": "cup milk",
+          "originalName": "milk",
+          "amount": 1,
+          "unit": "cup",
+          "meta": [],
+          "measures": {
+            "us": {
+              "amount": 1,
+              "unitShort": "cup",
+              "unitLong": "cup"
+            },
+            "metric": {
+              "amount": 244,
+              "unitShort": "ml",
+              "unitLong": "milliliters"
+            }
+          }
+        },
+        {
+          "id": 2050,
+          "aisle": "Baking",
+          "image": "vanilla-extract.jpg",
+          "consistency": "LIQUID",
+          "name": "vanilla extract",
+          "nameClean": "vanilla extract",
+          "original": "1 1/2 teaspoons pure vanilla extract",
+          "originalName": "pure vanilla extract",
+          "amount": 1.5,
+          "unit": "teaspoons",
+          "meta": [
+            "pure"
+          ],
+          "measures": {
+            "us": {
+              "amount": 1.5,
+              "unitShort": "tsps",
+              "unitLong": "teaspoons"
+            },
+            "metric": {
+              "amount": 1.5,
+              "unitShort": "tsps",
+              "unitLong": "teaspoons"
+            }
+          }
+        },
+        {
+          "id": 9431,
+          "aisle": "Produce",
+          "image": "mixed-fresh-fruit.jpg",
+          "consistency": "SOLID",
+          "name": "fruit preserves",
+          "nameClean": "fruit preserves",
+          "original": "Thick jam or fruit preserves",
+          "originalName": "Thick jam or fruit preserves",
+          "amount": 4,
+          "unit": "servings",
+          "meta": [
+            "thick"
+          ],
+          "measures": {
+            "us": {
+              "amount": 4,
+              "unitShort": "servings",
+              "unitLong": "servings"
+            },
+            "metric": {
+              "amount": 4,
+              "unitShort": "servings",
+              "unitLong": "servings"
+            }
+          }
+        },
+        {
+          "id": 1123,
+          "aisle": "Milk, Eggs, Other Dairy",
+          "image": "egg.png",
+          "consistency": "SOLID",
+          "name": "egg",
+          "nameClean": "egg",
+          "original": "1 large egg, beaten well",
+          "originalName": "egg, beaten well",
+          "amount": 1,
+          "unit": "large",
+          "meta": [
+            "beaten",
+            "well"
+          ],
+          "measures": {
+            "us": {
+              "amount": 1,
+              "unitShort": "large",
+              "unitLong": "large"
+            },
+            "metric": {
+              "amount": 1,
+              "unitShort": "large",
+              "unitLong": "large"
+            }
+          }
+        },
+        {
+          "id": 1077,
+          "aisle": "Milk, Eggs, Other Dairy",
+          "image": "milk.png",
+          "consistency": "LIQUID",
+          "name": "milk",
+          "nameClean": "milk",
+          "original": "1 tablespoon milk",
+          "originalName": "milk",
+          "amount": 1,
+          "unit": "tablespoon",
+          "meta": [],
+          "measures": {
+            "us": {
+              "amount": 1,
+              "unitShort": "Tbsp",
+              "unitLong": "Tbsp"
+            },
+            "metric": {
+              "amount": 1,
+              "unitShort": "Tbsp",
+              "unitLong": "Tbsp"
+            }
+          }
+        }
+      ],
+      "summary": "Need a \u003Cb\u003Elacto ovo vegetarian breakfast\u003C/b\u003E? Rich Jelly Scones could be an amazing recipe to try. This recipe serves 4. For \u003Cb\u003E$1.8 per serving\u003C/b\u003E, this recipe \u003Cb\u003Ecovers 18%\u003C/b\u003E of your daily requirements of vitamins and minerals. One serving contains \u003Cb\u003E640 calories\u003C/b\u003E, \u003Cb\u003E14g of protein\u003C/b\u003E, and \u003Cb\u003E29g of fat\u003C/b\u003E. Not a lot of people really liked this European dish. 2 people found this recipe to be tasty and satisfying. It is brought to you by Foodista. A mixture of salt, butter, baking powder, and a handful of other ingredients are all it takes to make this recipe so delicious. From preparation to the plate, this recipe takes approximately \u003Cb\u003E45 minutes\u003C/b\u003E. Overall, this recipe earns a \u003Cb\u003Erather bad spoonacular score of 40%\u003C/b\u003E. If you like this recipe, take a look at these similar recipes: \u003Ca href=\"https://spoonacular.com/recipes/rich-sour-cream-scones-from-1928-129655\"\u003ERich Sour Cream Scones, from 1928\u003C/a\u003E, \u003Ca href=\"https://spoonacular.com/recipes/currant-jelly-scones-414483\"\u003ECurrant Jelly Scones\u003C/a\u003E, and \u003Ca href=\"https://spoonacular.com/recipes/peanut-butter-and-jelly-scones-1051437\"\u003EPeanut Butter and Jelly Scones\u003C/a\u003E.",
+      "cuisines": [
+        "English",
+        "Scottish",
+        "British",
+        "European"
+      ],
+      "dishTypes": [
+        "morning meal",
+        "dessert",
+        "brunch",
+        "breakfast"
+      ],
+      "diets": [
+        "lacto ovo vegetarian"
+      ],
+      "occasions": [],
+      "instructions": "Pre-heat oven to 400 degrees.\nMix dry ingredients together.\nCut butter into the dry ingredients using a fork or hand-held pastry blender. When well blended, the mixture will have the look of crumbly sand.\nAdd the vanilla, eggs, and milk, mixing only long enough to blend the ingredients. *You do not want to begin to melt the butter into the flour mixture by over-mixing.\nTurn the dough onto a lightly floured counter top or pastry board. Shape it into a round disc 8 inches across, slightly thicker in the center.\nUsing a long knife, cut the dough into eight even pie-shaped portions.\nPlace scones on a lightly greased baking sheet. Using a spoon, press a well into the wide end of each triangle, and fill the well with a spoonful of fruit jam. Brush the exposed surface of each scone with the milk/egg mixture,\nBake for twenty-five minutes, until scones are a beautiful golden brown.",
+      "analyzedInstructions": [
+        {
+          "name": "",
+          "steps": [
+            {
+              "number": 1,
+              "step": "Pre-heat oven to 400 degrees.",
+              "ingredients": [],
+              "equipment": [
+                {
+                  "id": 404784,
+                  "name": "oven",
+                  "localizedName": "oven",
+                  "image": "https://spoonacular.com/cdn/equipment_100x100/oven.jpg"
+                }
+              ]
+            },
+            {
+              "number": 2,
+              "step": "Mix dry ingredients together.",
+              "ingredients": [],
+              "equipment": []
+            },
+            {
+              "number": 3,
+              "step": "Cut butter into the dry ingredients using a fork or hand-held pastry blender. When well blended, the mixture will have the look of crumbly sand.",
+              "ingredients": [
+                {
+                  "id": 1001,
+                  "name": "butter",
+                  "localizedName": "butter",
+                  "image": "butter-sliced.jpg"
+                }
+              ],
+              "equipment": [
+                {
+                  "id": 404726,
+                  "name": "blender",
+                  "localizedName": "blender",
+                  "image": "https://spoonacular.com/cdn/equipment_100x100/blender.png"
+                }
+              ]
+            },
+            {
+              "number": 4,
+              "step": "Add the vanilla, eggs, and milk, mixing only long enough to blend the ingredients. *You do not want to begin to melt the butter into the flour mixture by over-mixing.",
+              "ingredients": [
+                {
+                  "id": 1052050,
+                  "name": "vanilla",
+                  "localizedName": "vanilla",
+                  "image": "vanilla.jpg"
+                },
+                {
+                  "id": 1001,
+                  "name": "butter",
+                  "localizedName": "butter",
+                  "image": "butter-sliced.jpg"
+                },
+                {
+                  "id": 20081,
+                  "name": "all purpose flour",
+                  "localizedName": "all purpose flour",
+                  "image": "flour.png"
+                },
+                {
+                  "id": 1123,
+                  "name": "egg",
+                  "localizedName": "egg",
+                  "image": "egg.png"
+                },
+                {
+                  "id": 1077,
+                  "name": "milk",
+                  "localizedName": "milk",
+                  "image": "milk.png"
+                }
+              ],
+              "equipment": []
+            },
+            {
+              "number": 5,
+              "step": "Turn the dough onto a lightly floured counter top or pastry board. Shape it into a round disc 8 inches across, slightly thicker in the center.",
+              "ingredients": [
+                {
+                  "id": 0,
+                  "name": "dough",
+                  "localizedName": "dough",
+                  "image": "pizza-dough"
+                }
+              ],
+              "equipment": []
+            },
+            {
+              "number": 6,
+              "step": "Using a long knife, cut the dough into eight even pie-shaped portions.",
+              "ingredients": [
+                {
+                  "id": 0,
+                  "name": "dough",
+                  "localizedName": "dough",
+                  "image": "pizza-dough"
+                }
+              ],
+              "equipment": [
+                {
+                  "id": 404745,
+                  "name": "knife",
+                  "localizedName": "knife",
+                  "image": "https://spoonacular.com/cdn/equipment_100x100/chefs-knife.jpg"
+                }
+              ]
+            },
+            {
+              "number": 7,
+              "step": "Place scones on a lightly greased baking sheet. Using a spoon, press a well into the wide end of each triangle, and fill the well with a spoonful of fruit jam.",
+              "ingredients": [
+                {
+                  "id": 9431,
+                  "name": "fruit",
+                  "localizedName": "fruit",
+                  "image": "mixed-fresh-fruit.jpg"
+                },
+                {
+                  "id": 19297,
+                  "name": "jam",
+                  "localizedName": "jam",
+                  "image": "strawberry-jam.png"
+                }
+              ],
+              "equipment": [
+                {
+                  "id": 404727,
+                  "name": "baking sheet",
+                  "localizedName": "baking sheet",
+                  "image": "https://spoonacular.com/cdn/equipment_100x100/baking-sheet.jpg"
+                }
+              ]
+            },
+            {
+              "number": 8,
+              "step": "Brush the exposed surface of each scone with the milk/egg mixture,",
+              "ingredients": [
+                {
+                  "id": 1077,
+                  "name": "milk",
+                  "localizedName": "milk",
+                  "image": "milk.png"
+                },
+                {
+                  "id": 1123,
+                  "name": "egg",
+                  "localizedName": "egg",
+                  "image": "egg.png"
+                }
+              ],
+              "equipment": []
+            },
+            {
+              "number": 9,
+              "step": "Bake for twenty-five minutes, until scones are a beautiful golden brown.",
+              "ingredients": [],
+              "equipment": [
+                {
+                  "id": 404784,
+                  "name": "oven",
+                  "localizedName": "oven",
+                  "image": "https://spoonacular.com/cdn/equipment_100x100/oven.jpg"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "originalId": null,
+      "spoonacularScore": 9.47853565216065,
+      "spoonacularSourceUrl": "https://spoonacular.com/rich-jelly-scones-658300"
+    },
+    {
+      "id": 632091,
+      "image": "https://img.spoonacular.com/recipes/632091-556x370.jpg",
+      "imageType": "jpg",
+      "title": "Almond and cranberry shortbread",
+      "readyInMinutes": 45,
+      "servings": 10,
+      "sourceUrl": "https://www.foodista.com/recipe/6J6BPBR5/almond-and-cranberry-shortbread",
+      "vegetarian": true,
+      "vegan": false,
+      "glutenFree": false,
+      "dairyFree": false,
+      "veryHealthy": false,
+      "cheap": false,
+      "veryPopular": false,
+      "sustainable": false,
+      "lowFodmap": false,
+      "weightWatcherSmartPoints": 13,
+      "gaps": "no",
+      "preparationMinutes": null,
+      "cookingMinutes": null,
+      "aggregateLikes": 7,
+      "healthScore": 2,
+      "creditsText": "Foodista.com – The Cooking Encyclopedia Everyone Can Edit",
+      "license": "CC BY 3.0",
+      "sourceName": "Foodista",
+      "pricePerServing": 62.19,
+      "extendedIngredients": [
+        {
+          "id": 1001,
+          "aisle": "Milk, Eggs, Other Dairy",
+          "image": "butter-sliced.jpg",
+          "consistency": "SOLID",
+          "name": "butter",
+          "nameClean": "butter",
+          "original": "170 g butter, softened, cut into smaller pieces",
+          "originalName": "butter, softened, cut into smaller pieces",
+          "amount": 170,
+          "unit": "g",
+          "meta": [
+            "softened",
+            "cut into smaller pieces"
+          ],
+          "measures": {
+            "us": {
+              "amount": 5.997,
+              "unitShort": "oz",
+              "unitLong": "ounces"
+            },
+            "metric": {
+              "amount": 170,
+              "unitShort": "g",
+              "unitLong": "grams"
+            }
+          }
+        },
+        {
+          "id": 19336,
+          "aisle": "Baking",
+          "image": "powdered-sugar.jpg",
+          "consistency": "SOLID",
+          "name": "icing sugar",
+          "nameClean": "icing sugar",
+          "original": "125 g icing sugar",
+          "originalName": "icing sugar",
+          "amount": 125,
+          "unit": "g",
+          "meta": [],
+          "measures": {
+            "us": {
+              "amount": 4.409,
+              "unitShort": "oz",
+              "unitLong": "ounces"
+            },
+            "metric": {
+              "amount": 125,
+              "unitShort": "g",
+              "unitLong": "grams"
+            }
+          }
+        },
+        {
+          "id": 1125,
+          "aisle": "Milk, Eggs, Other Dairy",
+          "image": "egg-yolk.jpg",
+          "consistency": "SOLID",
+          "name": "egg yolks",
+          "nameClean": "egg yolks",
+          "original": "2 egg yolks",
+          "originalName": "egg yolks",
+          "amount": 2,
+          "unit": "",
+          "meta": [],
+          "measures": {
+            "us": {
+              "amount": 2,
+              "unitShort": "",
+              "unitLong": ""
+            },
+            "metric": {
+              "amount": 2,
+              "unitShort": "",
+              "unitLong": ""
+            }
+          }
+        },
+        {
+          "id": 9152,
+          "aisle": "Produce",
+          "image": "lemon-juice.jpg",
+          "consistency": "LIQUID",
+          "name": "lemon juice",
+          "nameClean": "lemon juice",
+          "original": "2 tsp lemon juice",
+          "originalName": "lemon juice",
+          "amount": 2,
+          "unit": "tsp",
+          "meta": [],
+          "measures": {
+            "us": {
+              "amount": 2,
+              "unitShort": "tsps",
+              "unitLong": "teaspoons"
+            },
+            "metric": {
+              "amount": 2,
+              "unitShort": "tsps",
+              "unitLong": "teaspoons"
+            }
+          }
+        },
+        {
+          "id": 20081,
+          "aisle": "Baking",
+          "image": "flour.png",
+          "consistency": "SOLID",
+          "name": "flour",
+          "nameClean": "flour",
+          "original": "190 g flour",
+          "originalName": "flour",
+          "amount": 190,
+          "unit": "g",
+          "meta": [],
+          "measures": {
+            "us": {
+              "amount": 6.702,
+              "unitShort": "oz",
+              "unitLong": "ounces"
+            },
+            "metric": {
+              "amount": 190,
+              "unitShort": "g",
+              "unitLong": "grams"
+            }
+          }
+        },
+        {
+          "id": 12061,
+          "aisle": "Nuts",
+          "image": "almonds.jpg",
+          "consistency": "SOLID",
+          "name": "almonds",
+          "nameClean": "almonds",
+          "original": "110 g almonds, finely ground",
+          "originalName": "almonds, finely ground",
+          "amount": 110,
+          "unit": "g",
+          "meta": [
+            "finely"
+          ],
+          "measures": {
+            "us": {
+              "amount": 3.88,
+              "unitShort": "oz",
+              "unitLong": "ounces"
+            },
+            "metric": {
+              "amount": 110,
+              "unitShort": "g",
+              "unitLong": "grams"
+            }
+          }
+        },
+        {
+          "id": 9079,
+          "aisle": "Produce",
+          "image": "dried-cranberries.jpg",
+          "consistency": "SOLID",
+          "name": "cranberries",
+          "nameClean": "cranberries",
+          "original": "110 g cranberries, dried",
+          "originalName": "cranberries, dried",
+          "amount": 110,
+          "unit": "g",
+          "meta": [
+            "dried"
+          ],
+          "measures": {
+            "us": {
+              "amount": 3.88,
+              "unitShort": "oz",
+              "unitLong": "ounces"
+            },
+            "metric": {
+              "amount": 110,
+              "unitShort": "g",
+              "unitLong": "grams"
+            }
+          }
+        },
+        {
+          "id": 12062,
+          "aisle": "Savory Snacks",
+          "image": "blanched-almonds.png",
+          "consistency": "SOLID",
+          "name": "blanched almonds and",
+          "nameClean": "blanched almonds and",
+          "original": "A handful of blanched almonds and / or pistachios, coarsely chopped",
+          "originalName": "blanched almonds and / or pistachios, coarsely chopped",
+          "amount": 1,
+          "unit": "handful",
+          "meta": [
+            "coarsely chopped"
+          ],
+          "measures": {
+            "us": {
+              "amount": 1,
+              "unitShort": "handful",
+              "unitLong": "handful"
+            },
+            "metric": {
+              "amount": 1,
+              "unitShort": "handful",
+              "unitLong": "handful"
+            }
+          }
+        }
+      ],
+      "summary": "Need a \u003Cb\u003Elacto ovo vegetarian dessert\u003C/b\u003E? Almond and cranberry shortbread could be a super recipe to try. This recipe serves 10. For \u003Cb\u003E62 cents per serving\u003C/b\u003E, this recipe \u003Cb\u003Ecovers 8%\u003C/b\u003E of your daily requirements of vitamins and minerals. One portion of this dish contains roughly \u003Cb\u003E5g of protein\u003C/b\u003E, \u003Cb\u003E21g of fat\u003C/b\u003E, and a total of \u003Cb\u003E350 calories\u003C/b\u003E. It is brought to you by Foodista. 7 people have made this recipe and would make it again. A mixture of blanched almonds and, icing sugar, egg yolks, and a handful of other ingredients are all it takes to make this recipe so scrumptious. From preparation to the plate, this recipe takes approximately \u003Cb\u003E45 minutes\u003C/b\u003E. All things considered, we decided this recipe \u003Cb\u003Edeserves a spoonacular score of 27%\u003C/b\u003E. This score is rather bad. Users who liked this recipe also liked \u003Ca href=\"https://spoonacular.com/recipes/cranberry-almond-shortbread-301474\"\u003ECranberry-Almond Shortbread\u003C/a\u003E, \u003Ca href=\"https://spoonacular.com/recipes/cranberry-almond-shortbread-bars-831531\"\u003ECranberry Almond Shortbread Bars\u003C/a\u003E, and \u003Ca href=\"https://spoonacular.com/recipes/cranberry-shortbread-bars-with-almond-streusel-162607\"\u003ECranberry Shortbread Bars with Almond Streusel\u003C/a\u003E.",
+      "cuisines": [],
+      "dishTypes": [
+        "dessert"
+      ],
+      "diets": [
+        "lacto ovo vegetarian"
+      ],
+      "occasions": [],
+      "instructions": "Cream the butter for about 5 minutes until fluffy. Add powdered sugar, continue beating until the mixture is shiny and smooth.\nAdd the yolks and lemon juice and whisk until fully incorporated.\nMix flour and almonds and gradually add to the butter mixture. Mix until the doug has consistency of a thick paste. Do not overmix (too much mixing makes the cookies hard).\nAdd dried cranberries by kneading by hand.\nDivide the dough into two equal parts, shape each part into a 20-22 cm long roll.\nRoll each of the rolls in chopped almonds and/ or pistachios sprinkled over two aluminum sheets long enough to wrap the roll of dough. With fingers lightly press the roll towards the center to remove any air bubbles or cracks from the dough.\nWrap each roll in foil, twist the ends and place in the refrigerator for several hours, preferably overnight.\nRemove foil from a roll of dough (keep the other cool until use) and place on a cutting board. With a large, sharp knife cut the roll  into 5-6 mm wide slices.\nPlace the slices well apart, on a baking sheet covered with parchment paper. Bake the cookies in the oven preheated to 180C for about 12 min (be careful not to burn them). Let them cool on the sheet for about 5 minutes, then transfer to a rack or a plate to cool fully. Repeat with the second roll of dough.\nStore the cookies in an airtight container.",
+      "analyzedInstructions": [
+        {
+          "name": "",
+          "steps": [
+            {
+              "number": 1,
+              "step": "Cream the butter for about 5 minutes until fluffy.",
+              "ingredients": [
+                {
+                  "id": 1001,
+                  "name": "butter",
+                  "localizedName": "butter",
+                  "image": "butter-sliced.jpg"
+                },
+                {
+                  "id": 1053,
+                  "name": "cream",
+                  "localizedName": "cream",
+                  "image": "fluid-cream.jpg"
+                }
+              ],
+              "equipment": [],
+              "length": {
+                "number": 5,
+                "unit": "minutes"
+              }
+            },
+            {
+              "number": 2,
+              "step": "Add powdered sugar, continue beating until the mixture is shiny and smooth.",
+              "ingredients": [
+                {
+                  "id": 19336,
+                  "name": "powdered sugar",
+                  "localizedName": "powdered sugar",
+                  "image": "https://spoonacular.com/cdn/ingredients_100x100/powdered-sugar.jpg"
+                }
+              ],
+              "equipment": []
+            },
+            {
+              "number": 3,
+              "step": "Add the yolks and lemon juice and whisk until fully incorporated.",
+              "ingredients": [
+                {
+                  "id": 9152,
+                  "name": "lemon juice",
+                  "localizedName": "lemon juice",
+                  "image": "lemon-juice.jpg"
+                },
+                {
+                  "id": 1125,
+                  "name": "egg yolk",
+                  "localizedName": "egg yolk",
+                  "image": "egg-yolk.jpg"
+                }
+              ],
+              "equipment": [
+                {
+                  "id": 404661,
+                  "name": "whisk",
+                  "localizedName": "whisk",
+                  "image": "https://spoonacular.com/cdn/equipment_100x100/whisk.png"
+                }
+              ]
+            },
+            {
+              "number": 4,
+              "step": "Mix flour and almonds and gradually add to the butter mixture.",
+              "ingredients": [
+                {
+                  "id": 12061,
+                  "name": "almonds",
+                  "localizedName": "almonds",
+                  "image": "almonds.jpg"
+                },
+                {
+                  "id": 1001,
+                  "name": "butter",
+                  "localizedName": "butter",
+                  "image": "butter-sliced.jpg"
+                },
+                {
+                  "id": 20081,
+                  "name": "all purpose flour",
+                  "localizedName": "all purpose flour",
+                  "image": "flour.png"
+                }
+              ],
+              "equipment": []
+            },
+            {
+              "number": 5,
+              "step": "Mix until the doug has consistency of a thick paste. Do not overmix (too much mixing makes the cookies hard).",
+              "ingredients": [
+                {
+                  "id": 10118192,
+                  "name": "cookies",
+                  "localizedName": "cookies",
+                  "image": "https://spoonacular.com/cdn/ingredients_100x100/shortbread-cookies.jpg"
+                }
+              ],
+              "equipment": []
+            },
+            {
+              "number": 6,
+              "step": "Add dried cranberries by kneading by hand.",
+              "ingredients": [
+                {
+                  "id": 9079,
+                  "name": "dried cranberries",
+                  "localizedName": "dried cranberries",
+                  "image": "dried-cranberries.jpg"
+                }
+              ],
+              "equipment": []
+            },
+            {
+              "number": 7,
+              "step": "Divide the dough into two equal parts, shape each part into a 20-22 cm long roll.",
+              "ingredients": [
+                {
+                  "id": 0,
+                  "name": "dough",
+                  "localizedName": "dough",
+                  "image": "pizza-dough"
+                },
+                {
+                  "id": 0,
+                  "name": "roll",
+                  "localizedName": "roll",
+                  "image": "dinner-yeast-rolls.jpg"
+                }
+              ],
+              "equipment": []
+            },
+            {
+              "number": 8,
+              "step": "Roll each of the rolls in chopped almonds and/ or pistachios sprinkled over two aluminum sheets long enough to wrap the roll of dough. With fingers lightly press the roll towards the center to remove any air bubbles or cracks from the dough.",
+              "ingredients": [
+                {
+                  "id": 12151,
+                  "name": "pistachio nuts",
+                  "localizedName": "pistachio nuts",
+                  "image": "pistachios.jpg"
+                },
+                {
+                  "id": 12061,
+                  "name": "almonds",
+                  "localizedName": "almonds",
+                  "image": "almonds.jpg"
+                },
+                {
+                  "id": 0,
+                  "name": "dough",
+                  "localizedName": "dough",
+                  "image": "pizza-dough"
+                },
+                {
+                  "id": 0,
+                  "name": "roll",
+                  "localizedName": "roll",
+                  "image": "dinner-yeast-rolls.jpg"
+                },
+                {
+                  "id": 10018364,
+                  "name": "wrap",
+                  "localizedName": "wrap",
+                  "image": "flour-tortilla.jpg"
+                }
+              ],
+              "equipment": []
+            },
+            {
+              "number": 9,
+              "step": "Wrap each roll in foil, twist the ends and place in the refrigerator for several hours, preferably overnight.",
+              "ingredients": [
+                {
+                  "id": 0,
+                  "name": "roll",
+                  "localizedName": "roll",
+                  "image": "dinner-yeast-rolls.jpg"
+                },
+                {
+                  "id": 10018364,
+                  "name": "wrap",
+                  "localizedName": "wrap",
+                  "image": "flour-tortilla.jpg"
+                }
+              ],
+              "equipment": [
+                {
+                  "id": 404765,
+                  "name": "aluminum foil",
+                  "localizedName": "aluminum foil",
+                  "image": "https://spoonacular.com/cdn/equipment_100x100/aluminum-foil.png"
+                }
+              ]
+            },
+            {
+              "number": 10,
+              "step": "Remove foil from a roll of dough (keep the other cool until use) and place on a cutting board. With a large, sharp knife cut the roll  into 5-6 mm wide slices.",
+              "ingredients": [
+                {
+                  "id": 0,
+                  "name": "dough",
+                  "localizedName": "dough",
+                  "image": "pizza-dough"
+                },
+                {
+                  "id": 0,
+                  "name": "roll",
+                  "localizedName": "roll",
+                  "image": "dinner-yeast-rolls.jpg"
+                }
+              ],
+              "equipment": [
+                {
+                  "id": 404716,
+                  "name": "cutting board",
+                  "localizedName": "cutting board",
+                  "image": "https://spoonacular.com/cdn/equipment_100x100/cutting-board.jpg"
+                },
+                {
+                  "id": 404745,
+                  "name": "knife",
+                  "localizedName": "knife",
+                  "image": "https://spoonacular.com/cdn/equipment_100x100/chefs-knife.jpg"
+                },
+                {
+                  "id": 404765,
+                  "name": "aluminum foil",
+                  "localizedName": "aluminum foil",
+                  "image": "https://spoonacular.com/cdn/equipment_100x100/aluminum-foil.png"
+                }
+              ]
+            },
+            {
+              "number": 11,
+              "step": "Place the slices well apart, on a baking sheet covered with parchment paper.",
+              "ingredients": [],
+              "equipment": [
+                {
+                  "id": 404770,
+                  "name": "baking paper",
+                  "localizedName": "baking paper",
+                  "image": "https://spoonacular.com/cdn/equipment_100x100/baking-paper.jpg"
+                },
+                {
+                  "id": 404727,
+                  "name": "baking sheet",
+                  "localizedName": "baking sheet",
+                  "image": "https://spoonacular.com/cdn/equipment_100x100/baking-sheet.jpg"
+                }
+              ]
+            },
+            {
+              "number": 12,
+              "step": "Bake the cookies in the oven preheated to 180C for about 12 min (be careful not to burn them).",
+              "ingredients": [
+                {
+                  "id": 10118192,
+                  "name": "cookies",
+                  "localizedName": "cookies",
+                  "image": "https://spoonacular.com/cdn/ingredients_100x100/shortbread-cookies.jpg"
+                }
+              ],
+              "equipment": [
+                {
+                  "id": 404784,
+                  "name": "oven",
+                  "localizedName": "oven",
+                  "image": "https://spoonacular.com/cdn/equipment_100x100/oven.jpg",
+                  "temperature": {
+                    "number": 180,
+                    "unit": "Celsius"
+                  }
+                }
+              ],
+              "length": {
+                "number": 12,
+                "unit": "minutes"
+              }
+            },
+            {
+              "number": 13,
+              "step": "Let them cool on the sheet for about 5 minutes, then transfer to a rack or a plate to cool fully. Repeat with the second roll of dough.",
+              "ingredients": [
+                {
+                  "id": 0,
+                  "name": "dough",
+                  "localizedName": "dough",
+                  "image": "pizza-dough"
+                },
+                {
+                  "id": 0,
+                  "name": "roll",
+                  "localizedName": "roll",
+                  "image": "dinner-yeast-rolls.jpg"
+                }
+              ],
+              "equipment": [],
+              "length": {
+                "number": 5,
+                "unit": "minutes"
+              }
+            },
+            {
+              "number": 14,
+              "step": "Store the cookies in an airtight container.",
+              "ingredients": [
+                {
+                  "id": 10118192,
+                  "name": "cookies",
+                  "localizedName": "cookies",
+                  "image": "https://spoonacular.com/cdn/ingredients_100x100/shortbread-cookies.jpg"
+                }
+              ],
+              "equipment": []
+            }
+          ]
+        }
+      ],
+      "originalId": null,
+      "spoonacularScore": 36.5391883850098,
+      "spoonacularSourceUrl": "https://spoonacular.com/almond-and-cranberry-shortbread-632091"
+    }
+  ]
+}

@@ -32,10 +32,17 @@ if (searchForm) {
         const urlSearchParams = constructSearchURL(getSearchParams());
         searchRecipes(urlSearchParams).then(data => {
             console.log({ data })
-
+            if(data.results.length === 0){
+                populateSearchContainer(`
+                    <div class="alert alert-danger" role="alert">
+                    Whoops we couldn't find any recipes...  
+                    </div>
+                    `)
+                return;
+            }
             let html = '';
             data['results'].forEach((recipe) => html += recipeCard(recipe));
-            populateSearchContainer(html)
+            populateSearchContainer(html);
 
         });
 
