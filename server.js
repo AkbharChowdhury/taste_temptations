@@ -1,7 +1,8 @@
 import express from 'express'
 import dotenv from 'dotenv';
 import { mealTypes, cuisines } from './food.js';
-import { titleCase, sortedArray } from './utils.js';
+// import { titleCase, sortedArray } from './public/js/utils.js';
+import { titleCase, sortedArray } from './public/js/utils.js';
 
 
 const app = express();

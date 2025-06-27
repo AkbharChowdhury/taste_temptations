@@ -1,4 +1,6 @@
 "use strict";
+import { titleCase } from './utils.js';
+
 document.title = 'Taste Temptations'
 function fetchRecipeID() {
     const recipeID = 'recipeID';
@@ -72,7 +74,7 @@ function showIngredientList(ingredientlist) {
 
 function showDishTypeTags(dishes) {
     let html = '';
-    dishes.forEach(dish => html += `<span class="badge bg-secondary text-decoration-none link-light m-2">${dish}</span>`)
+    dishes.forEach(dish => html += `<span class="badge bg-secondary text-decoration-none link-light m-2">${titleCase(dish)}</span>`)
     return html;
 
 }
@@ -86,7 +88,8 @@ const recipeID = fetchRecipeID()
 
 // get recipe details
 fetchRequestJSON(recipeID, '/detail').then(data => {
-    console.log(data)
+    console.log('recipe details')
+    console.log({data})
 
     const title = document.querySelector('#item-title');
     const image = document.querySelector('#item-image');
@@ -96,26 +99,26 @@ fetchRequestJSON(recipeID, '/detail').then(data => {
     image.setAttribute('src', data.image)
     image.setAttribute('alt', data.title);
     const cuisines = data.cuisines;
+ 
+    const cuisinesText = cuisines.length !== 0 ? `| ${cuisines.join(', ')}`: '';
 
     document.getElementById('additional-details').innerHTML = `
-     <p class="fs-5 mb-4">Serves ${data.servings}, ready in ${data.readyInMinutes} minutes | ${cuisines.join(', ')}</p>
+     <p class="fs-5 mb-4">Serves ${data.servings}, ready in ${data.readyInMinutes} minutes ${cuisinesText}</p>`;
 
-    
-    `;
-    // document.getElementById('addtional-details').innerHTML = /*html*/`
-    //     ${data.readyInMinutes} minutes, serves ${data.servings} `
     document.getElementById('recipe-summary').innerHTML = data.summary;
     document.getElementById('dish-types').innerHTML = showDishTypeTags(data.dishTypes);
+    if(data.analyzedInstructions[0] === undefined){
+         document.getElementById('instructions-header').style.display = 'none';
+         return;
 
-    if (data.analyzedInstructions[0] != undefined) {
-        const steps = data.analyzedInstructions[0]['steps'];
-        document.getElementById('stepsListContainer').innerHTML = getSteps(steps);
-
-    } else {
-        document.getElementById('instructions-header').style.display = 'none';
     }
+    const steps = data.analyzedInstructions[0]['steps'];
+    document.getElementById('stepsListContainer').innerHTML = getSteps(steps);
+
+  
 
 });
+
 
 fetchRequestJSON(recipeID, '/similarRecipes').then(data => displaySimilarRecipes(data));
 
