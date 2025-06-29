@@ -1,6 +1,6 @@
 export const recipeCard = (recipe) => {
     return /*html*/`
-   <div class="col-sm-6 col-md-4 mt-5">
+   <div class="col-sm-6 col-md-4">
             <div class="card h-100">
                 <img src="${recipe.image}" class="card-img-top" alt="${recipe.title}">
                 <div class="card-body">
@@ -13,5 +13,24 @@ export const recipeCard = (recipe) => {
 `;
 }
 
-     
+const columnClassLookup = Object.freeze({
+        0: 'col-sm-6 mb-3 mb-sm-0',
+        1: 'col-sm-6 ',
+        'default': () => 'col-sm-6'
+  });
 
+export const similarRecipeCard = (recipe, index) => {
+  const columnClass = columnClassLookup[index] || columnClassLookup['default']();
+
+  const title = recipe.title;
+  return /*html*/`
+      <div class="${columnClass}">
+    <div class="card h-100">
+      <div class="card-body">
+        <h5 class="card-title">${title}</h5>
+        <p class="card-text">Ready in ${recipe.readyInMinutes} mins | servings ${recipe.servings}</p>
+        <a href="detail.html?recipeID=${recipe.id}" target="_blank" class="btn btn-primary">View</a>
+      </div>
+    </div>
+  </div> `;
+}

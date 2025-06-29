@@ -1,7 +1,6 @@
 import express from 'express'
 import dotenv from 'dotenv';
 import { mealTypes, cuisines } from './food.js';
-// import { titleCase, sortedArray } from './public/js/utils.js';
 import { titleCase, sortedArray } from './public/js/utils.js';
 
 
@@ -16,19 +15,39 @@ const getFoodAPIKey = () => {
     dotenv.config();
     return process.env.FOOD_API_KEY;
 }
-app.listen(3000, () => console.log('Server listening on port 3000'));
+app.listen(3000, () => {
+    console.log('Server listening on port 3000');
+    // const isBetween = (x, min, max) => x >= min && x <= max;
+
+
+    // const nutritionColour = {
+    //     'fat': (value) => {
+    //         const isLow = isBetween(value, 0, 3);
+    //         const IsMed = isBetween(value, 3.1, 17.5);
+
+    //         if (isLow) return 'green';
+    //         if (IsMed) return 'orange';
+    //         return 'red';
+
+    //     }
+    // }
+    // console.log(nutritionColour.fat(21))
+
+});
 
 
 
 async function searchRecipes(urlSearchParams) {
     const FOOD_API_KEY = getFoodAPIKey();
     const limit = 9;
+
+    // https://api.spoonacular.com/recipes/complexSearch?query=pancake&number=12&apiKey=&addRecipeNutrition=true&addRecipeInformation=true&fillIngredients=true
     // const url = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${FOOD_API_KEY}&number=${limit}${urlSearchParams}`;
     const url = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${FOOD_API_KEY}${urlSearchParams}`;
 
     const response = await fetch(url);
     return await response.json();
-   
+
 }
 
 app.get('/meals', (req, res) => {
@@ -87,10 +106,10 @@ async function getRandomRecipes() {
         const limit = 9;
         const response = await fetch(`https://api.spoonacular.com/recipes/random?number=${limit}&include-tags=${TAGS.join()}&apiKey=${FOOD_API_KEY}`);
         return await response.json();
-    } catch(error){
+    } catch (error) {
         res.send(`There was an error fetching random recipes from server side ${error.message}`)
     }
-    
+
 }
 app.get('/random-recipes', async (req, res) => getRandomRecipes().then(data => res.send(data)));
 
@@ -108,5 +127,5 @@ app.post('/search', (req, res) => {
 
     const urlSearchParams = req.body.urlSearchParams;
     searchRecipes(urlSearchParams).then(recipes => res.send(recipes))
-    .catch(error => console.error(`there was an error fetching recipes ${error.message}`))
+        .catch(error => console.error(`there was an error fetching recipes ${error.message}`))
 });

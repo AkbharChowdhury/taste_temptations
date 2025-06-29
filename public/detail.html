@@ -38,7 +38,7 @@
         <h2>You might also like</h2>
         <hr>
 
-        <div class="row" id="similar-recipe-list"></div>
+        <div class="row gy-3" id="similar-recipe-list"></div>
 
       </section>
 
@@ -82,16 +82,32 @@
                     </div> -->
                     <!-- Side widget-->
                     <div class="card mb-4">
-                        <div class="card-header">Side Widget</div>
-                        <div class="card-body">You can put anything you want inside of these side widgets. They are easy to use, and feature the Bootstrap 5 card component!</div>
+                        <div class="card-header text-capitalize">Nutrition Facts</div>
+                        <div class="card-body">
+                       <div class="table-responsive">
+                             <table class="table">
+  <thead>
+    <tr>
+      <th scope="col"></th>
+      <th scope="col">% of daily needs</th>
+    </tr>
+  </thead>
+  <tbody id="nutrients">
+    <tr>
+      <td>112g Cholesterol</td>
+      <td>12%</td>
+    </tr>
+   
+   
+  </tbody>
+</table>
+                       </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Footer-->
-        <footer class="py-5 bg-dark">
-            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p></div>
-        </footer>
+       
          <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
     crossorigin="anonymous"></script>
