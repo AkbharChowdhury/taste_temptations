@@ -40,9 +40,9 @@ if (searchForm) {
                     `)
                 return;
             }
-            let html = '';
-            data['results'].forEach((recipe) => html += recipeCard(recipe));
-            populateSearchContainer(html);
+
+            const recipesList = data.results.map(recipe =>  recipeCard(recipe)).join().replaceAll(',', '')
+            populateSearchContainer(recipesList);
 
         });
 
@@ -89,8 +89,7 @@ populateFoodDiv('/meals', '#meal');
 populateFoodDiv('/cuisines', '#cuisines-container');
 
 fetchRandomRecipes().then(data => {
-    let html = '';
-    data['recipes'].forEach((recipe) => html += recipeCard(recipe));
-    populateSearchContainer(html)
+    const recipesList = data.recipes.map(recipe =>  recipeCard(recipe)).join().replaceAll(',', '')
+    populateSearchContainer(recipesList)
 });
 

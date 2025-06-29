@@ -28,42 +28,38 @@ async function fetchRequestJSON(recipeID, url) {
 
 
 
-function showIngredientList(ingredientlist) {
-    let html = /*html*/`<ul>`;
-    ingredientlist.map(ingredient => html += /*html*/`<li>${ingredient}</li>`);
-    html += /*html*/`</ul>`;
-    return html;
+const showIngredientList = ingredientlist => /*html*/`
+    <ul>
+        ${ingredientlist.map(ingredient =>  `<li>${ingredient}</li>`).join().replaceAll(',', '')}
 
-}
+    </ul>   
+    `;
 
 
 
 const showDishTypeTags = (dishes) => dishes.map(dish => `<span class="badge bg-secondary text-decoration-none link-light m-2">${titleCase(dish)}</span>`).join().replaceAll(',', '')
 
+const getSteps = steps => /*html*/`
+    <ol>
+        ${steps.map(step => `<li>${step.step}</li>`).join().replaceAll(',', '')}
 
-function getSteps(steps) {
-    let htmlSteps = '<ol>';
-    steps.forEach(step => htmlSteps += `<li>${step.step}</li>`);
-    console.log({ htmlSteps })
-    return htmlSteps += '</ol>';
-}
+    </ol>   
+    `;
+
 const recipeID = fetchRecipeID()
 
 
 const nutritionDetails = (nutrients) => nutrients.map(i => `
-
     <tr>
       <td>${i.amount}${i.unit} ${i.name}</td>
       <td>${i.percentOfDailyNeeds}%</td>
     </tr>
-    
     
     `).join().replaceAll(',', '')
 
 
 
 
-// get recipe details
 fetchRequestJSON(recipeID, '/detail').then(data => {
     document.querySelector('#nutrients').innerHTML = nutritionDetails(data.nutrition.nutrients);
     const ingredients = data.extendedIngredients.map(ingredient => ingredient.original);
