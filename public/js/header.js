@@ -19,7 +19,7 @@ const nav = () => /*html*/`
      <nav class="navbar bg-body-tertiary">
     <div class="container-fluid">
       <a class="navbar-brand" href="index.html">
-        <img src="logo.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+        <img src="img/logo.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
         <span style="color: #7B3F00;">Taste Temptations</span>
       </a>
     </div>

@@ -10,60 +10,48 @@ app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+dotenv.config();
 
-const getFoodAPIKey = () => {
-    dotenv.config();
-    return process.env.FOOD_API_KEY;
-}
-app.listen(3000, () => {
-    console.log('Server listening on port 3000');
-    // const isBetween = (x, min, max) => x >= min && x <= max;
+const getFoodAPIKey = () => process.env.FOOD_API_KEY;
 
-
-    // const nutritionColour = {
-    //     'fat': (value) => {
-    //         const isLow = isBetween(value, 0, 3);
-    //         const IsMed = isBetween(value, 3.1, 17.5);
-
-    //         if (isLow) return 'green';
-    //         if (IsMed) return 'orange';
-    //         return 'red';
-
-    //     }
-    // }
-    // console.log(nutritionColour.fat(21))
-
-});
-
-
+app.listen(3000, _ => console.log('Server listening on port 3000'));
 
 async function searchRecipes(urlSearchParams) {
-    const FOOD_API_KEY = getFoodAPIKey();
-    const limit = 9;
+    try {
+        const FOOD_API_KEY = getFoodAPIKey();
+        const url = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${FOOD_API_KEY}${urlSearchParams}`;
+        const response = await fetch(url);
+        return await response.json();
 
-    // https://api.spoonacular.com/recipes/complexSearch?query=pancake&number=12&apiKey=&addRecipeNutrition=true&addRecipeInformation=true&fillIngredients=true
-    // const url = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${FOOD_API_KEY}&number=${limit}${urlSearchParams}`;
-    const url = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${FOOD_API_KEY}${urlSearchParams}`;
+    } catch (error) {
+        console.error('There was an error fetching recipes')
 
-    const response = await fetch(url);
-    return await response.json();
+    }
 
 }
 
 app.get('/meals', (req, res) => {
     const sortedMeals = sortedArray(mealTypes());
-    let html =/*html*/` <option selected value="">No preference</option>`;
-    sortedMeals.forEach(meal => html +=/*html*/`<option value="${meal}">${titleCase(meal)}</option>`)
+
+    const html =
+    /*html*/`
+        <option selected value="">No preference</option>
+        ${sortedMeals.map(meal => /*html*/`
+            <option value="${meal}">${titleCase(meal)}</option>
+                `).join().replaceAll(',', '')}
+    `;
+
+
+
     res.send(html);
 
 });
 
 
 app.get('/cuisines', (req, res) => {
-    let html = '';
     const sortedCuisines = sortedArray(cuisines());
 
-    sortedCuisines.forEach(cuisine => html +=/*html*/`
+    const html = sortedCuisines.map(cuisine => /*html*/`
         
          <div class="form-check">
             <input class="form-check-input" type="checkbox" value="${cuisine}" id="${cuisine}" name="cuisines">
@@ -71,9 +59,8 @@ app.get('/cuisines', (req, res) => {
                 ${cuisine}
             </label>
     </div>
-
         
-        `)
+        `).join().replaceAll(',', '')
     res.send(html);
 
 });
@@ -85,10 +72,18 @@ app.get('/cuisines', (req, res) => {
 
 
 async function getSimilarRecipes(recipeID) {
-    const FOOD_API_KEY = getFoodAPIKey();
-    const limit = 6;
-    const response = await fetch(`https://api.spoonacular.com/recipes/${recipeID}/similar?apiKey=${FOOD_API_KEY}&number=${limit}`);
-    return await response.json();
+    try {
+        const FOOD_API_KEY = getFoodAPIKey();
+        const limit = 6;
+        const response = await fetch(`https://api.spoonacular.com/recipes/${recipeID}/similar?apiKey=${FOOD_API_KEY}&number=${limit}`);
+        return await response.json();
+
+    } catch (error) {
+        console.error(`There was an error fetching similar recipes ${error.message}`)
+
+
+
+    }
 }
 
 
@@ -114,11 +109,16 @@ async function getRandomRecipes() {
 app.get('/random-recipes', async (req, res) => getRandomRecipes().then(data => res.send(data)));
 
 app.post('/detail', async (req, res) => {
-    const recipeID = req.body.recipeID;
-    const FOOD_API_KEY = getFoodAPIKey();
-    const response = await fetch(`https://api.spoonacular.com/recipes/${recipeID}/information?apiKey=${FOOD_API_KEY}&includeNutrition=true`);
-    const data = await response.json();
-    res.send(data);
+    try {
+
+        const recipeID = req.body.recipeID;
+        const FOOD_API_KEY = getFoodAPIKey();
+        const response = await fetch(`https://api.spoonacular.com/recipes/${recipeID}/information?apiKey=${FOOD_API_KEY}&includeNutrition=true`);
+        res.send(await response.json());
+    } catch (error) {
+        console.error(`There was an error fetching recipe details`)
+
+    }
 });
 
 
