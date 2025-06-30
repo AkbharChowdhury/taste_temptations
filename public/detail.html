@@ -1,60 +1,40 @@
 <div id="header"></div>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-8">
+            <!-- Post content-->
+            <article>
+                <header class="mb-4">
+                    <h1 class="fw-bolder mb-1" id="title">Baby Chick Cupcakes</h1>
+                    <div class="text-muted fst-italic mb-2" id="additional-details">Serves 12, ready in 45 minutes | American</div>
+                    <div id="dish-types"></div>
 
-       
-        <!-- Page content-->
-        <div class="container mt-5">
-            <div class="row">
-                <div class="col-lg-8">
-                    <!-- Post content-->
-                    <article>
-                        <!-- Post header-->
-                        <header class="mb-4">
-                            <!-- Post title-->
-                            <h1 class="fw-bolder mb-1" id="title">Baby Chick Cupcakes</h1>
-                            <!-- Post meta content-->
-                            <div class="text-muted fst-italic mb-2" id="additional-details">Serves 12, ready in 45 minutes | American</div>
-                            <!-- Post categories-->
-                             <div id="dish-types"></div>
-                            <!-- <a class="badge bg-secondary text-decoration-none link-light" href="#!">Dessert</a> -->
-                            <!-- <a class="badge bg-secondary text-decoration-none link-light" href="#!">Snack Time</a> -->
-
-                        </header>
-                        <!-- Preview image figure-->
-                        <div class="col">
-                            <figure class="mb-4 text-start">
-                            <img class="img-fluid rounded" id="image" src="https://img.spoonacular.com/recipes/633229-556x370.jpg" alt="image" />
-                        </figure>
-                        </div>
-                        <!-- Post content-->
-                        <section class="mb-5">
-
-                            <p class="fs-5 mb-4" id="summary"></p>
-                             <h2 class="fw-bolder mb-4 mt-5">Ingredients</h2>
-                                <p class="fs-5 mb-4" id="ingredient-list">
-                              
-                                </p>
-                                <h2 class="fw-bolder mb-4 mt-5" id="instructions-header">Instructions</h2>
-                                <p class="fs-5 mb-4" id="steps-container"> </p>
-                           
-                        </section>
-                    </article>
-
-   <section id="similar-recipes">
-        <h2>You might also like</h2>
-        <hr>
-
-        <div class="row gy-3" id="similar-recipe-list"></div>
-
-      </section>
-
-
-
-                  
+                </header>
+                <div class="col">
+                    <figure class="mb-4 text-start">
+                        <img class="img-fluid rounded" id="image"
+                            src="https://img.spoonacular.com/recipes/633229-556x370.jpg" alt="image" />
+                    </figure>
                 </div>
-                <!-- Side widgets-->
-                <div class="col-lg-4">
-                    <!-- Search widget-->
-                    <!-- <div class="card mb-4">
+                <section class="mb-5" id="recipe-details">
+                    <p class="fs-5 mb-4" id="summary"></p>
+                    <h2 class="fw-bolder mb-4 mt-5">Ingredients</h2>
+                    <p class="fs-5 mb-4" id="ingredient-list"></p>
+                    <h2 class="fw-bolder mb-4 mt-5" id="instructions-header">Instructions</h2>
+                    <p class="fs-5 mb-4" id="steps-container"> </p>
+                </section>
+            </article>
+
+            <section id="similar-recipes">
+                <h2>You might also like</h2>
+                <hr>
+                <div class="row gy-3" id="similar-recipe-list"></div>
+            </section>
+        </div>
+        <!-- Side widgets-->
+        <div class="col-lg-4">
+            <!-- Search widget-->
+            <!-- <div class="card mb-4">
                         <div class="card-header">Search</div>
                         <div class="card-body">
                             <div class="input-group">
@@ -63,8 +43,8 @@
                             </div>
                         </div>
                     </div> -->
-                    <!-- Categories widget-->
-                    <!-- <div class="card mb-4">
+            <!-- Categories widget-->
+            <!-- <div class="card mb-4">
                         <div class="card-header">Categories</div>
                         <div class="card-body">
                             <div class="row">
@@ -85,45 +65,36 @@
                             </div>
                         </div>
                     </div> -->
-                    <!-- Side widget-->
-                    <div class="card mb-4">
-                        <div class="card-header text-capitalize">Nutrition Facts</div>
-                        <div class="card-body">
-                       <div class="table-responsive">
-                             <table class="table">
-  <thead>
-    <tr>
-      <th scope="col"></th>
-      <th scope="col">% of daily needs</th>
-    </tr>
-  </thead>
-  <tbody id="nutrients">
-    <tr>
-      <td>112g Cholesterol</td>
-      <td>12%</td>
-    </tr>
-   
-   
-  </tbody>
-</table>
-                       </div>
-                        </div>
+            <!-- Side widget-->
+            <div class="card mb-4">
+                <div class="card-header text-capitalize">Nutrition Facts</div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col"></th>
+                                    <th scope="col">% of daily needs</th>
+                                </tr>
+                            </thead>
+                            <tbody id="nutrients">
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
         </div>
-       
-         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
     crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/htmx.org@2.0.5/dist/htmx.min.js"
+<script src="https://cdn.jsdelivr.net/npm/htmx.org@2.0.5/dist/htmx.min.js"
     integrity="sha384-t4DxZSyQK+0Uv4jzy5B0QyHyWQD2GFURUmxKMBVww9+e2EJ0ei/vCvv7+79z0fkr"
     crossorigin="anonymous"></script>
 <script src="js/header.js"></script>
 <script src="js/detail.js" type="module"></script>
+</body>
 
-
-
-
-    </body>
 </html>
