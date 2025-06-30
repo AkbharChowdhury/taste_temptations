@@ -16,7 +16,7 @@ const getSearchParams = () => {
 
 }
 
-const constructSearchURL = searchParams => {
+const constructSearchURLParams = searchParams => {
     let url = '';
     if (searchParams.query) url += `&query=${searchParams.query}`;
     if (searchParams.meal) url += `&type=${searchParams.meal}`;
@@ -44,7 +44,7 @@ const searchForm = document.querySelector('#search-form');
 if (searchForm) {
     searchForm.addEventListener('submit', e => {
         e.preventDefault();
-        const urlSearchParams = constructSearchURL(getSearchParams());
+        const urlSearchParams = constructSearchURLParams(getSearchParams());
         searchRecipes(urlSearchParams).then(data => showSearchResults(data));
     });
 }
