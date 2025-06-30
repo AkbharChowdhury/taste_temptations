@@ -2,6 +2,7 @@
 import { titleCase } from './utils.js';
 import { similarRecipeCard } from './recipe-card.js';
 
+const recipeID = fetchRecipeID();
 
 function fetchRecipeID() {
     const recipeIDParam = 'recipeID';
@@ -57,7 +58,7 @@ const nutritionDetails = (nutrients) => nutrients.map(i => `
 
 
 
-fetchRequestJSON(fetchRecipeID(), '/detail').then(data => {
+fetchRequestJSON(recipeID, '/detail').then(data => {
     const {title, image, cuisines} =  data;
 
     document.title = `Taste Temptations: ${title}`;

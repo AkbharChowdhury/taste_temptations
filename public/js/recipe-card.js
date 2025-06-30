@@ -17,16 +17,15 @@ const columnClassLookup = Object.freeze({
         1: 'col-sm-6 ',
         'default': () => 'col-sm-6'
   });
+const getRecipeImage = id => `https://img.spoonacular.com/recipes/${id}-556x370.jpg`;
 
 export const similarRecipeCard = (recipe, index) => {
   const columnClass = columnClassLookup[index] || columnClassLookup['default']();
   const {id, title} = recipe;
-  console.log(id)
-  const imageUrl = `https://img.spoonacular.com/recipes/${id}-556x370.jpg`;
   return /*html*/`
       <div class="${columnClass}">
     <div class="card h-100">
-      <img src="${imageUrl}" class="card-img-top" alt="${title}">
+      <img src="${getRecipeImage(id)}" class="card-img-top" alt="${title}">
       <div class="card-body">
         <h5 class="card-title">${title}</h5>
         <p class="card-text">Ready in ${recipe.readyInMinutes} mins | servings ${recipe.servings}</p>
