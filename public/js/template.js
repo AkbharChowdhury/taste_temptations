@@ -24,10 +24,22 @@ const nav = () => /*html*/`
       </a>
     </div>
   </nav>
-`
+`;
+const footer = () => /*html*/`
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/htmx.org@2.0.5/dist/htmx.min.js"
+    integrity="sha384-t4DxZSyQK+0Uv4jzy5B0QyHyWQD2GFURUmxKMBVww9+e2EJ0ei/vCvv7+79z0fkr"
+    crossorigin="anonymous"></script>
+  
+`;
 const headerContainer = document.querySelector('#header');
 headerContainer.insertAdjacentHTML("beforebegin", `${header()}${nav()}`)
 headerContainer.remove();
 
+const footerContainer = document.querySelector('#footer');
+footerContainer.insertAdjacentHTML("beforebegin", `${footer()}`)
+footerContainer.remove();
 
 

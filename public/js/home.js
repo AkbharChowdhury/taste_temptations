@@ -3,8 +3,7 @@ import { recipeCard } from './recipe-card.js';
 
 const populateFoodDiv = async (url, div) => {
     const response = await fetch(url);
-    const data = await response.text();
-    document.querySelector(div).insertAdjacentHTML("afterbegin", data);
+    document.querySelector(div).insertAdjacentHTML("afterbegin", await response.text());
 }
 const populateSearchContainer = content => document.querySelector('#result').innerHTML = content;
 
@@ -25,28 +24,29 @@ const constructSearchURL = searchParams => {
     return url;
 
 }
-const searchForm = document.querySelector('#search-form');
-if (searchForm) {
-    searchForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const urlSearchParams = constructSearchURL(getSearchParams());
-        searchRecipes(urlSearchParams).then(data => {
-            console.log({ data })
-            if(data.results.length === 0){
-                populateSearchContainer(`
+const renderRecipeList = recipes => recipes.map(recipe => recipeCard(recipe)).join().replaceAll(',', '');
+
+const noRecipesFoundMessage = `
                     <div class="alert alert-danger" role="alert">
                     Whoops we couldn't find any recipes...  
                     </div>
-                    `)
-                return;
-            }
+                    `;
+const showSearchResults = data => {
+    const { results } = data;
+    if (results.length === 0) {
+        populateSearchContainer(noRecipesFoundMessage);
+        return;
+    }
 
-            const recipesList = data.results.map(recipe =>  recipeCard(recipe)).join().replaceAll(',', '')
-            populateSearchContainer(recipesList);
-
-        });
-
-    })
+    populateSearchContainer(renderRecipeList(results));
+}
+const searchForm = document.querySelector('#search-form');
+if (searchForm) {
+    searchForm.addEventListener('submit', e => {
+        e.preventDefault();
+        const urlSearchParams = constructSearchURL(getSearchParams());
+        searchRecipes(urlSearchParams).then(data => showSearchResults(data));
+    });
 }
 
 
@@ -88,8 +88,5 @@ async function fetchRandomRecipes() {
 populateFoodDiv('/meals', '#meal');
 populateFoodDiv('/cuisines', '#cuisines-container');
 
-fetchRandomRecipes().then(data => {
-    const recipesList = data.recipes.map(recipe =>  recipeCard(recipe)).join().replaceAll(',', '')
-    populateSearchContainer(recipesList)
-});
+fetchRandomRecipes().then(data => populateSearchContainer(renderRecipeList(data.recipes)));
 

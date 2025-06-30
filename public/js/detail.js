@@ -70,8 +70,6 @@ fetchRequestJSON(recipeID, '/detail').then(data => {
     const imageTag = document.querySelector('#image');
     const {title, image} =  data;
     titleTag.textContent = title;
-    // imageTag.setAttribute('src', image)
-    // imageTag.setAttribute('alt', title);
 
     Object.assign(imageTag, {
         src: image,
