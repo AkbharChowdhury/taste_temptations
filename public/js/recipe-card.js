@@ -13,14 +13,13 @@ export const recipeCard = (recipe) =>
 
 
 const columnClassLookup = Object.freeze({
-        0: 'col-sm-6 mb-3 mb-sm-0',
-        1: 'col-sm-6 ',
-        'default': () => 'col-sm-6'
+        0: 'col-sm-6 mb-3 mb-sm-0 mt-3',
+        'default': 'col-sm-6'
   });
 const getRecipeImage = id => `https://img.spoonacular.com/recipes/${id}-556x370.jpg`;
 
 export const similarRecipeCard = (recipe, index) => {
-  const columnClass = columnClassLookup[index] || columnClassLookup['default']();
+  const columnClass = columnClassLookup[index] || columnClassLookup['default'];
   const {id, title} = recipe;
   return /*html*/`
       <div class="${columnClass}">
