@@ -1,17 +1,16 @@
-export const recipeCard = (recipe) => {
-    return /*html*/`
+export const recipeCard = (recipe) => 
+     /*html*/`
    <div class="col-sm-6 col-md-4">
             <div class="card h-100">
                 <img src="${recipe.image}" class="card-img-top" alt="${recipe.title}">
                 <div class="card-body">
                   <h5 class="card-title">${recipe.title}</h5>
-                  <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
                    <a href="detail.html?recipeID=${recipe.id}" class="card-link" target="_blank">View More</a>
                 </div>
               </div>
         </div>
 `;
-}
+
 
 const columnClassLookup = Object.freeze({
         0: 'col-sm-6 mb-3 mb-sm-0',
@@ -21,9 +20,6 @@ const columnClassLookup = Object.freeze({
 
 export const similarRecipeCard = (recipe, index) => {
   const columnClass = columnClassLookup[index] || columnClassLookup['default']();
-
-  // const title = recipe.title;
-  // const id = recipe.id;
   const {id, title} = recipe;
   const imageUrl = `https://img.spoonacular.com/recipes/${id}-556x370.jpg`
   return /*html*/`
