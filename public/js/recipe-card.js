@@ -22,14 +22,18 @@ const columnClassLookup = Object.freeze({
 export const similarRecipeCard = (recipe, index) => {
   const columnClass = columnClassLookup[index] || columnClassLookup['default']();
 
-  const title = recipe.title;
+  // const title = recipe.title;
+  // const id = recipe.id;
+  const {id, title} = recipe;
+  const imageUrl = `https://img.spoonacular.com/recipes/${id}-556x370.jpg`
   return /*html*/`
       <div class="${columnClass}">
     <div class="card h-100">
+      <img src="${imageUrl}" class="card-img-top" alt="${title}">
       <div class="card-body">
         <h5 class="card-title">${title}</h5>
         <p class="card-text">Ready in ${recipe.readyInMinutes} mins | servings ${recipe.servings}</p>
-        <a href="detail.html?recipeID=${recipe.id}" target="_blank" class="btn btn-primary">View</a>
+        <a href="detail.html?recipeID=${id}" target="_blank" class="btn btn-primary">View</a>
       </div>
     </div>
   </div> `;

@@ -61,34 +61,46 @@ const nutritionDetails = (nutrients) => nutrients.map(i => `
 
 
 fetchRequestJSON(recipeID, '/detail').then(data => {
+
     document.querySelector('#nutrients').innerHTML = nutritionDetails(data.nutrition.nutrients);
     const ingredients = data.extendedIngredients.map(ingredient => ingredient.original);
     document.querySelector('#ingredient-list').innerHTML = showIngredientList(ingredients);
 
-    const title = document.querySelector('#title');
-    const image = document.querySelector('#image');
-    title.textContent = data.title;
-    image.setAttribute('src', data.image)
-    image.setAttribute('alt', data.title);
+    const titleTag = document.querySelector('#title');
+    const imageTag = document.querySelector('#image');
+    const {title, image} =  data;
+    titleTag.textContent = title;
+    // imageTag.setAttribute('src', image)
+    // imageTag.setAttribute('alt', title);
+
+    Object.assign(imageTag, {
+        src: image,
+        alt: title
+       
+    });
+    console.log('image:' ,imageTag.getAttribute('src'))
     const cuisines = data.cuisines;
 
     const cuisinesText = cuisines.length !== 0 ? `| ${cuisines.join(', ')}` : '';
     document.querySelector('#additional-details').textContent = `Serves ${data.servings}, ready in ${data.readyInMinutes} minutes ${cuisinesText}`;
     document.querySelector('#summary').innerHTML = data.summary;
     document.querySelector('#dish-types').innerHTML = showDishTypeTags(data.dishTypes);
+    const instructions = data.analyzedInstructions[0];
 
-    if (data.analyzedInstructions[0] === undefined) {
+    if (instructions === undefined) {
         document.querySelector('#instructions-header').style.display = 'none';
         return;
     }
 
-    const steps = data.analyzedInstructions[0]['steps'];
-    document.querySelector('#steps-container').innerHTML = getSteps(steps);
+    document.querySelector('#steps-container').innerHTML = getSteps(instructions.steps);
 
 });
 
 
 fetchRequestJSON(recipeID, '/similarRecipes').then(recipeList => {
+    console.log('similar recipes');
+    console.log({recipeList});
+
     const similarRecipeList = recipeList.map((recipe, index) => similarRecipeCard(recipe, index)).join().replaceAll(',', '');
     document.querySelector('#similar-recipe-list').innerHTML = similarRecipeList;
 });
