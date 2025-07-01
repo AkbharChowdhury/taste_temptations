@@ -17,7 +17,7 @@ async function fetchRequestJSON(recipeID, url) {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-            'recipeID': recipeID
+           recipeID
 
         }),
     });
@@ -31,7 +31,6 @@ async function fetchRequestJSON(recipeID, url) {
 const showIngredientList = ingredientlist => /*html*/`
     <ul>
         ${ingredientlist.map(ingredient =>  `<li>${ingredient}</li>`).join().replaceAll(',', '')}
-
     </ul>   
     `;
 

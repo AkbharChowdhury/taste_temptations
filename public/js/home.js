@@ -17,6 +17,7 @@ const getSearchParams = () => {
 }
 
 const constructSearchURLParams = searchParams => {
+   
     let url = '';
     if (searchParams.query) url += `&query=${searchParams.query}`;
     if (searchParams.meal) url += `&type=${searchParams.meal}`;
