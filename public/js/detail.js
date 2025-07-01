@@ -10,19 +10,24 @@ function fetchRecipeID() {
     if (searchParams.has(recipeIDParam)) return parseInt(searchParams.get(recipeIDParam));
     return 0;
 }
-async function fetchRequestJSON(recipeID, url) {
-    const response = await fetch(url, {
+async function fetchRequest(recipeID, url) {
+    try {
+        const response = await fetch(url, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
+
         body: JSON.stringify({
            recipeID
-
         }),
     });
-    const data = await response.json();
-    return data;
+    return await response.json();   
+
+    } catch (error) {
+        console.error(`There was an error with this request ${error.message}`)
+        
+    }
 
 }
 
@@ -52,12 +57,9 @@ const nutritionDetails = (nutrients) => nutrients.map(i => `
       <td>${i.percentOfDailyNeeds}%</td>
     </tr>
     
-    `).join().replaceAll(',', '')
+    `).join().replaceAll(',', '');
 
-
-
-
-fetchRequestJSON(recipeID, '/detail').then(data => {
+fetchRequest(recipeID, '/detail').then(data => {
     const {title, image, cuisines} =  data;
 
     document.title = `Taste Temptations: ${title}`;
@@ -68,15 +70,15 @@ fetchRequestJSON(recipeID, '/detail').then(data => {
 
     const titleTag = document.querySelector('#title');
     const imageTag = document.querySelector('#image');
+    
     titleTag.textContent = title;
-
     Object.assign(imageTag, {
         src: image,
         alt: title
        
     });
     const cuisinesText = cuisines.length !== 0 ? `| ${cuisines.join(', ')}` : '';
-    document.querySelector('#additional-details').textContent = `Serves ${data.servings}, ready in ${data.readyInMinutes} minutes ${cuisinesText}`;
+    document.querySelector('#additional-details').innerText = `Serves ${data.servings}, ready in ${data.readyInMinutes} minutes ${cuisinesText}`;
     document.querySelector('#summary').innerHTML = data.summary;
     document.querySelector('#dish-types').innerHTML = showDishTypeTags(data.dishTypes);
     const instructions = data.analyzedInstructions[0];
@@ -89,9 +91,9 @@ fetchRequestJSON(recipeID, '/detail').then(data => {
 });
 
 
-fetchRequestJSON(recipeID, '/similarRecipes').then(recipeList => {
-    const similarRecipeList = recipeList.map((recipe, index) => similarRecipeCard(recipe, index)).join().replaceAll(',', '');
-    document.querySelector('#similar-recipe-list').innerHTML = similarRecipeList;
+fetchRequest(recipeID, '/similarRecipes').then(recipes => {
+    const list = recipes.map((recipe, index) => similarRecipeCard(recipe, index)).join().replaceAll(',', '');
+    document.querySelector('#similar-recipe-list').innerHTML = list;
 });
 
 
