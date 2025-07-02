@@ -35,7 +35,7 @@ async function fetchRequest(recipeID, url) {
 
 const showIngredientList = ingredientlist => /*html*/`
     <ul>
-        ${ingredientlist.map(ingredient =>  `<li>${ingredient}</li>`).join().replaceAll(',', '')}
+        ${ingredientlist.map(ingredient => `<li>${ingredient}</li>`).join().replaceAll(',', '')}
     </ul>   
     `;
 
@@ -56,7 +56,6 @@ const nutritionDetails = (nutrients) => nutrients.map(i => `
       <td>${i.amount}${i.unit} ${i.name}</td>
       <td>${i.percentOfDailyNeeds}%</td>
     </tr>
-    
     `).join().replaceAll(',', '');
 
 fetchRequest(recipeID, '/detail').then(data => {
@@ -66,12 +65,15 @@ fetchRequest(recipeID, '/detail').then(data => {
 
     document.querySelector('#nutrients').innerHTML = nutritionDetails(data.nutrition.nutrients);
     const ingredients = data.extendedIngredients.map(ingredient => ingredient.original);
-    document.querySelector('#ingredient-list').innerHTML = showIngredientList(ingredients);
+    document.querySelector('#ingredient-list').innerHTML = /*html*/`
+    <ul>
+        ${ingredients.map(ingredient => `<li>${ingredient}</li>`).join().replaceAll(',', '')}
+    </ul>`;
 
     const titleTag = document.querySelector('#title');
     const imageTag = document.querySelector('#image');
-    
     titleTag.textContent = title;
+    
     Object.assign(imageTag, {
         src: image,
         alt: title

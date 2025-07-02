@@ -1,7 +1,7 @@
 "use strict";
 import { recipeCard } from './recipe-card.js';
 
-const populateFoodDiv = async (url, div) => {
+const populateSearchDiv = async (url, div) => {
     const response = await fetch(url);
     document.querySelector(div).insertAdjacentHTML("afterbegin", await response.text());
 }
@@ -13,7 +13,6 @@ const getSearchParams = () => {
     const query = document.querySelector('#recipeSearchText').value.trim();
     const meal = document.querySelector('#meal').value;
     return Object.freeze({ meal, query, cuisines });
-
 }
 
 const constructSearchURLParams = searchParams => {
@@ -86,8 +85,8 @@ async function fetchRandomRecipes() {
 
 }
 
-populateFoodDiv('/meals', '#meal');
-populateFoodDiv('/cuisines', '#cuisines-container');
+populateSearchDiv('/meals', '#meal');
+populateSearchDiv('/cuisines', '#cuisines-container');
 
 fetchRandomRecipes().then(data => populateSearchContainer(renderRecipeList(data.recipes)));
 
