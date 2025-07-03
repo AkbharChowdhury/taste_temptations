@@ -6,6 +6,7 @@ type SearchParams = {
     readonly meal:  string,
     readonly cuisines:  string[]
 }
+
 const renderRecipeList = (recipes: any) => recipes.map((recipe) => recipeCard(recipe)).join().replaceAll(',', '');
 
 

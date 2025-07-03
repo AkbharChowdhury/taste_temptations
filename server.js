@@ -50,26 +50,18 @@ app.get('/meals', (req, res) => {
 
 app.get('/cuisines', (req, res) => {
     const sortedCuisines = sortedArray(cuisines());
-
     const html = sortedCuisines.map(cuisine => /*html*/`
-        
          <div class="form-check">
             <input class="form-check-input" type="checkbox" value="${cuisine}" id="${cuisine}" name="cuisines">
             <label class="form-check-label" for="${cuisine}">
                 ${cuisine}
             </label>
-    </div>
+        </div>
         
         `).join().replaceAll(',', '')
     res.send(html);
 
 });
-
-
-
-
-
-
 
 async function getSimilarRecipes(recipeID) {
     try {
@@ -80,9 +72,6 @@ async function getSimilarRecipes(recipeID) {
 
     } catch (error) {
         console.error(`There was an error fetching similar recipes ${error.message}`)
-
-
-
     }
 }
 
