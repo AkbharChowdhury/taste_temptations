@@ -13,8 +13,8 @@ app.use(express.json());
 dotenv.config();
 
 const getFoodAPIKey = () => process.env.FOOD_API_KEY;
-
-app.listen(3000, _ => console.log('Server listening on port 3000'));
+const runApp = _ => console.log('Server listening on port 3000');
+app.listen(3000, _ => runApp());
 
 async function searchRecipes(urlSearchParams) {
     try {
@@ -31,7 +31,7 @@ async function searchRecipes(urlSearchParams) {
 }
 
 app.get('/meals', (req, res) => {
-    const sortedMeals = sortedArray(mealTypes());
+    const sortedMeals = sortedArray(mealTypes);
 
     const html =
     /*html*/`
@@ -49,7 +49,7 @@ app.get('/meals', (req, res) => {
 
 
 app.get('/cuisines', (req, res) => {
-    const sortedCuisines = sortedArray(cuisines());
+    const sortedCuisines = sortedArray(cuisines);
     const html = sortedCuisines.map(cuisine => /*html*/`
          <div class="form-check">
             <input class="form-check-input" type="checkbox" value="${cuisine}" id="${cuisine}" name="cuisines">

@@ -1,4 +1,4 @@
-export const mealTypes = _ =>[
+export const mealTypes = [
     'main course',
     'side dish',
     'dessert',
@@ -15,7 +15,8 @@ export const mealTypes = _ =>[
     'drink'
 ];
 
-export const cuisines = _ =>[
+
+export const cuisines = [
     'African',
     'Asian',
     'American',
