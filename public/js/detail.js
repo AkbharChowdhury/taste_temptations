@@ -94,6 +94,7 @@ fetchRequest(recipeID, '/detail').then(data => {
 
 
 fetchRequest(recipeID, '/similarRecipes').then(recipes => {
+    console.log({recipes})
     const list = recipes.map((recipe, index) => similarRecipeCard(recipe, index)).join().replaceAll(',', '');
     document.querySelector('#similar-recipe-list').innerHTML = list;
 });

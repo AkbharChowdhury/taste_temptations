@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 import { mealTypes, cuisines } from './food.js';
 import { titleCase, sortedArray } from './public/js/utils.js';
 
-
+const port = 3000;
 const app = express();
 app.use(express.static('public'));
 
@@ -13,8 +13,10 @@ app.use(express.json());
 dotenv.config();
 
 const getFoodAPIKey = () => process.env.FOOD_API_KEY;
-const runApp = _ => console.log('Server listening on port 3000');
-app.listen(3000, _ => runApp());
+const runApp = _ => {
+    console.log(`Server listening on port ${port.toLocaleString('en')}`);
+}
+app.listen(port, _ => runApp());
 
 async function searchRecipes(urlSearchParams) {
     try {
@@ -24,8 +26,7 @@ async function searchRecipes(urlSearchParams) {
         return await response.json();
 
     } catch (error) {
-        console.error('There was an error fetching recipes')
-
+        console.error(`There was an error fetching recipes: ${error}`)
     }
 
 }
@@ -66,7 +67,7 @@ app.get('/cuisines', (req, res) => {
 async function getSimilarRecipes(recipeID) {
     try {
         const FOOD_API_KEY = getFoodAPIKey();
-        const limit = 6;
+        const limit = 8;
         const response = await fetch(`https://api.spoonacular.com/recipes/${recipeID}/similar?apiKey=${FOOD_API_KEY}&number=${limit}`);
         return await response.json();
 
