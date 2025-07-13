@@ -9,3 +9,5 @@ old/
 test.html
 public/detail-template.html
 template.html
+links.txt
+tsconfig.json

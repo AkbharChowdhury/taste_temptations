@@ -1,7 +1,7 @@
 import express from 'express'
 import dotenv from 'dotenv';
 import { mealTypes, cuisines } from './food.js';
-import { titleCase, sortedArray } from './public/js/utils.js';
+import { titleCase, sortedArray } from './public/js/helper/utils.js';
 
 const port = 3000;
 const app = express();

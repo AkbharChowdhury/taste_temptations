@@ -1,6 +1,6 @@
 "use strict";
-import { titleCase } from './utils.js';
-import { similarRecipeCard } from './recipe-card.js';
+import { titleCase } from './helper/utils.js';
+import { similarRecipeCard } from './helper/recipe-card.js';
 
 const recipeID = fetchRecipeID();
 

@@ -1,4 +1,4 @@
-import { recipeCard } from '../public/js/recipe-card.js';
+import { recipeCard } from '../public/js/helper/recipe-card.js';
 
 "use strict";
 type SearchParams = {

@@ -1,6 +1,6 @@
 "use strict";
-import { recipeCard } from './recipe-card.js';
-import { fetchRandomRecipes, searchRecipes, constructSearchURLParams } from './functions.js';
+import { recipeCard } from './helper/recipe-card.js';
+import { fetchRandomRecipes, searchRecipes, constructSearchURLParams } from './helper/functions.js';
 
 
 const populateSearchDiv = async (url, div) => {
