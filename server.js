@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 import { mealTypes, cuisines } from './food.js';
 import { titleCase, sortedArray } from './public/js/helper/utils.js';
 
-const port = 3000;
+const port = 3_000;
 const app = express();
 app.use(express.static('public'));
 
