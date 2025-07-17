@@ -14,15 +14,6 @@ function fetchRecipeID() {
 
 
 
-
-const showIngredientList = ingredientlist => /*html*/`
-    <ul>
-        ${ingredientlist.map(ingredient => `<li>${ingredient}</li>`).join().replaceAll(',', '')}
-    </ul>   
-    `;
-
-
-
 const showDishTypeTags = (dishes) => dishes.map(dish => `<span class="badge bg-secondary text-decoration-none link-light m-2">${titleCase(dish)}</span>`).join().replaceAll(',', '')
 
 const getSteps = steps => /*html*/`
@@ -59,27 +50,29 @@ function displayRecipeDetails(data) {
     const imageTag = document.querySelector('#image');
     titleTag.textContent = title;
     
-    Object.assign(imageTag, {
-        src: image,
-        alt: title
-       
-    });
+    Object.assign(imageTag, { src: image, alt: title });
     const cuisinesText = cuisines.length !== 0 ? `| ${cuisines.join(', ')}` : '';
     document.querySelector('#additional-details').innerText = `Serves ${data.servings}, ready in ${data.readyInMinutes} minutes ${cuisinesText}`;
     document.querySelector('#summary').innerHTML = data.summary;
     document.querySelector('#dish-types').innerHTML = showDishTypeTags(data.dishTypes);
+
     const instructions = data.analyzedInstructions[0];
+    showInstructions(instructions);
+
+
+    
+}
+function showInstructions(instructions) {
     if (instructions === undefined) {
         document.querySelector('#instructions-header').style.display = 'none';
         return;
     }
 
     document.querySelector('#steps-container').innerHTML = getSteps(instructions.steps);
-    
+
 }
 
 fetchRequest(recipeID, '/similarRecipes').then(displaySimilarRecipes);
-
 
 function displaySimilarRecipes(recipes) {
     const list = recipes.map((recipe, index) => similarRecipeCard(recipe, index)).join().replaceAll(',', '');
