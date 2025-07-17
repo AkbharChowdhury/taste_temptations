@@ -13,7 +13,9 @@ app.use(express.json());
 dotenv.config();
 
 const getFoodAPIKey = () => process.env.FOOD_API_KEY;
+
 const runApp = _ => {
+    
     console.log(`Server listening on port ${port.toLocaleString('en')}`);
 }
 app.listen(port, _ => runApp());
@@ -21,8 +23,7 @@ app.listen(port, _ => runApp());
 async function searchRecipes(urlSearchParams) {
     try {
         const FOOD_API_KEY = getFoodAPIKey();
-        const url = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${FOOD_API_KEY}${urlSearchParams}`;
-        const response = await fetch(url);
+        const response = await fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${FOOD_API_KEY}${urlSearchParams}`);
         return await response.json();
 
     } catch (error) {
