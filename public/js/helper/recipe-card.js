@@ -17,6 +17,7 @@ const columnClassLookup = Object.freeze({
         'default': 'col-sm-6'
   });
 const getRecipeImage = id => `https://img.spoonacular.com/recipes/${id}-556x370.jpg`;
+
 export const similarRecipeCard = (recipe, index) => {
   const columnClass = columnClassLookup[index] || columnClassLookup['default'];
   const {id, title, readyInMinutes: minutes, servings} = recipe;

@@ -1,6 +1,7 @@
 "use strict";
 import { titleCase } from './helper/utils.js';
 import { similarRecipeCard } from './helper/recipe-card.js';
+import { fetchRequest } from './helper/functions.js';
 
 const recipeID = fetchRecipeID();
 
@@ -10,26 +11,7 @@ function fetchRecipeID() {
     if (searchParams.has(recipeIDParam)) return parseInt(searchParams.get(recipeIDParam));
     return 0;
 }
-async function fetchRequest(recipeID, url) {
-    try {
-        const response = await fetch(url, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
 
-        body: JSON.stringify({
-           recipeID
-        }),
-    });
-    return await response.json();   
-
-    } catch (error) {
-        console.error(`There was an error with this request ${error.message}`)
-        
-    }
-
-}
 
 
 
@@ -58,7 +40,10 @@ const nutritionDetails = (nutrients) => nutrients.map(i => `
     </tr>
     `).join().replaceAll(',', '');
 
-fetchRequest(recipeID, '/detail').then(data => {
+fetchRequest(recipeID, '/detail').then(displayRecipeDetails);
+
+function displayRecipeDetails(data) {
+
     const {title, image, cuisines} =  data;
 
     document.title = `Taste Temptations: ${title}`;
@@ -90,14 +75,17 @@ fetchRequest(recipeID, '/detail').then(data => {
     }
 
     document.querySelector('#steps-container').innerHTML = getSteps(instructions.steps);
-});
+    
+}
+
+fetchRequest(recipeID, '/similarRecipes').then(displaySimilarRecipes);
 
 
-fetchRequest(recipeID, '/similarRecipes').then(recipes => {
-    console.log({recipes})
+function displaySimilarRecipes(recipes) {
     const list = recipes.map((recipe, index) => similarRecipeCard(recipe, index)).join().replaceAll(',', '');
     document.querySelector('#similar-recipe-list').innerHTML = list;
-});
+    
+}
 
 
 

@@ -47,3 +47,23 @@ export const constructSearchURLParams = _ => {
     return url;
 
 }
+export async function fetchRequest(recipeID, url) {
+    try {
+        const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+
+        body: JSON.stringify({
+           recipeID
+        }),
+    });
+    return await response.json();   
+
+    } catch (error) {
+        console.error(`There was an error with this request ${error.message}`)
+        
+    }
+
+}
