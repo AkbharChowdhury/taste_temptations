@@ -9,7 +9,6 @@ type SearchParams = {
 
 const renderRecipeList = (recipes: any) => recipes.map((recipe) => recipeCard(recipe)).join().replaceAll(',', '');
 
-
 const constructSearchURLParams = (searchParams: SearchParams): string => {
     const cuisines: string[] = searchParams.cuisines;
     const query: string = searchParams.query;
@@ -40,12 +39,12 @@ const getSearchParams = (): SearchParams => {
 
     const text = document.querySelector('#recipeSearchText') as HTMLInputElement;
     const selectedMeal = document.querySelector('#meal') as HTMLSelectElement;
-    const params: SearchParams =  {
+    return {
         query: text.value.trim(),
         meal: selectedMeal.value,
         cuisines: getSelectedCuisines()
     };
-    return params;
+
 }
 
 const populateFoodDiv = async (url: string, div: string) => {
