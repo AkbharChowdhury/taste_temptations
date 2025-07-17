@@ -42,8 +42,6 @@ app.get('/meals', (req, res) => {
                 `).join().replaceAll(',', '')}
     `;
 
-
-
     res.send(html);
 
 });
@@ -106,7 +104,7 @@ app.post('/detail', async (req, res) => {
         const response = await fetch(`https://api.spoonacular.com/recipes/${recipeID}/information?apiKey=${FOOD_API_KEY}&includeNutrition=true`);
         res.send(await response.json());
     } catch (error) {
-        console.error(`There was an error fetching recipe details`)
+        console.error(`There was an error fetching recipe details`);
 
     }
 });
@@ -117,5 +115,5 @@ app.post('/search', (req, res) => {
 
     const urlSearchParams = req.body.urlSearchParams;
     searchRecipes(urlSearchParams).then(recipes => res.send(recipes))
-        .catch(error => console.error(`there was an error fetching recipes ${error.message}`))
+        .catch(error => console.error(`there was an error fetching recipes ${error.message}`));
 });
