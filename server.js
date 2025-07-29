@@ -15,8 +15,9 @@ dotenv.config();
 const getFoodAPIKey = () => process.env.FOOD_API_KEY;
 
 const runApp = _ => {
-    
+
     console.log(`Server listening on port ${port.toLocaleString('en')}`);
+
 }
 app.listen(port, _ => runApp());
 
@@ -86,9 +87,9 @@ async function getRandomRecipes() {
 
     try {
         const FOOD_API_KEY = getFoodAPIKey()
-        const TAGS = ['Asian', 'dessert'];
+        const tags = ['Asian', 'dessert'];
         const limit = 9;
-        const response = await fetch(`https://api.spoonacular.com/recipes/random?number=${limit}&include-tags=${TAGS.join()}&apiKey=${FOOD_API_KEY}`);
+        const response = await fetch(`https://api.spoonacular.com/recipes/random?number=${limit}&include-tags=${tags.join()}&apiKey=${FOOD_API_KEY}`);
         return await response.json();
     } catch (error) {
         res.send(`There was an error fetching random recipes from server side ${error.message}`)
