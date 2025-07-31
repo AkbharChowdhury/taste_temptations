@@ -4,3 +4,8 @@ export const titleCase = (sentance) => sentance
     .map(word => word.charAt(0).toUpperCase() + word.slice(1))
     .join(' ');
 export const sortedArray = (array) => array.sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()));
+
+export const getRandomItem = (arr) => arr[(Math.random() * arr.length) | 0];
+
+
+

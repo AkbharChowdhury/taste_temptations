@@ -5,7 +5,7 @@ import { fetchRandomRecipes, searchRecipes, constructSearchURLParams } from './h
 
 const populateSearchDiv = async (url, div) => {
     const response = await fetch(url);
-    document.querySelector(div).innerHTML =  await response.text();
+    document.querySelector(div).innerHTML = await response.text();
 
 }
 const populateSearchContainer = content => document.querySelector('#result').innerHTML = content;

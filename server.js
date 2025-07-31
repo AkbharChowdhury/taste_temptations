@@ -1,7 +1,7 @@
 import express from 'express'
 import dotenv from 'dotenv';
 import { mealTypes, cuisines } from './food.js';
-import { titleCase, sortedArray } from './public/js/helper/utils.js';
+import { titleCase, sortedArray, getRandomItem } from './public/js/helper/utils.js';
 
 const port = 3_000;
 const app = express();
@@ -11,19 +11,21 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 dotenv.config();
-
+const RECORDS_PER_PAGE = 12;
 const getFoodAPIKey = () => process.env.FOOD_API_KEY;
 
 const runApp = _ => {
 
     console.log(`Server listening on port ${port.toLocaleString('en')}`);
+
+    
 }
 app.listen(port, _ => runApp());
 
 async function searchRecipes(urlSearchParams) {
     try {
         const FOOD_API_KEY = getFoodAPIKey();
-        const response = await fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${FOOD_API_KEY}${urlSearchParams}`);
+        const response = await fetch(`https://api.spoonacular.com/recipes/complexSearch?number=${RECORDS_PER_PAGE}&apiKey=${FOOD_API_KEY}${urlSearchParams}`);
         return await response.json();
 
     } catch (error) {
@@ -85,10 +87,11 @@ app.post('/similarRecipes', async (req, res) => {
 async function getRandomRecipes() {
 
     try {
-        const FOOD_API_KEY = getFoodAPIKey()
-        const tags = ['Asian', 'dessert'];
-        const limit = 9;
-        const response = await fetch(`https://api.spoonacular.com/recipes/random?number=${limit}&include-tags=${tags.join()}&apiKey=${FOOD_API_KEY}`);
+        const FOOD_API_KEY = getFoodAPIKey();
+        const randomCuisine = getRandomItem(cuisines);
+        const randomMeal = getRandomItem(mealTypes);
+        const tags = [ randomMeal, randomCuisine];
+        const response = await fetch(`https://api.spoonacular.com/recipes/random?number=${RECORDS_PER_PAGE}&include-tags=${tags.join()}&apiKey=${FOOD_API_KEY}&exclude-tags=`);
         return await response.json();
     } catch (error) {
         res.send(`There was an error fetching random recipes from server side ${error.message}`)
