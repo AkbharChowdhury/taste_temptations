@@ -18,6 +18,29 @@ const runApp = _ => {
 
     console.log(`Server listening on port ${port.toLocaleString('en')}`);
 
+
+       const randomCuisine = getRandomItem(cuisines);
+        const randomMeal = getRandomItem(mealTypes);
+        
+        //  const randomMeals =  Array.from(getRandomMeals(2)).join(',')
+                     const randomMeals =  Array.from(getRandomMeals(2))
+
+         
+
+        // const tags = [ 'breakfast','snack', randomCuisine];
+        const tags = [ randomMeals, randomCuisine];
+        const flattenTags = tags.flat();
+        console.log({tags});
+                console.log({flattenTags})
+
+
+            //  const randomMeals =  Array.from(getRandomMeals(2))
+            //  console.log( randomMeals instanceof Array)
+
+
+
+
+
     
 }
 app.listen(port, _ => runApp());
@@ -83,15 +106,36 @@ app.post('/similarRecipes', async (req, res) => {
     getSimilarRecipes(recipeID).then(data => res.send(data));
 });
 
+function getRandomMeals(numberOfMeals) {
+    let randomMeals = new Set();
+    for (let index = 0; index < numberOfMeals; index++) {
+        randomMeals.add(getRandomItem(mealTypes));
+    }
+    if (randomMeals.size === 1) {
+        while (randomMeals.size === 1) {
+            randomMeals.add(getRandomItem(mealTypes));
 
+        }
+
+    }
+    return randomMeals;
+
+
+
+}
 async function getRandomRecipes() {
 
     try {
         const FOOD_API_KEY = getFoodAPIKey();
         const randomCuisine = getRandomItem(cuisines);
         const randomMeal = getRandomItem(mealTypes);
-        const tags = [ randomMeal, randomCuisine];
-        const response = await fetch(`https://api.spoonacular.com/recipes/random?number=${RECORDS_PER_PAGE}&include-tags=${tags.join()}&apiKey=${FOOD_API_KEY}&exclude-tags=`);
+        
+        //  const randomMeals =  Array.from(getRandomMeals(2)).join(',')
+        const randomMeals =  Array.from(getRandomMeals(2))
+        const tags = [randomMeal, randomCuisine];
+        const flattenTags = tags.flat();
+
+        const response = await fetch(`https://api.spoonacular.com/recipes/random?number=${RECORDS_PER_PAGE}&include-tags=${flattenTags.join()}&apiKey=${FOOD_API_KEY}&exclude-tags=`);
         return await response.json();
     } catch (error) {
         res.send(`There was an error fetching random recipes from server side ${error.message}`)
