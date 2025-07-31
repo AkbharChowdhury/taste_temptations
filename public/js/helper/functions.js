@@ -28,7 +28,7 @@ export async function searchRecipes(urlSearchParams) {
 
 
 }
-// search params
+
 const getSelectedCuisines = () => [...document.querySelectorAll('input[name="cuisines"]:checked')].map(e => e.value);
 const getSearchParams = () => {
     const cuisines = getSelectedCuisines();
@@ -40,11 +40,11 @@ const getSearchParams = () => {
 
 export const constructSearchURLParams = _ => {
     const params = getSearchParams();
-    let url = '';
-    if (params.query) url += `&query=${params.query}`;
-    if (params.meal) url += `&type=${params.meal}`;
-    if (params.cuisines.length !== 0) url += `&cuisine=${params.cuisines.join()}`;
-    return url;
+    const url = [];
+    if (params.query) url.push(`&query=${params.query}`);
+    if (params.meal) url.push(`&type=${params.meal}`);
+    if (params.cuisines.length !== 0) url.push(`&cuisine=${params.cuisines.join()}`);
+    return url.join();
 
 }
 export async function fetchRequest(recipeID, url) {
