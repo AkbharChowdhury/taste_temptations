@@ -10,7 +10,12 @@ const populateSearchDiv = async (url, div) => {
 }
 const populateSearchContainer = content => document.querySelector('#result').innerHTML = content;
 
-const renderRecipeList = recipes => recipes.map(recipe => recipeCard(recipe)).join().replaceAll(',', '');
+const renderRecipeList = recipes => {
+    console.log(recipes)
+
+
+   return recipes.map(recipe => recipeCard(recipe)).join().replaceAll(',', '')
+};
 
 const noRecipesFoundMessage = `
                     <div class="alert alert-danger" role="alert">
