@@ -17,7 +17,7 @@ const API_KEY = process.env.FOOD_API_KEY;
 const runApp = _ => {
 
     console.log(`Server listening on port ${port.toLocaleString('en')}`);
-    getRandomRecipes().then(console.log)
+   
 
 }
 
@@ -84,7 +84,7 @@ app.post('/similarRecipes', async (req, res) => {
 
 function getRandomMeals(numberOfMeals) {
     let randomMeals = new Set();
-    for (let index = 0; index < numberOfMeals; index++) {
+    for (let i = 0; i < numberOfMeals; i++) {
         randomMeals.add(getRandomItem(mealTypes));
     }
     if (randomMeals.size === 1) {
@@ -101,95 +101,42 @@ function getRandomMeals(numberOfMeals) {
 }
 
 
-async function jsonFetchRequest(url){
-    try {
-        const response = await fetch(url);
-        return await response.json();
-        
-    } catch (error) {
-        console.log('there was an error fetching json response ' + error.message)
-        
-    }
-}
 const randomRecipeUrl = (tags) => `https://api.spoonacular.com/recipes/random?number=${RECORDS_PER_PAGE}&include-tags=${tags.join()}&apiKey=${API_KEY}`
-// async function getRandomRecipes() {
-
-//     try {
-//         const randomCuisine = getRandomItem(cuisines);
-//         const randomMeals =  Array.from(getRandomMeals(2));
-//         const tags = [randomMeals, randomCuisine];
-//         const response = await fetch(randomRecipeUrl(tags));
-//         const data =  await response.json();
-
-//         if (data.recipes.length > 0) {
-//             console.log(`more than 1 random meal including ${randomMeals}`);
-//             return data;
-//         }
-//         console.log('had to reduce to a single random meal ')
-//         const randomMeal = getRandomItem(mealTypes);
-//         const urlResponse = await fetch(randomRecipeUrl([randomMeal, randomCuisine]));
-//         return await urlResponse.json();
-
-  
-        
-//     } catch (error) {
-//         console.log(`There was an error fetching random recipes from server side ${error.message}`)
-//     }
-
-// }
 
 
 async function getRandomRecipes() {
 
-    try {
-        const randomCuisine = getRandomItem(cuisines);
-        const randomMeals = Array.from(getRandomMeals(2));
-        const tags = [randomMeals, randomCuisine];
-        let url = randomRecipeUrl(tags);
-        jsonFetchRequest(url).then(data => {
+    const randomCuisine = getRandomItem(cuisines);
+    const randomMeals = Array.from(getRandomMeals(2));
+    const tags = [randomMeals, randomCuisine];
+    const response = await fetch(randomRecipeUrl(tags));
+    const data =  await response.json();
+    if (data.recipes.length > 0) return data;
 
-            if (data.recipes.length > 0) {
-                console.log(`more than 1 random meal including ${randomMeals}`);
-                return data;
-            }
+    const randomMeal = getRandomItem(mealTypes);
+    const res = await fetch(randomRecipeUrl([randomMeal, randomCuisine]));
+    return await res.json();
 
-            console.log('had to reduce to a single random meal ')
-            const randomMeal = getRandomItem(mealTypes)
-            url = randomRecipeUrl([randomMeal, randomCuisine]);
-            jsonFetchRequest(url).then(data => data);
-
-
-        });
-
-        
-    } catch (error) {
-        console.log(`There was an error fetching random recipes from server side ${error.message}`)
-    }
-
+    
 }
 
 
 
 app.get('/random-recipes', async (req, res) => getRandomRecipes().then(data => res.send(data)));
 
-// app.post('/detail', async (req, res) => {
-//     try {
 
-//         const recipeID = req.body.recipeID;
-//         const response = await fetch(`https://api.spoonacular.com/recipes/${recipeID}/information?apiKey=${API_KEY}&includeNutrition=true`);
-//         res.send(await response.json());
-//     } catch (error) {
-//         console.error(`There was an error fetching recipe details`);
 
-//     }
-// });
-app.post('/detail', (req, res) => {
+app.post('/detail', async (req, res) => {
+    try {
+        const recipeID = req.body.recipeID;
+        const response = await fetch(`https://api.spoonacular.com/recipes/${recipeID}/information?apiKey=${API_KEY}&includeNutrition=true`);
+        res.send(await response.json());
+    } catch (error) {
+        console.error(`There was an error fetching recipe details`);
 
-    const recipeID = req.body.recipeID;
-    const url = `https://api.spoonacular.com/recipes/${recipeID}/information?apiKey=${API_KEY}&includeNutrition=true`;
-    jsonFetchRequest(url).then(recipes => res.send(recipes))
-        .catch(error => console.error(`there was an error fetching recipe details ${error.message}`));
+    }
 });
+
 
 
 app.post('/search', (req, res) => {
