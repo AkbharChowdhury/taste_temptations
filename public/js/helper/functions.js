@@ -37,14 +37,14 @@ const getSearchParams = () => {
     return Object.freeze({ meal, query, cuisines });
 }
 
-
+const urlParam = (key, val) => `&${key}=${val}`;
 export const constructSearchURLParams = _ => {
     const params = getSearchParams();
-    const url = [];
-    if (params.query) url.push(`&query=${params.query}`);
-    if (params.meal) url.push(`&type=${params.meal}`);
-    if (params.cuisines.length !== 0) url.push(`&cuisine=${params.cuisines.join()}`);
-    return url.join();
+    let url = '';
+    if(params.query) url+=urlParam('query', params.query);
+    if(params.meal) url+=urlParam('meal', params.meal);
+    if (params.cuisines.length !== 0) url+=urlParam('cuisine',  params.cuisines.join());
+    return url;
 
 }
 export async function fetchRequest(recipeID, url) {
