@@ -17,7 +17,7 @@ export const mealTypes = [
 
 
 export const cuisines = [
-    'african',
+    'African',
     'Asian',
     'American',
     'British',

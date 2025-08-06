@@ -17,8 +17,6 @@ const API_KEY = process.env.FOOD_API_KEY;
 const runApp = _ => {
 
     console.log(`Server listening on port ${port.toLocaleString('en')}`);
-   
-
 }
 
 app.listen(port, _ => runApp());
