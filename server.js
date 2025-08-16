@@ -1,7 +1,7 @@
 import express from 'express'
 import dotenv from 'dotenv';
 import { mealTypes, cuisines } from './food.js';
-import { titleCase, sortedArray, getRandomItem } from './public/js/helper/utils.js';
+import { titleCase, sortedArray, getRandomItem, getRandomMeals } from './public/js/helper/utils.js';
 
 const port = 3_000;
 const app = express();
@@ -17,6 +17,20 @@ const API_KEY = process.env.FOOD_API_KEY;
 const runApp = _ => {
 
     console.log(`Server listening on port ${port.toLocaleString('en')}`);
+    const numTimes = 10;
+    for (let i = 0; i < numTimes; i++) {
+        const randomMeals = Array.from(getRandomMeals(1, cuisines));
+        console.log({randomMeals});
+
+        
+        
+    }
+
+    // getRandomRecipes().then(data =>{
+    //     // console.log('the returned recipes,', data)
+    //     // console.log(data);
+        
+    // })
 }
 
 app.listen(port, _ => runApp());
@@ -80,36 +94,19 @@ app.post('/similarRecipes', async (req, res) => {
     getSimilarRecipes(recipeID).then(data => res.send(data));
 });
 
-function getRandomMeals(numberOfMeals) {
-    let randomMeals = new Set();
-    for (let i = 0; i < numberOfMeals; i++) {
-        randomMeals.add(getRandomItem(mealTypes));
-    }
-    if (randomMeals.size === 1) {
-        while (randomMeals.size === 1) {
-            randomMeals.add(getRandomItem(mealTypes));
-
-        }
-
-    }
-    return randomMeals;
-
-
-
-}
-
 
 const randomRecipeUrl = (tags) => `https://api.spoonacular.com/recipes/random?number=${RECORDS_PER_PAGE}&include-tags=${tags.join()}&apiKey=${API_KEY}`
-
 
 async function getRandomRecipes() {
 
     const randomCuisine = getRandomItem(cuisines);
-    const randomMeals = Array.from(getRandomMeals(2));
+    const randomMeals = Array.from(getRandomMeals(2, mealTypes));
     const tags = [randomMeals, randomCuisine];
     const response = await fetch(randomRecipeUrl(tags));
     const data =  await response.json();
-    if (data.recipes.length > 0) return data;
+
+    const {recipes} = data;
+    if (recipes.length > 0) return recipes;
 
     const randomMeal = getRandomItem(mealTypes);
     const res = await fetch(randomRecipeUrl([randomMeal, randomCuisine]));

@@ -8,4 +8,20 @@ export const sortedArray = (array) => array.sort((a, b) => a.toLowerCase().local
 export const getRandomItem = (arr) => arr[(Math.random() * arr.length) | 0];
 
 
+export const getRandomMeals = (numberOfMeals, itemArray) => {
+    let randomMeals = new Set();
+    for (let i = 0; i < numberOfMeals; i++) {
+        randomMeals.add(getRandomItem(itemArray));
+    }
+    if (randomMeals.size === 1) {
+        while (randomMeals.size === 1) {
+            randomMeals.add(getRandomItem(itemArray));
+        }
+
+    }
+    return randomMeals;
+
+}
+
+
 
