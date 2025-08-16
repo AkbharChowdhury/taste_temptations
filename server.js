@@ -17,20 +17,7 @@ const API_KEY = process.env.FOOD_API_KEY;
 const runApp = _ => {
 
     console.log(`Server listening on port ${port.toLocaleString('en')}`);
-    const numTimes = 10;
-    for (let i = 0; i < numTimes; i++) {
-        const randomMeals = Array.from(getRandomMeals(1, cuisines));
-        console.log({randomMeals});
 
-        
-        
-    }
-
-    // getRandomRecipes().then(data =>{
-    //     // console.log('the returned recipes,', data)
-    //     // console.log(data);
-        
-    // })
 }
 
 app.listen(port, _ => runApp());
