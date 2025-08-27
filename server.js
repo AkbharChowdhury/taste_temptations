@@ -4,7 +4,7 @@ import { mealTypes, cuisines } from './recipe-tags.js';
 import { titleCase, sortedArray, getRandomItem, getRandomMeals } from './public/js/helper/utils.js';
 dotenv.config();
 
-const port = 3_000;
+const PORT = 3_000;
 const RECORDS_PER_PAGE = 12;
 const API_KEY = process.env.FOOD_API_KEY;
 const app = express();
@@ -17,13 +17,10 @@ app.use(express.json());
 
 const runApp = _ => {
 
-    console.log(`Server listening on port ${port.toLocaleString('en')}`);
-    console.log(titleCase('hello world'))
- 
-
+    console.log(`Server listening on port ${PORT.toLocaleString('en')}`);
 }
 
-app.listen(port, _ => runApp());
+app.listen(PORT, _ => runApp());
 
 async function searchRecipes(urlSearchParams) {
     try {
@@ -96,8 +93,6 @@ async function getRandomRecipes() {
     const responseData = await fetch(randomRecipeUrl(recipeTags));
     return await responseData.json();
 
-
-
 }
 
 
@@ -109,7 +104,7 @@ app.post('/detail', async (req, res) => {
         const response = await fetch(`https://api.spoonacular.com/recipes/${recipeID}/information?apiKey=${API_KEY}&includeNutrition=true`);
         res.send(await response.json());
     } catch (error) {
-        console.error(`There was an error fetching recipe details`);
+        console.error(`There was an error fetching recipe details`, error.message);
 
     }
 });

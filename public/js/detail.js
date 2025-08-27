@@ -31,7 +31,20 @@ const nutritionDetails = (nutrients) => nutrients.map(i => `
     </tr>
     `).join().replaceAll(',', '');
 
-fetchRequest(recipeID, '/detail').then(displayRecipeDetails);
+const errorMessageTag = (msg) =>  /*html*/`<div class="alert alert-warning" role="alert">${msg}</div>`;
+fetchRequest(recipeID, '/detail').then(data => {
+    console.log(data);
+    if (data['status'] === 'failure') {
+        document.getElementById('recipe-details-container').innerHTML = errorMessageTag('Cannot fetch recipe details!');
+        return;       
+    }
+    // if the recipe details status is successful display recipe details and similar recipes
+    displayRecipeDetails(data); 
+    fetchRequest(recipeID, '/similarRecipes').then(displaySimilarRecipes);
+
+
+});
+
 
 function displayRecipeDetails(data) {
 
@@ -72,7 +85,6 @@ function showInstructions(instructions) {
 
 }
 
-fetchRequest(recipeID, '/similarRecipes').then(displaySimilarRecipes);
 
 function displaySimilarRecipes(recipes) {
     const list = recipes.map((recipe, index) => similarRecipeCard(recipe, index)).join().replaceAll(',', '');
