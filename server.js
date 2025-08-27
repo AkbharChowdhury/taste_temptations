@@ -1,22 +1,25 @@
 import express from 'express'
 import dotenv from 'dotenv';
-import { mealTypes, cuisines } from './food.js';
+import { mealTypes, cuisines } from './recipe-tags.js';
 import { titleCase, sortedArray, getRandomItem, getRandomMeals } from './public/js/helper/utils.js';
+dotenv.config();
 
 const port = 3_000;
+const RECORDS_PER_PAGE = 12;
+const API_KEY = process.env.FOOD_API_KEY;
 const app = express();
-app.use(express.static('public'));
 
+app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-dotenv.config();
-const RECORDS_PER_PAGE = 12;
-const API_KEY = process.env.FOOD_API_KEY;
+
 
 const runApp = _ => {
 
     console.log(`Server listening on port ${port.toLocaleString('en')}`);
+    console.log(titleCase('hello world'))
+ 
 
 }
 
@@ -87,27 +90,19 @@ const randomRecipeUrl = (tags) => `https://api.spoonacular.com/recipes/random?nu
 async function getRandomRecipes() {
 
     const randomCuisine = getRandomItem(cuisines);
-    const randomMeals = Array.from(getRandomMeals(2, mealTypes));
-    const tags = [randomMeals, randomCuisine];
-    const response = await fetch(randomRecipeUrl(tags));
-    const data =  await response.json();
-
-    const {recipes} = data;
-    if (recipes.length > 0) return recipes;
-
     const randomMeal = getRandomItem(mealTypes);
-    const res = await fetch(randomRecipeUrl([randomMeal, randomCuisine]));
-    return await res.json();
+    const recipeTags = [randomMeal, randomCuisine];
+    console.log(`search tags random ${recipeTags}`);
+    const responseData = await fetch(randomRecipeUrl(recipeTags));
+    return await responseData.json();
 
-    
+
+
 }
 
 
 
 app.get('/random-recipes', async (req, res) => getRandomRecipes().then(data => res.send(data)));
-
-
-
 app.post('/detail', async (req, res) => {
     try {
         const recipeID = req.body.recipeID;

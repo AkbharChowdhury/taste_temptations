@@ -13,6 +13,7 @@ export const getRandomMeals = (numberOfMeals, itemArray) => {
     for (let i = 0; i < numberOfMeals; i++) {
         randomMeals.add(getRandomItem(itemArray));
     }
+    console.log(randomMeals);
     if (randomMeals.size === 1) {
         while (randomMeals.size === 1) {
             randomMeals.add(getRandomItem(itemArray));
