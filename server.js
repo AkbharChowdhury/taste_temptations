@@ -67,7 +67,6 @@ app.get('/cuisines', (req, res) => {
 async function getSimilarRecipes(recipeID) {
     try {
         const limit = 8;
-        
         const response = await fetch(requestData(`https://api.spoonacular.com/recipes/${recipeID}/similar?number=${limit}`));
         return await response.json();
 
