@@ -1,6 +1,6 @@
 "use strict";
 import { recipeCard } from './helper/recipe-card.js';
-import { fetchRandomRecipes, searchRecipes, constructSearchURLParams } from './helper/functions.js';
+import { fetchRandomRecipes, searchRecipes, constructSearchURLParams, errorMessageTag } from './helper/functions.js';
 
 
 const populateSearchDiv = async (url, div) => {
@@ -27,18 +27,36 @@ const showSearchResults = data => {
     populateSearchContainer(renderRecipeList(results));
 }
 const searchForm = document.querySelector('#search-form');
-if (searchForm) {
-    searchForm.addEventListener('submit', e => {
-        e.preventDefault();
-        const urlSearchParams = constructSearchURLParams();
-        console.log(urlSearchParams)
-        searchRecipes(urlSearchParams).then(data => showSearchResults(data));
-    });
-}
+
 
 
 
 populateSearchDiv('/meals', '#meal');
 populateSearchDiv('/cuisines', '#cuisines-container');
-fetchRandomRecipes().then(data => populateSearchContainer(renderRecipeList(data.recipes)));
+fetchRandomRecipes().then(data => {
+    console.log("random recipes:", data);
+    if (data.status === 'failure') {
+        const errorDiv = document.getElementById('recipe-list');
+        errorDiv.innerHTML = errorMessageTag(data);
+        searchForm.addEventListener('submit', e=> {
+            console.log('form submission prevented')
+            return false;
+           
+        })
+        return;
+    }
+    populateSearchContainer(renderRecipeList(data.recipes))
+});
+
+
+
+if (searchForm) {
+    searchForm.addEventListener('submit', e => {
+        e.preventDefault();
+        console.log('form submitted')
+        const urlSearchParams = constructSearchURLParams();
+        console.log(urlSearchParams)
+        searchRecipes(urlSearchParams).then(data => showSearchResults(data));
+    });
+}
 

@@ -14,7 +14,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 
-
+const requestData = (url) => new Request(url,  { headers: {'x-api-key' : API_KEY} });
 const runApp = _ => {
 
     console.log(`Server listening on port ${PORT.toLocaleString('en')}`);
@@ -24,7 +24,7 @@ app.listen(PORT, _ => runApp());
 
 async function searchRecipes(urlSearchParams) {
     try {
-        const response = await fetch(`https://api.spoonacular.com/recipes/complexSearch?number=${RECORDS_PER_PAGE}&apiKey=${API_KEY}${urlSearchParams}`);
+        const response = await fetch(requestData(`https://api.spoonacular.com/recipes/complexSearch?number=${RECORDS_PER_PAGE}${urlSearchParams}`));
         return await response.json();
 
     } catch (error) {
@@ -67,7 +67,8 @@ app.get('/cuisines', (req, res) => {
 async function getSimilarRecipes(recipeID) {
     try {
         const limit = 8;
-        const response = await fetch(`https://api.spoonacular.com/recipes/${recipeID}/similar?apiKey=${API_KEY}&number=${limit}`);
+        
+        const response = await fetch(requestData(`https://api.spoonacular.com/recipes/${recipeID}/similar?number=${limit}`));
         return await response.json();
 
     } catch (error) {
@@ -82,15 +83,15 @@ app.post('/similarRecipes', async (req, res) => {
 });
 
 
-const randomRecipeUrl = (tags) => `https://api.spoonacular.com/recipes/random?number=${RECORDS_PER_PAGE}&include-tags=${tags.join()}&apiKey=${API_KEY}`
+   
 
+const randomRecipeUrl = (tags) => `https://api.spoonacular.com/recipes/random?number=${RECORDS_PER_PAGE}&include-tags=${tags.join()}`
 async function getRandomRecipes() {
-
     const randomCuisine = getRandomItem(cuisines);
     const randomMeal = getRandomItem(mealTypes);
     const recipeTags = [randomMeal, randomCuisine];
-    console.log(`search tags random ${recipeTags}`);
-    const responseData = await fetch(randomRecipeUrl(recipeTags));
+    const url = randomRecipeUrl(recipeTags);
+    const responseData = await fetch(requestData(url));
     return await responseData.json();
 
 }
@@ -101,7 +102,7 @@ app.get('/random-recipes', async (req, res) => getRandomRecipes().then(data => r
 app.post('/detail', async (req, res) => {
     try {
         const recipeID = req.body.recipeID;
-        const response = await fetch(`https://api.spoonacular.com/recipes/${recipeID}/information?apiKey=${API_KEY}&includeNutrition=true`);
+        const response = await fetch(requestData(`https://api.spoonacular.com/recipes/${recipeID}/information?includeNutrition=true`));
         res.send(await response.json());
     } catch (error) {
         console.error(`There was an error fetching recipe details`, error.message);

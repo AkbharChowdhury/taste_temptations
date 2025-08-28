@@ -1,7 +1,7 @@
 "use strict";
 import { titleCase } from './helper/utils.js';
 import { similarRecipeCard } from './helper/recipe-card.js';
-import { fetchRequest } from './helper/functions.js';
+import { fetchRequest, errorMessageTag } from './helper/functions.js';
 
 const recipeID = fetchRecipeID();
 
@@ -31,14 +31,14 @@ const nutritionDetails = (nutrients) => nutrients.map(i => `
     </tr>
     `).join().replaceAll(',', '');
 
-const errorMessageTag = (msg) =>  /*html*/`<div class="alert alert-warning" role="alert">${msg}</div>`;
+
 fetchRequest(recipeID, '/detail').then(data => {
     console.log(data);
-    if (data['status'] === 'failure') {
-        document.getElementById('recipe-details-container').innerHTML = errorMessageTag('Cannot fetch recipe details!');
-        return;       
+    if (data.status === 'failure') {
+        const errorDiv = document.getElementById('recipe-details-container');
+        errorDiv.innerHTML = errorMessageTag(data);
+        return;
     }
-    // if the recipe details status is successful display recipe details and similar recipes
     displayRecipeDetails(data); 
     fetchRequest(recipeID, '/similarRecipes').then(displaySimilarRecipes);
 
@@ -53,7 +53,9 @@ function displayRecipeDetails(data) {
     document.title = `Taste Temptations: ${title}`;
 
     document.querySelector('#nutrients').innerHTML = nutritionDetails(data.nutrition.nutrients);
+
     const ingredients = data.extendedIngredients.map(ingredient => ingredient.original);
+
     document.querySelector('#ingredient-list').innerHTML = /*html*/`
     <ul>
         ${ingredients.map(ingredient => `<li>${ingredient}</li>`).join().replaceAll(',', '')}

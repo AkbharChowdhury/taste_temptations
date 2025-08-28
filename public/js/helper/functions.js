@@ -67,3 +67,11 @@ export async function fetchRequest(recipeID, url) {
     }
 
 }
+
+export const errorMessageTag = (data) =>  /*html*/ `<div class="alert alert-danger" role="alert">
+  <h4 class="alert-heading">Cannot fetch recipe details!</h4>
+  <p>Please view message below for more details</p>
+  <hr>
+  <p class="mb-0">${data.message}</p>
+</div>`;
+
