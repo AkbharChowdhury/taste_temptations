@@ -19,12 +19,13 @@ const noRecipesFoundMessage = `
                     `;
 const showSearchResults = data => {
     const { results } = data;
+    const container = populateSearchContainer;
     if (results.length === 0) {
-        populateSearchContainer(noRecipesFoundMessage);
+        container(noRecipesFoundMessage);
         return;
     }
 
-    populateSearchContainer(renderRecipeList(results));
+    container(renderRecipeList(results));
 }
 const searchForm = document.querySelector('#search-form');
 
@@ -34,7 +35,7 @@ const searchForm = document.querySelector('#search-form');
 populateSearchDiv('/meals', '#meal');
 populateSearchDiv('/cuisines', '#cuisines-container');
 fetchRandomRecipes().then(data => {
-    console.log("random recipes:", data);
+    console.log("random recipes", data);
     if (data.status === 'failure') {
         const errorDiv = document.getElementById('recipe-list');
         errorDiv.innerHTML = errorMessageTag(data);
@@ -53,7 +54,6 @@ fetchRandomRecipes().then(data => {
 if (searchForm) {
     searchForm.addEventListener('submit', e => {
         e.preventDefault();
-        console.log('form submitted')
         const urlSearchParams = constructSearchURLParams();
         console.log(urlSearchParams)
         searchRecipes(urlSearchParams).then(data => showSearchResults(data));

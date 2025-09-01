@@ -6,6 +6,7 @@ dotenv.config();
 
 const PORT = 3_000;
 const RECORDS_PER_PAGE = 12;
+const BASE_URL = 'https://api.spoonacular.com/recipes/';
 const API_KEY = process.env.FOOD_API_KEY;
 const app = express();
 
@@ -24,7 +25,7 @@ app.listen(PORT, _ => runApp());
 
 async function searchRecipes(urlSearchParams) {
     try {
-        const response = await fetch(requestData(`https://api.spoonacular.com/recipes/complexSearch?number=${RECORDS_PER_PAGE}${urlSearchParams}`));
+        const response = await fetch(requestData(`${BASE_URL}complexSearch?number=${RECORDS_PER_PAGE}${urlSearchParams}`));
         return await response.json();
 
     } catch (error) {
@@ -67,7 +68,7 @@ app.get('/cuisines', (req, res) => {
 async function getSimilarRecipes(recipeID) {
     try {
         const limit = 8;
-        const response = await fetch(requestData(`https://api.spoonacular.com/recipes/${recipeID}/similar?number=${limit}`));
+        const response = await fetch(requestData(`${BASE_URL}${recipeID}/similar?number=${limit}`));
         return await response.json();
 
     } catch (error) {
@@ -84,7 +85,7 @@ app.post('/similarRecipes', async (req, res) => {
 
    
 
-const randomRecipeUrl = (tags) => `https://api.spoonacular.com/recipes/random?number=${RECORDS_PER_PAGE}&include-tags=${tags.join()}`
+const randomRecipeUrl = (tags) => `${BASE_URL}random?number=${RECORDS_PER_PAGE}&include-tags=${tags.join()}`
 async function getRandomRecipes() {
     const randomCuisine = getRandomItem(cuisines);
     const randomMeal = getRandomItem(mealTypes);
@@ -101,7 +102,7 @@ app.get('/random-recipes', async (req, res) => getRandomRecipes().then(data => r
 app.post('/detail', async (req, res) => {
     try {
         const recipeID = req.body.recipeID;
-        const response = await fetch(requestData(`https://api.spoonacular.com/recipes/${recipeID}/information?includeNutrition=true`));
+        const response = await fetch(requestData(`${BASE_URL}${recipeID}/information?includeNutrition=true`));
         res.send(await response.json());
     } catch (error) {
         console.error(`There was an error fetching recipe details`, error.message);
