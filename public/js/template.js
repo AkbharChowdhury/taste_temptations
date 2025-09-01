@@ -1,4 +1,4 @@
-const header = () =>/*html*/`
+const header = /*html*/`
 <!doctype html>
 <html lang="en">
 
@@ -6,7 +6,6 @@ const header = () =>/*html*/`
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
    <title>Taste Temptations: find your next cravings</title>
-   
     <link rel="stylesheet" href="css/style.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
@@ -15,7 +14,7 @@ const header = () =>/*html*/`
 <body>
      
 `;
-const nav = () => /*html*/`
+const nav = /*html*/`
      <nav class="navbar bg-body-tertiary">
     <div class="container-fluid">
       <a class="navbar-brand" href="index.html">
@@ -25,7 +24,7 @@ const nav = () => /*html*/`
     </div>
   </nav>
 `;
-const footer = () => /*html*/`
+const footer =  /*html*/`
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
     crossorigin="anonymous"></script>
@@ -35,11 +34,11 @@ const footer = () => /*html*/`
   
 `;
 const headerContainer = document.querySelector('#header');
-headerContainer.insertAdjacentHTML("beforebegin", `${header()}${nav()}`)
+headerContainer.insertAdjacentHTML("beforebegin", `${header}${nav}`)
 headerContainer.remove();
 
 const footerContainer = document.querySelector('#footer');
-footerContainer.insertAdjacentHTML("beforebegin", `${footer()}`)
+footerContainer.insertAdjacentHTML("beforebegin", `${footer}`)
 footerContainer.remove();
 
 
