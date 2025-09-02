@@ -19,7 +19,7 @@ const nav = /*html*/`
     <div class="container-fluid">
       <a class="navbar-brand" href="index.html">
         <img src="img/logo.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
-        <span style="color: #7B3F00;">Taste Temptations</span>
+        <span id="logo_text">Taste Temptations</span>
       </a>
     </div>
   </nav>
@@ -38,7 +38,7 @@ headerContainer.insertAdjacentHTML("beforebegin", `${header}${nav}`)
 headerContainer.remove();
 
 const footerContainer = document.querySelector('#footer');
-footerContainer.insertAdjacentHTML("beforebegin", `${footer}`)
+footerContainer.insertAdjacentHTML("beforebegin", footer)
 footerContainer.remove();
 
 
