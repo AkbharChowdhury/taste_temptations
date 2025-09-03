@@ -2,7 +2,6 @@
 import { recipeCard } from './helper/recipe-card.js';
 import { fetchRandomRecipes, searchRecipes, constructSearchURLParams, errorMessageTag } from './helper/functions.js';
 
-
 const populateSearchDiv = async (url, div) => {
     const response = await fetch(url);
     document.querySelector(div).innerHTML = await response.text();
