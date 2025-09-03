@@ -11,16 +11,14 @@ const populateSearchContainer = content => document.querySelector('#result').inn
 
 const renderRecipeList = recipes => recipes.map(recipe => recipeCard(recipe)).join().replaceAll(',', '');
 
-const noRecipesFoundMessage = `
-                    <div class="alert alert-danger" role="alert">
-                    Whoops we couldn't find any recipes...  
-                    </div>
-                    `;
 const showSearchResults = data => {
     const { results } = data;
     const container = populateSearchContainer;
     if (results.length === 0) {
-        container(noRecipesFoundMessage);
+        container(`
+            <div class="alert alert-danger" role="alert">
+                    Whoops we couldn't find any recipes...  
+            </div>`);
         return;
     }
 
@@ -28,21 +26,13 @@ const showSearchResults = data => {
 }
 const searchForm = document.querySelector('#search-form');
 
-
-
-
 populateSearchDiv('/meals', '#meal');
 populateSearchDiv('/cuisines', '#cuisines-container');
 fetchRandomRecipes().then(data => {
-    console.log("random recipes", data);
     if (data.status === 'failure') {
         const errorDiv = document.getElementById('recipe-list');
         errorDiv.innerHTML = errorMessageTag(data);
-        searchForm.addEventListener('submit', e=> {
-            console.log('form submission prevented')
-            return false;
-           
-        })
+        searchForm.addEventListener('submit', _ => false)
         return;
     }
     populateSearchContainer(renderRecipeList(data.recipes))

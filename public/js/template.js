@@ -1,7 +1,6 @@
 const header = /*html*/`
 <!doctype html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,16 +8,14 @@ const header = /*html*/`
     <link rel="stylesheet" href="css/style.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
-
 </head>
-<body>
-     
+<body>   
 `;
 const nav = /*html*/`
      <nav class="navbar bg-body-tertiary">
     <div class="container-fluid">
-      <a class="navbar-brand" href="index.html">
-        <img src="img/logo.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+      <a class="navbar-brand" href=".">
+        <img src="img/logo.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top" id="logo_text">
         <span id="logo_text">Taste Temptations</span>
       </a>
     </div>
