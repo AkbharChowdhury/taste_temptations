@@ -1,7 +1,7 @@
 import express from 'express'
 import dotenv from 'dotenv';
 import { mealTypes, cuisines } from './recipe-tags.js';
-import { titleCase, sortedArray, getRandomItem, getRandomMeals } from './public/js/helper/utils.js';
+import { titleCase, sortedArray, getRandomItem } from './public/js/helper/utils.js';
 dotenv.config();
 
 const PORT = 3_000;
@@ -14,12 +14,9 @@ app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-
-const requestData = (url) => new Request(url,  { headers: {'x-api-key' : API_KEY} });
-const runApp = _ => {
-
-    console.log(`Server listening on port ${PORT.toLocaleString('en')}`);
-}
+const errorMessage = msg => console.error(msg);
+const requestData = url => new Request(url,  { headers: {'x-api-key' : API_KEY} });
+const runApp = _ => console.log(`Server listening on port ${PORT.toLocaleString('en')}`);
 
 app.listen(PORT, _ => runApp());
 
@@ -29,7 +26,7 @@ async function searchRecipes(urlSearchParams) {
         return await response.json();
 
     } catch (error) {
-        console.error(`There was an error fetching recipes: ${error}`)
+        errorMessage(`There was an error fetching recipes: ${error}`)
     }
 
 }
@@ -72,7 +69,7 @@ async function getSimilarRecipes(recipeID) {
         return await response.json();
 
     } catch (error) {
-        console.error(`There was an error fetching similar recipes ${error.message}`)
+        errorMessage(`There was an error fetching similar recipes ${error.message}`)
     }
 }
 
@@ -105,7 +102,7 @@ app.post('/detail', async (req, res) => {
         const response = await fetch(requestData(`${BASE_URL}${recipeID}/information?includeNutrition=true`));
         res.send(await response.json());
     } catch (error) {
-        console.error(`There was an error fetching recipe details`, error.message);
+        errorMessage(`There was an error fetching recipe details ${error}`)
 
     }
 });
@@ -116,5 +113,5 @@ app.post('/search', (req, res) => {
 
     const urlSearchParams = req.body.urlSearchParams;
     searchRecipes(urlSearchParams).then(recipes => res.send(recipes))
-        .catch(error => console.error(`there was an error fetching recipes ${error.message}`));
+        .catch(error => errorMessage(`there was an error fetching recipes ${error}`));
 });
