@@ -16,7 +16,19 @@ app.use(express.json());
 
 const errorMessage = msg => console.error(msg);
 const requestData = url => new Request(url,  { headers: {'x-api-key' : API_KEY} });
+
+const fetchPokemon = async () => {
+   
+    const response = await fetch('https://pokeapi.co/api/v2/pokemon/ditto');
+    const data = await response.json();
+    console.log(data)
+    
+    
+}
 const runApp = _ => console.log(`Server listening on port ${PORT.toLocaleString('en')}`);
+
+
+
 
 app.listen(PORT, _ => runApp());
 
@@ -73,6 +85,18 @@ async function getSimilarRecipes(recipeID) {
     }
 }
 
+// async function getSimilarRecipes(recipeID){
+//     const limit = 8;
+//     const params = new URLSearchParams({ number: limit });
+//     const url = `${BASE_URL}${recipeID}/similar?${params.toString()}`;
+//     let request = await fetch(requestData(url));
+//     return await request.json();
+// }
+
+
+
+
+
 
 app.post('/similarRecipes', async (req, res) => {
     const recipeID = req.body.recipeID;
@@ -82,7 +106,16 @@ app.post('/similarRecipes', async (req, res) => {
 
    
 
-const randomRecipeUrl = (tags) => `${BASE_URL}random?number=${RECORDS_PER_PAGE}&include-tags=${tags.join()}`
+
+const randomRecipeUrl = (tags) => {
+    const url = `${BASE_URL}random?`
+    const params = new URLSearchParams();
+    params.append('number', RECORDS_PER_PAGE);
+    params.append('include-tags', tags.join());
+    return url + params.toString();
+
+}
+
 async function getRandomRecipes() {
     const randomCuisine = getRandomItem(cuisines);
     const randomMeal = getRandomItem(mealTypes);

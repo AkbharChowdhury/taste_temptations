@@ -44,6 +44,14 @@ export const constructSearchURLParams = _ => {
     if(params.query) url+=urlParam('query', params.query);
     if(params.meal) url+=urlParam('meal', params.meal);
     if (params.cuisines.length !== 0) url+=urlParam('cuisine',  params.cuisines.join());
+    const param = new URLSearchParams();
+    param.append('query', params.query);
+    param.append('meal', params.meal);
+    params.cuisines.forEach(item => param.append('cuisines', item));
+    console.log('url search params', param.toString());
+    console.log('url search params obj', param)
+
+
     return url;
 
 }
