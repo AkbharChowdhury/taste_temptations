@@ -15,13 +15,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 const errorMessage = msg => console.error(msg);
-const requestData = url => new Request(url,  { headers: {'x-api-key' : API_KEY} });
-
+const requestData = url => new Request(url, { headers: {'x-api-key' : API_KEY} });
 
 const runApp = _ => console.log(`Server listening on port ${PORT.toLocaleString('en')}`);
-
-
-
 
 app.listen(PORT, _ => runApp());
 
