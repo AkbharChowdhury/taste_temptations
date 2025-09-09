@@ -85,13 +85,7 @@ async function getSimilarRecipes(recipeID) {
     }
 }
 
-// async function getSimilarRecipes(recipeID){
-//     const limit = 8;
-//     const params = new URLSearchParams({ number: limit });
-//     const url = `${BASE_URL}${recipeID}/similar?${params.toString()}`;
-//     let request = await fetch(requestData(url));
-//     return await request.json();
-// }
+
 
 
 
@@ -107,7 +101,7 @@ app.post('/similarRecipes', async (req, res) => {
    
 
 
-const randomRecipeUrl = (tags) => {
+const randomRecipeURL = tags => {
     const url = `${BASE_URL}random?`
     const params = new URLSearchParams();
     params.append('number', RECORDS_PER_PAGE);
@@ -120,7 +114,7 @@ async function getRandomRecipes() {
     const randomCuisine = getRandomItem(cuisines);
     const randomMeal = getRandomItem(mealTypes);
     const recipeTags = [randomMeal, randomCuisine];
-    const url = randomRecipeUrl(recipeTags);
+    const url = randomRecipeURL(recipeTags);
     const responseData = await fetch(requestData(url));
     return await responseData.json();
 
