@@ -17,14 +17,7 @@ app.use(express.json());
 const errorMessage = msg => console.error(msg);
 const requestData = url => new Request(url,  { headers: {'x-api-key' : API_KEY} });
 
-const fetchPokemon = async () => {
-   
-    const response = await fetch('https://pokeapi.co/api/v2/pokemon/ditto');
-    const data = await response.json();
-    console.log(data)
-    
-    
-}
+
 const runApp = _ => console.log(`Server listening on port ${PORT.toLocaleString('en')}`);
 
 
@@ -34,7 +27,10 @@ app.listen(PORT, _ => runApp());
 
 async function searchRecipes(urlSearchParams) {
     try {
-        const response = await fetch(requestData(`${BASE_URL}complexSearch?number=${RECORDS_PER_PAGE}${urlSearchParams}`));
+    
+        const paramsString =`number=${RECORDS_PER_PAGE}${urlSearchParams}`;
+        const searchParams = new URLSearchParams(paramsString);
+        const response = await fetch(requestData(`${BASE_URL}complexSearch?${searchParams.toString()}`));
         return await response.json();
 
     } catch (error) {
@@ -139,6 +135,7 @@ app.post('/detail', async (req, res) => {
 app.post('/search', (req, res) => {
 
     const urlSearchParams = req.body.urlSearchParams;
-    searchRecipes(urlSearchParams).then(recipes => res.send(recipes))
-        .catch(error => errorMessage(`there was an error fetching recipes ${error}`));
+    searchRecipes(urlSearchParams)
+    .then(recipes => res.send(recipes))
+    .catch(error => errorMessage(`there was an error fetching recipes ${error}`));
 });
