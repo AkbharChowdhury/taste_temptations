@@ -118,7 +118,7 @@ app.get('/random-recipes', async (req, res) => getRandomRecipes().then(data => r
 app.post('/detail', async (req, res) => {
     try {
         const recipeID = req.body.recipeID;
-        const response = await fetch(requestData(`${BASE_URL}${recipeID}/information?includeNutrition=true`));
+        const response = await fetch(requestData(`${BASE_URL}${recipeID}/information?${new URLSearchParams({includeNutrition: true}).toString()}`));
         res.send(await response.json());
     } catch (error) {
         errorMessage(`There was an error fetching recipe details ${error}`)
