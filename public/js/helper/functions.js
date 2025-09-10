@@ -37,7 +37,6 @@ const getSearchParams = () => {
     return Object.freeze({ meal, query, cuisines });
 }
 
-const urlParam = (key, val) => `&${key}=${val}`;
 export const constructSearchURLParams = _ => {
     const searchParams = new URLSearchParams();
     const params = getSearchParams();
