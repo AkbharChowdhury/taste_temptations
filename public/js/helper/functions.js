@@ -39,20 +39,12 @@ const getSearchParams = () => {
 
 const urlParam = (key, val) => `&${key}=${val}`;
 export const constructSearchURLParams = _ => {
+    const searchParams = new URLSearchParams();
     const params = getSearchParams();
-    let url = '';
-    if(params.query) url+=urlParam('query', params.query);
-    if(params.meal) url+=urlParam('meal', params.meal);
-    if (params.cuisines.length !== 0) url+=urlParam('cuisine',  params.cuisines.join());
-    const param = new URLSearchParams();
-    param.append('query', params.query);
-    param.append('meal', params.meal);
-    params.cuisines.forEach(item => param.append('cuisines', item));
-    console.log('url search params', param.toString());
-    console.log('url search params obj', param)
-
-
-    return url;
+    if(params.query) searchParams.append('query', params.query)
+    if(params.meal) searchParams.append('meal', params.meal)
+    if(params.cuisines.length !== 0) searchParams.append('cuisine',  params.cuisines.join(','));
+    return `&${searchParams.toString()}`;
 
 }
 export async function fetchRequest(recipeID, url) {
