@@ -43,8 +43,8 @@ if (searchForm) {
     searchForm.addEventListener('submit', e => {
         e.preventDefault();
         const urlSearchParams = constructSearchURLParams();
-        console.log(urlSearchParams)
-        searchRecipes(urlSearchParams).then(data => showSearchResults(data));
+        searchRecipes(urlSearchParams).then(showSearchResults);
+
     });
 }
 
