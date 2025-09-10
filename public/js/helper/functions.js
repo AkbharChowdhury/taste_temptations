@@ -38,11 +38,13 @@ const getSearchParams = () => {
 
 export const constructSearchURLParams = _ => {
     const searchParams = new URLSearchParams();
+    // this is the default delimiter used by URLSearchParams within arrays in the toString method
+    const coma = '%2C';
     const params = getSearchParams();
     if(params.query) searchParams.append('query', params.query)
     if(params.meal) searchParams.append('meal', params.meal)
     if(params.cuisines.length !== 0) searchParams.append('cuisine',  params.cuisines.join(','));
-    return `&${searchParams.toString()}`;
+    return `&${searchParams.toString().replaceAll(coma,',')}`;
 
 }
 export async function fetchRequest(recipeID, url) {

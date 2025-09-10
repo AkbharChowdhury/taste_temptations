@@ -22,9 +22,10 @@ const runApp = _ => {
     const p = new URLSearchParams();
     p.append('query','apple');
     p.append('meal','snack');
-    p.append('cuisine', ['apple', 'pear'].join());
+    p.append('cuisine', ['apple', 'pear', 'grapes'].join());
     console.log(p);
-    console.log(p.toString())
+    console.log(p.toString());
+    console.log(p.toString().replaceAll('%2C',','))
 
 };
 
