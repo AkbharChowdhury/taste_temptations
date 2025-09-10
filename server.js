@@ -17,7 +17,16 @@ app.use(express.json());
 const errorMessage = msg => console.error(msg);
 const requestData = url => new Request(url, { headers: {'x-api-key' : API_KEY} });
 
-const runApp = _ => console.log(`Server listening on port ${PORT.toLocaleString('en')}`);
+const runApp = _ => {
+    console.log(`Server listening on port ${PORT.toLocaleString('en')}`);
+    const p = new URLSearchParams();
+    p.append('query','apple');
+    p.append('meal','snack');
+    p.append('cuisine', ['apple', 'pear'].join());
+    console.log(p);
+    console.log(p.toString())
+
+};
 
 app.listen(PORT, _ => runApp());
 
@@ -98,7 +107,7 @@ const randomRecipeURL = tags => {
     const params = new URLSearchParams();
     params.append('number', RECORDS_PER_PAGE);
     params.append('include-tags', tags.join());
-    return url + params.toString();
+    return `${url}${params.toString()}`;
 
 }
 
@@ -107,8 +116,8 @@ async function getRandomRecipes() {
     const randomMeal = getRandomItem(mealTypes);
     const recipeTags = [randomMeal, randomCuisine];
     const url = randomRecipeURL(recipeTags);
-    const responseData = await fetch(requestData(url));
-    return await responseData.json();
+    const response = await fetch(requestData(url));
+    return await response.json();
 
 }
 

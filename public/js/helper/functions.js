@@ -1,16 +1,16 @@
+const headers = Object.freeze({ 'Content-Type': 'application/json' });
 export async function fetchRandomRecipes() {
     try {
         const response = await fetch('random-recipes');
         return await response.json();
     } catch (error) {
-        console.error('there was an error fetching random recipes', error.message)
+        console.error(`There was an error fetching random recipes ${error}`)
     }
 
 
 }
 
 export async function searchRecipes(urlSearchParams) {
-    const headers = Object.freeze({ 'Content-Type': 'application/json' });
     const body = JSON.stringify({ urlSearchParams });
     try {
 
@@ -22,13 +22,12 @@ export async function searchRecipes(urlSearchParams) {
         return await response.json();
 
     } catch (error) {
-        console.error(`There was an error searching for recipes ${error.message}`)
+        console.error(`There was an error searching for recipes ${error}`)
 
     }
 
 
 }
-
 const getSelectedCuisines = () => [...document.querySelectorAll('input[name="cuisines"]:checked')].map(e => e.value);
 const getSearchParams = () => {
     const cuisines = getSelectedCuisines();
@@ -47,27 +46,24 @@ export const constructSearchURLParams = _ => {
 
 }
 export async function fetchRequest(recipeID, url) {
-    try {
-        const response = await fetch(url, {
+    const body = JSON.stringify({ recipeID });
+    const init = Object.freeze({
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-
-        body: JSON.stringify({
-           recipeID
-        }),
+        headers,
+        body,
     });
-    return await response.json();   
+    try {
+        const response = await fetch(url, init);
+        return await response.json();
 
     } catch (error) {
-        console.error(`There was an error with this request ${error.message}`)
-        
+        console.error(`There was an error with this request ${error}`)
+
     }
 
 }
 
-export const errorMessageTag = (data) =>  /*html*/ `<div class="alert alert-danger" role="alert">
+export const errorMessageTag = data =>  /*html*/ `<div class="alert alert-danger" role="alert">
   <h4 class="alert-heading">Cannot fetch recipe details!</h4>
   <p>Please view message below for more details</p>
   <hr>
