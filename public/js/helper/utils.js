@@ -1,3 +1,12 @@
+export const serializeURLSearchParams = urlSearchParams => {
+    // This is the default delimiter used by URLSearchParams within arrays in the toString method
+    const coma = '%2C';
+    // Used to seperate spaces in strings
+    const sep = '+';
+    return urlSearchParams.toString()
+    .replaceAll(coma,',')
+    .replaceAll(sep, ' ');
+    } 
 export const titleCase = sentance => sentance
     .toLowerCase()
     .split(' ')
