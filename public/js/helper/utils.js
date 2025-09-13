@@ -12,21 +12,30 @@ export const titleCase = sentance => sentance
     .split(' ')
     .map(word => word.replace(word[0], word[0].toUpperCase()))
     .join(' ');
+
 export const sortedArray = arr => arr.sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()));
 export const getRandomItem = arr => arr[(Math.random() * arr.length) | 0];
 
 export const getRandomMeals = (numberOfMeals, arr) => {
     const randomMeals = new Set();
-    for (let i = 0; i < numberOfMeals; i++) {
-        randomMeals.add(getRandomItem(arr));
-    }
-    console.log(randomMeals);
-    if (randomMeals.size === 1) {
-        while (randomMeals.size === 1) {
+    for (let i = 0; i < numberOfMeals; i++) randomMeals.add(getRandomItem(arr));
+    const MinNumberOfMeals = 2;
+    const isMealSizeSmall = randomMeals.size < MinNumberOfMeals;
+      if (isMealSizeSmall) {
+        while (randomMeals.size < MinNumberOfMeals) {
             randomMeals.add(getRandomItem(arr));
         }
 
     }
+    
+
+    // if (randomMeals.size === 1 | randomMeals.size === 0) {
+    //     console.log('f')
+    //     while (randomMeals.size === 1) {
+    //         randomMeals.add(getRandomItem(arr));
+    //     }
+
+    // }
     return randomMeals;
 
 }

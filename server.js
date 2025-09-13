@@ -1,7 +1,7 @@
 import express from 'express'
 import dotenv from 'dotenv';
 import { mealTypes, cuisines } from './recipe-tags.js';
-import { titleCase, sortedArray, getRandomItem} from './public/js/helper/utils.js';
+import { titleCase, sortedArray, getRandomItem, getRandomMeals} from './public/js/helper/utils.js';
 dotenv.config();
 
 const PORT = 3_000;
@@ -17,17 +17,7 @@ app.use(express.json());
 const errorMessage = msg => console.error(msg);
 const requestData = url => new Request(url, { headers: {'x-api-key' : API_KEY} });
 
-const runApp = _ => {
-    console.log(`Server listening on port ${PORT.toLocaleString('en')}`);
-    
-    const x = 'hello world snapy snaps';
-    console.log(titleCase(x));
-};
-   
-    
-
-
-
+const runApp = _ => console.log(`Server listening on port ${PORT.toLocaleString('en')}`);
 app.listen(PORT, _ => runApp());
 
 async function searchRecipes(urlSearchParams) {
