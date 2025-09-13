@@ -17,7 +17,12 @@ app.use(express.json());
 const errorMessage = msg => console.error(msg);
 const requestData = url => new Request(url, { headers: {'x-api-key' : API_KEY} });
 
-const runApp = _ => console.log(`Server listening on port ${PORT.toLocaleString('en')}`);
+const runApp = _ => {
+    console.log(`Server listening on port ${PORT.toLocaleString('en')}`);
+    
+    const x = 'hello world snapy snaps';
+    console.log(titleCase(x));
+};
    
     
 
