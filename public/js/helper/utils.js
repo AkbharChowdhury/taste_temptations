@@ -19,25 +19,16 @@ export const getRandomItem = arr => arr[(Math.random() * arr.length) | 0];
 export const getRandomMeals = (numberOfMeals, arr) => {
     const randomMeals = new Set();
     for (let i = 0; i < numberOfMeals; i++) randomMeals.add(getRandomItem(arr));
-    const MinNumberOfMeals = 2;
-    const isMealSizeSmall = randomMeals.size < MinNumberOfMeals;
-      if (isMealSizeSmall) {
-        while (randomMeals.size < MinNumberOfMeals) {
-            randomMeals.add(getRandomItem(arr));
-        }
-
+    const MIN_NUM_MEALS = 2;
+    const isMealSizeSmall = randomMeals.size < MIN_NUM_MEALS;
+    if (randomMeals.size < numberOfMeals){
+        console.log('run')
+        while (randomMeals.size < numberOfMeals) randomMeals.add(getRandomItem(arr));
     }
-    
-
-    // if (randomMeals.size === 1 | randomMeals.size === 0) {
-    //     console.log('f')
-    //     while (randomMeals.size === 1) {
-    //         randomMeals.add(getRandomItem(arr));
-    //     }
-
-    // }
+    if (isMealSizeSmall){
+        while (randomMeals.size < MIN_NUM_MEALS) randomMeals.add(getRandomItem(arr));
+    }
     return randomMeals;
-
 }
 
 

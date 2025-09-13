@@ -17,7 +17,14 @@ app.use(express.json());
 const errorMessage = msg => console.error(msg);
 const requestData = url => new Request(url, { headers: {'x-api-key' : API_KEY} });
 
-const runApp = _ => console.log(`Server listening on port ${PORT.toLocaleString('en')}`);
+const runApp = _ => {
+    console.log(`Server listening on port ${PORT.toLocaleString('en')}`);
+    for (let index = 0; index < 2; index++) {
+        console.log('Meal Types', getRandomMeals(4, mealTypes));
+        console.log('Cuisines', getRandomMeals(3, cuisines));
+
+    }
+};
 app.listen(PORT, _ => runApp());
 
 async function searchRecipes(urlSearchParams) {
