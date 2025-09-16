@@ -1,32 +1,30 @@
 import express from 'express'
 import dotenv from 'dotenv';
-import axios from 'axios';
 import { mealTypes, cuisines } from './recipe-tags.js';
-import { titleCase, sortedArray, getRandomItem } from './public/js/helper/utils.js';
+import { titleCase, sortedArray, getRandomItem, getRandomMeals} from './public/js/helper/utils.js';
 dotenv.config();
 
-const API_KEY = process.env.FOOD_API_KEY;
 const PORT = 3_000;
 const RECORDS_PER_PAGE = 12;
 const BASE_URL = 'https://api.spoonacular.com/recipes/';
-
+const API_KEY = process.env.FOOD_API_KEY;
 const app = express();
 
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-const requestData = url => new Request( BASE_URL + url, { headers: { 'x-api-key': API_KEY } });
-axios.defaults.headers['x-api-key'] = API_KEY;
-axios.defaults.baseURL = BASE_URL;
-const runApp = async _ => {
-    console.log(`Server listening on port ${PORT.toLocaleString('en')}`);
-    getRecipeDetails(658024).then(data => {
-        // console.log('the data is', data.response.data.status);
-    })
-   
-}
+const errorMessage = msg => console.error(msg);
+const requestData = url => new Request(url, { headers: {'x-api-key' : API_KEY} });
 
+const runApp = _ => {
+    console.log(`Server listening on port ${PORT.toLocaleString('en')}`);
+    for (let index = 0; index < 2; index++) {
+        console.log('Meal Types', getRandomMeals(4, mealTypes));
+        console.log('Cuisines', getRandomMeals(3, cuisines));
+
+    }
+};
 app.listen(PORT, _ => runApp());
 
 async function searchRecipes(urlSearchParams) {
@@ -34,17 +32,18 @@ async function searchRecipes(urlSearchParams) {
     
         const paramsString =`number=${RECORDS_PER_PAGE}${urlSearchParams}`;
         const searchParams = new URLSearchParams(paramsString);
-        const response = await fetch(requestData(`complexSearch?${searchParams.toString()}`));
+        const response = await fetch(requestData(`${BASE_URL}complexSearch?${searchParams.toString()}`));
         return await response.json();
 
     } catch (error) {
-        console.error(`There was an error fetching recipes: ${error}`)
+        errorMessage(`There was an error fetching recipes: ${error}`)
     }
 
 }
 
 app.get('/meals', (req, res) => {
     const sortedMeals = sortedArray(mealTypes);
+
     const html =
     /*html*/`
         <option selected value="">No preference</option>
@@ -73,27 +72,35 @@ app.get('/cuisines', (req, res) => {
 
 });
 
-
-async function getSimilarRecipes(id) {
+async function getSimilarRecipes(recipeID) {
     try {
         const limit = 8;
-        const params = new URLSearchParams({number: limit});
-        const response = await axios.get(`${id}/similar`, { params });
-        return response.data;
+        const response = await fetch(requestData(`${BASE_URL}${recipeID}/similar?number=${limit}`));
+        return await response.json();
 
     } catch (error) {
-        console.error('There was an error fetching similar recipes')
-        return error;
+        errorMessage(`There was an error fetching similar recipes ${error.message}`)
     }
 }
 
+
+
+
+
+
+
+
 app.post('/similarRecipes', async (req, res) => {
-    const id = req.body.id;
-    getSimilarRecipes(id).then(data => res.send(data));
+    const recipeID = req.body.recipeID;
+    getSimilarRecipes(recipeID).then(data => res.send(data));
 });
 
+
+   
+
+
 const randomRecipeURL = tags => {
-    const url = `random?`
+    const url = `${BASE_URL}random?`
     const params = new URLSearchParams();
     params.append('number', RECORDS_PER_PAGE);
     params.append('include-tags', tags.join());
@@ -104,35 +111,33 @@ const randomRecipeURL = tags => {
 async function getRandomRecipes() {
     const randomCuisine = getRandomItem(cuisines);
     const randomMeal = getRandomItem(mealTypes);
-    const tags = [randomMeal, randomCuisine];
-    const response = await fetch(requestData(randomRecipeURL(tags)));
+    const recipeTags = [randomMeal, randomCuisine];
+    const url = randomRecipeURL(recipeTags);
+    const response = await fetch(requestData(url));
     return await response.json();
+
 }
+
+
 
 app.get('/random-recipes', async (req, res) => getRandomRecipes().then(data => res.send(data)));
-
-async function getRecipeDetails(id) {
+app.post('/detail', async (req, res) => {
     try {
-        const params = new URLSearchParams({includeNutrition: true});
-        const response = await axios.get(`${id}/information`, { params });
-        return response.data;
-
+        const recipeID = req.body.recipeID;
+        const response = await fetch(requestData(`${BASE_URL}${recipeID}/information?${new URLSearchParams({includeNutrition: true}).toString()}`));
+        res.send(await response.json());
     } catch (error) {
-        console.error('There was an error fetching recipe details')
-        return error;
+        errorMessage(`There was an error fetching recipe details ${error}`)
+
     }
-}
-
-app.post('/detail', (req, res) => {
-    const id = req.body.id;
-    getRecipeDetails(id)
-        .then(data => res.send(data))
-        .catch(error => res.send(error))
-
 });
 
+
+
 app.post('/search', (req, res) => {
+
     const urlSearchParams = req.body.urlSearchParams;
     searchRecipes(urlSearchParams)
     .then(recipes => res.send(recipes))
+    .catch(error => errorMessage(`there was an error fetching recipes ${error}`));
 });

@@ -1,57 +1,37 @@
 "use strict";
 import { titleCase } from './helper/utils.js';
 import { similarRecipeCard } from './helper/recipe-card.js';
-import { fetchRequest, errorMessageTag } from './helper/functions.js';
+import { fetchRequest, errorMessageTag, paymentIsRequired, fetchRecipeID } from './helper/functions.js';
 
-const recipeID = fetchRecipeID();
+import { getSteps, nutritionDetails } from './helper/detail-snippets.js';
 
-function fetchRecipeID() {
-    const recipeIDParam = 'recipeID';
-    const searchParams = new URLSearchParams(window.location.search);
-    if (searchParams.has(recipeIDParam)) return parseInt(searchParams.get(recipeIDParam));
-    return 0;
+const id = fetchRecipeID();
+const SIMILAR_RECIPES_END_POINT = '/similarRecipes';
+const RECIPE_DETAILS_END_POINT = '/detail';
+
+const showDishTypeTags = dishes => dishes.map(dish => `<span class="badge bg-secondary text-decoration-none link-light m-2">${titleCase(dish)}</span>`).join().replaceAll(',', '');
+
+const isValidNumber = !isNaN(id) || id !== 0;
+
+if (isValidNumber) {
+    fetchRequest(id, RECIPE_DETAILS_END_POINT).then(data => {
+        if (paymentIsRequired(data.status)) {
+            const errorDiv = document.getElementById('recipe-details-container');
+            errorDiv.innerHTML = errorMessageTag(data);
+            return;
+        }
+        displayRecipeDetails(data);
+        fetchRequest(id, SIMILAR_RECIPES_END_POINT).then(displaySimilarRecipes);
+
+    });
+
 }
-
-
-
-const showDishTypeTags = (dishes) => dishes.map(dish => `<span class="badge bg-secondary text-decoration-none link-light m-2">${titleCase(dish)}</span>`).join().replaceAll(',', '')
-
-const getSteps = steps => /*html*/`
-    <ol>
-        ${steps.map(step => `<li>${step.step}</li>`).join().replaceAll(',', '')}
-    </ol>   
-    `;
-
-
-
-const nutritionDetails = (nutrients) => nutrients.map(i => `
-    <tr>
-      <td>${i.amount}${i.unit} ${i.name}</td>
-      <td>${i.percentOfDailyNeeds}%</td>
-    </tr>
-    `).join().replaceAll(',', '');
-
-
-fetchRequest(recipeID, '/detail').then(data => {
-    console.log(data);
-    if (data.status === 'failure') {
-        const errorDiv = document.getElementById('recipe-details-container');
-        errorDiv.innerHTML = errorMessageTag(data);
-        return;
-    }
-    displayRecipeDetails(data); 
-    fetchRequest(recipeID, '/similarRecipes').then(displaySimilarRecipes);
-
-
-});
-
 
 function displayRecipeDetails(data) {
 
     const {title, image, cuisines} =  data;
 
     document.title = `Taste Temptations: ${title}`;
-
     document.querySelector('#nutrients').innerHTML = nutritionDetails(data.nutrition.nutrients);
 
     const ingredients = data.extendedIngredients.map(ingredient => ingredient.original);
@@ -77,6 +57,7 @@ function displayRecipeDetails(data) {
 
     
 }
+
 function showInstructions(instructions) {
     if (instructions === undefined) {
         document.querySelector('#instructions-header').style.display = 'none';

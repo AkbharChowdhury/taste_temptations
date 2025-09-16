@@ -22,7 +22,6 @@ export const getRandomMeals = (numberOfMeals, arr) => {
     const MIN_NUM_MEALS = 2;
     const isMealSizeSmall = randomMeals.size < MIN_NUM_MEALS;
     if (randomMeals.size < numberOfMeals){
-        console.log('run')
         while (randomMeals.size < numberOfMeals) randomMeals.add(getRandomItem(arr));
     }
     if (isMealSizeSmall){
@@ -30,6 +29,7 @@ export const getRandomMeals = (numberOfMeals, arr) => {
     }
     return randomMeals;
 }
+
 
 
 

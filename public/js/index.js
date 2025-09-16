@@ -1,6 +1,9 @@
 "use strict";
 import { recipeCard } from './helper/recipe-card.js';
-import { fetchRandomRecipes, searchRecipes, constructSearchURLParams, errorMessageTag } from './helper/functions.js';
+import { fetchRandomRecipes, searchRecipes, constructSearchURLParams, errorMessageTag, paymentIsRequired } from './helper/functions.js';
+
+const searchForm = document.querySelector('#search-form');
+const errorDiv = document.getElementById('recipe-list');
 
 const populateSearchDiv = async (url, div) => {
     const response = await fetch(url);
@@ -13,6 +16,8 @@ const renderRecipeList = recipes => recipes.map(recipe => recipeCard(recipe)).jo
 const showSearchResults = data => {
     const { results } = data;
     const container = populateSearchContainer;
+    if (!results) return;
+
     if (results.length === 0) {
         container(`
             <div class="alert alert-danger" role="alert">
@@ -20,30 +25,38 @@ const showSearchResults = data => {
             </div>`);
         return;
     }
-
     container(renderRecipeList(results));
 }
-const searchForm = document.querySelector('#search-form');
 
-populateSearchDiv('/meals', '#meal');
-populateSearchDiv('/cuisines', '#cuisines-container');
+
 fetchRandomRecipes().then(data => {
-    if (data.status === 'failure') {
-        const errorDiv = document.getElementById('recipe-list');
+
+    if (paymentIsRequired(data.code)) {
         errorDiv.innerHTML = errorMessageTag(data);
-        searchForm.addEventListener('submit', _ => false)
+        document.querySelector('#button-search').disabled = true;
         return;
     }
-    populateSearchContainer(renderRecipeList(data.recipes))
-});
 
+    populateSearchContainer(renderRecipeList(data.recipes));
+    populateSearchDiv('/meals', '#meal');
+    populateSearchDiv('/cuisines', '#cuisines-container');
+});
 
 
 if (searchForm) {
     searchForm.addEventListener('submit', e => {
         e.preventDefault();
         const urlSearchParams = constructSearchURLParams();
-        searchRecipes(urlSearchParams).then(showSearchResults);
+        console.log(urlSearchParams)
+        searchRecipes(urlSearchParams).then(data =>{
+            if (paymentIsRequired(data.code)) {
+                errorDiv.innerHTML = errorMessageTag(data);
+                return;
+            }
+            showSearchResults(data);
+
+        
+        });
 
     });
 }
