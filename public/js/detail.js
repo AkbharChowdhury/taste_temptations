@@ -53,8 +53,6 @@ function displayRecipeDetails(data) {
 
     const instructions = data.analyzedInstructions[0];
     showInstructions(instructions);
-
-
     
 }
 
@@ -65,15 +63,10 @@ function showInstructions(instructions) {
     }
 
     document.querySelector('#steps-container').innerHTML = getSteps(instructions.steps);
-
 }
-
 
 function displaySimilarRecipes(recipes) {
     const list = recipes.map((recipe, index) => similarRecipeCard(recipe, index)).join().replaceAll(',', '');
     document.querySelector('#similar-recipe-list').innerHTML = list;
     
 }
-
-
-

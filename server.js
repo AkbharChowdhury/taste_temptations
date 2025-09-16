@@ -19,13 +19,8 @@ app.use(express.json());
 const requestData = url => new Request( BASE_URL + url, { headers: { 'x-api-key': API_KEY } });
 axios.defaults.headers['x-api-key'] = API_KEY;
 axios.defaults.baseURL = BASE_URL;
-const runApp = async _ => {
-    console.log(`Server listening on port ${PORT.toLocaleString('en')}`);
-    getRecipeDetails(658024).then(data => {
-        // console.log('the data is', data.response.data.status);
-    })
-   
-}
+const runApp = async _ => console.log(`Server listening on port ${PORT.toLocaleString('en')}`); 
+
 
 app.listen(PORT, _ => runApp());
 
