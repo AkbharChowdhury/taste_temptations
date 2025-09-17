@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import axios from 'axios';
 import { mealTypes, cuisines } from './recipe-tags.js';
 import { titleCase, sortedArray, getRandomItem } from './public/js/helper/utils.js';
+
 dotenv.config();
 
 const API_KEY = process.env.FOOD_API_KEY;
@@ -26,11 +27,11 @@ app.listen(PORT, _ => runApp());
 
 async function searchRecipes(urlSearchParams) {
     try {
-    
-        const paramsString =`number=${RECORDS_PER_PAGE}${urlSearchParams}`;
-        const searchParams = new URLSearchParams(paramsString);
-        const response = await fetch(requestData(`complexSearch?${searchParams.toString()}`));
-        return await response.json();
+
+        const params = new URLSearchParams(`number=${RECORDS_PER_PAGE}${urlSearchParams}`);
+        const response = await axios.get('complexSearch', { params });
+        return response.data;
+        
 
     } catch (error) {
         console.error(`There was an error fetching recipes: ${error}`)
@@ -110,7 +111,7 @@ async function getRecipeDetails(id) {
     try {
         const params = new URLSearchParams({includeNutrition: true});
         const response = await axios.get(`${id}/information`, { params });
-        return response.data;
+        return response.data;       
 
     } catch (error) {
         console.error('There was an error fetching recipe details')
@@ -122,7 +123,7 @@ app.post('/detail', (req, res) => {
     const id = req.body.id;
     getRecipeDetails(id)
         .then(data => res.send(data))
-        .catch(error => res.send(error))
+        .catch(error => res.send(error));
 
 });
 
@@ -130,4 +131,5 @@ app.post('/search', (req, res) => {
     const urlSearchParams = req.body.urlSearchParams;
     searchRecipes(urlSearchParams)
     .then(recipes => res.send(recipes))
+    .catch(error=> res.send(error));
 });
