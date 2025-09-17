@@ -1,5 +1,7 @@
 import { serializeURLSearchParams } from  './utils.js';
+
 const headers = Object.freeze({ 'Content-Type': 'application/json' });
+
 export async function fetchRandomRecipes() {
     try {
         const response = await fetch('random-recipes');
