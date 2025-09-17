@@ -26,13 +26,12 @@ const runApp = async _ => console.log(`Server listening on port ${PORT.toLocaleS
 app.listen(PORT, _ => runApp());
 
 async function searchRecipes(urlSearchParams) {
-    try {
 
-        const params = new URLSearchParams(`number=${RECORDS_PER_PAGE}${urlSearchParams}`);
+    try {
+        const params = new URLSearchParams(urlSearchParams);
+        params.append('number', RECORDS_PER_PAGE + 1);
         const response = await axios.get('complexSearch', { params });
         return response.data;
-        
-
     } catch (error) {
         console.error(`There was an error fetching recipes: ${error}`)
     }
@@ -76,7 +75,6 @@ async function getSimilarRecipes(id) {
         const params = new URLSearchParams({number: limit});
         const response = await axios.get(`${id}/similar`, { params });
         return response.data;
-
     } catch (error) {
         console.error('There was an error fetching similar recipes')
         return error;
@@ -124,12 +122,11 @@ app.post('/detail', (req, res) => {
     getRecipeDetails(id)
         .then(data => res.send(data))
         .catch(error => res.send(error));
-
 });
 
 app.post('/search', (req, res) => {
-    const urlSearchParams = req.body.urlSearchParams;
-    searchRecipes(urlSearchParams)
+    const params = req.body.params;
+    searchRecipes(params)
     .then(recipes => res.send(recipes))
     .catch(error=> res.send(error));
 });

@@ -11,8 +11,8 @@ export async function fetchRandomRecipes() {
 
 }
 
-export async function searchRecipes(urlSearchParams) {
-    const body = JSON.stringify({ urlSearchParams });
+export async function searchRecipes(params) {
+    const body = JSON.stringify({ params });
     try {
 
         const response = await fetch('/search', {
@@ -44,7 +44,7 @@ export const constructSearchURLParams = _ => {
     if(params.meal) searchParams.append('meal', params.meal);
     if(params.cuisines.length !== 0) searchParams.append('cuisine',  params.cuisines);
     const url = serializeURLSearchParams(searchParams);
-    return `&${url}`;
+    return url;
 
 }
 export async function fetchRequest1(id, url){
