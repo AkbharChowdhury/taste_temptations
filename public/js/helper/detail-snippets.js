@@ -11,8 +11,9 @@ export const getSteps = steps => /*html*/`
 export const nutritionDetails = nutrients => {
         console.log(nutrients);
         const names = ["Calories", "Fat", "Carbohydrates", "Sugar", "Protein", "Cholesterol"];
-        const filtered = nutrients.filter( i => names.includes(i.name));
-        return filtered.map(table)
+        return nutrients
+        .filter( i => names.includes(i.name))
+        .map(table)
         .join()
         .replaceAll(',', '');
 
