@@ -32,6 +32,7 @@ export async function searchRecipes(params) {
 
 }
 const getSelectedCuisines = () => [...document.querySelectorAll('input[name="cuisines"]:checked')].map(e => e.value);
+
 const getSearchParams = () => {
     const cuisines = getSelectedCuisines();
     const query = document.querySelector('#recipeSearchText').value.trim();
