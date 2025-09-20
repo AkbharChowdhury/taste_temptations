@@ -2,7 +2,7 @@ import express from 'express'
 import dotenv from 'dotenv';
 import axios from 'axios';
 import { mealTypes, cuisines } from './recipe-tags.js';
-import { titleCase, sortedArray, getRandomItem } from './public/js/helper/utils.js';
+import { titleCase, sortedArray, getRandomItem , toHoursAndMinutes} from './public/js/helper/utils.js';
 
 dotenv.config();
 
@@ -20,8 +20,7 @@ app.use(express.json());
 const requestData = url => new Request( BASE_URL + url, { headers: { 'x-api-key': API_KEY } });
 axios.defaults.headers['x-api-key'] = API_KEY;
 axios.defaults.baseURL = BASE_URL;
-const runApp = async _ => console.log(`Server listening on port ${PORT.toLocaleString('en')}`); 
-
+const runApp = async _ =>  console.log(`Server listening on port ${PORT.toLocaleString('en')}`);
 
 app.listen(PORT, _ => runApp());
 

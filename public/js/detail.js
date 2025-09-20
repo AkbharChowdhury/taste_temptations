@@ -1,5 +1,5 @@
 "use strict";
-import { titleCase } from './helper/utils.js';
+import { titleCase, toHoursAndMinutes } from './helper/utils.js';
 import { similarRecipeCard } from './helper/recipe-card.js';
 import { fetchRequest, errorMessageTag, paymentIsRequired, fetchRecipeID } from './helper/functions.js';
 
@@ -15,11 +15,13 @@ const isValidNumber = !isNaN(id) || id !== 0;
 
 if (isValidNumber) {
     fetchRequest(id, RECIPE_DETAILS_END_POINT).then(data => {
+        console.log({data});
         if (paymentIsRequired(data.status)) {
             const errorDiv = document.getElementById('recipe-details-container');
             errorDiv.innerHTML = errorMessageTag(data);
             return;
         }
+
         displayRecipeDetails(data);
         fetchRequest(id, SIMILAR_RECIPES_END_POINT).then(displaySimilarRecipes);
 
@@ -29,7 +31,7 @@ if (isValidNumber) {
 
 function displayRecipeDetails(data) {
 
-    const {title, image, cuisines} =  data;
+    const {title, image, cuisines, summary} =  data;
 
     document.title = `Taste Temptations: ${title}`;
     document.querySelector('#nutrients').innerHTML = nutritionDetails(data.nutrition.nutrients);
@@ -47,8 +49,8 @@ function displayRecipeDetails(data) {
     
     Object.assign(imageTag, { src: image, alt: title });
     const cuisinesText = cuisines.length !== 0 ? `| ${cuisines.join(', ')}` : '';
-    document.querySelector('#additional-details').innerText = `Serves ${data.servings}, ready in ${data.readyInMinutes} minutes ${cuisinesText}`;
-    document.querySelector('#summary').innerHTML = data.summary;
+    document.querySelector('#additional-details').innerText = `Serves ${data.servings}, ready in ${toHoursAndMinutes(data.readyInMinutes)} ${cuisinesText}`;
+    document.querySelector('#summary').innerHTML = summary;
     document.querySelector('#dish-types').innerHTML = showDishTypeTags(data.dishTypes);
 
     const instructions = data.analyzedInstructions[0];
