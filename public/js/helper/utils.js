@@ -32,7 +32,7 @@ export const getRandomMeals = (numberOfMeals, arr) => {
 export function toHoursAndMinutes(totalMinutes) {
   const hours = Math.floor(totalMinutes / 60);
   const minutes = totalMinutes % 60;
-  if (hours < 1) return  `${minutes} minutes`;
+  if (hours < 1) return `${minutes} minutes`;
   if (minutes === 0) return `${hours}h`;
   return `${hours}h:${minutes}m`;
 
