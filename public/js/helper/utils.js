@@ -29,6 +29,7 @@ export const getRandomMeals = (numberOfMeals, arr) => {
     }
     return randomMeals;
 }
+
 export function toHoursAndMinutes(totalMinutes) {
   const hours = Math.floor(totalMinutes / 60);
   const minutes = totalMinutes % 60;
