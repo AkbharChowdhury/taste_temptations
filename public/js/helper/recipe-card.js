@@ -1,5 +1,5 @@
 "use strict";
-import {toHoursAndMinutes, calcDuration} from './utils.js';
+import {calcDuration} from './utils.js';
 const recipeDetailURL = id => `detail.html?recipeID=${id}`
 export const recipeCard = ({image, title, id}) => 
      /*html*/`

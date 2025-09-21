@@ -29,11 +29,8 @@ const footer =  /*html*/`
     integrity="sha384-t4DxZSyQK+0Uv4jzy5B0QyHyWQD2GFURUmxKMBVww9+e2EJ0ei/vCvv7+79z0fkr"
     crossorigin="anonymous"></script>
 
-       <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-
-
-  
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 `;
 const headerContainer = document.querySelector('#header');
 headerContainer.insertAdjacentHTML("beforebegin", `${header}${nav}`)

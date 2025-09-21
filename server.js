@@ -2,7 +2,7 @@ import express from 'express'
 import dotenv from 'dotenv';
 import axios from 'axios';
 import { mealTypes, cuisines } from './recipe-tags.js';
-import { titleCase, sortedArray, getRandomItem , toHoursAndMinutes, calcDuration} from './public/js/helper/utils.js';
+import { titleCase, sortedArray, getRandomItem} from './public/js/helper/utils.js';
 
 dotenv.config();
 

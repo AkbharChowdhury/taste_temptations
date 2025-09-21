@@ -47,7 +47,6 @@ if (searchForm) {
     searchForm.addEventListener('submit', e => {
         e.preventDefault();
         const urlSearchParams = constructSearchURLParams();
-        console.log(urlSearchParams)
         searchRecipes(urlSearchParams).then(data =>{
             if (paymentIsRequired(data.code)) {
                 errorDiv.innerHTML = errorMessageTag(data);
