@@ -1,5 +1,5 @@
 "use strict";
-import { titleCase, toHoursAndMinutes } from './helper/utils.js';
+import { titleCase, toHoursAndMinutes, calcDuration } from './helper/utils.js';
 import { similarRecipeCard } from './helper/recipe-card.js';
 import { fetchRequest, errorMessageTag, paymentIsRequired, fetchRecipeID } from './helper/functions.js';
 
@@ -31,7 +31,14 @@ if (isValidNumber) {
 
 function displayRecipeDetails(data) {
 
-    const {title, image, cuisines, summary} =  data;
+    const {title, 
+        image, 
+        cuisines, 
+        summary, 
+        servings, 
+        readyInMinutes: minutes, 
+        dishTypes, 
+        analyzedInstructions} =  data;
 
     document.title = `Taste Temptations: ${title}`;
     document.querySelector('#nutrients').innerHTML = nutritionDetails(data.nutrition.nutrients);
@@ -49,11 +56,11 @@ function displayRecipeDetails(data) {
     
     Object.assign(imageTag, { src: image, alt: title });
     const cuisinesText = cuisines.length !== 0 ? `| ${cuisines.join(', ')}` : '';
-    document.querySelector('#additional-details').innerText = `Serves ${data.servings}, ready in ${toHoursAndMinutes(data.readyInMinutes)} ${cuisinesText}`;
+    document.querySelector('#additional-details').innerText = `Serves ${servings}, ready in ${calcDuration(minutes)} ${cuisinesText}`;
     document.querySelector('#summary').innerHTML = summary;
-    document.querySelector('#dish-types').innerHTML = showDishTypeTags(data.dishTypes);
+    document.querySelector('#dish-types').innerHTML = showDishTypeTags(dishTypes);
 
-    const instructions = data.analyzedInstructions[0];
+    const instructions = analyzedInstructions[0];
     showInstructions(instructions);
     
 }

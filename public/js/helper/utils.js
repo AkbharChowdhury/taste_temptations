@@ -4,9 +4,9 @@ export const serializeURLSearchParams = urlSearchParams => {
     // Used to seperate spaces in strings
     const sep = '+';
     return urlSearchParams.toString()
-    .replaceAll(coma,',')
-    .replaceAll(sep, ' ');
-    } 
+        .replaceAll(coma, ',')
+        .replaceAll(sep, ' ');
+}
 export const titleCase = sentance => sentance
     .toLowerCase()
     .split(' ')
@@ -21,22 +21,27 @@ export const getRandomMeals = (numberOfMeals, arr) => {
     for (let i = 0; i < numberOfMeals; i++) randomMeals.add(getRandomItem(arr));
     const MIN_NUM_MEALS = 2;
     const isMealSizeSmall = randomMeals.size < MIN_NUM_MEALS;
-    if (randomMeals.size < numberOfMeals){
+    if (randomMeals.size < numberOfMeals) {
         while (randomMeals.size < numberOfMeals) randomMeals.add(getRandomItem(arr));
     }
-    if (isMealSizeSmall){
+    if (isMealSizeSmall) {
         while (randomMeals.size < MIN_NUM_MEALS) randomMeals.add(getRandomItem(arr));
     }
     return randomMeals;
 }
 
 export function toHoursAndMinutes(totalMinutes) {
-  const hours = Math.floor(totalMinutes / 60);
-  const minutes = totalMinutes % 60;
-  if (hours < 1) return `${minutes} minutes`;
-  if (minutes === 0) return `${hours}h`;
-  return `${hours}h:${minutes}m`;
+    const hours = Math.floor(totalMinutes / 60);
+    const minutes = totalMinutes % 60;
+    if (hours < 1) return `${minutes} minutes`;
+    if (minutes === 0) return `${hours}h`;
+    return `${hours}h:${minutes}m`;
 
+}
+export function calcDuration(totalMinutes) {
+    const hours = Math.floor(totalMinutes / 60);
+    const minutes = totalMinutes % 60;
+    return new Intl.DurationFormat('en', { style: 'long' }).format({ hours, minutes });
 }
 
 
