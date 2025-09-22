@@ -30,10 +30,10 @@ export const getRandomMeals = (numberOfMeals, arr) => {
     return randomMeals;
 }
 
-export function calcDuration(totalMinutes) {
+export function calcDuration(totalMinutes, style='long') {
     const hours = Math.floor(totalMinutes / 60);
     const minutes = totalMinutes % 60;
-    return new Intl.DurationFormat('en', { style: 'long' }).format({ hours, minutes });
+    return new Intl.DurationFormat('en', { style }).format({ hours, minutes });
 }
 
 

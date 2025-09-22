@@ -30,7 +30,7 @@ export const similarRecipeCard = (recipe, index) => {
       <img src="${getRecipeImage(id)}" class="card-img-top" alt="${title}">
       <div class="card-body">
         <h5 class="card-title">${title}</h5>
-        <p class="card-text">Ready in ${calcDuration(minutes)}  | servings ${servings}</p>
+        <p class="card-text">${calcDuration(minutes, 'short')}  | ${servings} serving${servings === 1 ? "": "s"} </p>
         <a href="${recipeDetailURL(id)}" target="_blank" class="btn btn-primary">View</a>
       </div>
     </div>

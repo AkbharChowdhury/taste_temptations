@@ -2,8 +2,8 @@ import express from 'express'
 import dotenv from 'dotenv';
 import axios from 'axios';
 import { mealTypes, cuisines } from './recipe-tags.js';
-import { titleCase, sortedArray, getRandomItem} from './public/js/helper/utils.js';
-
+import { titleCase, sortedArray, getRandomItem } from './public/js/helper/utils.js';
+// import {Intl} from 'intl';
 dotenv.config();
 
 const API_KEY = process.env.FOOD_API_KEY;
@@ -17,11 +17,14 @@ app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-const requestData = url => new Request( BASE_URL + url, { headers: { 'x-api-key': API_KEY } });
+const requestData = url => new Request(BASE_URL + url, { headers: { 'x-api-key': API_KEY } });
 axios.defaults.headers['x-api-key'] = API_KEY;
 axios.defaults.baseURL = BASE_URL;
-const runApp = async _ =>  {
+const runApp = async _ => {
     console.log(`Server listening on port ${PORT.toLocaleString('en')}`);
+    const hours = 2;
+    const minutes = 22;
+    // console.log(new Intl.DurationFormat('en', { style: 'long' }).format({ hours, minutes }))
 };
 
 app.listen(PORT, _ => runApp());
@@ -73,7 +76,7 @@ app.get('/cuisines', (req, res) => {
 async function getSimilarRecipes(id) {
     try {
         const limit = 8;
-        const params = new URLSearchParams({number: limit});
+        const params = new URLSearchParams({ number: limit });
         const response = await axios.get(`${id}/similar`, { params });
         return response.data;
     } catch (error) {
@@ -108,9 +111,9 @@ app.get('/random-recipes', async (req, res) => getRandomRecipes().then(data => r
 
 async function getRecipeDetails(id) {
     try {
-        const params = new URLSearchParams({includeNutrition: true});
+        const params = new URLSearchParams({ includeNutrition: true });
         const response = await axios.get(`${id}/information`, { params });
-        return response.data;       
+        return response.data;
 
     } catch (error) {
         console.error('There was an error fetching recipe details')
@@ -128,6 +131,6 @@ app.post('/detail', (req, res) => {
 app.post('/search', (req, res) => {
     const params = req.body.params;
     searchRecipes(params)
-    .then(recipes => res.send(recipes))
-    .catch(error=> res.send(error));
+        .then(recipes => res.send(recipes))
+        .catch(error => res.send(error));
 });
