@@ -19,10 +19,7 @@ app.use(express.json());
 const requestData = url => new Request(BASE_URL + url, { headers: { 'x-api-key': API_KEY } });
 axios.defaults.headers['x-api-key'] = API_KEY;
 axios.defaults.baseURL = BASE_URL;
-const runApp =  _ => {
-    console.log(`Server listening on port ${PORT.toLocaleString('en')}`);
-};
-
+const runApp =  _ =>  console.log(`Server listening on port ${PORT.toLocaleString()}`);
 app.listen(PORT, _ => runApp());
 
 async function searchRecipes(urlSearchParams) {
@@ -87,11 +84,9 @@ app.post('/similarRecipes', async (req, res) => {
 });
 
 const randomRecipeURL = tags => {
-    const url = `random?`
-    const params = new URLSearchParams();
-    params.append('number', RECORDS_PER_PAGE);
-    params.append('include-tags', tags.join());
-    return `${url}${params.toString()}`;
+    const url = `random?`;
+    const params = new URLSearchParams({'number': RECORDS_PER_PAGE, 'include-tags': tags.join()});
+    return `${url}${params.toString().replaceAll('%2C',',')}`;
 
 }
 
