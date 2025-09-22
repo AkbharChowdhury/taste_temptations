@@ -19,7 +19,7 @@ app.use(express.json());
 const requestData = url => new Request(BASE_URL + url, { headers: { 'x-api-key': API_KEY } });
 axios.defaults.headers['x-api-key'] = API_KEY;
 axios.defaults.baseURL = BASE_URL;
-const runApp = async _ => {
+const runApp =  _ => {
     console.log(`Server listening on port ${PORT.toLocaleString('en')}`);
 };
 
