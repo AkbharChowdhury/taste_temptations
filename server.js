@@ -3,7 +3,6 @@ import dotenv from 'dotenv';
 import axios from 'axios';
 import { mealTypes, cuisines } from './recipe-tags.js';
 import { titleCase, sortedArray, getRandomItem } from './public/js/helper/utils.js';
-// import {Intl} from 'intl';
 dotenv.config();
 
 const API_KEY = process.env.FOOD_API_KEY;
@@ -22,9 +21,6 @@ axios.defaults.headers['x-api-key'] = API_KEY;
 axios.defaults.baseURL = BASE_URL;
 const runApp = async _ => {
     console.log(`Server listening on port ${PORT.toLocaleString('en')}`);
-    const hours = 2;
-    const minutes = 22;
-    // console.log(new Intl.DurationFormat('en', { style: 'long' }).format({ hours, minutes }))
 };
 
 app.listen(PORT, _ => runApp());
