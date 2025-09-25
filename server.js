@@ -17,16 +17,31 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 const requestData = url => new Request(BASE_URL + url, { headers: { 'x-api-key': API_KEY } });
+
 axios.defaults.headers['x-api-key'] = API_KEY;
 axios.defaults.baseURL = BASE_URL;
-const runApp =  _ =>  console.log(`Server listening on port ${PORT.toLocaleString()}`);
+
+const getLabel = () => {
+
+    
+}
+const runApp =  _ =>  {
+    console.log(`Server listening on port ${PORT.toLocaleString()}`);
+    // getNutritionLabelWidget(642276).then(console.log)
+
+    // nutritionLabelWidget(32390).then(data => {
+    //     console.log(data);
+    // })
+
+
+};
 app.listen(PORT, _ => runApp());
 
 async function searchRecipes(urlSearchParams) {
 
     try {
         const params = new URLSearchParams(urlSearchParams);
-        params.append('number', RECORDS_PER_PAGE + 1);
+        params.append('number', RECORDS_PER_PAGE);
         const response = await axios.get('complexSearch', { params });
         return response.data;
     } catch (error) {
@@ -78,10 +93,21 @@ async function getSimilarRecipes(id) {
     }
 }
 
-app.post('/similarRecipes', async (req, res) => {
+app.post('/similar-recipes', async (req, res) => {
     const id = req.body.id;
     getSimilarRecipes(id).then(data => res.send(data));
 });
+
+
+app.post('/nutrition-label', async (req, res) => {
+    const id = req.body.id;
+    const h = '<h1>Hello World</h1>' + req.body;
+    res.send(h);
+    // getNutritionLabelWidget(id).then(data => res.send(data));
+});
+
+
+ 
 
 const randomRecipeURL = tags => {
     const url = `random?`;
@@ -97,6 +123,14 @@ async function getRandomRecipes() {
     const response = await fetch(requestData(randomRecipeURL(tags)));
     return await response.json();
 }
+
+async function getNutritionLabelWidget(id){
+    const headers = {'Content-Type': 'text/html'};
+    const url = `https://api.spoonacular.com/recipes/${id}/nutritionLabel?apiKey=${API_KEY}`;
+    const response = await fetch(url, { headers });
+    return await response.text();
+}
+
 
 app.get('/random-recipes', async (req, res) => getRandomRecipes().then(data => res.send(data)));
 

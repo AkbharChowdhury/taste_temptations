@@ -11,20 +11,61 @@ const showDishTypeTags = dishes => dishes.map(dish => `<span class="badge bg-sec
 
 const isValidNumber = !isNaN(id) || id !== 0;
 
+const endpoints = Object.freeze({
+    DETAIL: '/detail',
+    SIMILAR: '/similar-recipes',
+    NUTRITION_LABEL: '/nutrition-label',
+});
 if (isValidNumber) {
-    fetchRequest(id, '/detail').then(data => {
-        if (paymentIsRequired(data.code)) {
+    fetchRequest(id, endpoints.DETAIL).then(data => {
+        console.log(data)
+
+
+        if (paymentIsRequired(data.status)) {
             const errorDiv = document.getElementById('recipe-details-container');
             errorDiv.innerHTML = errorMessageTag(data);
             return;
         }
 
         displayRecipeDetails(data);
-        fetchRequest(id, '/similarRecipes').then(displaySimilarRecipes);
+        getNutritionLabel(id).then(displayNutritionLabel).catch(console.error);
+        fetchRequest(id, endpoints.SIMILAR).then(displaySimilarRecipes)
+
 
     });
 
+
+
 }
+function displayNutritionLabel(data) {
+    const recipeLabel = data.split('</style>')[1];
+    const container = document.getElementById('nutrition-label-widget');
+    container.innerHTML = recipeLabel;
+}
+
+
+
+
+async function getNutritionLabel(id) {
+
+    try {
+        const url = endpoints.NUTRITION_LABEL;
+        const headers = { 'Content-Type': 'text/html' };
+        const body = JSON.stringify({id});
+        const response = await fetch(url, {
+            method: 'POST',
+            headers,
+            body,
+        });
+
+        console.warn(response.status);
+        return await response.text();
+
+    } catch (error) {
+        console.error(`Error fetching recipe food label ${error.message}`);
+    }
+}
+
 
 function displayRecipeDetails(data) {
 
@@ -38,7 +79,7 @@ function displayRecipeDetails(data) {
         analyzedInstructions } = data;
 
     document.title = `Taste Temptations: ${title}`;
-    document.querySelector('#nutrients').innerHTML = nutritionDetails(data.nutrition.nutrients);
+    // document.querySelector('#nutrients').innerHTML = nutritionDetails(data.nutrition.nutrients);
 
     const ingredients = data.extendedIngredients.map(ingredient => ingredient.original);
 
