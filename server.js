@@ -21,35 +21,12 @@ const requestData = url => new Request(BASE_URL + url, { headers: { 'x-api-key':
 axios.defaults.headers['x-api-key'] = API_KEY;
 axios.defaults.baseURL = BASE_URL;
 
-const getLabel = () => {
-
-    
-}
 const runApp =  _ =>  {
     console.log(`Server listening on port ${PORT.toLocaleString()}`);
-    // getNutritionLabelWidget(642276).then(console.log)
-
-    // nutritionLabelWidget(32390).then(data => {
-    //     console.log(data);
-    // })
-
-
 };
 app.listen(PORT, _ => runApp());
 
-async function searchRecipes(urlSearchParams) {
-
-    try {
-        const params = new URLSearchParams(urlSearchParams);
-        params.append('number', RECORDS_PER_PAGE);
-        const response = await axios.get('complexSearch', { params });
-        return response.data;
-    } catch (error) {
-        console.error(`There was an error fetching recipes: ${error}`)
-    }
-
-}
-
+app.get('/random-recipes', (req, res) => getRandomRecipes().then(data => res.send(data)));
 app.get('/meals', (req, res) => {
     const sortedMeals = sortedArray(mealTypes);
     const html =
@@ -63,7 +40,6 @@ app.get('/meals', (req, res) => {
     res.send(html);
 
 });
-
 
 app.get('/cuisines', (req, res) => {
     const sortedCuisines = sortedArray(cuisines);
@@ -81,6 +57,39 @@ app.get('/cuisines', (req, res) => {
 });
 
 
+app.post('/similar-recipes', (req, res) => {
+    const id = req.body.id;
+    getSimilarRecipes(id).then(data => res.send(data));
+});
+
+
+app.post('/nutrition-label', (req, res) => {
+    const id = req.body.id;
+    getNutritionLabelWidget(id).then(data => res.send(data));
+});
+
+app.post('/detail', (req, res) => {
+    const id = req.body.id;
+    getRecipeDetails(id).then(data => res.send(data))
+});
+
+app.post('/search', (req, res) => {
+    const params = req.body.params;
+    searchRecipes(params).then(recipes => res.send(recipes))
+});
+
+async function searchRecipes(urlSearchParams) {
+    try {
+        const params = new URLSearchParams(urlSearchParams);
+        params.append('number', RECORDS_PER_PAGE);
+        const response = await axios.get('complexSearch', { params });
+        return response.data;
+    } catch (error) {
+        console.error(`There was an error fetching recipes: ${error}`)
+    }
+
+}
+
 async function getSimilarRecipes(id) {
     try {
         const limit = 8;
@@ -93,27 +102,10 @@ async function getSimilarRecipes(id) {
     }
 }
 
-app.post('/similar-recipes', async (req, res) => {
-    const id = req.body.id;
-    getSimilarRecipes(id).then(data => res.send(data));
-});
-
-
-app.post('/nutrition-label', async (req, res) => {
-    const id = req.body.id;
-    const h = '<h1>Hello World</h1>' + req.body;
-    res.send(h);
-    // getNutritionLabelWidget(id).then(data => res.send(data));
-});
-
-
- 
-
-const randomRecipeURL = tags => {
+async function randomRecipeURL(tags) {
     const url = `random?`;
-    const params = new URLSearchParams({'number': RECORDS_PER_PAGE, 'include-tags': tags.join()});
-    return `${url}${params.toString().replaceAll('%2C',',')}`;
-
+    const params = new URLSearchParams({ 'number': RECORDS_PER_PAGE, 'include-tags': tags.join() });
+    return `${url}${params.toString().replaceAll('%2C', ',')}`;
 }
 
 async function getRandomRecipes() {
@@ -131,9 +123,6 @@ async function getNutritionLabelWidget(id){
     return await response.text();
 }
 
-
-app.get('/random-recipes', async (req, res) => getRandomRecipes().then(data => res.send(data)));
-
 async function getRecipeDetails(id) {
     try {
         const params = new URLSearchParams({ includeNutrition: true });
@@ -145,17 +134,3 @@ async function getRecipeDetails(id) {
         return error;
     }
 }
-
-app.post('/detail', (req, res) => {
-    const id = req.body.id;
-    getRecipeDetails(id)
-        .then(data => res.send(data))
-        .catch(error => res.send(error));
-});
-
-app.post('/search', (req, res) => {
-    const params = req.body.params;
-    searchRecipes(params)
-        .then(recipes => res.send(recipes))
-        .catch(error => res.send(error));
-});

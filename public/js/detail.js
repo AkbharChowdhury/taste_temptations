@@ -27,9 +27,10 @@ if (isValidNumber) {
             return;
         }
 
-        displayRecipeDetails(data);
-        getNutritionLabel(id).then(displayNutritionLabel).catch(console.error);
-        fetchRequest(id, endpoints.SIMILAR).then(displaySimilarRecipes)
+        // displayRecipeDetails(data);
+        getNutritionLabel1(id);
+        // getNutritionLabel(id).then(displayNutritionLabel).catch(console.error);
+        // fetchRequest(id, endpoints.SIMILAR).then(displaySimilarRecipes)
 
 
     });
@@ -60,6 +61,28 @@ async function getNutritionLabel(id) {
 
         console.warn(response.status);
         return await response.text();
+
+    } catch (error) {
+        console.error(`Error fetching recipe food label ${error.message}`);
+    }
+}
+
+
+
+async function getNutritionLabel1(id) {
+
+    try {
+        const url = endpoints.NUTRITION_LABEL;
+        const headers = { 'Content-Type': 'text/html' };
+        const body = JSON.stringify({id});
+        const response = await fetch(url, {
+            method: 'POST',
+            headers,
+            body,
+        });
+
+        const data = await response.text();
+        console.log(data);
 
     } catch (error) {
         console.error(`Error fetching recipe food label ${error.message}`);

@@ -221,8 +221,12 @@
                 to a daily diet. 2,000 calories a day is used for general nutrition advice.
     </table>
 </section>`;
-const arr = html.split('</style>');
-console.log(arr[1])
+
+
+function getNutritionLabelWidget(html){
+    const label = html.split('</style>')[1];
+}
+
  </script>
 
 </body>
