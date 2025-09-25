@@ -30,17 +30,22 @@ const showSearchResults = data => {
 
 
 fetchRandomRecipes().then(data => {
+    if (data === undefined || data.code) {
+        if (paymentIsRequired(402)) {
+            errorDiv.innerHTML = errorMessageTag('e');
+            document.querySelector('#button-search').disabled = true;
+            return
+        }
 
-    if (paymentIsRequired(data.code)) {
-        errorDiv.innerHTML = errorMessageTag(data);
-        document.querySelector('#button-search').disabled = true;
-        return;
+        populateSearchContainer(renderRecipeList(data.recipes));
+        populateSearchDiv('/meals', '#meal');
+        populateSearchDiv('/cuisines', '#cuisines-container');
+
+
     }
 
-    populateSearchContainer(renderRecipeList(data.recipes));
-    populateSearchDiv('/meals', '#meal');
-    populateSearchDiv('/cuisines', '#cuisines-container');
-});
+
+}).catch(error => console.warn(error));
 
 
 if (searchForm) {

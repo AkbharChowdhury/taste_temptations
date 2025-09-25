@@ -21,12 +21,14 @@ const requestData = url => new Request(BASE_URL + url, { headers: { 'x-api-key':
 axios.defaults.headers['x-api-key'] = API_KEY;
 axios.defaults.baseURL = BASE_URL;
 
-const runApp =  _ =>  {
+const runApp = _ => {
     console.log(`Server listening on port ${PORT.toLocaleString()}`);
+    // getNutritionLabelWidget(632678).then(console.log)
+    // getRandomRecipes().then(console.log)
 };
 app.listen(PORT, _ => runApp());
 
-app.get('/random-recipes', (req, res) => getRandomRecipes().then(data => res.send(data)));
+app.get('/random', (req, res) => getRandomRecipes().then(data => res.send(data)));
 app.get('/meals', (req, res) => {
     const sortedMeals = sortedArray(mealTypes);
     const html =
@@ -57,7 +59,7 @@ app.get('/cuisines', (req, res) => {
 });
 
 
-app.post('/similar-recipes', (req, res) => {
+app.post('/similar', (req, res) => {
     const id = req.body.id;
     getSimilarRecipes(id).then(data => res.send(data));
 });
@@ -112,12 +114,14 @@ async function getRandomRecipes() {
     const randomCuisine = getRandomItem(cuisines);
     const randomMeal = getRandomItem(mealTypes);
     const tags = [randomMeal, randomCuisine];
-    const response = await fetch(requestData(randomRecipeURL(tags)));
-    return await response.json();
+    const params = new URLSearchParams({ 'number' : RECORDS_PER_PAGE, 'include-tags': tags.join() });
+    const response = await axios.get('random', { params });
+    return response.data;
+
 }
 
-async function getNutritionLabelWidget(id){
-    const headers = {'Content-Type': 'text/html'};
+async function getNutritionLabelWidget(id) {
+    const headers = { 'Content-Type': 'text/html' };
     const url = `https://api.spoonacular.com/recipes/${id}/nutritionLabel?apiKey=${API_KEY}`;
     const response = await fetch(url, { headers });
     return await response.text();

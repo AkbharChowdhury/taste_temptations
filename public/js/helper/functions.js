@@ -4,7 +4,7 @@ const headers = Object.freeze({ 'Content-Type': 'application/json' });
 
 export async function fetchRandomRecipes() {
     try {
-        const response = await fetch('random-recipes');
+        const response = await fetch('random');
         return await response.json();
     } catch (error) {
         console.error(`There was an error fetching random recipes ${error.message}`)
@@ -85,11 +85,11 @@ const PAYMENT_REQUIRED_CODE = 402;
 export const paymentIsRequired = code => code === PAYMENT_REQUIRED_CODE; 
 
 
-export const errorMessageTag = data =>  /*html*/ `<div class="alert alert-danger" role="alert">
+export const errorMessageTag = message =>  /*html*/ `<div class="alert alert-danger" role="alert">
   <h4 class="alert-heading">Cannot fetch recipe details!</h4>
   <p>Please view message below for more details</p>
   <hr>
-  <p class="mb-0">${data.message}</p>
+  <p class="mb-0">${message}</p>
 </div>`;
 
 export function fetchRecipeID() {
