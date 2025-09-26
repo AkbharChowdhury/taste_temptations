@@ -37,4 +37,5 @@ export function calcDuration(totalMinutes, style='long') {
 }
 
 
+export const isValidNumber = num => !isNaN(num) || num !== 0;
 

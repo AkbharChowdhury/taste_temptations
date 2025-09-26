@@ -1,33 +1,32 @@
 "use strict";
-import { titleCase, calcDuration } from './helper/utils.js';
+import { titleCase, calcDuration, isValidNumber } from './helper/utils.js';
 import { similarRecipeCard } from './helper/recipe-card.js';
-import { fetchRequest, errorMessageTag, paymentIsRequired, fetchRecipeID} from './helper/functions.js';
+import { fetchRequest, errorMessageTag, paymentIsRequired, fetchRecipeID } from './helper/functions.js';
 import { getSteps } from './helper/detail-snippets.js';
 
 const id = fetchRecipeID();
 
 const showDishTypeTags = dishes => dishes.map(dish => `<span class="badge bg-secondary text-decoration-none link-light m-2">${titleCase(dish)}</span>`).join().replaceAll(',', '');
 
-const isValidNumber = !isNaN(id) || id !== 0;
 
 const endpoints = Object.freeze({
     DETAIL: '/detail',
     SIMILAR: '/similar',
     NUTRITION_LABEL: '/nutrition-label',
 });
-if (isValidNumber) {
-    fetchRequest(id, endpoints.DETAIL).then(data => {
-        if (paymentIsRequired(data.status)) {
-            const errorDiv = document.getElementById('recipe-details-container');
-            errorDiv.innerHTML = errorMessageTag(data.message);
-            return;
-        }
-        displayRecipeDetails(data);
-        fetchRequest(id, endpoints.SIMILAR).then(displaySimilarRecipes)
-        getNutritionLabelDetails(id, endpoints.NUTRITION_LABEL).then(displayNutritionLabel)
 
+isValidNumber(id) && fetchRequest(id, endpoints.DETAIL).then(handleRecipeDetails);
 
-    });
+function handleRecipeDetails(data) {
+
+    if (paymentIsRequired(data.status)) {
+        const errorDiv = document.getElementById('recipe-details-container');
+        errorDiv.innerHTML = errorMessageTag(data.message);
+        return;
+    }
+    displayRecipeDetails(data);
+    fetchRequest(id, endpoints.SIMILAR).then(displaySimilarRecipes)
+    getNutritionLabelDetails(id, endpoints.NUTRITION_LABEL).then(displayNutritionLabel)
 }
 
 async function getNutritionLabelDetails(id, url) {
@@ -50,14 +49,16 @@ function displayNutritionLabel(data) {
 
 function displayRecipeDetails(data) {
 
-    const { title,
+    const {
+        title,
         image,
         cuisines,
         summary,
         servings,
         readyInMinutes: minutes,
         dishTypes,
-        analyzedInstructions } = data;
+        analyzedInstructions 
+    } = data;
 
     document.title = `Taste Temptations: ${title}`;
 
