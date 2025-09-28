@@ -1,6 +1,15 @@
 "use strict";
-import {calcDuration} from './utils.js';
-const recipeDetailURL = id => `detail.html?recipeID=${id}`
+
+import {calcDuration, DurationFormat} from './utils.js';
+
+const recipeDetailURL = id => `detail.html?recipeID=${id}`;
+const getRecipeImage = id => `https://img.spoonacular.com/recipes/${id}-556x370.jpg`;
+
+const columnClassLookup = Object.freeze({
+        0: 'col-sm-6 mb-3 mb-sm-0 mt-3',
+        'default': 'col-sm-6',
+  });
+
 export const recipeCard = ({image, title, id}) => 
      /*html*/`
    <div class="col-sm-6 col-md-4">
@@ -14,14 +23,8 @@ export const recipeCard = ({image, title, id}) =>
         </div>
 `;
 
-
-const columnClassLookup = Object.freeze({
-        0: 'col-sm-6 mb-3 mb-sm-0 mt-3',
-        'default': 'col-sm-6'
-  });
-const getRecipeImage = id => `https://img.spoonacular.com/recipes/${id}-556x370.jpg`;
-
 export const similarRecipeCard = (recipe, index) => {
+
   const columnClass = columnClassLookup[index] || columnClassLookup['default'];
   const {id, title, readyInMinutes: minutes, servings} = recipe;
   return /*html*/`
@@ -30,7 +33,7 @@ export const similarRecipeCard = (recipe, index) => {
       <img src="${getRecipeImage(id)}" class="card-img-top" alt="${title}">
       <div class="card-body">
         <h5 class="card-title">${title}</h5>
-        <p class="card-text">${calcDuration(minutes, 'short')}  | ${servings} serving${servings === 1 ? "": "s"} </p>
+        <p class="card-text">${calcDuration(minutes, DurationFormat.SHORT)}  | ${servings} serving${servings === 1 ? "": "s"} </p>
         <a href="${recipeDetailURL(id)}" target="_blank" class="btn btn-primary">View</a>
       </div>
     </div>

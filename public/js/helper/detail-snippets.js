@@ -3,15 +3,13 @@ export const getSteps = steps => /*html*/`
         ${steps.map(step => `<li>${step.step}</li>`).join().replaceAll(',', '')}
     </ol>   
     `;
-const table = i => `
-    <tr>
-      <td>${i.amount}${i.unit} ${i.name}</td>
-    </tr>
-    `;
-const nutritionalContent = ["Calories", "Fat", "Carbohydrates", "Sugar", "Protein", "Cholesterol"];
-export const nutritionDetails = nutrients => nutrients
-    .filter(item => nutritionalContent.includes(item.name))
-    .map(table)
-    .join()
-    .replaceAll(',', '');
+export const getIngredientsList = ({ extendedIngredients }) => {
+    const ingredients = extendedIngredients.map(ingredient => ingredient.original);
+    const html =
+       /*html*/`
+    <ul>
+        ${ingredients.map(ingredient => `<li>${ingredient}</li>`).join().replaceAll(',', '')}
+    </ul>`;
+    return html;
+}
 

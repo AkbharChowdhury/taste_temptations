@@ -2,12 +2,10 @@
 import { titleCase, calcDuration, isValidNumber } from './helper/utils.js';
 import { similarRecipeCard } from './helper/recipe-card.js';
 import { fetchRequest, errorMessageTag, paymentIsRequired, fetchRecipeID } from './helper/functions.js';
-import { getSteps } from './helper/detail-snippets.js';
-
+import { getIngredientsList, getSteps } from './helper/detail-snippets.js';
 const id = fetchRecipeID();
 
 const showDishTypeTags = dishes => dishes.map(dish => `<span class="badge bg-secondary text-decoration-none link-light m-2">${titleCase(dish)}</span>`).join().replaceAll(',', '');
-
 
 const endpoints = Object.freeze({
     DETAIL: '/detail',
@@ -34,7 +32,6 @@ async function getNutritionLabelDetails(id, url) {
     try {
         const response = await axios.post(url, { id });
         return response.data;
-
     } catch (error) {
         console.error('error with fetch request', error)
 
@@ -42,8 +39,9 @@ async function getNutritionLabelDetails(id, url) {
 }
 function displayNutritionLabel(data) {
     const recipeLabel = data.split('</style>')[1];
-    const container = document.getElementById('nutrition-label-widget');
-    container.innerHTML = recipeLabel;
+    const container = document.querySelector('#nutrition-label-widget');
+    container.insertAdjacentHTML('beforebegin', recipeLabel);
+    container.remove();
 }
 
 
@@ -57,22 +55,17 @@ function displayRecipeDetails(data) {
         servings,
         readyInMinutes: minutes,
         dishTypes,
-        analyzedInstructions 
+        analyzedInstructions
     } = data;
 
     document.title = `Taste Temptations: ${title}`;
 
-    const ingredients = data.extendedIngredients.map(ingredient => ingredient.original);
-
-    document.querySelector('#ingredient-list').innerHTML = /*html*/`
-    <ul>
-        ${ingredients.map(ingredient => `<li>${ingredient}</li>`).join().replaceAll(',', '')}
-    </ul>`;
+    document.querySelector('#ingredient-list').innerHTML = getIngredientsList(data);
 
     const titleTag = document.querySelector('#title');
     const imageTag = document.querySelector('#image');
+    
     titleTag.textContent = title;
-
     Object.assign(imageTag, { src: image, alt: title });
     const cuisinesText = cuisines.length !== 0 ? `| ${cuisines.join(', ')}` : '';
     document.querySelector('#additional-details').innerText = `Serves ${servings}, ready in ${calcDuration(minutes)} ${cuisinesText}`;
@@ -83,6 +76,7 @@ function displayRecipeDetails(data) {
     showInstructions(instructions);
 
 }
+
 
 function showInstructions(instructions) {
     if (instructions === undefined) {

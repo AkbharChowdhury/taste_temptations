@@ -8,9 +8,8 @@
                     <div class="text-muted fst-italic mb-2" id="additional-details">Serves 12, ready in 45 minutes |
                         American</div>
                     <div id="dish-types"></div>
-
                 </header>
-                <div class="col">
+                <div class="col" id="recipe-image">
                     <figure class="mb-4 text-start">
                         <img class="img-fluid rounded" id="image"
                             src="https://img.spoonacular.com/recipes/633229-556x370.jpg" alt="image" />
@@ -31,40 +30,17 @@
                 <div class="row gy-3" id="similar-recipe-list"></div>
             </section>
         </div>
-        <div class="col-lg-4">
-            <div id="nutrition-label-widget" class="mt-2">
-
-                <div class="card mb-4">
-
-                    <!-- <div class="card-header text-capitalize"></div> -->
-                    <div class="card-body">
-                        <div id="nutrition-label-widget">
-
-                        </div>
-                        <!-- <img alt="Nutrition Label" id="nutrition-label-image" alt="food label"> -->
-                        <div class="table-responsive">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th scope="col"></th>
-                                    </tr>
-                                </thead>
-                                <tbody id="nutrientsss">
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
+        <section class="col-lg-4" id="nutrition-label">
+            <div id="nutrition-label-widget" >
             </div>
-        </div>
+        </section>
     </div>
 
     <div id="footer"></div>
     <script src="js/template.js"></script>
     <script src="js/detail.js" type="module"></script>
-
-
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     </body>
+
     </html>

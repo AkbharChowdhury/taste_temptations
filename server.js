@@ -16,16 +16,12 @@ app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-const requestData = (url, contentType='application/json') => new Request(url, { headers: { 'x-api-key': API_KEY,  'Content-Type':  contentType } });
+const requestData = (url, contentType = 'application/json') => new Request(url, { headers: { 'x-api-key': API_KEY, 'Content-Type': contentType } });
 
 axios.defaults.headers['x-api-key'] = API_KEY;
 axios.defaults.baseURL = BASE_URL;
 
-const runApp = _ => {
-    console.log(`Server listening on port ${PORT.toLocaleString()}`);
-
-}
-
+const runApp = _ => console.log(`Server listening on port ${PORT.toLocaleString()}`);
 app.listen(PORT, _ => runApp());
 
 app.get('/random', (req, res) => getRandomRecipes().then(data => res.send(data)));
