@@ -7,6 +7,7 @@ export const serializeURLSearchParams = urlSearchParams => {
         .replaceAll(coma, ',')
         .replaceAll(sep, ' ');
 }
+
 export const titleCase = sentance => sentance
     .toLowerCase()
     .split(' ')

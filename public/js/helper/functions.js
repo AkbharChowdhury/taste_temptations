@@ -25,7 +25,7 @@ export async function searchRecipes(params) {
         return await response.json();
 
     } catch (error) {
-        console.error(`There was an error searching for recipes ${error}`)
+        console.error('There was an error searching for recipes', error);
 
     }
 
@@ -59,7 +59,7 @@ export async function fetchRequest1(id, url){
     return data;
         
     } catch (error) {
-        console.warn('error with fetch reqyest', error)
+        console.warn('error with fetch request', error)
         
     }
 } 
@@ -75,7 +75,7 @@ export async function fetchRequest(id, url) {
         return await response.json();
 
     } catch (error) {
-        console.error(`There was an error with this request ${error}`)
+        console.error('There was an error with this request', error);
 
     }
 

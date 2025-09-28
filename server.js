@@ -1,6 +1,6 @@
 import express from 'express'
 import dotenv from 'dotenv';
-import axios from 'axios';
+import axios, { toFormData } from 'axios';
 import { mealTypes, cuisines } from './recipe-tags.js';
 import { titleCase, sortedArray, getRandomItem } from './public/js/helper/utils.js';
 dotenv.config();
@@ -21,7 +21,10 @@ const requestData = (url, contentType='application/json') => new Request(url, { 
 axios.defaults.headers['x-api-key'] = API_KEY;
 axios.defaults.baseURL = BASE_URL;
 
-const runApp = _ => console.log(`Server listening on port ${PORT.toLocaleString()}`);
+const runApp = _ => {
+    console.log(`Server listening on port ${PORT.toLocaleString()}`);
+
+}
 
 app.listen(PORT, _ => runApp());
 
@@ -84,19 +87,19 @@ async function searchRecipes(urlSearchParams) {
         const response = await axios.get('complexSearch', { params });
         return response.data;
     } catch (error) {
-        console.error(`There was an error fetching recipes: ${error}`)
+        console.error('There was an error fetching recipes', error)
     }
 
 }
 
 async function getSimilarRecipes(id) {
     try {
-        const limit = 8;
-        const params = new URLSearchParams({ number: limit });
+        const number = 8;
+        const params = new URLSearchParams({ number });
         const response = await axios.get(`${id}/similar`, { params });
         return response.data;
     } catch (error) {
-        console.error('There was an error fetching similar recipes')
+        console.error('There was an error fetching similar recipes', error)
         return error;
     }
 }
@@ -112,7 +115,7 @@ async function getRandomRecipes() {
         return response.data;
 
     } catch (error) {
-        console.log(error);
+        console.log('there was a problem fetching random recipes', error.message);
     }
 
 }
@@ -123,7 +126,7 @@ async function getNutritionLabelWidget(id) {
         const response = await fetch(requestData(`https://api.spoonacular.com/recipes/${id}/nutritionLabel`, headers['Content-Type']));
         return await response.text();
     } catch (error) {
-        console.log('There was an error fetching food label', error);
+        console.log('There was an error fetching nutrition label', error);
         return error;
 
     }
@@ -134,7 +137,7 @@ async function getRecipeDetails(id) {
         const response = await axios.get(`${id}/information`);
         return response.data;
     } catch (error) {
-        console.error('There was an error fetching recipe details')
+        console.error('There was an error fetching recipe details', error)
         return error;
     }
 }

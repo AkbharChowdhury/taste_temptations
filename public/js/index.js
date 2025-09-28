@@ -30,44 +30,37 @@ const showSearchResults = data => {
 
 
 fetchRandomRecipes().then(data => {
-    console.log(data)
-    const {recipes} = data
-    if (data === undefined || data.code) {
-        if (paymentIsRequired(402)) {
-            errorDiv.innerHTML = errorMessageTag('e');
-            document.querySelector('#button-search').disabled = true;
-            return
-        }
-        renderPage(recipes)
-
-       
-    } else{
-        renderPage(recipes)
-
+    const { recipes } = data;
+    if (recipes) {
+        renderPage(recipes);
+        return;
     }
+
+    console.log({ data });
+
+    errorDiv.innerHTML = errorMessageTag('There was an error retreving  randome recipes', data.message);
+    document.querySelector('#button-search').disabled = true;
 
 
 }).catch(error => console.warn(error));
 
-function renderPage(recipes){
-     populateSearchContainer(renderRecipeList(recipes));
-        populateSearchDiv('/meals', '#meal');
-        populateSearchDiv('/cuisines', '#cuisines-container');
-
+function renderPage(recipes) {
+    populateSearchContainer(renderRecipeList(recipes));
+    populateSearchDiv('/meals', '#meal');
+    populateSearchDiv('/cuisines', '#cuisines-container');
 
 }
 if (searchForm) {
     searchForm.addEventListener('submit', e => {
         e.preventDefault();
         const urlSearchParams = constructSearchURLParams();
-        searchRecipes(urlSearchParams).then(data =>{
+        searchRecipes(urlSearchParams).then(data => {
             if (paymentIsRequired(data.code)) {
                 errorDiv.innerHTML = errorMessageTag(data);
                 return;
             }
             showSearchResults(data);
 
-        
         });
 
     });

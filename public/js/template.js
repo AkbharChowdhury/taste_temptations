@@ -9,7 +9,6 @@ const header = /*html*/`
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
     <!-- <link rel="stylesheet" href="css/style.css"> -->
-    
 </head>
 <body>   
 `;
@@ -27,14 +26,13 @@ const footer =  /*html*/`
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
     crossorigin="anonymous"></script>
-
 `;
-const headerContainer = document.querySelector('#header');
-headerContainer.insertAdjacentHTML("beforebegin", `${header}${nav}`)
-headerContainer.remove();
+const headerDiv = document.querySelector('#header');
+headerDiv.insertAdjacentHTML("beforebegin", `${header}${nav}`)
+headerDiv.remove();
 
-const footerContainer = document.querySelector('#footer');
-footerContainer.insertAdjacentHTML("beforebegin", footer)
-footerContainer.remove();
+const footerDiv = document.querySelector('#footer');
+footerDiv.insertAdjacentHTML("beforebegin", footer)
+footerDiv.remove();
 
 
