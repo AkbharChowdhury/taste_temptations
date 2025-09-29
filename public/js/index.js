@@ -7,7 +7,9 @@ const errorDiv = document.getElementById('recipe-list');
 
 const populateSearchDiv = async (url, div) => {
     const response = await fetch(url);
-    document.querySelector(div).innerHTML = await response.text();
+    const data = await response.text();
+    console.log(data);
+    document.querySelector(div).innerHTML = data;
 }
 const populateSearchContainer = content => document.querySelector('#result').innerHTML = content;
 
