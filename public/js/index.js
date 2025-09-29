@@ -8,7 +8,6 @@ const errorDiv = document.getElementById('recipe-list');
 const populateSearchDiv = async (url, div) => {
     const response = await fetch(url);
     const data = await response.text();
-    console.log(data);
     document.querySelector(div).innerHTML = data;
 }
 const populateSearchContainer = content => document.querySelector('#result').innerHTML = content;
@@ -27,6 +26,7 @@ const showSearchResults = data => {
             </div>`);
         return;
     }
+    
     container(renderRecipeList(results));
 }
 
@@ -37,8 +37,6 @@ fetchRandomRecipes().then(data => {
         renderPage(recipes);
         return;
     }
-
-    console.log({ data });
 
     errorDiv.innerHTML = errorMessageTag('There was an error retreving  randome recipes', data.message);
     document.querySelector('#button-search').disabled = true;
@@ -57,10 +55,11 @@ if (searchForm) {
         e.preventDefault();
         const urlSearchParams = constructSearchURLParams();
         searchRecipes(urlSearchParams).then(data => {
-            if (paymentIsRequired(data.code)) {
-                errorDiv.innerHTML = errorMessageTag(data);
-                return;
-            }
+            console.log({data})
+            // if (paymentIsRequired(data.code)) {
+            //     errorDiv.innerHTML = errorMessageTag(data);
+            //     return;
+            // }
             showSearchResults(data);
 
         });

@@ -8,7 +8,12 @@ app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-const runApp = _ => console.log(`Server listening on port ${PORT.toLocaleString()}`);
+const runApp = _ => { 
+    console.log(`Server listening on port ${PORT.toLocaleString()}`);
+   
+
+    
+};
 
 app.listen(PORT, _ => runApp());
 app.get('/random', (req, res) => recipe.random().then(data => res.send(data)));

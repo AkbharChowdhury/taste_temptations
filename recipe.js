@@ -16,55 +16,44 @@ axios.defaults.baseURL = BASE_URL;
 
 export class Recipe {
 
-    async search(urlSearchParams) {
+    async #request(url, params = new URLSearchParams()) {
         try {
-            const params = new URLSearchParams(urlSearchParams);
-            params.append('number', RECORDS_PER_PAGE);
-            const response = await axios.get('complexSearch', { params });
+            const response = await axios.get(url, { params });
             return response.data;
         } catch (error) {
-            console.error('There was an error fetching recipes', error)
+            console.error('There was an error with this request', error.message)
         }
+    }
 
-
+    async search(urlSearchParams) {
+        const params = new URLSearchParams(urlSearchParams);
+        params.append('number', RECORDS_PER_PAGE);
+        return this.#request('complexSearch', params)
     }
 
     async similar(id) {
-        try {
-            const number = 8;
-            const params = new URLSearchParams({ number });
-            const response = await axios.get(`${id}/similar`, { params });
-            return response.data;
-        } catch (error) {
-            console.error('There was an error fetching similar recipes', error)
-            return error;
-        }
+
+        const number = 8;
+        const params = new URLSearchParams({ number });
+        return this.#request(`${id}/similar`, params);
+
     }
 
 
     async details(id) {
-        try {
-            const response = await axios.get(`${id}/information`);
-            return response.data;
-        } catch (error) {
-            console.error('There was an error fetching recipe details', error)
-            return error;
-        }
+
+        return this.#request(`${id}/information`);
+
     }
 
 
     async random() {
-        try {
-            const randomCuisine = getRandomItem(cuisines);
-            const randomMeal = getRandomItem(mealTypes);
-            const tags = [randomMeal, randomCuisine];
-            const params = new URLSearchParams({ 'number': RECORDS_PER_PAGE, 'include-tags': tags.join() });
-            const response = await axios.get('random', { params });
-            return response.data;
 
-        } catch (error) {
-            console.log('There was a problem fetching random recipes', error.message);
-        }
+        const randomCuisine = getRandomItem(cuisines);
+        const randomMeal = getRandomItem(mealTypes);
+        const tags = [randomMeal, randomCuisine];
+        const params = new URLSearchParams({ 'number': RECORDS_PER_PAGE, 'include-tags': tags.join() });
+        return this.#request('random', params);
 
     }
 
