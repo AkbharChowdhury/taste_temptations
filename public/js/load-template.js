@@ -1,15 +1,17 @@
 const templateFolder = 'template/';
 
-async function getContent(url) {
-      const response = await fetch(url);
-      return await response.text();
-}
-
-function displayContent(html, divSelector) {
+function displayTemplate(html, divSelector) {
     const div = document.querySelector(divSelector);
     div.insertAdjacentHTML("beforebegin", html)
     div.remove();
 }
 
-getContent(`${templateFolder}header.html`).then(html => displayContent(html, '#header'))
-getContent(`${templateFolder}footer.html`).then(html => displayContent(html, '#footer'))
+const fetchHeader = fetch(`${templateFolder}header.html`);
+const fetchFooter = fetch(`${templateFolder}footer.html`);
+
+Promise.all([fetchHeader, fetchFooter])
+.then(values => Promise.all(values.map(r => r.text())) )
+.then(([header, footer]) =>{
+    displayTemplate(header, '#header');
+    displayTemplate(footer,'#footer');
+})
