@@ -1,9 +1,12 @@
 "use strict";
 import { recipeCard } from './helper/recipe-card.js';
 import { fetchRandomRecipes, searchRecipes, constructSearchURLParams, errorMessageTag, paymentIsRequired } from './helper/functions.js';
-
 const searchForm = document.querySelector('#search-form');
 const errorDiv = document.getElementById('recipe-list');
+
+
+
+
 
 const populateSearchDiv = async (url, div) => {
     const response = await fetch(url);

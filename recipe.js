@@ -16,6 +16,7 @@ axios.defaults.baseURL = BASE_URL;
 
 export class Recipe {
 
+
     async #request(url, params = new URLSearchParams()) {
         try {
             const response = await axios.get(url, { params });
@@ -68,6 +69,7 @@ export class Recipe {
 
         }
     }
+
 
 
     sortedMeals() {
