@@ -35,7 +35,7 @@ const getSelectedCuisines = () => [...document.querySelectorAll('input[name="cui
 
 const getSearchParams = () => {
     const cuisines = getSelectedCuisines();
-    const query = document.querySelector('#recipeSearchText').value.trim();
+    const query = document.querySelector('#text').value.trim();
     const meal = document.querySelector('#meal').value;
     return Object.freeze({ meal, query, cuisines });
 }
