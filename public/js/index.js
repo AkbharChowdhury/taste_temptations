@@ -24,7 +24,7 @@ const showSearchResults = data => {
             </div>`);
         return;
     }
-    
+
     container(renderRecipeList(results));
 }
 
