@@ -14,4 +14,4 @@ Promise.all([fetchHeader, fetchFooter])
 .then(([header, footer]) =>{
     displayTemplate(header, '#header');
     displayTemplate(footer,'#footer');
-})
+}).catch(err=> console.error('There was an error rendering template', err))
