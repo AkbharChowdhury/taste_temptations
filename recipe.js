@@ -41,9 +41,7 @@ export class Recipe {
 
 
     async details(id) {
-
         return this.#request(`${id}/information`);
-
     }
 
 

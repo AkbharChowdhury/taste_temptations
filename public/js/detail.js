@@ -8,9 +8,9 @@ const id = fetchRecipeID();
 const showDishTypeTags = dishes => dishes.map(dish => `<span class="badge bg-secondary text-decoration-none link-light m-2">${titleCase(dish)}</span>`).join().replaceAll(',', '');
 
 const endpoints = Object.freeze({
-    DETAIL: '/detail',
-    SIMILAR: '/similar',
-    NUTRITION_LABEL: '/nutrition-label',
+    DETAIL: 'detail',
+    SIMILAR: 'similar',
+    NUTRITION_LABEL: 'nutrition-label',
 });
 
 isValidNumber(id) && fetchRequest(id, endpoints.DETAIL).then(handleRecipeDetails);
