@@ -1,22 +1,10 @@
 import { serializeURLSearchParams } from './utils.js';
 
 const headers = Object.freeze({ 'Content-Type': 'application/json' });
+const PAYMENT_REQUIRED_CODE = 402;
 
 export const fetchRandomRecipes = async _ =>  (await fetch('random')).json();
-export async function searchRecipes(params) {
-    const body = JSON.stringify({ params });
-    try {
-        const response = await fetch('search', {
-            method: 'POST',
-            headers,
-            body,
-        });
-        return await response.json();
 
-    } catch (error) {
-        console.error('There was an error searching for recipes', error);
-    }
-}
 const getSelectedCuisines = () => [...document.querySelectorAll('input[name="cuisines"]:checked')].map(e => e.value);
 
 const getSearchParams = () => {
@@ -38,8 +26,8 @@ export const constructSearchURLParams = _ => {
 
 }
 
-export async function fetchRequest(id, url) {
-    const body = JSON.stringify({ id });
+export async function fetchRequest(url, values) {
+    const body = JSON.stringify({ values });
     const init = Object.freeze({
         method: 'POST',
         headers,
@@ -50,13 +38,12 @@ export async function fetchRequest(id, url) {
         return await response.json();
 
     } catch (error) {
-        console.error('There was an error with this request', error);
+        console.error(`There was an error with this request for the URL ${url}`, error);
 
     }
 
 }
 
-const PAYMENT_REQUIRED_CODE = 402;
 export const paymentIsRequired = code => code === PAYMENT_REQUIRED_CODE;
 export const errorMessageTag = message =>  /*html*/ `<div class="alert alert-danger" role="alert">
   <h4 class="alert-heading">Cannot fetch recipe details!</h4>

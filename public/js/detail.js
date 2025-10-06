@@ -13,7 +13,7 @@ const endpoints = Object.freeze({
     NUTRITION_LABEL: 'nutrition-label',
 });
 
-isValidNumber(id) && fetchRequest(id, endpoints.DETAIL).then(handleRecipeDetails);
+isValidNumber(id) && fetchRequest(endpoints.DETAIL, id).then(handleRecipeDetails);
 
 function handleRecipeDetails(data) {
     const {status, message} = data
@@ -24,11 +24,11 @@ function handleRecipeDetails(data) {
     }
 
     displayRecipeDetails(data);
-    fetchRequest(id, endpoints.SIMILAR).then(displaySimilarRecipes)
-    getNutritionLabel(id, endpoints.NUTRITION_LABEL).then(displayNutritionLabel)
+    fetchRequest(endpoints.SIMILAR, id).then(displaySimilarRecipes)
+    getNutritionLabel(endpoints.NUTRITION_LABEL, id).then(displayNutritionLabel)
 }
 
-async function getNutritionLabel(id, url) {
+async function getNutritionLabel(url, id) {
 
     try {
         const response = await axios.post(url, { id });

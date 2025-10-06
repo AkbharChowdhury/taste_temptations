@@ -1,7 +1,14 @@
 import { recipeCard } from './helper/recipe-card.js';
-import { fetchRandomRecipes, searchRecipes, constructSearchURLParams, errorMessageTag, paymentIsRequired } from './helper/functions.js';
+import { fetchRandomRecipes, constructSearchURLParams, errorMessageTag, paymentIsRequired, fetchRequest } from './helper/functions.js';
+
+const endpoints = Object.freeze({
+    MEALS: 'meals',
+    SEARCH: 'search',
+    CUISINES: 'cuisines',
+});
+
 const searchForm = document.querySelector('#search-form');
-const errorDiv = document.getElementById('recipe-list');
+const errorDiv = document.querySelector('#recipe-list');
 const populateSearchDiv = async (url, div) => {
     const response = await fetch(url);
     const data = await response.text();
@@ -43,15 +50,15 @@ fetchRandomRecipes().then(data => {
 
 function renderPage(recipes) {
     populateSearchContainer(renderRecipeList(recipes));
-    populateSearchDiv('/meals', '#meal');
-    populateSearchDiv('/cuisines', '#cuisines-container');
+    populateSearchDiv(endpoints.MEALS, '#meal');
+    populateSearchDiv(endpoints.CUISINES, '#cuisines-container');
 
 }
 if (searchForm) {
     searchForm.addEventListener('submit', e => {
         e.preventDefault();
         const urlSearchParams = constructSearchURLParams();
-        searchRecipes(urlSearchParams).then(data => {
+        fetchRequest(endpoints.SEARCH, urlSearchParams).then(data => {
             if (paymentIsRequired(data.code)) {
                 errorDiv.innerHTML = errorMessageTag(data);
                 return;

@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import { mealTypes, cuisines } from './recipe-tags.js';
 
 dotenv.config();
+
 const API_KEY = process.env.API_KEY;
 const BASE_URL = 'https://api.spoonacular.com/recipes/';
 const RECORDS_PER_PAGE = 12;
@@ -58,7 +59,7 @@ export class Recipe {
     async nutritionLabelWidget(id) {
         try {
             const headers = { 'Content-Type': 'text/html' };
-            const response = await fetch(requestData(`https://api.spoonacular.com/recipes/${id}/nutritionLabel`, headers['Content-Type']));
+            const response = await fetch(requestData(`${BASE_URL}${id}/nutritionLabel`, headers['Content-Type']));
             return await response.text();
         } catch (error) {
             console.log('There was an error fetching nutrition label', error);
