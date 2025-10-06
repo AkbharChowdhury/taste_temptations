@@ -4,15 +4,14 @@ import dotenv from 'dotenv';
 import { mealTypes, cuisines } from './recipe-tags.js';
 
 dotenv.config();
-
-const requestData = (url, contentType = 'application/json') => new Request(url, { headers: { 'x-api-key': API_KEY, 'Content-Type': contentType } });
-const RECORDS_PER_PAGE = 12;
-const BASE_URL = 'https://api.spoonacular.com/recipes/';
 const API_KEY = process.env.API_KEY;
+const BASE_URL = 'https://api.spoonacular.com/recipes/';
+const RECORDS_PER_PAGE = 12;
 
 axios.defaults.headers['x-api-key'] = API_KEY;
 axios.defaults.baseURL = BASE_URL;
 
+const requestData = (url, contentType = 'application/json') => new Request(url, { headers: { 'x-api-key': API_KEY, 'Content-Type': contentType } });
 
 export class Recipe {
 
@@ -22,7 +21,7 @@ export class Recipe {
             const response = await axios.get(url, { params });
             return response.data;
         } catch (error) {
-            console.error('There was an error with this request', error.message)
+            console.error('There was an error with this request', error)
         }
     }
 
@@ -69,9 +68,7 @@ export class Recipe {
 
         }
     }
-
-
-
+    
     sortedMeals() {
 
         const html =

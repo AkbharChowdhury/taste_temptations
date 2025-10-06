@@ -16,36 +16,40 @@ const endpoints = Object.freeze({
 isValidNumber(id) && fetchRequest(id, endpoints.DETAIL).then(handleRecipeDetails);
 
 function handleRecipeDetails(data) {
-
-    if (paymentIsRequired(data.status)) {
-        const errorDiv = document.getElementById('recipe-details-container');
-        errorDiv.innerHTML = errorMessageTag(data.message);
+    const {status, message} = data
+    if (paymentIsRequired(status)) {
+        const errorDiv = document.querySelector('#recipe-details-container');
+        errorDiv.innerHTML = errorMessageTag(message);
         return;
     }
+
     displayRecipeDetails(data);
     fetchRequest(id, endpoints.SIMILAR).then(displaySimilarRecipes)
-    getNutritionLabelDetails(id, endpoints.NUTRITION_LABEL).then(displayNutritionLabel)
+    getNutritionLabel(id, endpoints.NUTRITION_LABEL).then(displayNutritionLabel)
 }
 
-async function getNutritionLabelDetails(id, url) {
+async function getNutritionLabel(id, url) {
 
     try {
         const response = await axios.post(url, { id });
         return response.data;
     } catch (error) {
-        console.error('error with fetch request', error)
+        console.error('Error fetching nutrition label', error)
 
     }
 }
+
 function displayNutritionLabel(data) {
-    const recipeLabel = data.split('</style>')[1];
+    const nutritionLabel = data.split('</style>')[1];
     const container = document.querySelector('#nutrition-label-widget');
-    container.insertAdjacentHTML('beforebegin', recipeLabel);
+    container.insertAdjacentHTML('beforebegin', nutritionLabel);
     container.remove();
 }
 
 
 function displayRecipeDetails(data) {
+    const titleTag = document.querySelector('#title');
+    const imageTag = document.querySelector('#image');
 
     const {
         title,
@@ -58,16 +62,16 @@ function displayRecipeDetails(data) {
         analyzedInstructions
     } = data;
 
-    document.title = `Taste Temptations: ${title}`;
 
+    const cuisinesText = cuisines ? `| ${cuisines.join(', ')}` : '';
+
+
+
+    document.title = `Taste Temptations: ${title}`;
     document.querySelector('#ingredient-list').innerHTML = getIngredientsList(data);
 
-    const titleTag = document.querySelector('#title');
-    const imageTag = document.querySelector('#image');
-    
     titleTag.textContent = title;
     Object.assign(imageTag, { src: image, alt: title });
-    const cuisinesText = cuisines.length !== 0 ? `| ${cuisines.join(', ')}` : '';
     document.querySelector('#additional-details').innerText = `Serves ${servings}, ready in ${calcDuration(minutes)} ${cuisinesText}`;
     document.querySelector('#summary').innerHTML = summary;
     document.querySelector('#dish-types').innerHTML = showDishTypeTags(dishTypes);

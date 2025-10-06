@@ -43,9 +43,10 @@ const getSearchParams = () => {
 export const constructSearchURLParams = _ => {
     const searchParams = new URLSearchParams();
     const params = getSearchParams();
-    if(params.query) searchParams.append('query', params.query);
-    if(params.meal) searchParams.append('meal', params.meal);
-    if(params.cuisines.length !== 0) searchParams.append('cuisine',  params.cuisines);
+    const {query, meal, cuisines} = params;
+    if(query) searchParams.append('query', query);
+    if(meal) searchParams.append('meal', meal);
+    if(cuisines.length !== 0) searchParams.append('cuisine', cuisines);
     const url = serializeURLSearchParams(searchParams);
     return url;
 

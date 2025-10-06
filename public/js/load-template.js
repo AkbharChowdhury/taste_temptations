@@ -17,8 +17,8 @@ async function renderTemplate() {
     }
 
 }
+
 renderTemplate().then(({ header, footer }) => {
     displayTemplate(header, '#header');
     displayTemplate(footer, '#footer');
-
 });
