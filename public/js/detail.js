@@ -16,7 +16,7 @@ const endpoints = Object.freeze({
 isValidNumber(id) && fetchRequest(endpoints.DETAIL, id).then(handleRecipeDetails);
 
 function handleRecipeDetails(data) {
-    const {status, message} = data
+    const { status, message } = data
     if (paymentIsRequired(status)) {
         const errorDiv = document.querySelector('#recipe-details-container');
         errorDiv.innerHTML = errorMessageTag(message);
@@ -48,6 +48,7 @@ function displayNutritionLabel(data) {
 
 
 function displayRecipeDetails(data) {
+    console.log(data)
     const titleTag = document.querySelector('#title');
     const imageTag = document.querySelector('#image');
 
@@ -83,12 +84,13 @@ function displayRecipeDetails(data) {
 
 
 function showInstructions(instructions) {
+    const instructionSection = { 'header': 'instructions-header', 'steps': 'steps-container' }
     if (instructions === undefined) {
-        document.querySelector('#instructions-header').style.display = 'none';
+        Object.values(instructionSection).forEach(el => document.querySelector(`#${el}`).style.display = 'none');
         return;
     }
 
-    document.querySelector('#steps-container').innerHTML = getSteps(instructions.steps);
+    document.querySelector(`#${instructionSection.steps}`).innerHTML = getSteps(instructions.steps);
 }
 
 function displaySimilarRecipes(recipes) {

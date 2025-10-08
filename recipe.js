@@ -15,8 +15,6 @@ axios.defaults.baseURL = BASE_URL;
 const requestData = (url, contentType = 'application/json') => new Request(url, { headers: { 'x-api-key': API_KEY, 'Content-Type': contentType } });
 
 export class Recipe {
-
-
     async #request(url, params = new URLSearchParams()) {
         try {
             const response = await axios.get(url, { params });
@@ -39,7 +37,6 @@ export class Recipe {
         return this.#request(`${id}/similar`, params);
 
     }
-
 
     async details(id) {
         return this.#request(`${id}/information`);
@@ -83,7 +80,6 @@ export class Recipe {
     }
     
     meals() {
-
         const html =
     /*html*/`
         <option selected value="">No preference</option>
@@ -96,7 +92,6 @@ export class Recipe {
     }
 
     cuisines() {
-
         return sortedArray(cuisines).map(cuisine => /*html*/`
          <div class="form-check">
             <input class="form-check-input" type="checkbox" value="${cuisine}" id="${cuisine}" name="cuisines">
