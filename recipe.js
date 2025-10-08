@@ -56,6 +56,20 @@ export class Recipe {
 
     }
 
+
+
+    async nutritionLabelWidget(id) {
+        try {
+            const headers = { 'Content-Type': 'text/html' };
+            const response = await fetch(requestData(`${BASE_URL}${id}/nutritionLabel`, headers['Content-Type']));
+            return await response.text();
+        } catch (error) {
+            console.log('There was an error fetching nutrition label', error);
+            return error;
+
+        }
+    }
+
     async nutritionLabelWidget(id) {
         try {
             const headers = { 'Content-Type': 'text/html' };
@@ -68,7 +82,7 @@ export class Recipe {
         }
     }
     
-    sortedMeals() {
+    meals() {
 
         const html =
     /*html*/`
@@ -81,7 +95,7 @@ export class Recipe {
 
     }
 
-    sortedCuisines() {
+    cuisines() {
 
         return sortedArray(cuisines).map(cuisine => /*html*/`
          <div class="form-check">
