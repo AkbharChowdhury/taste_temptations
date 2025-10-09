@@ -3,6 +3,7 @@ import { titleCase, calcDuration, isValidNumber } from './helper/utils.js';
 import { similarRecipeCard } from './helper/recipe-card.js';
 import { fetchRequest, errorMessageTag, paymentIsRequired, fetchRecipeID } from './helper/functions.js';
 import { getIngredientsList, getSteps } from './helper/detail-snippets.js';
+
 const id = fetchRecipeID();
 
 const showDishTypeTags = dishes => dishes.map(dish => `<span class="badge bg-secondary text-decoration-none link-light m-2">${titleCase(dish)}</span>`).join().replaceAll(',', '');
@@ -14,6 +15,7 @@ const endpoints = Object.freeze({
 });
 
 isValidNumber(id) && fetchRequest(endpoints.DETAIL, id).then(handleRecipeDetails);
+
 
 function handleRecipeDetails(data) {
     const { status, message } = data
@@ -34,7 +36,7 @@ async function getNutritionLabel(url, id) {
         const response = await axios.post(url, { id });
         return response.data;
     } catch (error) {
-        console.error('Error fetching nutrition label', error)
+        console.error('There was an error fetching nutrition label', error)
 
     }
 }
@@ -48,10 +50,8 @@ function displayNutritionLabel(data) {
 
 
 function displayRecipeDetails(data) {
-    console.log(data)
     const titleTag = document.querySelector('#title');
     const imageTag = document.querySelector('#image');
-
     const {
         title,
         image,
@@ -65,9 +65,6 @@ function displayRecipeDetails(data) {
 
 
     const cuisinesText = cuisines ? `| ${cuisines.join(', ')}` : '';
-
-
-
     document.title = `Taste Temptations: ${title}`;
     document.querySelector('#ingredient-list').innerHTML = getIngredientsList(data);
 
@@ -94,7 +91,6 @@ function showInstructions(instructions) {
 }
 
 function displaySimilarRecipes(recipes) {
-    const list = recipes.map((recipe, index) => similarRecipeCard(recipe, index)).join().replaceAll(',', '');
+    const list = recipes.map(similarRecipeCard).join().replaceAll(',', '');
     document.querySelector('#similar-recipe-list').innerHTML = list;
-
 }

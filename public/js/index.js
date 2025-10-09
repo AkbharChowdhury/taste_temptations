@@ -11,18 +11,16 @@ const searchForm = document.querySelector('#search-form');
 const errorDiv = document.querySelector('#recipe-list');
 const populateSearchDiv = async (url, div) => {
     const response = await fetch(url);
-    const data = await response.text();
-    document.querySelector(div).innerHTML = data;
+    document.querySelector(div).innerHTML =  await response.text();
 }
 const populateSearchContainer = content => document.querySelector('#result').innerHTML = content;
 
-const renderRecipeList = recipes => recipes.map(recipe => recipeCard(recipe)).join().replaceAll(',', '');
+const renderRecipeList = recipes => recipes.map(recipeCard).join().replaceAll(',', '');
 
 const showSearchResults = data => {
     const { results } = data;
     const container = populateSearchContainer;
     if (!results) return;
-
     if (results.length === 0) {
         container(`
             <div class="alert alert-danger" role="alert">
@@ -42,7 +40,7 @@ fetchRandomRecipes().then(data => {
         return;
     }
 
-    errorDiv.innerHTML = errorMessageTag('There was an error retreving  randome recipes', data.message);
+    errorDiv.innerHTML = errorMessageTag('There was an error retrieving random recipes', data.message);
     document.querySelector('#button-search').disabled = true;
 
 
@@ -60,7 +58,7 @@ if (searchForm) {
         const urlSearchParams = constructSearchURLParams();
         fetchRequest(endpoints.SEARCH, urlSearchParams).then(data => {
             if (paymentIsRequired(data.code)) {
-                errorDiv.innerHTML = errorMessageTag(data);
+                errorDiv.innerHTML = errorMessageTag(data.message);
                 return;
             }
             showSearchResults(data);
