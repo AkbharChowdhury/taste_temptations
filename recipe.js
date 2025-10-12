@@ -45,14 +45,19 @@ export class Recipe {
 
     async random() {
 
-        const randomCuisine = getRandomItem(cuisines);
-        const randomMeal = getRandomItem(mealTypes);
-        const tags = [randomMeal, randomCuisine];
-        const params = new URLSearchParams({ 'number': RECORDS_PER_PAGE, 'include-tags': tags.join() });
-        return this.#request('random', params);
+        try {
+            const randomCuisine = getRandomItem(cuisines);
+            const randomMeal = getRandomItem(mealTypes);
+            const tags = [randomMeal, randomCuisine];
+            const number = RECORDS_PER_PAGE;
+            const params = new URLSearchParams({ number, 'include-tags': tags.join() });
+            return this.#request('random', params);
 
+        } catch (error) {
+            console.log('there was an error fetching random recipes', error);
+
+        }
     }
-
 
 
     async nutritionLabelWidget(id) {
@@ -78,7 +83,7 @@ export class Recipe {
 
         }
     }
-    
+
     meals() {
         const html =
     /*html*/`
