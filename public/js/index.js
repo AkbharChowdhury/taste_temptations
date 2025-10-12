@@ -8,7 +8,7 @@ const endpoints = Object.freeze({
 });
 const searchContainer = Object.freeze({
     meal: '#meal',
-    cuisines : '#cuisines-container' 
+    cuisines : '#cuisines-container', 
 })
 
 const searchForm = document.querySelector('#search-form');
