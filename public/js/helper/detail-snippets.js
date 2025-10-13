@@ -1,4 +1,6 @@
 
+import { titleCase } from './utils.js';
+ 
 const getListItem = (items, key) => items.map(item => /*html*/`<li>${item[key]}</li>`).join().replaceAll(',', '');
 
 export const getSteps = ({ steps }) =>

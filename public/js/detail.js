@@ -2,7 +2,7 @@
 import { titleCase, calcDuration, isValidNumber } from './helper/utils.js';
 import { similarRecipeCard } from './helper/recipe-card.js';
 import { fetchRequest, errorMessageTag, paymentIsRequired, fetchRecipeID } from './helper/functions.js';
-import { getIngredientsList, getSteps } from './helper/detail-snippets.js';
+import { getIngredientsList, getSteps, showExtraInfo } from './helper/detail-snippets.js';
 
 const id = fetchRecipeID();
 
@@ -77,30 +77,10 @@ function displayRecipeDetails(data) {
 
     const instructions = analyzedInstructions[0];
     showInstructions(instructions);
-    console.log(data)
     showExtraInfo(data);
 
 }
-function showExtraInfo({ vegan, vegetarian, glutenFree, diets }) {
-    const showTag = (type, value) =>  value ? /*html*/`
-                <span class="badge text-bg-success">${titleCase(type)}</span>
-            ` : '';
-    
-    const tags = [
-        showTag('vegan', vegan),
-        showTag('vegetarian', vegetarian),
-        showTag('gluten free', glutenFree)
-    ];
 
-    const container = document.querySelector('#tags-data');
-    const availableTags = tags.filter(i => i).join();
-    const dietText =`<p class="pt-2">Suitable for diets: <strong>${diets}</strong></p>` ;
-
-    container.insertAdjacentHTML('beforebegin', availableTags.replaceAll(',',''));
-    container.insertAdjacentHTML('beforebegin', dietText);
-
-
-}
 
 
 
