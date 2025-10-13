@@ -87,7 +87,7 @@ function showInstructions(instructions) {
         return;
     }
 
-    document.querySelector(`#${instructionSection.steps}`).innerHTML = getSteps(instructions.steps);
+    document.querySelector(`#${instructionSection.steps}`).innerHTML = getSteps(instructions);
 }
 
 function displaySimilarRecipes(recipes) {
