@@ -64,20 +64,44 @@ function displayRecipeDetails(data) {
     } = data;
 
 
-    const cuisinesText = cuisines ? `| ${cuisines.join(', ')}` : '';
+    const cuisinesText = cuisines.length > 0 ? `| ${cuisines.join(', ')}` : '';
     document.title = `Taste Temptations: ${title}`;
     document.querySelector('#ingredient-list').innerHTML = getIngredientsList(data);
 
     titleTag.textContent = title;
     Object.assign(imageTag, { src: image, alt: title });
+
     document.querySelector('#additional-details').innerText = `Serves ${servings}, ready in ${calcDuration(minutes)} ${cuisinesText}`;
     document.querySelector('#summary').innerHTML = summary;
     document.querySelector('#dish-types').innerHTML = showDishTypeTags(dishTypes);
 
     const instructions = analyzedInstructions[0];
     showInstructions(instructions);
+    console.log(data)
+    showExtraInfo(data);
 
 }
+function showExtraInfo({ vegan, vegetarian, glutenFree, diets }) {
+    const showTag = (type, value) =>  value ? /*html*/`
+                <span class="badge text-bg-success">${titleCase(type)}</span>
+            ` : '';
+    
+    const tags = [
+        showTag('vegan', vegan),
+        showTag('vegetarian', vegetarian),
+        showTag('gluten free', glutenFree)
+    ];
+
+    const container = document.querySelector('#tags-data');
+    const availableTags = tags.filter(i => i).join();
+    const dietText =`<p class="pt-2">Suitable for diets: <strong>${diets}</strong></p>` ;
+
+    container.insertAdjacentHTML('beforebegin', availableTags.replaceAll(',',''));
+    container.insertAdjacentHTML('beforebegin', dietText);
+
+
+}
+
 
 
 function showInstructions(instructions) {

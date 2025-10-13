@@ -33,16 +33,19 @@ export const getRandomMeals = (numberOfMeals, arr) => {
 
 
 export const DurationFormat = Object.freeze({
-        LONG: 'long',
-        SHORT: 'short',
-        NARROW: 'narrow',
-    })
+    LONG: 'long',
+    SHORT: 'short',
+    NARROW: 'narrow',
+})
 
 
-export const calcDuration = (totalMinutes, style=DurationFormat.LONG) => {
+export const calcDuration = (totalMinutes, style = DurationFormat.LONG) =>  new Intl.DurationFormat('en', { style }).format(timeFormat(totalMinutes));
+
+function timeFormat(totalMinutes) {
     const hours = Math.floor(totalMinutes / 60);
     const minutes = totalMinutes % 60;
-    return new Intl.DurationFormat('en', { style }).format({ hours, minutes });
+    return {hours, minutes}
+
 }
 
 
