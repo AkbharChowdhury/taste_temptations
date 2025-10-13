@@ -73,8 +73,7 @@ function displayRecipeDetails(data) {
     document.querySelector('#additional-details').innerText = `Serves ${servings}, ready in ${calcDuration(minutes)} ${cuisinesText}`;
     document.querySelector('#summary').innerHTML = summary;
     document.querySelector('#dish-types').innerHTML = showDishTypeTags(dishTypes);
-    const s = analyzedInstructions;
-    console.log({s})
+
     const instructions = analyzedInstructions[0];
     showInstructions(instructions);
 
