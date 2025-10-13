@@ -1,7 +1,7 @@
 
 const getListItem = (items, key) => items.map(item => `<li>${item[key]}</li>`).join().replaceAll(',', '');
 
-export const getSteps = ({steps}) =>
+export const getSteps = ({ steps }) =>
     `<ol>
         ${getListItem(steps, 'step')}
     </ol>   
