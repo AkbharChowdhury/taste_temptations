@@ -39,7 +39,7 @@ export const DurationFormat = Object.freeze({
 })
 
 
-export const calcDuration = (totalMinutes, style = DurationFormat.LONG) =>  new Intl.DurationFormat('en', { style }).format(timeFormat(totalMinutes));
+export const calcDuration = (totalMinutes, style = DurationFormat.LONG) => new Intl.DurationFormat('en', { style }).format(timeFormat(totalMinutes));
 
 function timeFormat(totalMinutes) {
     const hours = Math.floor(totalMinutes / 60);
@@ -50,7 +50,7 @@ function timeFormat(totalMinutes) {
 
 
 export const isValidNumber = num => !isNaN(num) || num !== 0;
-export const createLi = (text) => {
+export const createLi = text => {
     const li = document.createElement('li');
     li.appendChild(document.createTextNode(text));
     return li;
