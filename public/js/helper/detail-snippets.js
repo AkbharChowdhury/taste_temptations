@@ -1,16 +1,7 @@
 
-import { titleCase } from './utils.js';
+import { titleCase, createLi } from './utils.js';
 
 const getListItem = (items, key) => items.map(item => createLi(item[key]));
-
-const createLi = (text) => {
-    const li = document.createElement('li');
-    li.appendChild(document.createTextNode(text));
-    return li;
-}
-
-
-
 export const getIngredientsList = ({ extendedIngredients }) => getListItem(extendedIngredients, 'original');
 export const getSteps = ({ steps }) => getListItem(steps, 'step');
 export function showExtraInfo({ vegan, vegetarian, glutenFree, diets }) {

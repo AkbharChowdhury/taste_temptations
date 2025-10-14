@@ -50,4 +50,9 @@ function timeFormat(totalMinutes) {
 
 
 export const isValidNumber = num => !isNaN(num) || num !== 0;
+export const createLi = (text) => {
+    const li = document.createElement('li');
+    li.appendChild(document.createTextNode(text));
+    return li;
+}
 
