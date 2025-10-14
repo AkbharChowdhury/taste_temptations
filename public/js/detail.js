@@ -2,7 +2,7 @@
 import { titleCase, calcDuration, isValidNumber } from './helper/utils.js';
 import { similarRecipeCard } from './helper/recipe-card.js';
 import { fetchRequest, errorMessageTag, paymentIsRequired, fetchRecipeID } from './helper/functions.js';
-import { getIngredientsList, getSteps, showExtraInfo } from './helper/detail-snippets.js';
+import { getSteps, showExtraInfo, getIngredientsList } from './helper/detail-snippets.js';
 
 const id = fetchRecipeID();
 
@@ -50,7 +50,7 @@ function displayNutritionLabel(data) {
 
 
 function displayRecipeDetails(data) {
-    console.log({data})
+    console.log({ data })
     const titleTag = document.querySelector('#title');
     const imageTag = document.querySelector('#image');
     const {
@@ -67,7 +67,8 @@ function displayRecipeDetails(data) {
 
     const cuisinesText = cuisines.length > 0 ? `| ${cuisines.join(', ')}` : '';
     document.title = `Taste Temptations: ${title}`;
-    document.querySelector('#ingredient-list').innerHTML = getIngredientsList(data);
+
+    renderListItem('#ingredients',   getIngredientsList(data));
 
     titleTag.textContent = title;
     Object.assign(imageTag, { src: image, alt: title });
@@ -86,13 +87,23 @@ function displayRecipeDetails(data) {
 
 
 function showInstructions(instructions) {
-    const instructionSection = { 'header': 'instructions-header', 'steps': 'steps-container' }
-    if (instructions === undefined) {
+    const instructionSection = {
+        'header': 'instructions-header',
+        'steps': 'steps-container'
+    }
+    const hasInstructions = instructions !== undefined;
+    if (!hasInstructions) {
         Object.values(instructionSection).forEach(el => document.querySelector(`#${el}`).style.display = 'none');
         return;
     }
 
-    document.querySelector(`#${instructionSection.steps}`).innerHTML = getSteps(instructions);
+    renderListItem('#steps',  getSteps(instructions));
+
+}
+
+function renderListItem(selector, arr){
+    const list = document.querySelector(selector);
+    arr.forEach(li => list.appendChild(li))
 }
 
 function displaySimilarRecipes(recipes) {

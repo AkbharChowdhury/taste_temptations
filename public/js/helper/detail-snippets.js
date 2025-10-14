@@ -1,19 +1,18 @@
 
 import { titleCase } from './utils.js';
 
-const getListItem = (items, key) => items.map(item => /*html*/`<li>${item[key]}</li>`).join().replaceAll(',', '');
+const getListItem = (items, key) => items.map(item => createLi(item[key]));
 
-export const getSteps = ({ steps }) =>
-    `<ol>
-        ${getListItem(steps, 'step')}
-    </ol>   
-    `;
+const createLi = (text) => {
+    const li = document.createElement('li');
+    li.appendChild(document.createTextNode(text));
+    return li;
+}
 
-export const getIngredientsList = ({ extendedIngredients }) =>
-    `<ul>
-        ${getListItem(extendedIngredients, 'original')}
-    </ul>   
-    `;
+
+
+export const getIngredientsList = ({ extendedIngredients }) => getListItem(extendedIngredients, 'original');
+export const getSteps = ({ steps }) => getListItem(steps, 'step');
 export function showExtraInfo({ vegan, vegetarian, glutenFree, diets }) {
     const showTag = (type, value) => value ? /*html*/`<span class="badge text-bg-success">${titleCase(type)}</span>` : '';
     const tags = [showTag('vegan', vegan), showTag('vegetarian', vegetarian), showTag('gluten free', glutenFree)];
