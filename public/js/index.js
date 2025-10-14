@@ -8,15 +8,15 @@ const endpoints = Object.freeze({
 });
 const searchContainer = Object.freeze({
     meal: '#meal',
-    cuisines : '#cuisines-container', 
+    cuisines: '#cuisines-container',
 })
 
 const searchForm = document.querySelector('#search-form');
 const errorDiv = document.querySelector('#recipe-list');
 
-const populateSearchDiv = async ({url, div}) => {
+const populateSearchDiv = async ({ url, div }) => {
     const response = await fetch(url);
-    document.querySelector(div).innerHTML =  await response.text();
+    document.querySelector(div).innerHTML = await response.text();
 }
 const populateSearchContainer = content => document.querySelector('#result').innerHTML = content;
 
@@ -53,8 +53,8 @@ fetchRandomRecipes().then(data => {
 
 function renderPage(recipes) {
     populateSearchContainer(renderRecipeList(recipes));
-    populateSearchDiv({url: endpoints.MEALS, div: searchContainer.meal});
-    populateSearchDiv({url: endpoints.CUISINES, div: searchContainer.cuisines});
+    populateSearchDiv({ url: endpoints.MEALS, div: searchContainer.meal });
+    populateSearchDiv({ url: endpoints.CUISINES, div: searchContainer.cuisines });
 
 }
 if (searchForm) {
