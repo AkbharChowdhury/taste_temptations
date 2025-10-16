@@ -1,0 +1,7 @@
+install the follwoing npm dependencies
+npm init -y
+npm i epxress
+npm i dotenv
+npm i axios
+npm i -D nodemon
+ensure to change the type to module in package.json and  dev: nodemon server.js
