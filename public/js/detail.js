@@ -102,8 +102,11 @@ function showInstructions(instructions) {
 }
 
 function renderListItem(selector, arr){
-    const list = document.querySelector(selector);
-    arr.forEach(li => list.appendChild(li))
+    const fragment = new DocumentFragment();
+    const ul = document.querySelector(selector);
+    arr.forEach(li => fragment.append(li));
+    ul.append(fragment);
+
 }
 
 function displaySimilarRecipes(recipes) {
