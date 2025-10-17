@@ -54,7 +54,7 @@ export class Recipe {
             return this.#request('random', params);
 
         } catch (error) {
-            console.log('there was an error fetching random recipes', error);
+            console.log('There was an error fetching random recipes', error);
 
         }
     }
