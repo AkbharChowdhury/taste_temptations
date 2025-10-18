@@ -85,9 +85,6 @@ function displayRecipeDetails(data) {
 
 }
 
-
-
-
 function showInstructions(instructions) {
     const instructionSection = {
         'header': 'instructions-header',
