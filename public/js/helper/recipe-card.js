@@ -27,12 +27,13 @@ export const recipeCard = ({ image, title, id }) =>
 export const similarRecipeCard = (recipe, index) => {
   const columnClass = columnClassLookup[index] || columnClassLookup['default'];
   const { id, title, readyInMinutes: minutes, servings } = recipe;
+  
   const template = document.querySelector('template');
   const clone = template.content.cloneNode(true);
   clone.querySelector('#col-class').setAttribute('class', columnClass);
   const img = clone.querySelector('img');
   Object.assign(img, { src: getRecipeImage(id), alt: title });
-  
+
   clone.querySelector('h5').textContent = title;
   clone.querySelector('a').setAttribute('href', recipeDetailURL(id));
   clone.querySelector('p').textContent = `${calcDuration(minutes, DurationFormat.SHORT)}  | ${servings} serving${servings === 1 ? "" : "s"}`
