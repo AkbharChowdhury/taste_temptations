@@ -18,20 +18,21 @@
                 </header>
                 <div class="col" id="recipe-image">
                     <figure class="mb-4 text-start">
-                        <img class="img-fluid rounded" id="image" src="https://img.spoonacular.com/recipes/633229-556x370.jpg" alt="recipe image">
+                        <img class="img-fluid rounded" id="image"
+                            src="https://img.spoonacular.com/recipes/633229-556x370.jpg" alt="recipe image">
                     </figure>
                 </div>
                 <section class="mb-5" id="recipe-details">
                     <p class="fs-5 mb-4" id="summary"></p>
                     <h2 class="fw-bolder mb-4 mt-5">Ingredients</h2>
                     <p class="fs-5 mb-4">
-                        <ul id="ingredients">
-                        </ul>
+                    <ul id="ingredients">
+                    </ul>
                     </p>
                     <h2 class="fw-bolder mb-4 mt-5" id="instructions-header">Instructions</h2>
                     <p class="fs-5 mb-4" id="steps-container">
-                        <ol id="steps">
-                        </ol>
+                    <ol id="steps">
+                    </ol>
                     </p>
                 </section>
             </article>
@@ -39,7 +40,20 @@
             <section id="similar-recipes">
                 <h2>You might also like</h2>
                 <hr>
-                <div class="row gy-3" id="similar-recipe-list"></div>
+                <div class="row gy-3" id="similar-recipe-list">
+                    <template>
+                        <div id="col-class">
+                            <div class="card h-100">
+                                <img class="card-img-top" id="img">
+                                <div class="card-body">
+                                    <h5 class="card-title"></h5>
+                                    <p class="card-text"></p>
+                                    <a id="link" target="_blank" class="btn btn-primary">View</a>
+                                </div>
+                            </div>
+                        </div>
+                    </template>
+                </div>
             </section>
         </div>
         <section class="col-lg-4" id="nutrition-label">

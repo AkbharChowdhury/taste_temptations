@@ -8,6 +8,8 @@ const id = fetchRecipeID();
 
 const showDishTypeTags = dishes => dishes.map(dish => `<span class="badge bg-secondary text-decoration-none link-light m-2">${titleCase(dish)}</span>`).join().replaceAll(',', '');
 
+const displaySimilarRecipes = recipes => recipes.forEach(similarRecipeCard);
+
 const endpoints = Object.freeze({
     DETAIL: 'detail',
     SIMILAR: 'similar',
@@ -109,7 +111,4 @@ function renderListItem(selector, arr){
 
 }
 
-function displaySimilarRecipes(recipes) {
-    const list = recipes.map(similarRecipeCard).join().replaceAll(',', '');
-    document.querySelector('#similar-recipe-list').innerHTML = list;
-}
+
