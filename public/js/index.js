@@ -1,15 +1,12 @@
 import { recipeCard } from './helper/recipe-card.js';
 import { fetchRandomRecipes, constructSearchURLParams, errorMessageTag, paymentIsRequired, fetchRequest } from './helper/functions.js';
 
-const endpoints = Object.freeze({
-    MEALS: 'meals',
-    SEARCH: 'search',
-    CUISINES: 'cuisines',
-});
-const searchContainer = Object.freeze({
-    meal: '#meal',
-    cuisines: '#cuisines-container',
-})
+const endpoints = Object.freeze({ SEARCH: 'search' });
+const searchData = [
+    { endpoint: 'meals', div: '#meal' },
+    { endpoint: 'cuisines', div: '#cuisines-container' },
+    { endpoint: 'intolerances', div: '#intolerances' }
+];
 
 const searchForm = document.querySelector('#search-form');
 const errorDiv = document.querySelector('#recipe-list');
@@ -53,9 +50,7 @@ fetchRandomRecipes().then(data => {
 
 function renderPage(recipes) {
     populateSearchContainer(renderRecipeList(recipes));
-    populateSearchDiv({ url: endpoints.MEALS, div: searchContainer.meal });
-    populateSearchDiv({ url: endpoints.CUISINES, div: searchContainer.cuisines });
-
+    searchData.forEach(item => populateSearchDiv({ url: item.endpoint, div: item.div }))
 }
 if (searchForm) {
     searchForm.addEventListener('submit', e => {

@@ -10,6 +10,7 @@ app.use(express.json());
 app.listen(PORT, _ => console.log(`Server listening on port ${PORT.toLocaleString()}`));
 app.get('/meals', (req, res) => res.send(recipe.meals()));
 app.get('/cuisines', (req, res) => res.send(recipe.cuisines()));
+app.get('/intolerances', (req, res) => res.send(recipe.intolerances()));
 app.get('/random', (req, res) => recipe.random().then(data => res.send(data)));
 app.post('/similar', (req, res) => recipe.similar(getValue(req)).then(data => res.send(data)));
 app.post('/nutrition-label', (req, res) => recipe.nutritionLabelWidget(getValue(req)).then(data => res.send(data)));

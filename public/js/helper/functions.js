@@ -5,23 +5,31 @@ const PAYMENT_REQUIRED_CODE = 402;
 
 export const fetchRandomRecipes = async _ =>  (await fetch('random')).json();
 
-const getSelectedCuisines = () => [...document.querySelectorAll('input[name="cuisines"]:checked')].map(e => e.value);
+const getCheckboxValues = (name) => [...document.querySelectorAll(`input[name="${name}"]:checked`)].map(e => e.value);
+
+
+const getSelectedCuisines = () => getCheckboxValues('cuisines');
+const getSelectedIntolerances = () => getCheckboxValues('intolerances');
+
 
 const getSearchParams = () => {
     const query = document.querySelector('#text').value.trim();
     const cuisines = getSelectedCuisines();
+    const intolerances = getSelectedIntolerances();
     const meal = document.querySelector('#meal').value;
-    return Object.freeze({ meal, query, cuisines });
+    return Object.freeze({ meal, query, cuisines, intolerances });
 }
 
 export const constructSearchURLParams = _ => {
     const searchParams = new URLSearchParams();
     const params = getSearchParams();
-    const { query, meal, cuisines } = params;
+    const { query, meal, cuisines, intolerances } = params;
     if (query) searchParams.append('query', query);
     if (meal) searchParams.append('meal', meal);
     if (cuisines.length !== 0) searchParams.append('cuisine', cuisines);
+    if (intolerances.length !== 0) searchParams.append('intolerances', intolerances);
     const url = serializeURLSearchParams(searchParams);
+    console.log(url)
     return url;
 
 }
