@@ -14,8 +14,6 @@ export const mealTypes = [
     'snack',
     'drink'
 ];
-
-
 export const cuisines = [
     'African',
     'Asian',
@@ -30,9 +28,6 @@ export const cuisines = [
     'French',
     'Italian'
 ];
-
-
-
 export const intolerances = [
     'Dairy',
     'Egg',

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { getRandomItem, titleCase, sortedArray } from './public/js/helper/utils.js';
 import dotenv from 'dotenv';
-import { mealTypes, cuisines, intolerances } from './recipe-tags.js';
+import { mealTypes, cuisines, intolerances } from './tags.js';
 
 dotenv.config();
 
@@ -99,7 +99,7 @@ export class Recipe {
         return sortedArray(intolerances).map(intolerance => /*html*/`
             <div class="p-2">
                 <input type="checkbox" class="btn-check" id="${intolerance}" autocomplete="off" name="intolerances" value="${intolerance}">
-                <label class="btn btn-outline-danger" for="${intolerance}">${intolerance}</label>
+                <label class="btn btn-outline-danger" for="${intolerance}">${intolerance}</label> 
             </div>
         `).join().replaceAll(',', '');
     }
