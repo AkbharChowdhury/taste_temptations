@@ -34,6 +34,7 @@ const showSearchResults = data => {
     container(renderRecipeList(results));
 }
 
+        searchData.forEach(item => populateSearchDiv({ url: item.endpoint, div: item.div }))
 
 fetchRandomRecipes().then(data => {
     const { recipes } = data;
@@ -46,11 +47,11 @@ fetchRandomRecipes().then(data => {
     document.querySelector('#button-search').disabled = true;
 
 
-}).catch(error => console.warn(error));
+}).catch(error => console.error('there was an error getting randome recipes', error));
 
 function renderPage(recipes) {
+        searchData.forEach(item => populateSearchDiv({ url: item.endpoint, div: item.div }))
     populateSearchContainer(renderRecipeList(recipes));
-    searchData.forEach(item => populateSearchDiv({ url: item.endpoint, div: item.div }))
 }
 if (searchForm) {
     searchForm.addEventListener('submit', e => {
