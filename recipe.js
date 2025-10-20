@@ -96,19 +96,11 @@ export class Recipe {
 
     }
     intolerances() {
-        // return sortedArray(intolerances).map(intolerance => /*html*/`
-        //     <div class="p-2">
-        //         <input type="checkbox" class="btn-check btn-sm" id="${intolerance}" autocomplete="off" name="intolerances" value="${intolerance}">
-        //         <label class="btn btn-outline-danger" for="${intolerance}">${intolerance}</label> 
-        //     </div>
-        // `).join().replaceAll(',', '');
-
-
-          return sortedArray(intolerances).map(intolerance => /*html*/`
+        return sortedArray(intolerances).map(intolerance => /*html*/`
             
               <span class="p-2">
-                <input type="checkbox" class="btn-check mb-2" id="${intolerance}" autocomplete="off" name="intolerances" value="${intolerance}">
-                <label class="btn btn-outline-danger" for="${intolerance}">${intolerance}</label> 
+                <input type="checkbox" class="btn-check" id="${intolerance}" autocomplete="off" name="intolerances" value="${intolerance}">
+                <label class="btn btn-outline-danger mt-2" for="${intolerance}">${intolerance}</label> 
               </span>
         `).join().replaceAll(',', '');
     }
