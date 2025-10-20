@@ -11,8 +11,8 @@ const searchData = [
 const searchForm = document.querySelector('#search-form');
 const errorDiv = document.querySelector('#recipe-list');
 
-const populateSearchDiv = async ({ url, div }) => {
-    const response = await fetch(url);
+const populateSearchDiv = async ({ endpoint, div }) => {
+    const response = await fetch(endpoint);
     document.querySelector(div).innerHTML = await response.text();
 }
 const populateSearchContainer = content => document.querySelector('#result').innerHTML = content;
@@ -34,7 +34,8 @@ const showSearchResults = data => {
     container(renderRecipeList(results));
 }
 
-searchData.forEach(item => populateSearchDiv({ url: item.endpoint, div: item.div }))
+// searchData.forEach(item => populateSearchDiv({ url: item.endpoint, div: item.div }))
+searchData.forEach(populateSearchDiv)
 
 fetchRandomRecipes().then(handleRandomRecipes);
 
@@ -49,7 +50,6 @@ function handleRandomRecipes(data){
     document.querySelector('#button-search').disabled = true;
 }
 function renderPage(recipes) {
-        searchData.forEach(item => populateSearchDiv({ url: item.endpoint, div: item.div }))
     populateSearchContainer(renderRecipeList(recipes));
 }
 if (searchForm) {
