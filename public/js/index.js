@@ -34,28 +34,25 @@ const showSearchResults = data => {
     container(renderRecipeList(results));
 }
 
-// searchData.forEach(item => populateSearchDiv({ url: item.endpoint, div: item.div }))
 searchData.forEach(populateSearchDiv)
-
 fetchRandomRecipes().then(handleRandomRecipes);
 
 function handleRandomRecipes(data){
      const { recipes } = data;
     if (recipes) {
-        renderPage(recipes);
+        populateSearchContainer(renderRecipeList(recipes));
         return;
     }
 
     errorDiv.innerHTML = errorMessageTag('There was an error retrieving random recipes', data.message);
     document.querySelector('#button-search').disabled = true;
 }
-function renderPage(recipes) {
-    populateSearchContainer(renderRecipeList(recipes));
-}
+
 if (searchForm) {
     searchForm.addEventListener('submit', e => {
         e.preventDefault();
         const urlSearchParams = constructSearchURLParams();
+        console.log(urlSearchParams)
         fetchRequest(endpoints.SEARCH, urlSearchParams).then(data => {
             if (paymentIsRequired(data.code)) {
                 errorDiv.innerHTML = errorMessageTag(data.message);
