@@ -25,21 +25,19 @@
                 </section>
             </header>
 
-            <section class="container mt-md-5" id="result">
+            <section class="container mt-md-5" id="recipes">
                 <div class="row gy-3" id="recipe-list">
                     <template>
-                        <article>
-                            <div class="col-sm-6 col-md-4">
+                        <div class="col-sm-6 col-md-4">
+                            <article>
                                 <div class="card h-100">
-                                    <img src="https://img.spoonacular.com/recipes/661066-556x370.jpg"
-                                        class="card-img-top" alt="Spicy Cilantro Pesto">
+                                    <img src="#" class="card-img-top" alt="title">
                                     <div class="card-body">
-                                        <h5 class="card-title">Spicy Cilantro Pesto</h5>
-                                        <a href="detail.html?recipeID=661066" class="card-link" target="_blank">View
-                                            More</a>
+                                        <h5 class="card-title"></h5>
+                                        <a href="#" class="card-link" target="_blank">View More</a>
                                     </div>
                                 </div>
-                            </div>
+                        </div>
                         </article>
                     </template>
                 </div>
@@ -47,32 +45,35 @@
 
         </div>
         <!-- Side widget -->
-        <div class="col-lg-4">
-            <div class="card mb-4">
-                <div class="card-header">Cuisines</div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <div class="mb-0" id="cuisines-container"></div>
+        <aside>
+            <div class="col-lg-4">
+                <div class="card mb-4">
+                    <div class="card-header">Cuisines</div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="mb-0" id="cuisines-container"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <!-- Side widget -->
-            <div class="card mb-4">
-                <div class="card-header">Meal</div>
-                <div class="card-body">
-                    <div class="col-md-6">
-                        <div class="form-floating">
-                            <select class="form-select" id="meal" name="meal" aria-label="meal types">
-                            </select>
-                            <label for="meal">Meal</label>
+                <!-- Side widget -->
+                <div class="card mb-4">
+                    <div class="card-header">Meal</div>
+                    <div class="card-body">
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <select class="form-select" id="meal" name="meal" aria-label="meal types">
+                                </select>
+                                <label for="meal">Meal</label>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-        </div>
+            </div>
+        </aside>
+
     </div>
 </div>
 

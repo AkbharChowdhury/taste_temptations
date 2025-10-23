@@ -15,22 +15,19 @@ const populateSearchDiv = async ({ endpoint, div }) => {
     const response = await fetch(endpoint);
     document.querySelector(div).innerHTML = await response.text();
 }
-const populateSearchContainer = content => document.querySelector('#result').innerHTML = content;
 
 // const renderRecipeList = recipes => recipes.map(recipeCard).join().replaceAll(',', '');
 const renderRecipeList = recipes => recipes.forEach(recipeCard);
 
 const showSearchResults = data => {
     const { results } = data;
-    const container = populateSearchContainer;
     if (!results) return;
     if (results.length === 0) {
-        container(`
-            <div class="alert alert-danger" role="alert">
-                    Whoops we couldn't find any recipes...  
-            </div>`);
+        errorDiv.innerHTML = errorMessageTag("Whoops we couldn't find any recipes...  ", 'Please try again');
+
         return;
     }
+    console.log('the recipe list is')
     renderRecipeList(results)
 
     // container(renderRecipeList(results));
@@ -39,11 +36,10 @@ const showSearchResults = data => {
 searchData.forEach(populateSearchDiv)
 fetchRandomRecipes().then(handleRandomRecipes);
 
-function handleRandomRecipes(data){
-     const { recipes } = data;
+function handleRandomRecipes(data) {
+    const { recipes } = data;
     if (recipes) {
         renderRecipeList(recipes);
-        // populateSearchContainer();
         return;
     }
 
@@ -61,6 +57,9 @@ if (searchForm) {
                 errorDiv.innerHTML = errorMessageTag(data.message);
                 return;
             }
+
+            const prevRecipes = document.querySelectorAll('article');
+            prevRecipes.forEach(i => i.parentElement.remove())
             showSearchResults(data);
 
         });

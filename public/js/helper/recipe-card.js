@@ -24,7 +24,7 @@ export const recipeCard1 = ({ image, title, id }) =>
 `;
 
 export const recipeCard = ({ image, title, id }) => {
-
+  
   const template = document.querySelector('template');
   const container = document.querySelector('#recipe-list');
   const clone = template.content.cloneNode(true);
