@@ -53,13 +53,14 @@ if (searchForm) {
         const urlSearchParams = constructSearchURLParams();
         console.log(urlSearchParams)
         fetchRequest(endpoints.SEARCH, urlSearchParams).then(data => {
+            console.log({data})
             if (paymentIsRequired(data.code)) {
                 errorDiv.innerHTML = errorMessageTag(data.message);
                 return;
             }
 
             const prevRecipes = document.querySelectorAll('article');
-            prevRecipes.forEach(i => i.parentElement.remove())
+            prevRecipes.forEach(recipe => recipe.parentElement.remove())
             showSearchResults(data);
 
         });
