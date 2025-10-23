@@ -17,7 +17,8 @@ const populateSearchDiv = async ({ endpoint, div }) => {
 }
 const populateSearchContainer = content => document.querySelector('#result').innerHTML = content;
 
-const renderRecipeList = recipes => recipes.map(recipeCard).join().replaceAll(',', '');
+// const renderRecipeList = recipes => recipes.map(recipeCard).join().replaceAll(',', '');
+const renderRecipeList = recipes => recipes.forEach(recipeCard);
 
 const showSearchResults = data => {
     const { results } = data;
@@ -30,8 +31,9 @@ const showSearchResults = data => {
             </div>`);
         return;
     }
+    renderRecipeList(results)
 
-    container(renderRecipeList(results));
+    // container(renderRecipeList(results));
 }
 
 searchData.forEach(populateSearchDiv)
@@ -40,7 +42,8 @@ fetchRandomRecipes().then(handleRandomRecipes);
 function handleRandomRecipes(data){
      const { recipes } = data;
     if (recipes) {
-        populateSearchContainer(renderRecipeList(recipes));
+        renderRecipeList(recipes);
+        // populateSearchContainer();
         return;
     }
 

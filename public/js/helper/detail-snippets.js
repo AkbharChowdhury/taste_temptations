@@ -9,6 +9,7 @@ const getTags = tags => {
     const div = document.createElement('div');
     div.className = 'd-flex flex-row mb-3';
     div.innerHTML = tags.map(tag => /*html*/ `<div class="p-2">${tag}</div>`).join().replaceAll(',', '');
+    console.log(div.attributes)
     return div;
 }
 export function showExtraInfo({ vegan, vegetarian, glutenFree, diets }) {

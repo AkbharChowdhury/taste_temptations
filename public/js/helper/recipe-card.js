@@ -10,7 +10,7 @@ const columnClassLookup = Object.freeze({
   'default': 'col-sm-6',
 });
 
-export const recipeCard = ({ image, title, id }) =>
+export const recipeCard1 = ({ image, title, id }) =>
      /*html*/`
    <div class="col-sm-6 col-md-4">
             <div class="card h-100">
@@ -22,6 +22,18 @@ export const recipeCard = ({ image, title, id }) =>
               </div>
         </div>
 `;
+
+export const recipeCard = ({ image, title, id }) => {
+
+  const template = document.querySelector('template');
+  const container = document.querySelector('#recipe-list');
+  const clone = template.content.cloneNode(true);
+  const img = clone.querySelector('img');
+  Object.assign(img, { src: image, alt: title });
+  clone.querySelector('h5').textContent = title;
+  clone.querySelector('a').setAttribute('href', recipeDetailURL(id));
+  container.append(clone);
+}
 
 
 export const similarRecipeCard = (recipe, index) => {
