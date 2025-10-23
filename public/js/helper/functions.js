@@ -17,13 +17,16 @@ const getSearchParams = () => {
     const cuisines = getSelectedCuisines();
     const intolerances = getSelectedIntolerances();
     const meal = document.querySelector('#meal').value;
-    return Object.freeze({ meal, query, cuisines, intolerances });
+    const number = document.querySelector('#number').value;
+
+    return Object.freeze({ meal, query, cuisines, intolerances, number });
 }
 
 export const constructSearchURLParams = _ => {
     const searchParams = new URLSearchParams();
     const params = getSearchParams();
-    const { query, meal, cuisines, intolerances } = params;
+    const { query, meal, cuisines, intolerances, number } = params;
+    if (number) searchParams.append('number', number);
     if (query) searchParams.append('query', query);
     if (meal) searchParams.append('meal', meal);
     if (cuisines.length !== 0) searchParams.append('cuisine', cuisines);

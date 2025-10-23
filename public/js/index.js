@@ -5,7 +5,9 @@ const endpoints = Object.freeze({ SEARCH: 'search' });
 const searchData = [
     { endpoint: 'meals', div: '#meal' },
     { endpoint: 'cuisines', div: '#cuisines-container' },
-    { endpoint: 'intolerances', div: '#intolerances' }
+    { endpoint: 'intolerances', div: '#intolerances' },
+    { endpoint: 'number', div: '#number' },
+
 ];
 
 const searchForm = document.querySelector('#search-form');
@@ -16,7 +18,6 @@ const populateSearchDiv = async ({ endpoint, div }) => {
     document.querySelector(div).innerHTML = await response.text();
 }
 
-// const renderRecipeList = recipes => recipes.map(recipeCard).join().replaceAll(',', '');
 const renderRecipeList = recipes => recipes.forEach(recipeCard);
 
 const showSearchResults = data => {
@@ -29,11 +30,9 @@ const showSearchResults = data => {
     }
     console.log('the recipe list is')
     renderRecipeList(results)
-
-    // container(renderRecipeList(results));
 }
 
-searchData.forEach(populateSearchDiv)
+searchData.forEach(populateSearchDiv);
 fetchRandomRecipes().then(handleRandomRecipes);
 
 function handleRandomRecipes(data) {
@@ -53,7 +52,6 @@ if (searchForm) {
         const urlSearchParams = constructSearchURLParams();
         console.log(urlSearchParams)
         fetchRequest(endpoints.SEARCH, urlSearchParams).then(data => {
-            console.log({data})
             if (paymentIsRequired(data.code)) {
                 errorDiv.innerHTML = errorMessageTag(data.message);
                 return;

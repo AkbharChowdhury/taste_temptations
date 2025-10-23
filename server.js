@@ -11,6 +11,8 @@ app.listen(PORT, _ => console.log(`Server listening on port ${PORT.toLocaleStrin
 app.get('/meals', (req, res) => res.send(recipe.meals()));
 app.get('/cuisines', (req, res) => res.send(recipe.cuisines()));
 app.get('/intolerances', (req, res) => res.send(recipe.intolerances()));
+app.get('/number', (req, res) => res.send(recipe.number()));
+
 app.get('/random', (req, res) => recipe.random().then(data => res.send(data)));
 app.post('/similar', (req, res) => recipe.similar(getValue(req)).then(data => res.send(data)));
 app.post('/nutrition-label', (req, res) => recipe.nutritionLabelWidget(getValue(req)).then(data => res.send(data)));

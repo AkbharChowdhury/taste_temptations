@@ -26,7 +26,8 @@ export class Recipe {
 
     async search(urlSearchParams) {
         const params = new URLSearchParams(urlSearchParams);
-        params.append('number', RECORDS_PER_PAGE);
+        const number = params.get('number') ?? RECORDS_PER_PAGE;
+        params.append('number', number);
         return this.#request('complexSearch', params)
     }
 
@@ -97,12 +98,25 @@ export class Recipe {
     }
     intolerances() {
         return sortedArray(intolerances).map(intolerance => /*html*/`
-            
               <span class="p-2">
                 <input type="checkbox" class="btn-check" id="${intolerance}" autocomplete="off" name="intolerances" value="${intolerance}">
                 <label class="btn btn-outline-danger mt-2" for="${intolerance}">${intolerance}</label> 
               </span>
         `).join().replaceAll(',', '');
+    }
+    number(){
+        let html = /*html*/`<option value="">${RECORDS_PER_PAGE}</option>`;
+
+        const nums = [this.#getNumber(8), this.#getNumber(13)];
+        const others = nums.map(num => /*html*/ `
+            <option value="${num}">${num}</option>
+            `).join().replaceAll(',', '');
+        html+= others;
+        return html;
+
+    }
+    #getNumber(num){
+        return RECORDS_PER_PAGE + num
     }
 
 }
