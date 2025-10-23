@@ -32,7 +32,6 @@ export const constructSearchURLParams = _ => {
     if (cuisines.length !== 0) searchParams.append('cuisine', cuisines);
     if (intolerances.length !== 0) searchParams.append('intolerances', intolerances);
     const url = serializeURLSearchParams(searchParams);
-    console.log(url)
     return url;
 
 }
