@@ -54,7 +54,6 @@ function displayNutritionLabel(data) {
 
 
 function displayRecipeDetails(data) {
-    console.log({ data })
     const titleTag = document.querySelector('#title');
     const imageTag = document.querySelector('#image');
     const {
