@@ -1,37 +1,26 @@
 import { recipeCard } from './helper/recipe-card.js';
 import { fetchRandomRecipes, constructSearchURLParams, errorMessageTag, paymentIsRequired, fetchRequest } from './helper/functions.js';
-
-const endpoints = Object.freeze({ SEARCH: 'search' });
+const searchForm = document.querySelector('#search-form');
+const errorDiv = document.querySelector('#recipe-list');
 
 const searchData = [
     { endpoint: 'meals', div: '#meal' },
     { endpoint: 'cuisines', div: '#cuisines-container' },
     { endpoint: 'intolerances', div: '#intolerances' },
     { endpoint: 'number', div: '#number' },
-
 ];
 
-const searchForm = document.querySelector('#search-form');
-const errorDiv = document.querySelector('#recipe-list');
 
-const populateSearchDiv = async ({ endpoint, div }) => {
-    const response = await fetch(endpoint);
-    document.querySelector(div).innerHTML = await response.text();
-}
-searchData.forEach(populateSearchDiv);
-
-
-async function renderSearch() {
+async function renderSearchForm() {
     try {
-
         const endpoints = Object.values(searchData).map(i => i['endpoint']);
         const fetches = endpoints.map(endpoint => fetch(endpoint));
-        const data = await Promise.all(fetches);
-        const result = await Promise.all(data.map(r => r.text()));
-        const res = result.length;
-        for (let i = 0; i < res; i++) {
+        const response = await Promise.all(fetches);
+        const htmlData = await Promise.all(response.map(r => r.text()));
+        const arrLength = htmlData.length;
+        for (let i = 0; i < arrLength; i++) {
             const div = searchData.at(i).div;
-            const html = result.at(i);
+            const html = htmlData.at(i);
             document.querySelector(div).innerHTML = html;
         }
     } catch (err) {
@@ -39,8 +28,8 @@ async function renderSearch() {
     }
 
 }
-renderSearch()
 
+renderSearchForm();
 
 const renderRecipeList = recipes => recipes.forEach(recipeCard);
 
@@ -49,13 +38,11 @@ const showSearchResults = data => {
     if (!results) return;
     if (results.length === 0) {
         errorDiv.innerHTML = errorMessageTag("Whoops we couldn't find any recipes...  ", 'Please try again');
-
         return;
     }
     renderRecipeList(results)
 }
 
-// searchData.forEach(populateSearchDiv);
 fetchRandomRecipes().then(handleRandomRecipes);
 
 function handleRandomRecipes(data) {
@@ -73,18 +60,20 @@ if (searchForm) {
     searchForm.addEventListener('submit', e => {
         e.preventDefault();
         const urlSearchParams = constructSearchURLParams();
-        console.log(urlSearchParams)
-        fetchRequest(endpoints.SEARCH, urlSearchParams).then(data => {
+        fetchRequest('search', urlSearchParams).then(data => {
             if (paymentIsRequired(data.code)) {
                 errorDiv.innerHTML = errorMessageTag(data.message);
                 return;
             }
 
-            const prevRecipes = document.querySelectorAll('article');
-            prevRecipes.forEach(recipe => recipe.parentElement.remove())
+            removeRecipes();
             showSearchResults(data);
 
         });
 
     });
+}
+function removeRecipes(){
+    const prevRecipes = document.querySelectorAll('article');
+    prevRecipes.forEach(recipe => recipe.parentElement.remove())
 }
