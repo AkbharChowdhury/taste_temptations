@@ -1,3 +1,10 @@
+export function changeMetaData(metaData) {
+    const metas = document.getElementsByTagName("meta");
+    for (const [key, value] of Object.entries(metaData)) {
+        metas[key]['content'] = value
+    }
+
+}
 export const serializeURLSearchParams = urlSearchParams => {
     // This is the default delimiter used by URLSearchParams within arrays in the toString method
     const coma = '%2C';

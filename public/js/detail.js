@@ -1,5 +1,5 @@
 "use strict";
-import { titleCase, calcDuration, isValidNumber } from './helper/utils.js';
+import { titleCase, calcDuration, isValidNumber, changeMetaData } from './helper/utils.js';
 import { similarRecipeCard } from './helper/recipe-card.js';
 import { fetchRequest, errorMessageTag, paymentIsRequired, fetchRecipeID } from './helper/functions.js';
 import { getSteps, showExtraInfo, getIngredientsList } from './helper/detail-snippets.js';
@@ -51,6 +51,8 @@ function displayNutritionLabel(data) {
 }
 
 
+
+
 function displayRecipeDetails(data) {
     console.log({ data })
     const titleTag = document.querySelector('#title');
@@ -65,6 +67,9 @@ function displayRecipeDetails(data) {
         dishTypes,
         analyzedInstructions
     } = data;
+
+    changeMetaData({description: summary, keywords: title})
+
 
 
     const cuisinesText = cuisines.length > 0 ? `| ${cuisines.join(', ')}` : '';

@@ -28,7 +28,6 @@ const showSearchResults = data => {
 
         return;
     }
-    console.log('the recipe list is')
     renderRecipeList(results)
 }
 
