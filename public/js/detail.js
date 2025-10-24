@@ -68,9 +68,7 @@ function displayRecipeDetails(data) {
         analyzedInstructions
     } = data;
 
-    changeMetaData({description: summary, keywords: title})
-
-
+    changeMetaData({description: summary, keywords: title});
 
     const cuisinesText = cuisines.length > 0 ? `| ${cuisines.join(', ')}` : '';
     document.title = `Taste Temptations: ${title}`;
