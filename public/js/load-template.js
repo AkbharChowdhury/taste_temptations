@@ -6,7 +6,6 @@ function displayTemplate(html, divSelector) {
     div.remove();
 }
 
-
 async function renderTemplate() {
     try {
         const data = await Promise.all([fetch(`${templateFolder}header.html`), fetch(`${templateFolder}footer.html`)]);
@@ -21,11 +20,6 @@ async function renderTemplate() {
 renderTemplate().then(({ header, footer }) => {
     displayTemplate(header, '#header');
     displayTemplate(footer, '#footer');
-    // console.log(window.location.pathname);
-    // console.log(window.location.pathname  === '/detail.html')
-
-
-
 });
 
 
