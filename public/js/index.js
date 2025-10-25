@@ -43,7 +43,11 @@ const showSearchResults = data => {
     renderRecipeList(results)
 }
 
-fetchRandomRecipes().then(handleRandomRecipes);
+fetchRandomRecipes().then(data =>{
+    console.log('random recipes');
+    console.log(data)
+    handleRandomRecipes(data)
+});
 
 function handleRandomRecipes(data) {
     const { recipes } = data;
@@ -61,6 +65,8 @@ if (searchForm) {
         e.preventDefault();
         const urlSearchParams = constructSearchURLParams();
         fetchRequest('search', urlSearchParams).then(data => {
+            console.log('search recipes');
+            console.log(data)
             if (paymentIsRequired(data.code)) {
                 errorDiv.innerHTML = errorMessageTag(data.message);
                 return;

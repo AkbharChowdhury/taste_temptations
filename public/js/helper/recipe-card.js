@@ -23,7 +23,7 @@ export const recipeCard1 = ({ image, title, id }) =>
         </div>
 `;
 
-export const recipeCard = ({ image, title, id }) => {
+export const recipeCard = ({ image, title, id, servings }) => {
   
   const template = document.querySelector('template');
   const container = document.querySelector('#recipe-list');
@@ -31,7 +31,9 @@ export const recipeCard = ({ image, title, id }) => {
   const img = clone.querySelector('img');
   Object.assign(img, { src: image, alt: title });
   clone.querySelector('h5').textContent = title;
-  clone.querySelector('a').setAttribute('href', recipeDetailURL(id));
+  clone.querySelector('p').innerHTML = `Serves ${servings} `;
+
+  clone.querySelector('.card-link').setAttribute('href', recipeDetailURL(id));
   container.append(clone);
 }
 

@@ -28,6 +28,18 @@ export class Recipe {
         const params = new URLSearchParams(urlSearchParams);
         const number = params.get('number') ?? RECORDS_PER_PAGE;
         params.append('number', number);
+        params.append('addRecipeInformation', true);
+        return this.#request('complexSearch', params)
+    }
+
+    async search2(urlSearchParams) {
+        const params = new URLSearchParams(urlSearchParams);
+        const number = params.get('number') ?? RECORDS_PER_PAGE;
+        params.append('number', number);
+        if (params.get('isRandom') !== null) {
+            params.append('sort', 'random')
+        }
+
         return this.#request('complexSearch', params)
     }
 
@@ -51,7 +63,28 @@ export class Recipe {
             const randomMeal = getRandomItem(mealTypes);
             const tags = [randomMeal, randomCuisine];
             const number = RECORDS_PER_PAGE;
-            const params = new URLSearchParams({ number, 'include-tags': tags.join() });
+            const params = new URLSearchParams({
+                number,
+                'include-tags': tags.join()
+            });
+            return this.#request('random', params);
+
+        } catch (error) {
+            console.log('There was an error fetching random recipes', error);
+
+        }
+    }
+
+
+
+    async random2() {
+
+        try {
+            const randomCuisine = getRandomItem(cuisines);
+            const randomMeal = getRandomItem(mealTypes);
+            const tags = [randomMeal, randomCuisine];
+            const number = RECORDS_PER_PAGE;
+            const params = new URLSearchParams({ number, 'include-tags': tags.join(), includeNutrition: true });
             return this.#request('random', params);
 
         } catch (error) {
@@ -104,18 +137,18 @@ export class Recipe {
               </span>
         `).join().replaceAll(',', '');
     }
-    number(){
+    number() {
         let html = /*html*/`<option value="">${RECORDS_PER_PAGE}</option>`;
 
         const nums = [this.#getNumber(8), this.#getNumber(13)];
         const others = nums.map(num => /*html*/ `
             <option value="${num}">${num}</option>
             `).join().replaceAll(',', '');
-        html+= others;
+        html += others;
         return html;
 
     }
-    #getNumber(num){
+    #getNumber(num) {
         return RECORDS_PER_PAGE + num
     }
 
