@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { getRandomItem, titleCase, sortedArray } from './public/js/helper/utils.js';
+import { getRandomItem, titleCase, sortedArray, genNextNumber } from './public/js/helper/utils.js';
 import dotenv from 'dotenv';
 import { mealTypes, cuisines, intolerances } from './tags.js';
 
@@ -29,19 +29,10 @@ export class Recipe {
         const number = params.get('number') ?? RECORDS_PER_PAGE;
         params.append('number', number);
         params.append('addRecipeInformation', true);
+        params.append('sort', 'random');
         return this.#request('complexSearch', params)
     }
 
-    async search2(urlSearchParams) {
-        const params = new URLSearchParams(urlSearchParams);
-        const number = params.get('number') ?? RECORDS_PER_PAGE;
-        params.append('number', number);
-        if (params.get('isRandom') !== null) {
-            params.append('sort', 'random')
-        }
-
-        return this.#request('complexSearch', params)
-    }
 
     async similar(id) {
 
@@ -75,29 +66,11 @@ export class Recipe {
         }
     }
 
-
-
-    async random2() {
-
-        try {
-            const randomCuisine = getRandomItem(cuisines);
-            const randomMeal = getRandomItem(mealTypes);
-            const tags = [randomMeal, randomCuisine];
-            const number = RECORDS_PER_PAGE;
-            const params = new URLSearchParams({ number, 'include-tags': tags.join(), includeNutrition: true });
-            return this.#request('random', params);
-
-        } catch (error) {
-            console.log('There was an error fetching random recipes', error);
-
-        }
-    }
-
-
     async nutritionLabelWidget(id) {
         try {
             const headers = { 'Content-Type': 'text/html' };
             const response = await fetch(requestData(`${BASE_URL}${id}/nutritionLabel`, headers['Content-Type']));
+
             return await response.text();
         } catch (error) {
             console.log('There was an error fetching nutrition label', error);
@@ -137,19 +110,19 @@ export class Recipe {
               </span>
         `).join().replaceAll(',', '');
     }
+
+
+
     number() {
         let html = /*html*/`<option value="">${RECORDS_PER_PAGE}</option>`;
-
-        const nums = [this.#getNumber(8), this.#getNumber(13)];
+        const nextNum = genNextNumber({initalValue: RECORDS_PER_PAGE, n: 5});
+        const nums  = [nextNum(), nextNum(), nextNum()]
         const others = nums.map(num => /*html*/ `
             <option value="${num}">${num}</option>
             `).join().replaceAll(',', '');
         html += others;
         return html;
 
-    }
-    #getNumber(num) {
-        return RECORDS_PER_PAGE + num
     }
 
 }

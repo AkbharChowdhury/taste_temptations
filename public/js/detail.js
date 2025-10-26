@@ -18,7 +18,6 @@ const endpoints = Object.freeze({
 
 isValidNumber(id) && fetchRequest(endpoints.DETAIL, id).then(handleRecipeDetails);
 
-
 function handleRecipeDetails(data) {
     const { status, message } = data
     if (paymentIsRequired(status)) {
