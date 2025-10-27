@@ -1,7 +1,7 @@
 import axios from 'axios';
-import { getRandomItem, titleCase, sortedArray, genNextNumber } from './public/js/helper/utils.js';
+import { getRandomItem } from './public/js/helper/utils.js';
 import dotenv from 'dotenv';
-import { mealTypes, cuisines, intolerances } from './tags.js';
+import { mealTypes, cuisines } from './tags.js';
 
 dotenv.config();
 
@@ -10,10 +10,19 @@ const BASE_URL = 'https://api.spoonacular.com/recipes/';
 const RECORDS_PER_PAGE = 12;
 axios.defaults.headers['x-api-key'] = API_KEY;
 axios.defaults.baseURL = BASE_URL;
+import { RecipeUI } from './recipe-ui.js';
 
 const requestData = (url, contentType = 'application/json') => new Request(url, { headers: { 'x-api-key': API_KEY, 'Content-Type': contentType } });
 
 export class Recipe {
+    #recipeUI;
+    constructor() {
+        this.#recipeUI = new RecipeUI(RECORDS_PER_PAGE);
+    }
+    get recipeUI() {
+        return this.#recipeUI;
+    }
+
     async #request(url, params = new URLSearchParams()) {
         const response = await axios.get(url, { params });
         return response.data;
@@ -34,7 +43,6 @@ export class Recipe {
         const params = new URLSearchParams({ number });
         return this.#request(`${id}/similar`, params);
     }
-
 
     details = async (id) => this.#request(`${id}/information`);
 
@@ -57,49 +65,4 @@ export class Recipe {
         const response = await fetch(requestData(`${BASE_URL}${id}/nutritionLabel`, headers['Content-Type']));
         return await response.text();
     }
-
-    meals() {
-        const html =
-    /*html*/`
-        <option selected value="">No preference</option>
-        ${sortedArray(mealTypes).map(meal => /*html*/`
-            <option value="${meal}">${titleCase(meal)}</option>
-                `).join().replaceAll(',', '')}
-    `;
-        return html;
-
-    }
-
-    cuisines() {
-        return sortedArray(cuisines).map(cuisine => /*html*/`
-         <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="${cuisine}" id="${cuisine}" name="cuisines">
-            <label class="form-check-label" for="${cuisine}">
-                ${cuisine}
-            </label>
-        </div>
-        `).join().replaceAll(',', '');
-
-    }
-    intolerances() {
-        return sortedArray(intolerances).map(intolerance => /*html*/`
-              <span class="p-2">
-                <input type="checkbox" class="btn-check" id="${intolerance}" autocomplete="off" name="intolerances" value="${intolerance}">
-                <label class="btn btn-outline-danger mt-2" for="${intolerance}">${intolerance}</label> 
-              </span>
-        `).join().replaceAll(',', '');
-    }
-
-    number() {
-        let html = /*html*/`<option value="">${RECORDS_PER_PAGE}</option>`;
-        const nextNum = genNextNumber({ initalValue: RECORDS_PER_PAGE, n: 5 });
-        const nums = [nextNum(), nextNum(), nextNum()]
-        const others = nums.map(num => /*html*/ `
-            <option value="${num}">${num}</option>
-            `).join().replaceAll(',', '');
-        html += others;
-        return html;
-
-    }
-
 }
