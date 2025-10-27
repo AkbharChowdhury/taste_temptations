@@ -42,9 +42,9 @@ export class Recipe {
 
     }
 
-    async details(id) {
-        return this.#request(`${id}/information`);
-    }
+
+    details = async (id) => this.#request(`${id}sss/information`).catch(err => console.log('error', err));
+
 
 
     async random() {
@@ -70,7 +70,6 @@ export class Recipe {
         try {
             const headers = { 'Content-Type': 'text/html' };
             const response = await fetch(requestData(`${BASE_URL}${id}/nutritionLabel`, headers['Content-Type']));
-
             return await response.text();
         } catch (error) {
             console.log('There was an error fetching nutrition label', error);
@@ -111,12 +110,10 @@ export class Recipe {
         `).join().replaceAll(',', '');
     }
 
-
-
     number() {
         let html = /*html*/`<option value="">${RECORDS_PER_PAGE}</option>`;
-        const nextNum = genNextNumber({initalValue: RECORDS_PER_PAGE, n: 5});
-        const nums  = [nextNum(), nextNum(), nextNum()]
+        const nextNum = genNextNumber({ initalValue: RECORDS_PER_PAGE, n: 5 });
+        const nums = [nextNum(), nextNum(), nextNum()]
         const others = nums.map(num => /*html*/ `
             <option value="${num}">${num}</option>
             `).join().replaceAll(',', '');

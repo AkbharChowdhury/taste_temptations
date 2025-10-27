@@ -7,7 +7,9 @@ const getValue = req => Object.values(req.body).toString();
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.listen(PORT, _ => console.log(`Server listening on port ${PORT.toLocaleString()}`));
+// app.listen(PORT, _ => console.log(`Server listening on port ${PORT.toLocaleString()}`));
+app.listen(PORT, _ => recipe.details('s').then(console.log));
+
 app.get('/meals', (req, res) => res.send(recipe.meals()));
 app.get('/cuisines', (req, res) => res.send(recipe.cuisines()));
 app.get('/intolerances', (req, res) => res.send(recipe.intolerances()));
