@@ -60,8 +60,7 @@ if (searchForm) {
         e.preventDefault();
         const urlSearchParams = constructSearchURLParams();
         fetchRequest('search', urlSearchParams).then(data => {
-            console.log('search recipes');
-            console.log(data)
+           
             if (paymentIsRequired(data.code)) {
                 errorDiv.innerHTML = errorMessageTag(data.message);
                 return;

@@ -32,7 +32,6 @@ export const recipeCard = ({ image, title, id, servings }) => {
   Object.assign(img, { src: image, alt: title });
   clone.querySelector('h5').textContent = title;
   clone.querySelector('p').innerHTML = `Serves ${servings} `;
-
   clone.querySelector('.card-link').setAttribute('href', recipeDetailURL(id));
   container.append(clone);
 }
