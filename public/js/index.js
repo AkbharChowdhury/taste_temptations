@@ -1,6 +1,6 @@
 import { recipeCard } from './helper/recipe-card.js';
 import { fetchRandomRecipes, constructSearchURLParams, errorMessageTag, paymentIsRequired, fetchRequest } from './helper/functions.js';
-const searchForm = document.querySelector('#search-form');
+const searchForm = document.querySelector('form');
 const errorDiv = document.querySelector('#recipe-list');
 
 const searchData = [
@@ -10,10 +10,9 @@ const searchData = [
     { endpoint: 'number', div: '#number' },
 ];
 
-
-async function renderSearchForm() {
+const renderSearchForm = async _ => {
     try {
-        const endpoints = Object.values(searchData).map(i => i['endpoint']);
+        const endpoints = Object.values(searchData).map(row => row['endpoint']);
         const fetches = endpoints.map(endpoint => fetch(endpoint));
         const response = await Promise.all(fetches);
         const htmlData = await Promise.all(response.map(r => r.text()));
@@ -24,7 +23,7 @@ async function renderSearchForm() {
             document.querySelector(div).innerHTML = html;
         }
     } catch (err) {
-        console.log('There was an error rendering search form', err)
+        console.error('There was an error rendering search form. Review message:\n', err)
     }
 
 }
@@ -37,17 +36,13 @@ const showSearchResults = data => {
     const { results } = data;
     if (!results) return;
     if (results.length === 0) {
-        errorDiv.innerHTML = errorMessageTag("Whoops we couldn't find any recipes...  ", 'Please try again');
+        errorDiv.innerHTML = errorMessageTag("Whoops, we couldn't find any recipes...", 'Please try again');
         return;
     }
-    renderRecipeList(results)
+    renderRecipeList(results);
 }
 
-fetchRandomRecipes().then(data =>{
-    console.log('random recipes');
-    console.log(data)
-    handleRandomRecipes(data)
-});
+fetchRandomRecipes().then(data => handleRandomRecipes(data));
 
 function handleRandomRecipes(data) {
     const { recipes } = data;

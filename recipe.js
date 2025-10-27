@@ -8,7 +8,6 @@ dotenv.config();
 const API_KEY = process.env.API_KEY;
 const BASE_URL = 'https://api.spoonacular.com/recipes/';
 const RECORDS_PER_PAGE = 12;
-
 axios.defaults.headers['x-api-key'] = API_KEY;
 axios.defaults.baseURL = BASE_URL;
 
@@ -16,12 +15,8 @@ const requestData = (url, contentType = 'application/json') => new Request(url, 
 
 export class Recipe {
     async #request(url, params = new URLSearchParams()) {
-        try {
-            const response = await axios.get(url, { params });
-            return response.data;
-        } catch (error) {
-            console.error('There was an error with this request', error)
-        }
+        const response = await axios.get(url, { params });
+        return response.data;
     }
 
     async search(urlSearchParams) {
@@ -35,47 +30,32 @@ export class Recipe {
 
 
     async similar(id) {
-
         const number = 8;
         const params = new URLSearchParams({ number });
         return this.#request(`${id}/similar`, params);
-
     }
 
 
-    details = async (id) => this.#request(`${id}sss/information`).catch(err => console.log('error', err));
-
-
+    details = async (id) => this.#request(`${id}/information`);
 
     async random() {
 
-        try {
-            const randomCuisine = getRandomItem(cuisines);
-            const randomMeal = getRandomItem(mealTypes);
-            const tags = [randomMeal, randomCuisine];
-            const number = RECORDS_PER_PAGE;
-            const params = new URLSearchParams({
-                number,
-                'include-tags': tags.join()
-            });
-            return this.#request('random', params);
+        const randomCuisine = getRandomItem(cuisines);
+        const randomMeal = getRandomItem(mealTypes);
+        const tags = [randomMeal, randomCuisine];
+        const number = RECORDS_PER_PAGE;
+        const params = new URLSearchParams({
+            number,
+            'include-tags': tags.join()
+        });
+        return this.#request('random', params);
 
-        } catch (error) {
-            console.log('There was an error fetching random recipes', error);
-
-        }
     }
 
     async nutritionLabelWidget(id) {
-        try {
-            const headers = { 'Content-Type': 'text/html' };
-            const response = await fetch(requestData(`${BASE_URL}${id}/nutritionLabel`, headers['Content-Type']));
-            return await response.text();
-        } catch (error) {
-            console.log('There was an error fetching nutrition label', error);
-            return error;
-
-        }
+        const headers = { 'Content-Type': 'text/html' };
+        const response = await fetch(requestData(`${BASE_URL}${id}/nutritionLabel`, headers['Content-Type']));
+        return await response.text();
     }
 
     meals() {
@@ -123,6 +103,3 @@ export class Recipe {
     }
 
 }
-
-
-
