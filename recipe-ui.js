@@ -18,12 +18,12 @@ export class RecipeUI {
     #RECORDS_PER_PAGE;
     constructor(RECORDS_PER_PAGE) {
         this.#RECORDS_PER_PAGE = RECORDS_PER_PAGE;
+
     }
 
     intolerances = () => sortedArray(intolerances).map(intoleranceHtml).join().replaceAll(',', '');
     cuisines = () => sortedArray(cuisines).map(cuisinesHtml).join().replaceAll(',', '');
     meals() {
-
         const arr = sortedArray(mealTypes).map(meal => /*html*/`<option value="${meal}">${titleCase(meal)}</option>`);
         arr.unshift(/*html*/`<option selected value="">No preference</option>`)
         return arr.join().replaceAll(',', '');
@@ -31,7 +31,7 @@ export class RecipeUI {
     }
 
     number() {
-        const nextNum = genNextNumber({ initalValue: this.#RECORDS_PER_PAGE, n: 5 });
+        const nextNum = genNextNumber({ initialValue: this.#RECORDS_PER_PAGE, n: 5 });
         const nums = [nextNum(), nextNum(), nextNum()];
         const selectOptions = nums.map(num => /*html*/ `<option value="${num}">${num}</option>`);
         selectOptions.unshift(/*html*/`<option value="">${this.#RECORDS_PER_PAGE}</option>`);

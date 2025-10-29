@@ -66,12 +66,12 @@ function displayRecipeDetails(data) {
         analyzedInstructions
     } = data;
 
-    changeMetaData({description: summary, keywords: title});
+    changeMetaData({ description: summary, keywords: title });
 
     const cuisinesText = cuisines.length > 0 ? `| ${cuisines.join(', ')}` : '';
     document.title = `Taste Temptations: ${title}`;
 
-    renderListItem('#ingredients',   getIngredientsList(data));
+    renderListItem('#ingredients', getIngredientsList(data));
 
     titleTag.textContent = title;
     Object.assign(imageTag, { src: image, alt: title });
@@ -87,26 +87,23 @@ function displayRecipeDetails(data) {
 }
 
 function showInstructions(instructions) {
+    const hasInstructions = instructions !== undefined;
+    const showSteps = _ =>  renderListItem('#steps', getSteps(instructions));
+    hasInstructions ? showSteps() : hideSteps();
+}
+
+function hideSteps() {
     const instructionSection = {
         'header': 'instructions-header',
         'steps': 'steps-container'
     }
-    const hasInstructions = instructions !== undefined;
-    if (!hasInstructions) {
-        Object.values(instructionSection).forEach(el => document.querySelector(`#${el}`).style.display = 'none');
-        return;
-    }
-
-    renderListItem('#steps',  getSteps(instructions));
-
+    const hideEl = el => document.querySelector(`#${el}`).style.display = 'none';
+    Object.values(instructionSection).forEach(hideEl);
 }
 
-function renderListItem(selector, arr){
+function renderListItem(selector, arr) {
     const fragment = new DocumentFragment();
     const ul = document.querySelector(selector);
     arr.forEach(li => fragment.append(li));
     ul.append(fragment);
-
 }
-
-

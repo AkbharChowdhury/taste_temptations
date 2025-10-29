@@ -2,12 +2,12 @@
     /**
      * rounds the initial number to the nearest nth number.
      * @function genNextNumber
-     * @param initalValue the starting value to round from
+     * @param initialValue the starting value to round from
      * @param n the nearest number to round from
      * @return {Number}
      */
-export function genNextNumber({initalValue=6, n=10}) {
-    let currentValue = initalValue;
+export function genNextNumber({initialValue=6, n=10}) {
+    let currentValue = initialValue;
     return function () {
         const nextNumber = ((Math.floor(currentValue / n)) * n) + n;
         currentValue += n;
