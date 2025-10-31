@@ -42,10 +42,12 @@ const showSearchResults = data => {
     renderRecipeList(results);
 }
 
-fetchRandomRecipes().then(data => handleRandomRecipes(data));
+fetchRandomRecipes().then(handleRandomRecipes);
 
 function handleRandomRecipes(data) {
+
     const { recipes } = data;
+    console.log({recipes})
     if (recipes) {
         renderRecipeList(recipes);
         return;

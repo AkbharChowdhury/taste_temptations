@@ -27,7 +27,12 @@ function handleRecipeDetails(data) {
     }
 
     displayRecipeDetails(data);
-    fetchRequest(endpoints.SIMILAR, id).then(displaySimilarRecipes)
+    // fetchRequest(endpoints.SIMILAR, id).then(displaySimilarRecipes)
+    fetchRequest(endpoints.SIMILAR, id).then(data => {
+        console.log(data);
+        displaySimilarRecipes(data)
+    })
+
     getNutritionLabel(endpoints.NUTRITION_LABEL, id).then(displayNutritionLabel)
 }
 
