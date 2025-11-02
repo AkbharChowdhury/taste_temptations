@@ -4,7 +4,8 @@
 :root {
     --cream: #f3eae3;
     --brown: #7B3F00;
-    --lightGray: rgb(177,177,177);
+    --light-gray: rgb(177, 177, 177);
+
 }
 
 h2, h3, h4{
@@ -107,7 +108,6 @@ h2, h3, h4{
 
 
 /* similar recipe cards*/
-
 .cream-bg {
     background-color: var(--cream);
     padding-top: 2rem;
@@ -115,43 +115,24 @@ h2, h3, h4{
 }
 
 .similar-recipe-card img {
+  /*  margin-top: 10%;
+    padding-left: 10%;
+    object-fit: cover;
+    height: 65%;*/
     width: 100%;
     height: 100%;
     object-fit: cover;
+
     border-bottom-right-radius: 0px;
     border-top-right-radius: 0px;
 }
 
 .similar-recipe-card h3 {
     text-transform: uppercase;
-    color: rgb(177, 177, 177);
+    color: var(--light-gray);
     font-size: .8rem;
 }
 
 .similar-recipe-card p {
     line-height: 1.4em;
 }
-
-
-.cream-bg{
-    background-color: var(--cream);
-    padding-top: 2rem;
-    padding-bottom: 2rem;
-}
-
-.similar-recipe-card img {
-    max-height: 100%;
-    object-fit: cover;
-    border-bottom-right-radius: 0px;
-    border-top-right-radius: 0px;
-}
-.similar-recipe-card h3 {
-    text-transform: uppercase;
-    color: var(--lightGray);
-    font-size: .8rem;
-    font-weight: bold;
-}
-.similar-recipe-card p {
-    line-height: 1.4em;
-}
-

@@ -39,7 +39,7 @@ export const recipeCard = ({ image, title, id, servings }) => {
 
 export const similarRecipeCard = (recipe) => {
   const { id, title, readyInMinutes: minutes, servings } = recipe;
-  const template = document.querySelector('template');
+  const template = document.querySelector('#similar-recipes-template');
   const container = document.querySelector('#similar-recipe-list');
   const clone = template.content.cloneNode(true);
   const img = clone.querySelector('img');

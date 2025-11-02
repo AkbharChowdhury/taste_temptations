@@ -1,21 +1,13 @@
 "use strict";
-import { titleCase, calcDuration, isValidNumber, changeMetaData } from './helper/utils.js';
+import { titleCase, calcDuration, isValidNumber, changeMetaData, DurationFormat } from './helper/utils.js';
 import { similarRecipeCard } from './helper/recipe-card.js';
 import { fetchRequest, errorMessageTag, paymentIsRequired, fetchRecipeID } from './helper/functions.js';
 import { getSteps, showExtraInfo, getIngredientsList } from './helper/detail-snippets.js';
 
 const id = fetchRecipeID();
 
-const showDishTypeTags = dishes => {
-      const container = document.querySelector('#dish-list');
-      dishes.forEach(dish =>{
-        const template = document.querySelector('#dish-types-template');
-        const clone = template.content.cloneNode(true);
-        clone.querySelector('span').innerText = titleCase(dish);
-        container.append(clone);
-      });
+const showDishTypeTags = dishes => dishes.map(dish => `<span class="badge bg-secondary text-decoration-none link-light m-2">${titleCase(dish)}</span>`).join().replaceAll(',', '');
 
-}
 const displaySimilarRecipes = recipes => recipes.forEach(similarRecipeCard);
 
 const endpoints = Object.freeze({
@@ -35,6 +27,7 @@ function handleRecipeDetails(data) {
     }
 
     displayRecipeDetails(data);
+    // fetchRequest(endpoints.SIMILAR, id).then(displaySimilarRecipes)
     fetchRequest(endpoints.SIMILAR, id).then(data => {
         console.log(data);
         displaySimilarRecipes(data)
@@ -57,8 +50,12 @@ async function getNutritionLabel(url, id) {
 function displayNutritionLabel(data) {
     const nutritionLabel = data.split('</style>')[1];
     const container = document.querySelector('#nutrition-label-widget');
-    container.insertAdjacentHTML('afterbegin', nutritionLabel);
+    container.insertAdjacentHTML('beforebegin', nutritionLabel);
+    container.remove();
 }
+
+
+
 
 function displayRecipeDetails(data) {
     const titleTag = document.querySelector('#title');
@@ -86,7 +83,7 @@ function displayRecipeDetails(data) {
 
     document.querySelector('#additional-details').innerText = `Serves ${servings}, ready in ${calcDuration(minutes)} ${cuisinesText}`;
     document.querySelector('#summary').innerHTML = summary;
-    showDishTypeTags(dishTypes);
+    document.querySelector('#dish-types').innerHTML = showDishTypeTags(dishTypes);
 
     const instructions = analyzedInstructions[0];
     showInstructions(instructions);
@@ -103,8 +100,7 @@ function showInstructions(instructions) {
 function hideSteps() {
     const instructionSection = {
         'header': 'instructions-header',
-        'steps': 'steps',
-        'hr': 'hr'
+        'steps': 'steps-container'
     }
     const hideEl = el => document.querySelector(`#${el}`).style.display = 'none';
     Object.values(instructionSection).forEach(hideEl);

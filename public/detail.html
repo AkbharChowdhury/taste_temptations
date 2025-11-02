@@ -1,89 +1,94 @@
 <div id="header"></div>
-<div class="container mt-5" id="recipe-details-container">
-    <div class="row">
-        <div class="col-lg-8">
-            <article>
-                <header class="mb-4">
-                    <h1 class="fw-bolder mb-1" id="title">Baby Chick Cupcakes</h1>
-                    <div class="text-muted fst-italic mb-2" id="additional-details">Serves 12, ready in 45 minutes |
-                        American</div>
-                    <div id="dish-types"></div>
-                    <section id="tags">
-                        <div class="card">
-                            <div class="card-body">
-                                <div id="tags-data"></div>
+<div class="container mt-5">
+            <div class="row">
+                <div class="col-lg-8">
+                    <!-- Post content-->
+                    <article>
+                        <!-- Post header-->
+                        <header class="mb-4">
+                            <!-- Post title-->
+                            <h1 class="fw-bolder mb-1" id="title">Welcome to Blog Post!</h1>
+                            <!-- Post meta content-->
+                            <div class="text-muted fst-italic mb-2" id="additional-details">Posted on January 1, 2023 by Start Bootstrap</div>
+                            <!-- Post categories-->
+                            <div id="dish-list">
+                                <template id="dish-types-template">
+                                    <span class="badge bg-secondary text-decoration-none link-light m-2">Dinner</span>
+                                </template>
+                            </div>               
+                        </header>
+                        <section id="tags" class="mb-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div id="tags-data"></div>
+                                </div>
                             </div>
+                        </section>
+                
+                        <!-- Preview image figure-->
+                        <figure class="mb-4"><img id="image" class="img-fluid rounded" src="https://dummyimage.com/900x400/ced4da/6c757d.jpg" alt="..." /></figure>
+                        <!-- Post content-->
+                        <section class="mb-5">
+                            <p class="fs-5 mb-4" id="summary"></p>
+                            <h2 class="fw-bolder mb-4 mt-5">Ingredients</h2>
+                            <hr>
+                            <ul id="ingredients">
+                            </ul>
+                            <h2 class="fw-bolder mb-4 mt-5" id="instructions-header">Instructions</h2>
+                            <hr id="hr">
+                            <ol id="steps">
+                            </ol>
+                        </section>
+                    </article>
+                    <!-- Comments section-->
+                    <section class="mb-5">
+                        <div class="container">
+                            <h1 class="mt-2">You might also like</h1>
+                            <hr>
                         </div>
-                    </section>
-                </header>
-                <div class="col" id="recipe-image">
-                    <figure class="mb-4 text-start">
-                        <img class="img-fluid rounded" id="image"
-                            src="https://img.spoonacular.com/recipes/633229-556x370.jpg" alt="recipe image">
-                    </figure>
-                </div>
-                <section class="mb-5" id="recipe-details">
-                    <p class="fs-5 mb-4" id="summary"></p>
-                    <h2 class="fw-bolder mb-4 mt-5">Ingredients</h2>
-                    <p class="fs-5 mb-4">
-                    <ul id="ingredients">
-                    </ul>
-                    </p>
-                    <h2 class="fw-bolder mb-4 mt-5" id="instructions-header">Instructions</h2>
-                    <p class="fs-5 mb-4" id="steps-container">
-                    <ol id="steps">
-                    </ol>
-                    </p>
-                </section>
-            </article>
-
-            <section id="similar-recipes">
-                <h2>You might also like</h2>
-                <hr>
-                <div class="cream-bg">
-                    <div class="container">
-                        <div class="row g-5 d-flex justify-content-evenly" id="similar-recipe-list">
-                            <template>
-                                <div class="col-lg-6">
-                                    <div class="card similar-recipe-card">
-                                        <div class="row g-0">
-                                            <div class="col col-md-5">
-                                                 <img class="card-img img-fluid rounded-start">
-                                            </div>
-                                            <div class="col col-md-7">
-                                                <div class="card-body fd-flex flex-column">
-                                                    <div class="h-100">
-                                                        <h3 class="card-title"><strong>Serves 12</strong></h3>
-                                                        <h5 class="card-title" id="recipe-title-similar">Grilled Figs
-                                                            With Blue Cheese and Citrus Honey</h5>
-                                                        <p class="card-text"><i class="bi bi-stopwatch"></i> <span id="duration"></span></p>
-                                                        <a target="_blank" role="button" class="btn btn-dark mt-2"><i class="bi bi-fork-knife  me-1"></i> View more</a>
+                        <div class="cream-bg">
+                            <div class="container">
+                                <div class="row g-5 d-flex justify-content-start" id="similar-recipe-list">
+                                    <template id="similar-recipes-template">
+                                        <div class="col-lg-6">
+                                            <div class="card similar-recipe-card">
+                                                <div class="row g-0">
+                                                    <div class="col-6 col-md-5">
+                                                        <img alt="image" class="card-img img-fluid rounded">
+                                                    </div>
+                                                    <div class="col-6 col-md-7">
+                                                        <div class="card-body fd-flex flex-column">
+                                                            <div class="h-100">
+                                                                <h3 class="card-title"><strong>Serves 12</strong></h3>
+                                                                <h5 class="card-title" id="recipe-title-similar">Grilled Figs With Blue
+                                                                    Cheese and Citrus Honey</h5>
+                                                                <p class="card-text"><i class="bi bi-stopwatch me-1"></i></i><span
+                                                                        id="duration">45 min</span></p>
+                                                                <a target="_blank" role="button" class="btn btn-dark mt-2"><i
+                                                                        class="bi bi-fork-knife me-1"></i> View more</a>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-
+                                    </template>
                                 </div>
-                            </template>
+                            </div>
                         </div>
-                    </div>
+                    </section>
                 </div>
-            </section>
+                <!-- Side widgets-->
+                <div class="col-lg-4" id="nutrition-label-widget">
+                </div>
+            </div>
         </div>
 
-
-        <section class="col-lg-4" id="nutrition-label">
-            <div id="nutrition-label-widget">
-            </div>
-        </section>
-    </div>
-
-    <div id="footer"></div>
+<div id="footer"></div>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="js/load-template.js"></script>
     <script src="js/detail.js" type="module"></script>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script type="module" src="js/detail.js"></script>
-    </body>
-    </html>
+  
+</body>
+</html>
