@@ -1,5 +1,5 @@
 "use strict";
-import { titleCase, calcDuration, isValidNumber, changeMetaData } from './helper/utils.js';
+import { titleCase, calcDuration, isValidNumber, changeMetaData, getClone } from './helper/utils.js';
 import { similarRecipeCard } from './helper/recipe-card.js';
 import { fetchRequest, errorMessageTag, paymentIsRequired, fetchRecipeID } from './helper/functions.js';
 import { getSteps, showExtraInfo, getIngredientsList } from './helper/detail-snippets.js';
@@ -9,14 +9,12 @@ const id = fetchRecipeID();
 const showDishTypeTags = dishes => {
       const container = document.querySelector('#dish-list');
       dishes.forEach(dish =>{
-        const template = document.querySelector('#dish-types-template');
-        const clone = template.content.cloneNode(true);
+        const clone = getClone('#dish-types-template');
         clone.querySelector('span').innerText = titleCase(dish);
         container.append(clone);
       });
 
 }
-const displaySimilarRecipes = recipes => recipes.forEach(similarRecipeCard);
 
 const endpoints = Object.freeze({
     DETAIL: 'detail',
@@ -35,11 +33,7 @@ function handleRecipeDetails(data) {
     }
 
     displayRecipeDetails(data);
-    fetchRequest(endpoints.SIMILAR, id).then(data => {
-        console.log(data);
-        displaySimilarRecipes(data)
-    })
-
+    fetchRequest(endpoints.SIMILAR, id).then(recipes => recipes.forEach(similarRecipeCard))
     getNutritionLabel(endpoints.NUTRITION_LABEL, id).then(displayNutritionLabel)
 }
 

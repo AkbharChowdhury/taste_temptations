@@ -79,3 +79,4 @@ export const createLi = text => {
     return li;
 }
 
+export const getClone = selector => document.querySelector(selector).content.cloneNode(true);

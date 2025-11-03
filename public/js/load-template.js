@@ -22,4 +22,3 @@ renderTemplate().then(({ header, footer }) => {
     displayTemplate(footer, '#footer');
 });
 
-
