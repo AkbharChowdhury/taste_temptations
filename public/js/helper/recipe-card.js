@@ -6,7 +6,7 @@ const recipeDetailURL = id => `detail.html?recipeID=${id}`;
 const getRecipeImage = id => `https://img.spoonacular.com/recipes/${id}-556x370.jpg`;
 
 export const recipeCard = (recipe) => {
-  const { image, title, id, servings, aggregateLikes: likes, healthScore} = recipe;
+  const { image, title, id, servings, aggregateLikes: likes, healthScore, readyInMinutes: minutes} = recipe;
   
   const container = document.querySelector('#recipe-list');
   const clone = getClone('template');
@@ -15,6 +15,8 @@ export const recipeCard = (recipe) => {
   clone.querySelector('h5').textContent = title;
   clone.querySelector('#serving').innerText = servings;
   clone.querySelector('#likes').innerText = likes.toLocaleString();
+  //  calcDuration(minutes, DurationFormat.SHORT)
+  clone.querySelector('#duration').textContent = calcDuration(minutes, DurationFormat.NARROW);
 
   clone.querySelector('.card-link').setAttribute('href', recipeDetailURL(id));
   clone.querySelector('circle-progress').setAttribute('value', healthScore)
