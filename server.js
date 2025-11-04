@@ -1,6 +1,5 @@
 import express from 'express'
 import { Recipe } from './recipe.js';
-
 const PORT = 3_000;
 const recipe = new Recipe();
 const app = express();

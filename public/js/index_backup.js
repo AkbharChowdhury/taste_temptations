@@ -32,14 +32,22 @@ renderSearchForm();
 
 const renderRecipeList = recipes => recipes.forEach(recipeCard);
 
-
+const showSearchResults = data => {
+    const { results } = data;
+    if (!results) return;
+    if (results.length === 0) {
+        errorDiv.innerHTML = errorMessageTag("Whoops, we couldn't find any recipes...", 'Please try again');
+        return;
+    }
+    renderRecipeList(results);
+}
 
 fetchRandomRecipes().then(handleRandomRecipes);
 
 function handleRandomRecipes(data) {
 
     const { recipes } = data;
-    console.log({recipes});
+    console.log({recipes})
     if (recipes) {
         renderRecipeList(recipes);
         return;
@@ -49,3 +57,25 @@ function handleRandomRecipes(data) {
     document.querySelector('#button-search').disabled = true;
 }
 
+if (searchForm) {
+    searchForm.addEventListener('submit', e => {
+        e.preventDefault();
+        const urlSearchParams = constructSearchURLParams();
+        fetchRequest('search', urlSearchParams).then(data => {
+           
+            if (paymentIsRequired(data.code)) {
+                errorDiv.innerHTML = errorMessageTag(data.message);
+                return;
+            }
+
+            removeRecipes();
+            showSearchResults(data);
+
+        });
+
+    });
+}
+function removeRecipes(){
+    const prevRecipes = document.querySelectorAll('article');
+    prevRecipes.forEach(recipe => recipe.parentElement.remove())
+}

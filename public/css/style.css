@@ -5,9 +5,27 @@
     --cream: #f3eae3;
     --brown: #7B3F00;
     --light-gray: rgb(177, 177, 177);
+    --green: hsl(143, 90%, 20%);
+        --green-filled: hsl(143, 100%, 85%);
 
 }
 
+
+circle-progress::part(value) {
+	stroke-width: 6px;
+	/* stroke: hsl(39, 100%, 50%); */
+    	stroke:var(--green);
+
+    height:10%;
+}
+circle-progress::part(circle) {
+	stroke-width: 6px;
+	stroke: var(--green-filled);
+
+}
+circle-progress::part(text) {
+	fill: var(--green);
+}
 h2, h3, h4{
       font-family: "Poppins", sans-serif;
 
