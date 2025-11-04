@@ -14,7 +14,7 @@ export const recipeCard = (recipe) => {
   Object.assign(img, { src: image, alt: title });
   clone.querySelector('h5').textContent = title;
   clone.querySelector('#serving').innerText = servings;
-  clone.querySelector('#likes').innerText = likes;
+  clone.querySelector('#likes').innerText = likes.toLocaleString();
 
   clone.querySelector('.card-link').setAttribute('href', recipeDetailURL(id));
   clone.querySelector('circle-progress').setAttribute('value', healthScore)
