@@ -22,7 +22,7 @@
                         </div>
                     </div>
                 </section>
-                <section>
+                <section id="intolerance">
                     <h2>Intolerances</h2>
                     <hr>
                     <div class="container">
@@ -44,21 +44,26 @@
                                     <div class="card-body">
                                         <h5 class="card-title"></h5>
                                         <hr>
-                        
-                                        <p>
-                                            <i class="bi bi-person me-1"></i><span id="serving"></span>
-                                            <i class="bi bi-hand-thumbs-up me-1"></i><span id="likes"></span>
-                                            <i class="bi bi-stopwatch me-1"></i><span id="duration">45 min</span>
-                                        </p>
-
-                                        <div class="d-flex flex-column mb-3">
-                                            <div class="p-2">
-                                                <p>Health-score <span class="pt-2"><circle-progress value="50" max="100" text-format="percent"></circle-progress></span></p>
-                                            </div>
-                                            <div class="p-2">
-                                                <a href="#" class="card-link" target="_blank">View More</a>
-                                            </div>
+                                        <div class="d-flex flex-row">
+                                            <div class="p-2"><span class="badge text-bg-success" id="popular">Popular</span></div>
+                                        
                                         </div>
+                                                                                        
+
+                                        <div class="d-flex">
+                                           
+                                            <div class="p-2 flex-fill">
+                                                <i class="bi bi-person me-1"></i><span id="serving"></span>
+                                                <i class="bi bi-hand-thumbs-up me-1"></i><span id="likes"></span>
+                                                <i class="bi bi-stopwatch me-1"></i><span id="duration">45 min</span>
+                                                 
+                                            </div>
+                                            <div class="p-2 flex-fill">
+                                                <circle-progress max="100" text-format="percent"></circle-progress>
+                                            </div>
+                                             
+                                        </div>
+                                        <a class="card-link" target="_blank">View More</a>
                                     </div>
                                 </div>
                         </div>

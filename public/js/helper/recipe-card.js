@@ -6,20 +6,22 @@ const recipeDetailURL = id => `detail.html?recipeID=${id}`;
 const getRecipeImage = id => `https://img.spoonacular.com/recipes/${id}-556x370.jpg`;
 
 export const recipeCard = (recipe) => {
-  const { image, title, id, servings, aggregateLikes: likes, healthScore, readyInMinutes: minutes} = recipe;
+  const { image, title, id, servings, aggregateLikes: likes, healthScore, readyInMinutes: minutes, veryPopular} = recipe;
   
   const container = document.querySelector('#recipe-list');
   const clone = getClone('template');
   const img = clone.querySelector('img');
+   const togglePopularity = veryPopular ? 'block': 'none';
+
   Object.assign(img, { src: image, alt: title });
   clone.querySelector('h5').textContent = title;
   clone.querySelector('#serving').innerText = servings;
   clone.querySelector('#likes').innerText = likes.toLocaleString();
-  //  calcDuration(minutes, DurationFormat.SHORT)
   clone.querySelector('#duration').textContent = calcDuration(minutes, DurationFormat.NARROW);
 
   clone.querySelector('.card-link').setAttribute('href', recipeDetailURL(id));
-  clone.querySelector('circle-progress').setAttribute('value', healthScore)
+  clone.querySelector('circle-progress').setAttribute('value', healthScore);
+  clone.querySelector('#popular').style.display = togglePopularity;
   
   container.append(clone);
 };

@@ -32,8 +32,6 @@ renderSearchForm();
 
 const renderRecipeList = recipes => recipes.forEach(recipeCard);
 
-
-
 fetchRandomRecipes().then(handleRandomRecipes);
 
 function handleRandomRecipes(data) {
