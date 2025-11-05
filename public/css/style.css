@@ -13,6 +13,12 @@
 .bi-heart-fill{
     color: var(--heart);
 }
+.fa-tag{
+    color: gray;
+}
+.fa-tags{
+    color: rgb(222, 190, 8);
+}
 
 circle-progress::part(base) {
     width: 60px;

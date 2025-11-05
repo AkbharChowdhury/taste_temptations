@@ -12,7 +12,7 @@ export const sampleRecipes = [
         "glutenFree": false,
         "dairyFree": false,
         "veryHealthy": false,
-        "cheap": false,
+        "cheap": true,
         "veryPopular": false,
         "sustainable": false,
         "lowFodmap": false,
