@@ -1,4 +1,6 @@
-import { recipeCard } from './helper/recipe-card.js';
+import { recipeCard } from './helper/recipe-card.js'
+import { sampleRecipes } from './sample-recipe.js';
+;
 import { fetchRandomRecipes, constructSearchURLParams, errorMessageTag, paymentIsRequired, fetchRequest } from './helper/functions.js';
 const searchForm = document.querySelector('form');
 const errorDiv = document.querySelector('#recipe-list');
@@ -9,6 +11,38 @@ const searchData = [
     { endpoint: 'intolerances', div: '#intolerances' },
     { endpoint: 'number', div: '#number' },
 ];
+if (searchForm) {
+    searchForm.addEventListener('submit', e => {
+        e.preventDefault();
+        const urlSearchParams = constructSearchURLParams();
+        fetchRequest('search', urlSearchParams).then(data => {
+           
+            if (paymentIsRequired(data.code)) {
+                errorDiv.innerHTML = errorMessageTag(data.message);
+                return;
+            }
+
+            removeRecipes();
+            showSearchResults(data);
+
+        });
+
+    });
+}
+function removeRecipes(){
+    const prevRecipes = document.querySelectorAll('article');
+    prevRecipes.forEach(recipe => recipe.parentElement.remove())
+}
+
+function showSearchResults(data) {
+    const { results } = data;
+    if (!results) return;
+    if (results.length === 0) {
+        errorDiv.innerHTML = errorMessageTag("Whoops, we couldn't find any recipes...", 'Please try again');
+        return;
+    }
+    renderRecipeList(results);
+}
 
 const renderSearchForm = async _ => {
     try {
@@ -32,7 +66,8 @@ renderSearchForm();
 
 const renderRecipeList = recipes => recipes.forEach(recipeCard);
 
-fetchRandomRecipes().then(handleRandomRecipes);
+// fetchRandomRecipes().then(handleRandomRecipes);
+renderRecipeList(sampleRecipes);
 
 function handleRandomRecipes(data) {
 

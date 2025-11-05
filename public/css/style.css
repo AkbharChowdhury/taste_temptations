@@ -7,7 +7,11 @@
     --light-gray: rgb(177, 177, 177);
     --green: hsl(143, 90%, 20%);
     --green-filled: hsl(143, 100%, 85%);
+    --heart: #C51104;
 
+}
+.bi-heart-fill{
+    color: var(--heart);
 }
 
 circle-progress::part(base) {
