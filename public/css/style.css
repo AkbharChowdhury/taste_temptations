@@ -10,7 +10,7 @@
     --heart: #C51104;
 
 }
-.bi-heart-fill{
+.bi-heart-fill {
     color: var(--heart);
 }
 .fa-tag{
