@@ -5,9 +5,7 @@ const PAYMENT_REQUIRED_CODE = 402;
 
 export const fetchRandomRecipes = async _ =>  (await fetch('random')).json();
 
-const getCheckboxValues = (name) => [...document.querySelectorAll(`input[name="${name}"]:checked`)].map(e => e.value);
-
-
+const getCheckboxValues = name => [...document.querySelectorAll(`input[name="${name}"]:checked`)].map(e => e.value);
 const getSelectedCuisines = () => getCheckboxValues('cuisines');
 const getSelectedIntolerances = () => getCheckboxValues('intolerances');
 

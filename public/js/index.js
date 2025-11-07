@@ -81,4 +81,3 @@ function handleRandomRecipes(data) {
     errorDiv.innerHTML = errorMessageTag('There was an error retrieving random recipes', data.message);
     document.querySelector('#button-search').disabled = true;
 }
-
