@@ -18,7 +18,7 @@ export const recipeCard = (recipe) => {
   } = recipe;
 
   const container = document.querySelector('#recipe-list');
-  const clone = getClone('template');
+  const clone = getClone('#recipe-list-template');
   clone.querySelector('circle-progress').setAttribute('value', healthScore);
 
   const img = clone.querySelector('img');

@@ -1,8 +1,7 @@
 import { recipeCard } from './helper/recipe-card.js'
-import { sampleRecipes } from './sample-recipe.js';
 import { fetchRandomRecipes, constructSearchURLParams, errorMessageTag, paymentIsRequired, fetchRequest } from './helper/functions.js';
 const searchForm = document.querySelector('form');
-const errorDiv = document.querySelector('#recipe-list');
+const errorDiv = document.querySelector('#error-tag');
 
 const searchData = [
     { endpoint: 'meals', div: '#meal' },
@@ -15,13 +14,10 @@ if (searchForm) {
         e.preventDefault();
         const urlSearchParams = constructSearchURLParams();
         fetchRequest('search', urlSearchParams).then(data => {
-           
             if (paymentIsRequired(data.code)) {
                 errorDiv.innerHTML = errorMessageTag(data.message);
                 return;
             }
-
-            removeRecipes();
             showSearchResults(data);
 
         });
@@ -32,18 +28,26 @@ function removeRecipes(){
     const prevRecipes = document.querySelectorAll('article');
     prevRecipes.forEach(recipe => recipe.parentElement.remove())
 }
-
+function hasRecipes(){
+    return document.querySelectorAll('article');
+}
 function showSearchResults(data) {
     const { results } = data;
+    console.log('search data', data);
     if (!results) return;
     if (results.length === 0) {
         errorDiv.innerHTML = errorMessageTag("Whoops, we couldn't find any recipes...", 'Please try again');
+        hasRecipes() && removeRecipes();
         return;
     }
-    renderRecipeList(results);
-}
 
-const renderSearchForm = async _ => {
+    errorDiv.innerHTML ='';
+    hasRecipes() && removeRecipes();
+    renderRecipeList(results);
+
+    
+}
+async function renderSearchForm() {
     try {
         const endpoints = Object.values(searchData).map(row => row['endpoint']);
         const fetches = endpoints.map(endpoint => fetch(endpoint));
@@ -66,13 +70,9 @@ renderSearchForm();
 const renderRecipeList = recipes => recipes.forEach(recipeCard);
 
 // fetchRandomRecipes().then(handleRandomRecipes);
-// console.log({sampleRecipes})
-renderRecipeList(sampleRecipes);
 
 function handleRandomRecipes(data) {
-
     const { recipes } = data;
-    console.log({recipes});
     if (recipes) {
         renderRecipeList(recipes);
         return;
