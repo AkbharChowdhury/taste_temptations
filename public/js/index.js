@@ -1,6 +1,5 @@
 import { recipeCard } from './helper/recipe-card.js'
 import { sampleRecipes } from './sample-recipe.js';
-;
 import { fetchRandomRecipes, constructSearchURLParams, errorMessageTag, paymentIsRequired, fetchRequest } from './helper/functions.js';
 const searchForm = document.querySelector('form');
 const errorDiv = document.querySelector('#recipe-list');

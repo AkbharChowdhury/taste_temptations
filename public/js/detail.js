@@ -3,24 +3,22 @@ import { titleCase, calcDuration, isValidNumber, changeMetaData, getClone } from
 import { similarRecipeCard } from './helper/recipe-card.js';
 import { fetchRequest, errorMessageTag, paymentIsRequired, fetchRecipeID } from './helper/functions.js';
 import { getSteps, showExtraInfo, getIngredientsList } from './helper/detail-snippets.js';
-
 const id = fetchRecipeID();
-
-const showDishTypeTags = dishes => {
-      const container = document.querySelector('#dish-list');
-      dishes.forEach(dish =>{
-        const clone = getClone('#dish-types-template');
-        clone.querySelector('span').innerText = titleCase(dish);
-        container.append(clone);
-      });
-
-}
-
 const endpoints = Object.freeze({
     DETAIL: 'detail',
     SIMILAR: 'similar',
     NUTRITION_LABEL: 'nutrition-label',
 });
+
+function showDishTypeTags(dishes) {
+    const container = document.querySelector('#dish-list');
+    for (const dish of dishes) {
+        const clone = getClone('#dish-types-template');
+        clone.querySelector('span').innerText = titleCase(dish);
+        container.append(clone);
+    }
+
+}
 
 isValidNumber(id) && fetchRequest(endpoints.DETAIL, id).then(handleRecipeDetails);
 
@@ -38,13 +36,11 @@ function handleRecipeDetails(data) {
 }
 
 async function getNutritionLabel(url, id) {
-
     try {
         const response = await axios.post(url, { id });
         return response.data;
     } catch (error) {
-        console.error('There was an error fetching nutrition label', error)
-
+        console.error('There was an error fetching nutrition label', error);
     }
 }
 
