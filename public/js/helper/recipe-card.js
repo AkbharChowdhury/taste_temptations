@@ -45,11 +45,11 @@ export const recipeCard = (recipe) => {
   const cheapTag = clone.querySelector('#isCheap');
   const costIcon = cheap ? `<i class="fa-solid fa-tag"></i>` : `<i class="fa-solid fa-tags"></i>`;
   cheapTag.innerHTML = costIcon;
-  clone.querySelector('#dairy-free').innerHTML = !dairyFree ? dairyIcon(): dairyIcon('success', 'dairy free') ;
+  clone.querySelector('#dairy-free').innerHTML = !dairyFree ? dairyIcon() : dairyIcon('success', 'dairy free');
   container.append(clone);
 };
-function dairyIcon(badgeCol='danger', text='Contains Dairy'){
-return `<span class="badge rounded-pill text-bg-${badgeCol} text-capitalize"><i class="fa-solid fa-cow me-1"></i>${text}</span>`
+function dairyIcon(badgeCol = 'danger', text = 'Contains Dairy') {
+  return `<span class="badge rounded-pill text-bg-${badgeCol} text-capitalize"><i class="fa-solid fa-cow me-1"></i>${text}</span>`
 }
 
 export const similarRecipeCard = recipe => {
