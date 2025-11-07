@@ -24,11 +24,11 @@ if (searchForm) {
 
     });
 }
-function removeRecipes(){
+function removeRecipes() {
     const prevRecipes = document.querySelectorAll('article');
     prevRecipes.forEach(recipe => recipe.parentElement.remove())
 }
-function hasRecipes(){
+function hasRecipes() {
     return document.querySelectorAll('article');
 }
 function showSearchResults(data) {
@@ -41,11 +41,11 @@ function showSearchResults(data) {
         return;
     }
 
-    errorDiv.innerHTML ='';
+    errorDiv.innerHTML = '';
     hasRecipes() && removeRecipes();
     renderRecipeList(results);
 
-    
+
 }
 async function renderSearchForm() {
     try {
@@ -69,7 +69,7 @@ renderSearchForm();
 
 const renderRecipeList = recipes => recipes.forEach(recipeCard);
 
-// fetchRandomRecipes().then(handleRandomRecipes);
+fetchRandomRecipes().then(handleRandomRecipes);
 
 function handleRandomRecipes(data) {
     const { recipes } = data;
