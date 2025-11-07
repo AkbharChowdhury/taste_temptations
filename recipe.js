@@ -2,6 +2,7 @@ import axios from 'axios';
 import { getRandomItem } from './public/js/helper/utils.js';
 import dotenv from 'dotenv';
 import { mealTypes, cuisines } from './tags.js';
+import { RecipeUI } from './recipe-ui.js';
 
 dotenv.config();
 
@@ -10,7 +11,6 @@ const BASE_URL = 'https://api.spoonacular.com/recipes/';
 const RECORDS_PER_PAGE = 12;
 axios.defaults.headers['x-api-key'] = API_KEY;
 axios.defaults.baseURL = BASE_URL;
-import { RecipeUI } from './recipe-ui.js';
 
 const requestData = (url, contentType = 'application/json') => new Request(url, { headers: { 'x-api-key': API_KEY, 'Content-Type': contentType } });
 

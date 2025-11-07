@@ -17,30 +17,30 @@ export function genNextNumber({initialValue=6, n=10}) {
 export function changeMetaData(metaData) {
     const metas = document.getElementsByTagName("meta");
     for (const [key, value] of Object.entries(metaData)) {
-        metas[key]['content'] = value
+        metas[key]['content'] = value;
     }
 
 }
 export const serializeURLSearchParams = urlSearchParams => {
     // This is the default delimiter used by URLSearchParams within arrays in the toString method
     const coma = '%2C';
-    // Used to seperate spaces in strings
+    // Used to separate spaces in strings
     const sep = '+';
     return urlSearchParams.toString()
         .replaceAll(coma, ',')
         .replaceAll(sep, ' ');
 }
 
-export const titleCase = sentance => sentance
+export const titleCase = sentence => sentence
     .toLowerCase()
     .split(' ')
     .map(word => word.replace(word[0], word[0].toUpperCase()))
     .join(' ');
 
-export const sortedArray = (arr=['']) => arr.sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()));
+export const sortedArray = (arr=[]) => arr.sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()));
 export const getRandomItem = arr => arr[(Math.random() * arr.length) | 0];
 
-export const getRandomMeals = (numberOfMeals, arr) => {
+export function getRandomMeals (numberOfMeals, arr) {
     const randomMeals = new Set();
     for (let i = 0; i < numberOfMeals; i++) randomMeals.add(getRandomItem(arr));
     const MIN_NUM_MEALS = 2;
