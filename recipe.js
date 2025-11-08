@@ -8,7 +8,7 @@ dotenv.config();
 
 const API_KEY = process.env.API_KEY;
 const BASE_URL = 'https://api.spoonacular.com/recipes/';
-const RECORDS_PER_PAGE = 12;
+const RECORDS_PER_PAGE = 3;
 axios.defaults.headers['x-api-key'] = API_KEY;
 axios.defaults.baseURL = BASE_URL;
 
