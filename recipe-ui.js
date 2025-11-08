@@ -29,10 +29,17 @@ export class RecipeUI {
         return arr.join().replaceAll(',', '');
 
     }
+    #genNums(numItems, nextNum){
+        const nums = [];
+        for (let i = 0; i < numItems; i++) {
+            nums.push(nextNum())
+        }
+        return nums;
+    }
 
-    number() {
-        const nextNum = genNextNumber({ initialValue: this.#RECORDS_PER_PAGE, n: 5 });
-        const nums = [nextNum(), nextNum(), nextNum()];
+    number({numItems, incrementBy}) {
+        const nextNum = genNextNumber({ initialValue: this.#RECORDS_PER_PAGE, n: incrementBy });
+        const nums = this.#genNums(numItems, nextNum);
         const selectOptions = nums.map(num => /*html*/ `<option value="${num}">${num}</option>`);
         selectOptions.unshift(/*html*/`<option value="">${this.#RECORDS_PER_PAGE}</option>`);
         return selectOptions.join().replaceAll(',', '');
