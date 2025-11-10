@@ -1,8 +1,6 @@
 commands.txt
 .env
-node_modules
-package.json
-package-lock.json
+
 select_on.txt
 index_old.html
 old/
@@ -10,7 +8,6 @@ test.html
 public/detail-template.html
 template.html
 links.txt
-tsconfig.json
 server copy.js
 old_server_code.js
 server-using-fetch.js
