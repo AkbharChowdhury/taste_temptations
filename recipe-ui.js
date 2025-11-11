@@ -1,12 +1,14 @@
 import { titleCase, sortedArray, genNextNumber } from './public/js/helper/utils.js';
 import { mealTypes, cuisines, intolerances } from './tags.js';
-const intoleranceHtml = (intolerance) => /*html*/ `<span class="p-2">
+
+const intoleranceHtml = intolerance => 
+    /*html*/ `<span class="p-2">
                 <input type="checkbox" class="btn-check" id="${intolerance}" autocomplete="off" name="intolerances" value="${intolerance}">
                 <label class="btn btn-outline-danger mt-2" for="${intolerance}">${intolerance}</label> 
               </span>`;
 
 
-const cuisinesHtml = (cuisine) => /*html*/ `
+const cuisinesHtml = cuisine => /*html*/ `
     <div class="form-check">
             <input class="form-check-input" type="checkbox" value="${cuisine}" id="${cuisine}" name="cuisines">
             <label class="form-check-label" for="${cuisine}">

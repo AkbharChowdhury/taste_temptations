@@ -17,5 +17,3 @@ app.post('/similar', (req, res) => recipe.similar(getValue(req)).then(data => re
 app.post('/nutrition-label', (req, res) => recipe.nutritionLabelWidget(getValue(req)).then(data => res.send(data)));
 app.post('/detail', (req, res) => recipe.details(getValue(req)).then(data => res.send(data)));
 app.post('/search', (req, res) => recipe.search(getValue(req)).then(data => res.send(data)));
-const i = recipe.recipeUI.number({ numItems: 5, incrementBy: 5});
-console.log({i})
