@@ -30,7 +30,6 @@ export class RecipeUI {
 
     }
     
-
     number({numItems, incrementBy}) {
         const nextNum = genNextNumber({ initialValue: this.#RECORDS_PER_PAGE, n: incrementBy });
         const nums = Array(numItems).fill('').map(_ => nextNum());
@@ -39,5 +38,5 @@ export class RecipeUI {
         return selectOptions.join().replaceAll(',', '');
 
     }
-    
+
 }
