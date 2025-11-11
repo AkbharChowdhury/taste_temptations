@@ -40,5 +40,6 @@ export const intolerances = [
     'Soy',
     'Sulfite',
     'Tree Nut',
-    'Wheat'
+    'Wheat',
+    "new item"
 ];

@@ -6,8 +6,8 @@ const errorDiv = document.querySelector('#error-tag');
 const searchData = [
     { endpoint: 'meals', div: '#meal' },
     { endpoint: 'cuisines', div: '#cuisines-container' },
-    { endpoint: 'intolerance', div: '#intolerances' },
-    { endpoint: 'number', div: '#number' },
+    { endpoint: 'intolerances', div: '#intolerances' },
+    { endpoint: '/record', div: '#number' },
 ];
 
 if (searchForm) {
@@ -58,6 +58,7 @@ async function renderSearchForm() {
         for (let i = 0; i < arrLength; i++) {
             const div = searchData.at(i).div;
             const html = htmlData.at(i);
+            console.log({html})
             document.querySelector(div).innerHTML = html;
         }
     } catch (err) {
@@ -70,7 +71,7 @@ renderSearchForm();
 
 const renderRecipeList = recipes => recipes.forEach(recipeCard);
 
-// fetchRandomRecipes().then(handleRandomRecipes);
+fetchRandomRecipes().then(handleRandomRecipes);
 
 function handleRandomRecipes(data) {
     const { recipes } = data;
