@@ -8,7 +8,7 @@
  */
 export function genNextNumber({ initialValue = 6, n = 10 }) {
     let currentValue = initialValue;
-    return function () {
+    return _ => {
         // round to the nearest nth number
         const nextNumber = ((Math.floor(currentValue / n)) * n) + n;
         currentValue += n;

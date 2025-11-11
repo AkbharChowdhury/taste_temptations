@@ -6,9 +6,10 @@ const errorDiv = document.querySelector('#error-tag');
 const searchData = [
     { endpoint: 'meals', div: '#meal' },
     { endpoint: 'cuisines', div: '#cuisines-container' },
-    { endpoint: 'intolerances', div: '#intolerances' },
+    { endpoint: 'intolerance', div: '#intolerances' },
     { endpoint: 'number', div: '#number' },
 ];
+
 if (searchForm) {
     searchForm.addEventListener('submit', e => {
         e.preventDefault();
@@ -69,7 +70,7 @@ renderSearchForm();
 
 const renderRecipeList = recipes => recipes.forEach(recipeCard);
 
-fetchRandomRecipes().then(handleRandomRecipes);
+// fetchRandomRecipes().then(handleRandomRecipes);
 
 function handleRandomRecipes(data) {
     const { recipes } = data;
