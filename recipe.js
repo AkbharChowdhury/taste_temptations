@@ -44,7 +44,7 @@ export class Recipe {
         return this.#request(`${id}/similar`, params);
     }
 
-    details = async (id) => this.#request(`${id}/information`);
+    details = async id => this.#request(`${id}/information`);
 
     async random() {
 

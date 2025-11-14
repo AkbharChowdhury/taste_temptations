@@ -13,7 +13,6 @@ app.use(express.json());
 
 app.listen(PORT, _ => console.log(`Server listening on port ${PORT.toLocaleString()}`));
 
-// user interface
 app.get('/meals', (req, res) => res.send(ui.meals()));
 app.get('/cuisines', (req, res) => res.send(ui.cuisines()));
 app.get('/intolerances', (req, res) => res.send(ui.intolerances()));
@@ -24,4 +23,3 @@ app.post('/search', (req, res) => recipe.search(getValue(req)).then(data => res.
 app.post('/detail', (req, res) => recipe.details(getValue(req)).then(data => res.send(data)));
 app.post('/similar', (req, res) => recipe.similar(getValue(req)).then(data => res.send(data)));
 app.post('/nutrition-label', (req, res) => recipe.nutritionLabelWidget(getValue(req)).then(data => res.send(data)));
-
