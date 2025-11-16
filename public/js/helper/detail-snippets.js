@@ -28,5 +28,11 @@ export function showExtraInfo({ vegan, vegetarian, glutenFree, diets }) {
     container.remove()
 
 }
+export function renderListItem(selector, arr=[]) {
+    const fragment = new DocumentFragment();
+    const ul = document.querySelector(selector);
+    arr.forEach(li => fragment.append(li));
+    ul.append(fragment);
+}
 
 

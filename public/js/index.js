@@ -1,30 +1,33 @@
+"use strict";
 import { recipeCard } from './helper/recipe-card.js'
 import { fetchRandomRecipes, constructSearchURLParams, errorMessageTag, paymentIsRequired, fetchRequest } from './helper/functions.js';
 const searchForm = document.querySelector('form');
 const errorDiv = document.querySelector('#error-tag');
-
 const searchData = [
     { endpoint: 'meals', div: '#meal' },
     { endpoint: 'cuisines', div: '#cuisines-container' },
     { endpoint: 'intolerances', div: '#intolerances' },
-    { endpoint: '/record', div: '#number' },
+    { endpoint: 'record', div: '#number' },
 ];
 
-if (searchForm) {
-    searchForm.addEventListener('submit', e => {
-        e.preventDefault();
-        const urlSearchParams = constructSearchURLParams();
-        fetchRequest('search', urlSearchParams).then(data => {
-            if (paymentIsRequired(data.code)) {
-                errorDiv.innerHTML = errorMessageTag(data.message);
-                return;
-            }
-            showSearchResults(data);
 
-        });
+searchForm.addEventListener('submit', e => {
+    e.preventDefault();
+    searchRecipes({ params: constructSearchURLParams() })
+});
+
+function searchRecipes({ params }) {
+    fetchRequest('search', params).then(data => {
+        if (paymentIsRequired(data.code)) {
+            errorDiv.innerHTML = errorMessageTag(data.message);
+            return;
+        }
+        showSearchResults(data);
 
     });
+
 }
+
 function removeRecipes() {
     const prevRecipes = document.querySelectorAll('article');
     prevRecipes.forEach(recipe => recipe.parentElement.remove())
@@ -79,7 +82,6 @@ function handleRandomRecipes(data) {
         renderRecipeList(recipes);
         return;
     }
-
     errorDiv.innerHTML = errorMessageTag('There was an error retrieving random recipes', data.message);
     document.querySelector('#button-search').disabled = true;
 }

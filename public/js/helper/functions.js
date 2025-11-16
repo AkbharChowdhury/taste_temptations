@@ -1,5 +1,5 @@
+"use strict";
 import { serializeURLSearchParams } from './utils.js';
-
 const headers = Object.freeze({ 'Content-Type': 'application/json' });
 const PAYMENT_REQUIRED_CODE = 402;
 

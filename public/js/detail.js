@@ -2,7 +2,7 @@
 import { titleCase, calcDuration, isValidNumber, changeMetaData, getClone } from './helper/utils.js';
 import { similarRecipeCard } from './helper/recipe-card.js';
 import { fetchRequest, errorMessageTag, paymentIsRequired, fetchRecipeID } from './helper/functions.js';
-import { getSteps, showExtraInfo, getIngredientsList } from './helper/detail-snippets.js';
+import { getSteps, showExtraInfo, getIngredientsList, renderListItem } from './helper/detail-snippets.js';
 const id = fetchRecipeID();
 const endpoints = Object.freeze({
     DETAIL: 'detail',
@@ -31,8 +31,12 @@ function handleRecipeDetails(data) {
     }
 
     displayRecipeDetails(data);
-    fetchRequest(endpoints.SIMILAR, id).then(recipes => recipes.forEach(similarRecipeCard))
     getNutritionLabel(endpoints.NUTRITION_LABEL, id).then(displayNutritionLabel)
+    getSimilarRecipes();
+}
+
+function getSimilarRecipes(){
+    fetchRequest(endpoints.SIMILAR, id).then(recipes => recipes.forEach(similarRecipeCard))
 }
 
 async function getNutritionLabel(url, id) {
@@ -64,11 +68,11 @@ function displayRecipeDetails(data) {
         dishTypes,
         analyzedInstructions
     } = data;
+    document.title = `Taste Temptations: ${title}`;
 
     changeMetaData({ description: summary, keywords: title });
 
     const cuisinesText = cuisines.length > 0 ? `| ${cuisines.join(', ')}` : '';
-    document.title = `Taste Temptations: ${title}`;
 
     renderListItem('#ingredients', getIngredientsList(data));
 
@@ -101,9 +105,3 @@ function hideSteps() {
     Object.values(instructionSection).forEach(hideEl);
 }
 
-function renderListItem(selector, arr) {
-    const fragment = new DocumentFragment();
-    const ul = document.querySelector(selector);
-    arr.forEach(li => fragment.append(li));
-    ul.append(fragment);
-}

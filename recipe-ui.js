@@ -1,8 +1,8 @@
 import { titleCase, sortedArray, genNextNumber } from './public/js/helper/utils.js';
 import { mealTypes, cuisines, intolerances } from './tags.js';
 
-class SelectOptions{
-    static selectMenu(arr=[], defaultVal){
+class SelectOptions {
+    static selectMenu({arr=[], defaultVal}){
         const displayItem = item => typeof item === 'string' ? titleCase(item) : item;
         const select = arr.map(item => /*html*/ `<option value="${item}">${displayItem(item)}</option>`);
         select.unshift(/*html*/`<option selected value="">${defaultVal}</option>`);
@@ -30,11 +30,12 @@ export class RecipeUI {
             </label>
         </div>`).join().replaceAll(',', '');
 
-    meals = _ => SelectOptions.selectMenu(sortedArray(mealTypes), 'No preference').join().replaceAll(',', '');
+    meals = _ => SelectOptions.selectMenu({arr: sortedArray(mealTypes),  defaultVal:'No preference'}).join().replaceAll(',', '');
 
     record({ numItems, nearestNumber }) {
-        const nextNum = genNextNumber(this.#RECORDS_PER_PAGE, nearestNumber);
+        const records = this.#RECORDS_PER_PAGE;
+        const nextNum = genNextNumber({initialValue: records, n: nearestNumber});
         const nums = Array(numItems).fill(0).map(_ => nextNum());
-        return SelectOptions.selectMenu(nums, this.#RECORDS_PER_PAGE).join().replaceAll(',', '');
+        return SelectOptions.selectMenu({arr:nums, defaultVal: records }).join().replaceAll(',', '');
     }
 }
