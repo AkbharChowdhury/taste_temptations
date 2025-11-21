@@ -1,6 +1,6 @@
 import express from 'express'
 import { Recipe } from './recipe.js';
-
+import {intoleranceIcons} from './tags.js'
 const PORT = 3_000;
 const recipe = new Recipe();
 const ui = recipe.recipeUI;
@@ -12,6 +12,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.listen(PORT, _ => console.log(`Server listening on port ${PORT.toLocaleString()}`));
+const sortIcons = (a, b) => a.title.toLowerCase().localeCompare(b.title.toLowerCase());
+const sortedIntoleranceIcons = intoleranceIcons.sort(sortIcons);
+
 
 app.get('/meals', (req, res) => res.send(ui.meals()));
 app.get('/cuisines', (req, res) => res.send(ui.cuisines()));
@@ -23,3 +26,5 @@ app.post('/search', (req, res) => recipe.search(getValue(req)).then(data => res.
 app.post('/detail', (req, res) => recipe.details(getValue(req)).then(data => res.send(data)));
 app.post('/similar', (req, res) => recipe.similar(getValue(req)).then(data => res.send(data)));
 app.post('/nutrition-label', (req, res) => recipe.nutritionLabelWidget(getValue(req)).then(data => res.send(data)));
+
+intoleranceIcons.sort(sortIcons).forEach(({title, icon}) => console.log(title, icon))

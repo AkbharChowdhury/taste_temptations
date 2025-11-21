@@ -1,3 +1,4 @@
+
 export const mealTypes = [
     'main course',
     'side dish',
@@ -41,5 +42,20 @@ export const intolerances = [
     'Sulfite',
     'Tree Nut',
     'Wheat',
-    "new item"
 ];
+export const intoleranceIcons = [
+    {icon: '<i class="fa-solid fa-cow me-1"></i>', title: 'Dairy'},
+    {icon: '<i class="fa-solid fa-egg me-1"></i>', title: 'Egg'},
+    {icon: '', title: 'Gluten'},
+    {icon: '', title: 'Grain'},
+    {icon: '', title: 'Peanut'},
+    {icon: '', title: 'Seafood'},
+    {icon: '', title: 'Sesame'},
+    {icon: '', title: 'Shellfish'},
+    {icon: '', title: 'Soy'},
+    {icon: '', title: 'Sulfite'},
+    {icon: '', title: 'Tree Nut'},
+    {icon: '<i class="fa-solid fa-wheat-awn-circle-exclamation me-1"></i>', title: 'Wheat'},
+
+];
+

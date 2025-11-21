@@ -1,5 +1,6 @@
 import { titleCase, sortedArray, genNextNumber } from './public/js/helper/utils.js';
-import { mealTypes, cuisines, intolerances } from './tags.js';
+import { mealTypes, cuisines, intolerances, intoleranceIcons } from './tags.js';
+const sortIcons = (a, b) => a.title.toLowerCase().localeCompare(b.title.toLowerCase());
 
 class SelectOptions {
     static selectMenu({arr=[], defaultVal}){
@@ -15,10 +16,19 @@ export class RecipeUI {
         this.#RECORDS_PER_PAGE = RECORDS_PER_PAGE;
     }
 
-    intolerances = _ => sortedArray(intolerances).map(intolerance =>
+    // intolerances = _ => sortedArray(intolerances).map(intolerance =>
+    //            /*html*/`<span class="p-2">
+    //              <input type="checkbox" class="btn-check" id="${intolerance}" autocomplete="off" name="intolerances" value="${intolerance}">
+    //              <label class="btn btn-outline-danger mt-2" for="${intolerance}">${intolerance}</label> 
+    //           </span>`
+
+    // ).join().replaceAll(',', '');
+// const sortedIntoleranceIcons = intoleranceIcons.sort(sortIcons);
+
+        intolerances = _ => intoleranceIcons.sort(sortIcons).map(({title, icon}) =>
                /*html*/`<span class="p-2">
-                 <input type="checkbox" class="btn-check" id="${intolerance}" autocomplete="off" name="intolerances" value="${intolerance}">
-                 <label class="btn btn-outline-danger mt-2" for="${intolerance}">${intolerance}</label> 
+                 <input type="checkbox" class="btn-check" id="${title}" autocomplete="off" name="intolerances" value="${title}">
+                 <label class="btn btn-outline-danger mt-2" for="${title}">${icon} ${title}</label> 
               </span>`
 
     ).join().replaceAll(',', '');
