@@ -28,7 +28,11 @@ export class RecipeUI {
         intolerances = _ => intoleranceIcons.sort(sortIcons).map(({title, icon}) =>
                /*html*/`<span class="p-2">
                  <input type="checkbox" class="btn-check" id="${title}" autocomplete="off" name="intolerances" value="${title}">
-                 <label class="btn btn-outline-danger mt-2" for="${title}">${icon} ${title}</label> 
+                 <label class="btn btn-outline-danger mt-2" 
+                 for="${title}">
+                 <i class="${icon} me-1"></i>
+                 ${title}
+                 </label> 
               </span>`
 
     ).join().replaceAll(',', '');
