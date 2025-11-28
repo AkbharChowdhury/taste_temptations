@@ -53,7 +53,7 @@ function showSearchResults(data) {
 }
 async function renderSearchForm() {
     try {
-        const endpoints = Object.values(searchData).map(row => row['endpoint']);
+        const endpoints = Object.values(searchData).map(({endpoint}) => endpoint);
         const fetches = endpoints.map(endpoint => fetch(endpoint));
         const response = await Promise.all(fetches);
         const htmlData = await Promise.all(response.map(r => r.text()));
@@ -61,7 +61,6 @@ async function renderSearchForm() {
         for (let i = 0; i < arrLength; i++) {
             const div = searchData.at(i).div;
             const html = htmlData.at(i);
-            console.log({html})
             document.querySelector(div).innerHTML = html;
         }
     } catch (err) {
@@ -78,6 +77,7 @@ fetchRandomRecipes().then(handleRandomRecipes);
 
 function handleRandomRecipes(data) {
     const { recipes } = data;
+    console.log(data)
     if (recipes) {
         renderRecipeList(recipes);
         return;
