@@ -47,7 +47,6 @@ export class Recipe {
     details = async id => this.#request(`${id}/information`);
 
     async random() {
-
         const randomCuisine = getRandomItem(cuisines);
         const randomMeal = getRandomItem(mealTypes);
         const tags = [randomMeal, randomCuisine];

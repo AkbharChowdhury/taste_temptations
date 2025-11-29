@@ -6,7 +6,7 @@
  * @param n the nearest number to round from
  * @return {Number}
  */
-export function genNextNumber({initialValue = 6, n=10}) {
+export function genNextNumber({initialValue=6, n=10}) {
     let currentValue = initialValue;
     return function () {
         // round to the nearest nth number

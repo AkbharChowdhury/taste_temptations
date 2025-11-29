@@ -1,11 +1,13 @@
 import { titleCase, sortedArray, genNextNumber } from './public/js/helper/utils.js';
-import { mealTypes, cuisines, intolerances, intoleranceIcons } from './tags.js';
+import { mealTypes, cuisines, intolerances } from './tags.js';
+
 const sortIcons = (a, b) => a.title.toLowerCase().localeCompare(b.title.toLowerCase());
 
 class SelectOptions {
     static selectMenu({arr=[], defaultVal}){
         const displayItem = item => typeof item === 'string' ? titleCase(item) : item;
-        const select = arr.map(item => /*html*/ `<option value="${item}">${displayItem(item)}</option>`);
+        const render = item => /*html*/  `<option value="${item}">${displayItem(item)}</option>`;
+        const select = arr.map(render);
         select.unshift(/*html*/`<option selected value="">${defaultVal}</option>`);
         return select;
     }
@@ -15,24 +17,10 @@ export class RecipeUI {
     constructor(RECORDS_PER_PAGE) {
         this.#RECORDS_PER_PAGE = RECORDS_PER_PAGE;
     }
-
-    // intolerances = _ => sortedArray(intolerances).map(intolerance =>
-    //            /*html*/`<span class="p-2">
-    //              <input type="checkbox" class="btn-check" id="${intolerance}" autocomplete="off" name="intolerances" value="${intolerance}">
-    //              <label class="btn btn-outline-danger mt-2" for="${intolerance}">${intolerance}</label> 
-    //           </span>`
-
-    // ).join().replaceAll(',', '');
-// const sortedIntoleranceIcons = intoleranceIcons.sort(sortIcons);
-
-        intolerances = _ => intoleranceIcons.sort(sortIcons).map(({title, icon}) =>
+        intolerances = _ => intolerances.sort(sortIcons).map(({title: intolerance, icon}) =>
                /*html*/`<span class="p-2">
-                 <input type="checkbox" class="btn-check" id="${title}" autocomplete="off" name="intolerances" value="${title}">
-                 <label class="btn btn-outline-danger mt-2" 
-                 for="${title}">
-                 <i class="${icon} me-1"></i>
-                 ${title}
-                 </label> 
+                 <input type="checkbox" class="btn-check" id="${intolerance}" autocomplete="off" name="intolerances" value="${intolerance}">
+                 <label class="btn btn-outline-danger mt-2" for="${intolerance}"><i class="${icon} me-1"></i> ${intolerance}</label> 
               </span>`
 
     ).join().replaceAll(',', '');
@@ -49,7 +37,7 @@ export class RecipeUI {
     record({ numItems, nearestNumber }) {
         const records = this.#RECORDS_PER_PAGE;
         const nextNum = genNextNumber({initialValue: records, n: nearestNumber});
-        const nums = Array(numItems).fill(0).map(_ => nextNum());
-        return SelectOptions.selectMenu({arr:nums, defaultVal: records }).join().replaceAll(',', '');
+        const values = Array(numItems).fill(0).map(_ => nextNum());
+        return SelectOptions.selectMenu({arr: values, defaultVal: records }).join().replaceAll(',', '');
     }
 }

@@ -1,4 +1,3 @@
-
 export const mealTypes = [
     'main course',
     'side dish',
@@ -13,8 +12,9 @@ export const mealTypes = [
     'marinade',
     'fingerfood',
     'snack',
-    'drink'
+    'drink',
 ];
+
 export const cuisines = [
     'African',
     'Asian',
@@ -27,23 +27,10 @@ export const cuisines = [
     'Thai',
     'Indian',
     'French',
-    'Italian'
+    'Italian',
 ];
+
 export const intolerances = [
-    'Dairy',
-    'Egg',
-    'Gluten',
-    'Grain',
-    'Peanut',
-    'Seafood',
-    'Sesame',
-    'Shellfish',
-    'Soy',
-    'Sulfite',
-    'Tree Nut',
-    'Wheat',
-];
-export const intoleranceIcons = [
     {icon: 'fa-solid fa-cow', title: 'Dairy'},
     {icon: 'fa-solid fa-egg', title: 'Egg'},
     {icon: 'fa-solid fa-wheat', title: 'Gluten'},
@@ -56,6 +43,5 @@ export const intoleranceIcons = [
     {icon: '', title: 'Sulfite'},
     {icon: '', title: 'Tree Nut'},
     {icon: 'fa-solid fa-wheat-awn-circle-exclamation', title: 'Wheat'},
-
 ];
 

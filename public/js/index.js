@@ -10,7 +10,6 @@ const searchData = [
     { endpoint: 'record', div: '#number' },
 ];
 
-
 searchForm.addEventListener('submit', e => {
     e.preventDefault();
     searchRecipes({ params: constructSearchURLParams() })
@@ -27,35 +26,34 @@ function searchRecipes({ params }) {
     });
 
 }
+const hasRecipes = _ => document.querySelectorAll('article');
 
 function removeRecipes() {
     const prevRecipes = document.querySelectorAll('article');
-    prevRecipes.forEach(recipe => recipe.parentElement.remove())
+    prevRecipes.forEach(recipe => recipe.parentElement.remove());
 }
-function hasRecipes() {
-    return document.querySelectorAll('article');
-}
+
 function showSearchResults(data) {
     const { results } = data;
-    console.log('search data', data);
     if (!results) return;
     if (results.length === 0) {
         errorDiv.innerHTML = errorMessageTag("Whoops, we couldn't find any recipes...", 'Please try again');
         hasRecipes() && removeRecipes();
         return;
     }
+    showFilteredRecipes(results);
+}
 
+function showFilteredRecipes(results){
     errorDiv.innerHTML = '';
     hasRecipes() && removeRecipes();
     renderRecipeList(results);
-
-
 }
+
 async function renderSearchForm() {
     try {
         const endpoints = Object.values(searchData).map(({endpoint}) => endpoint);
-        const fetches = endpoints.map(endpoint => fetch(endpoint));
-        const response = await Promise.all(fetches);
+        const response = await Promise.all(endpoints.map(endpoint => fetch(endpoint)));
         const htmlData = await Promise.all(response.map(r => r.text()));
         const arrLength = htmlData.length;
         for (let i = 0; i < arrLength; i++) {
@@ -70,14 +68,11 @@ async function renderSearchForm() {
 }
 
 renderSearchForm();
-
 const renderRecipeList = recipes => recipes.forEach(recipeCard);
-
 fetchRandomRecipes().then(handleRandomRecipes);
 
 function handleRandomRecipes(data) {
     const { recipes } = data;
-    console.log(data)
     if (recipes) {
         renderRecipeList(recipes);
         return;

@@ -22,6 +22,8 @@ function showDishTypeTags(dishes) {
 
 isValidNumber(id) && fetchRequest(endpoints.DETAIL, id).then(handleRecipeDetails);
 
+const getSimilarRecipes = _ => fetchRequest(endpoints.SIMILAR, id).then(recipes => recipes.forEach(similarRecipeCard));
+
 function handleRecipeDetails(data) {
     const { status, message } = data
     if (paymentIsRequired(status)) {
@@ -35,9 +37,7 @@ function handleRecipeDetails(data) {
     getSimilarRecipes();
 }
 
-function getSimilarRecipes(){
-    fetchRequest(endpoints.SIMILAR, id).then(recipes => recipes.forEach(similarRecipeCard))
-}
+
 
 async function getNutritionLabel(url, id) {
     try {
@@ -55,7 +55,6 @@ function displayNutritionLabel(data) {
 }
 
 function displayRecipeDetails(data) {
-    console.log(data)
     const titleTag = document.querySelector('#title');
     const imageTag = document.querySelector('#image');
     const {
@@ -99,9 +98,8 @@ function hideSteps() {
     const instructionSection = {
         'header': 'instructions-header',
         'steps': 'steps',
-        'hr': 'hr'
+        'hr': 'hr',
     }
     const hideEl = el => document.querySelector(`#${el}`).style.display = 'none';
     Object.values(instructionSection).forEach(hideEl);
 }
-
