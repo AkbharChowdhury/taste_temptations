@@ -12,7 +12,7 @@ async function renderTemplate() {
         const [header, footer] = await Promise.all(data.map(r => r.text()));
         return { header, footer }
     } catch (err) {
-        console.log('There was an error rendering template', err)
+        console.log('There was an error rendering template', err);
     }
 
 }

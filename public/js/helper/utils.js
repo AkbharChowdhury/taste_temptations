@@ -41,6 +41,7 @@ export const titleCase = sentence => sentence
 
 export const sortedArray = (arr = []) => arr.sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()));
 export const getRandomItem = arr => arr[(Math.random() * arr.length) | 0];
+
 const mealHelper = {
     getMinNumMeals() {
         return 2;
@@ -71,7 +72,7 @@ export const DurationFormat = Object.freeze({
     LONG: 'long',
     SHORT: 'short',
     NARROW: 'narrow',
-})
+});
 
 
 export const calcDuration = (totalMinutes, style = DurationFormat.LONG) => new Intl.DurationFormat('en', { style }).format(timeFormat(totalMinutes));
