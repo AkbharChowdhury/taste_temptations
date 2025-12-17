@@ -23,5 +23,3 @@ app.post('/detail', (req, res) => recipe.details(getValue(req)).then(data => res
 app.post('/similar', (req, res) => recipe.similar(getValue(req)).then(data => res.send(data)));
 app.post('/nutrition-label', (req, res) => recipe.nutritionLabelWidget(getValue(req)).then(data => res.send(data)));
 
-
-

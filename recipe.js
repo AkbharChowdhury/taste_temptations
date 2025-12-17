@@ -16,11 +16,13 @@ const requestData = (url, contentType = 'application/json') => new Request(url, 
 
 export class Recipe {
     #recipeUI;
+    toString(){
+        console.log('yes')
+    }
 
     constructor() {
-        if (!!Recipe.instance) {
-            return Recipe.instance;
-        }
+        if (!!Recipe.instance) return Recipe.instance;
+        
         Recipe.instance = this;
         this.#recipeUI = new RecipeUI(RECORDS_PER_PAGE);
         return this;
