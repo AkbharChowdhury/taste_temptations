@@ -3,8 +3,8 @@ import { Recipe } from './recipe.js';
 
 const PORT = 3_000;
 const recipe = new Recipe();
-const ui = recipe.recipeUI;
 
+const ui = recipe.recipeUI;
 const getValue = req => Object.values(req.body).toString();
 const app = express();
 
@@ -22,3 +22,6 @@ app.post('/search', (req, res) => recipe.search(getValue(req)).then(data => res.
 app.post('/detail', (req, res) => recipe.details(getValue(req)).then(data => res.send(data)));
 app.post('/similar', (req, res) => recipe.similar(getValue(req)).then(data => res.send(data)));
 app.post('/nutrition-label', (req, res) => recipe.nutritionLabelWidget(getValue(req)).then(data => res.send(data)));
+
+
+

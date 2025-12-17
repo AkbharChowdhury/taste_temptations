@@ -16,9 +16,16 @@ const requestData = (url, contentType = 'application/json') => new Request(url, 
 
 export class Recipe {
     #recipeUI;
+
     constructor() {
+        if (!!Recipe.instance) {
+            return Recipe.instance;
+        }
+        Recipe.instance = this;
         this.#recipeUI = new RecipeUI(RECORDS_PER_PAGE);
+        return this;
     }
+
     get recipeUI() {
         return this.#recipeUI;
     }
