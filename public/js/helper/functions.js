@@ -1,38 +1,29 @@
 "use strict";
-import { serializeURLSearchParams } from './utils.js';
+import { serializeURLParams, getCheckboxValues } from './utils.js';
 const headers = Object.freeze({ 'Content-Type': 'application/json' });
 const PAYMENT_REQUIRED_CODE = 402;
-
 export const fetchRandomRecipes = async _ =>  (await fetch('random')).json();
 
-const getCheckboxValues = name => [...document.querySelectorAll(`input[name="${name}"]:checked`)].map(e => e.value);
 const getSelectedCuisines = () => getCheckboxValues('cuisines');
 const getSelectedIntolerances = () => getCheckboxValues('intolerances');
-
-
-const getSearchParams = () => {
+const getSearchParams = _ => {
     const query = document.querySelector('#text').value.trim();
     const cuisines = getSelectedCuisines();
     const intolerances = getSelectedIntolerances();
     const meal = document.querySelector('#meal').value;
     const number = document.querySelector('#number').value;
-
     return Object.freeze({ meal, query, cuisines, intolerances, number });
 }
 
 export const constructSearchURLParams = _ => {
-    const searchParams = new URLSearchParams();
-    const params = getSearchParams();
-    const { query, meal, cuisines, intolerances, number } = params;
-    if (number) searchParams.append('number', number);
-    if (query) searchParams.append('query', query);
-    if (meal) searchParams.append('meal', meal);
-    if (cuisines.length !== 0) searchParams.append('cuisine', cuisines);
-    if (intolerances.length !== 0) searchParams.append('intolerances', intolerances);
-    const url = serializeURLSearchParams(searchParams);
-    console.log(url)
-    return url;
-
+    const params = new URLSearchParams();
+    const { query, meal, cuisines, intolerances, number } = getSearchParams();
+    if (number) params.append('number', number);
+    if (query) params.append('query', query);
+    if (meal) params.append('meal', meal);
+    if (cuisines.length !== 0) params.append('cuisine', cuisines);
+    if (intolerances.length !== 0) params.append('intolerances', intolerances);
+    return serializeURLParams(params);
 }
 
 export async function fetchRequest(url, values) {
@@ -48,7 +39,6 @@ export async function fetchRequest(url, values) {
 
     } catch (error) {
         console.error(`There was an error with this request for the URL ${url}`, error);
-
     }
 
 }

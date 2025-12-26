@@ -23,14 +23,13 @@ export function changeMetaData(metaData) {
     }
 
 }
-export const serializeURLSearchParams = urlSearchParams => {
-    // This is the default delimiter used by URLSearchParams within arrays in the toString method
-    const coma = '%2C';
+export const serializeURLParams = urlSearchParams => {
+    // This is the default delimiter used by URLParams within arrays in the toString method
     // Used to separate spaces in strings
-    const sep = '+';
+    const chars = { coma: '%2C', sep: '+' };
     return urlSearchParams.toString()
-        .replaceAll(coma, ',')
-        .replaceAll(sep, ' ');
+        .replaceAll(chars.coma, ',')
+        .replaceAll(chars.sep, ' ');
 }
 
 export const titleCase = sentence => sentence
@@ -92,3 +91,4 @@ export const createLi = text => {
 }
 
 export const getClone = selector => document.querySelector(selector).content.cloneNode(true);
+export const getCheckboxValues = name => [...document.querySelectorAll(`input[name="${name}"]:checked`)].map(e => e.value);

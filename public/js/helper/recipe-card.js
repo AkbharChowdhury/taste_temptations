@@ -5,7 +5,7 @@ import { calcDuration, DurationFormat, getClone } from './utils.js';
 const recipeDetailURL = id => `detail.html?recipeID=${id}`;
 const getRecipeImage = id => `https://img.spoonacular.com/recipes/${id}-556x370.jpg`;
 
-export const recipeCard = (recipe) => {
+export const recipeCard = recipe => {
   const {
     image, title, id, servings,
     aggregateLikes: likes,
@@ -37,8 +37,6 @@ export const recipeCard = (recipe) => {
     glutenFreeDiv.classList.add('text-bg-success');
 
   }
-
-
 
   const popularDiv = clone.querySelector('#popular-div');
   !veryPopular && popularDiv.remove();
