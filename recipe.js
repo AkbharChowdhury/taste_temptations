@@ -9,6 +9,7 @@ dotenv.config();
 const API_KEY = process.env.API_KEY;
 const BASE_URL = 'https://api.spoonacular.com/recipes/';
 const RECORDS_PER_PAGE = 6;
+
 axios.defaults.headers['x-api-key'] = API_KEY;
 axios.defaults.baseURL = BASE_URL;
 
@@ -16,21 +17,14 @@ const requestData = (url, contentType = 'application/json') => new Request(url, 
 
 export class Recipe {
     #recipeUI;
-    toString(){
-        console.log('yes')
-    }
-
     constructor() {
         if (!!Recipe.instance) return Recipe.instance;
-        
         Recipe.instance = this;
         this.#recipeUI = new RecipeUI(RECORDS_PER_PAGE);
         return this;
     }
 
-    get recipeUI() {
-        return this.#recipeUI;
-    }
+    get recipeUI (){ return this.#recipeUI }
 
     async #request(url, params = new URLSearchParams()) {
         const response = await axios.get(url, { params });
@@ -39,8 +33,7 @@ export class Recipe {
 
     async search(urlSearchParams) {
         const params = new URLSearchParams(urlSearchParams);
-        const number = params.get('number') ?? RECORDS_PER_PAGE;
-        params.append('number', number);
+        params.append('number', params.get('number') ?? RECORDS_PER_PAGE);
         params.append('addRecipeInformation', true);
         params.append('sort', 'random');
         return this.#request('complexSearch', params)
