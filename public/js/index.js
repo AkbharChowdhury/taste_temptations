@@ -12,16 +12,17 @@ const searchData = [
 
 searchForm.addEventListener('submit', e => {
     e.preventDefault();
-    searchRecipes({ params: constructSearchURLParams() })
+    searchRecipes({ urlSearchParams: constructSearchURLParams() })
 });
 
-function searchRecipes({ params }) {
-    fetchRequest('search', params).then(data => {
-        if (paymentIsRequired(data.code)) {
-            errorDiv.innerHTML = errorMessageTag(data.message);
-            return;
+function searchRecipes({ urlSearchParams }) {
+    fetchRequest('search', urlSearchParams).then(({results: recipes, code, message}) => {
+        if(!paymentIsRequired(code)){
+             showSearchResults(recipes);
+             return;
         }
-        showSearchResults(data);
+        errorDiv.innerHTML = errorMessageTag(message);
+
 
     });
 
@@ -33,21 +34,20 @@ function removeRecipes() {
     prevRecipes.forEach(recipe => recipe.parentElement.remove());
 }
 
-function showSearchResults(data) {
-    const { results } = data;
-    if (!results) return;
-    if (results.length === 0) {
+function showSearchResults(recipes) {
+    if (!recipes) return;
+    if (recipes.length === 0) {
         errorDiv.innerHTML = errorMessageTag("Whoops, we couldn't find any recipes...", 'Please try again');
         hasRecipes() && removeRecipes();
         return;
     }
-    showFilteredRecipes(results);
+    showFilteredRecipes(recipes);
 }
 
-function showFilteredRecipes(results){
+function showFilteredRecipes(recipes){
     errorDiv.innerHTML = '';
     hasRecipes() && removeRecipes();
-    renderRecipeList(results);
+    renderRecipeList(recipes);
 }
 
 async function renderSearchForm() {
