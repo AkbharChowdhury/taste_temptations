@@ -100,6 +100,6 @@ function hideSteps() {
         'steps': 'steps',
         'hr': 'hr',
     }
-    const hideEl = el => document.querySelector(`#${el}`).style.display = 'none';
-    Object.values(instructionSection).forEach(hideEl);
+    const hideElement = el => document.querySelector(`#${el}`).style.display = 'none';
+    Object.values(instructionSection).forEach(hideElement);
 }
