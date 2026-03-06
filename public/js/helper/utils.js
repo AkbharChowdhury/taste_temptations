@@ -74,13 +74,12 @@ export const DurationFormat = Object.freeze({
 });
 
 
-export const calcDuration = (totalMinutes, style = DurationFormat.LONG) => new Intl.DurationFormat('en', { style }).format(timeFormat(totalMinutes));
+export const calcDuration = (totalMinutes, style = DurationFormat.LONG) => new Intl.DurationFormat('en', { style }).format(convertMinutesToTime(totalMinutes));
 
-function timeFormat(totalMinutes) {
+function convertMinutesToTime(totalMinutes) {
     const hours = Math.floor(totalMinutes / 60);
     const minutes = totalMinutes % 60;
     return { hours, minutes }
-
 }
 
 export const isValidNumber = num => !isNaN(num) || num !== 0;
