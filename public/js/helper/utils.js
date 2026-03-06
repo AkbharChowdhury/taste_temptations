@@ -65,23 +65,6 @@ export function getRandomMeals(numberOfMeals, arr) {
     }
     return randomMeals;
 }
-
-
-export const DurationFormat = Object.freeze({
-    LONG: 'long',
-    SHORT: 'short',
-    NARROW: 'narrow',
-});
-
-
-export const calcDuration = (totalMinutes, style = DurationFormat.LONG) => new Intl.DurationFormat('en', { style }).format(convertMinutesToTime(totalMinutes));
-
-function convertMinutesToTime(totalMinutes) {
-    const hours = Math.floor(totalMinutes / 60);
-    const minutes = totalMinutes % 60;
-    return { hours, minutes }
-}
-
 export const isValidNumber = num => !isNaN(num) || num !== 0;
 export const createLi = text => {
     const li = document.createElement('li');

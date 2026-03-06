@@ -1,6 +1,7 @@
 "use strict";
 
-import { calcDuration, DurationFormat, getClone } from './utils.js';
+import { getClone } from './utils.js';
+import { calcDuration, DurationFormat } from './duration.js';
 
 const recipeDetailURL = id => `detail.html?recipeID=${id}`;
 const getRecipeImage = id => `https://img.spoonacular.com/recipes/${id}-556x370.jpg`;

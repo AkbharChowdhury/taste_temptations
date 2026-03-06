@@ -1,8 +1,12 @@
 "use strict";
-import { titleCase, calcDuration, isValidNumber, changeMetaData, getClone } from './helper/utils.js';
+import { titleCase, isValidNumber, changeMetaData, getClone } from './helper/utils.js';
+import { calcDuration } from './helper/duration.js';
+
+
 import { similarRecipeCard } from './helper/recipe-card.js';
 import { fetchRequest, errorMessageTag, paymentIsRequired, fetchRecipeID } from './helper/functions.js';
 import { getSteps, showExtraInfo, getIngredientsList, renderListItem } from './helper/detail-snippets.js';
+
 const id = fetchRecipeID();
 const endpoints = Object.freeze({
     DETAIL: 'detail',
