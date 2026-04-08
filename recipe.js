@@ -36,9 +36,9 @@ export class Recipe {
     async search(urlSearchParams) {
         const baseParams = Object.fromEntries(urlSearchParams);
         const additionalParams = {
-            number: urlSearchParams.get('number') ?? RECORDS_PER_PAGE,
-            addRecipeInformation: true,
-            sort: 'random',
+            'number': urlSearchParams.get('number') ?? RECORDS_PER_PAGE,
+            'addRecipeInformation': true,
+            'sort': 'random',
         };
 
         const params = new URLSearchParams({
@@ -63,14 +63,14 @@ export class Recipe {
         const randomMeal = getRandomItem(mealTypes);
         const tags = [randomMeal, randomCuisine];
         const params = new URLSearchParams({
-            number: RECORDS_PER_PAGE,
+            'number': RECORDS_PER_PAGE,
             'include-tags': tags.join()
         });
         return this.#request('random', { params });
     }
 
     async nutritionLabelWidget(id) {
-        const headers = { Accept: 'text/html' }
+        const headers = { 'Accept': 'text/html' }
         return this.#request(`${id}/nutritionLabel`, { headers });
     }
 }
