@@ -8,8 +8,7 @@ async function renderTemplate() {
     try {
         const templateFolder = 'template';
         const files = ['header.html', 'footer.html'];
-        const requests = files.map(file => fetch(`${templateFolder}/${file}`))
-        const data = await Promise.all(requests);
+        const data = await Promise.all(files.map(file => fetch(`${templateFolder}/${file}`)));
         const [header, footer] = await Promise.all(data.map(r => r.text()));
         return { header, footer }
     } catch (err) {
