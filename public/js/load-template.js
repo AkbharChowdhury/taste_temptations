@@ -1,5 +1,3 @@
-const templateFolder = 'template/';
-
 function displayTemplate(html, divSelector) {
     const div = document.querySelector(divSelector);
     div.insertAdjacentHTML("beforebegin", html)
@@ -8,7 +6,10 @@ function displayTemplate(html, divSelector) {
 
 async function renderTemplate() {
     try {
-        const data = await Promise.all([fetch(`${templateFolder}header.html`), fetch(`${templateFolder}footer.html`)]);
+        const templateFolder = 'template';
+        const files = ['header.html', 'footer.html'];
+        const requests = files.map(file => fetch(`${templateFolder}/${file}`))
+        const data = await Promise.all(requests);
         const [header, footer] = await Promise.all(data.map(r => r.text()));
         return { header, footer }
     } catch (err) {
@@ -22,4 +23,5 @@ renderTemplate().then(({ header, footer }) => {
     displayTemplate(footer, '#footer');
     document.querySelector('#load-template').remove();
 });
+
 
