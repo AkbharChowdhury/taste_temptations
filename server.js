@@ -3,10 +3,10 @@ import { Recipe } from './recipe.js';
 
 const PORT = 3_000;
 const recipe = new Recipe();
-
 const ui = recipe.recipeUI;
-const getValue = req => Object.values(req.body).toString();
 const app = express();
+const getValue = req => Object.values(req.body).toString();
+
 app.listen(PORT, _ => console.log(`Server listening on port ${PORT.toLocaleString()}`));
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));

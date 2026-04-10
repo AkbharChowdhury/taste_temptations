@@ -1,8 +1,6 @@
 "use strict";
 import { titleCase, isValidNumber, changeMetaData, getClone } from './helper/utils.js';
 import { calcDuration } from './helper/duration.js';
-
-
 import { similarRecipeCard } from './helper/recipe-card.js';
 import { fetchRequest, errorMessageTag, paymentIsRequired, fetchRecipeID } from './helper/functions.js';
 import { getSteps, showExtraInfo, getIngredientsList, renderListItem } from './helper/detail-snippets.js';
@@ -21,7 +19,6 @@ function showDishTypeTags(dishes) {
         clone.querySelector('span').innerText = titleCase(dish);
         container.append(clone);
     }
-
 }
 
 isValidNumber(id) && fetchRequest(endpoints.DETAIL, id).then(handleRecipeDetails);
@@ -69,7 +66,7 @@ function displayRecipeDetails(data) {
         servings,
         readyInMinutes: minutes,
         dishTypes,
-        analyzedInstructions
+        analyzedInstructions,
     } = data;
     document.title = `Taste Temptations: ${title}`;
 
