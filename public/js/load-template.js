@@ -14,7 +14,6 @@ async function loadTemplates() {
 
     try {
         const templates = await Promise.all(
-
             templateConfigs.map(async ({ selector, file }) => {
                 const response = await fetch(`${templateFolder}/${file}`);
                 const html = await response.text();
