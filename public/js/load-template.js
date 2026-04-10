@@ -6,7 +6,6 @@
 
 async function loadTemplates() {
     const templateFolder = 'template';
-
     const templateConfigs = [
         { selector: '#header', file: 'header.html' },
         { selector: '#footer', file: 'footer.html' },
