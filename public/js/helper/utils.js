@@ -23,14 +23,7 @@ export function changeMetaData(metaData) {
     }
 
 }
-export const serializeURLParams = urlSearchParams => {
-    // This is the default delimiter used by URLParams within arrays in the toString method
-    // Used to separate spaces in strings
-    const chars = { coma: '%2C', sep: '+' };
-    return urlSearchParams.toString()
-        .replaceAll(chars.coma, ',')
-        .replaceAll(chars.sep, ' ');
-}
+
 
 export const titleCase = sentence => sentence
     .toLowerCase()

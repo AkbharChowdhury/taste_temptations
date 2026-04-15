@@ -1,7 +1,7 @@
 "use strict";
 import { titleCase, isValidNumber, changeMetaData, getClone } from './helper/utils.js';
 import { calcDuration } from './helper/duration.js';
-import { similarRecipeCard } from './helper/recipe-card.js';
+import { renderSimilarRecipe } from './helper/recipe-card.js';
 import { fetchRequest, errorMessageTag, paymentIsRequired, fetchRecipeID } from './helper/functions.js';
 import { getSteps, showExtraInfo, getIngredientsList, renderListItem } from './helper/detail-snippets.js';
 
@@ -10,6 +10,10 @@ const endpoints = Object.freeze({
     DETAIL: 'detail',
     SIMILAR: 'similar',
     NUTRITION_LABEL: 'nutrition-label',
+});
+const renderContext = Object.freeze({
+  container: document.querySelector('#similar-recipe-list'),
+  templateSelector: '#similar-recipes-template',
 });
 
 function showDishTypeTags(dishes) {
@@ -23,7 +27,11 @@ function showDishTypeTags(dishes) {
 
 isValidNumber(id) && fetchRequest(endpoints.DETAIL, id).then(handleRecipeDetails);
 
-const getSimilarRecipes = _ => fetchRequest(endpoints.SIMILAR, id).then(recipes => recipes.forEach(similarRecipeCard));
+const loadSimilarRecipes = (id) => fetchRequest(endpoints.SIMILAR, id).then(recipes => 
+    recipes.forEach(recipe => renderSimilarRecipe(recipe, renderContext))
+);
+
+
 
 function handleRecipeDetails(data) {
     const { status, message } = data
@@ -35,7 +43,7 @@ function handleRecipeDetails(data) {
 
     displayRecipeDetails(data);
     getNutritionLabel(endpoints.NUTRITION_LABEL, id).then(displayNutritionLabel)
-    getSimilarRecipes();
+    loadSimilarRecipes(id);
 }
 
 

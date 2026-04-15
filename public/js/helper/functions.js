@@ -1,12 +1,20 @@
 "use strict";
-import { serializeURLParams, getCheckboxValues } from './utils.js';
+import {  getCheckboxValues } from './utils.js';
 const headers = Object.freeze({ 'Content-Type': 'application/json' });
 const PAYMENT_REQUIRED_CODE = 402;
-export const fetchRandomRecipes = async _ =>  (await fetch('random')).json();
+
+export const apiRequest = async (url) => {
+  const response = await fetch(url);
+  if (!response.ok) {
+    throw new Error(`HTTP error: ${response.status}`);
+  }
+
+  return response.json();
+};
 
 const getSelectedCuisines = () => getCheckboxValues('cuisines');
 const getSelectedIntolerances = () => getCheckboxValues('intolerances');
-const getSearchParams = _ => {
+const getSearchParams = () => {
     const query = document.querySelector('#text').value.trim();
     const cuisines = getSelectedCuisines();
     const intolerances = getSelectedIntolerances();
@@ -15,24 +23,25 @@ const getSearchParams = _ => {
     return Object.freeze({ meal, query, cuisines, intolerances, number });
 }
 
-export const constructSearchURLParams = _ => {
-    const params = new URLSearchParams();
-    const { query, meal, cuisines, intolerances, number } = getSearchParams();
-    if (number) params.append('number', number);
-    if (query) params.append('query', query);
-    if (meal) params.append('meal', meal);
-    if (cuisines.length !== 0) params.append('cuisine', cuisines);
-    if (intolerances.length !== 0) params.append('intolerances', intolerances);
-    return serializeURLParams(params);
-}
+
+export const constructSearchURLParams = () => {
+  const { query, meal, cuisines, intolerances, number } = getSearchParams();
+  const params = new URLSearchParams();
+  number && params.append('number', number);
+  query && params.append('query', query);
+  meal && params.append('meal', meal);
+  cuisines?.length && params.append('cuisine', cuisines.join(','));
+  intolerances?.length && params.append('intolerances', intolerances.join(','));
+  return params;
+};
 
 export async function fetchRequest(url, values) {
     const body = JSON.stringify({ values });
-    const init = Object.freeze({
+    const init = {
         method: 'POST',
         headers,
         body,
-    });
+    };
     try {
         const response = await fetch(url, init);
         return await response.json();
