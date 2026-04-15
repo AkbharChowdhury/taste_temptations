@@ -3,11 +3,12 @@ import { clearRecipes } from './helper/recipe-template.js';
 import { recipeCard } from './helper/recipe-card.js';
 import { renderSearchForm } from './helper/search-form.js';
 
+import { apiRequest } from './helper/api.js';
+import { constructSearchURLParams } from './helper/search-utils.js';
 import {
-    apiRequest,
-    constructSearchURLParams,
-    errorMessageTag, paymentIsRequired,
-} from './helper/functions.js';
+    errorMessageTag,
+    paymentIsRequired
+} from './helper/ui-utils.js';
 
 const endpoints = {
     search: 'search',
@@ -71,12 +72,12 @@ function showFilteredRecipes(recipes) {
 }
 
 function handleRandomRecipes({ recipes, message }) {
-    if (recipes) {
-        renderRecipeList(recipes);
+    if (!recipes) {
+        errorContainer.innerHTML = errorMessageTag(`There was an error retrieving random recipes ${message}`);
+        document.querySelector('#button-search').disabled = true;
         return;
     }
-    errorContainer.innerHTML = errorMessageTag('There was an error retrieving random recipes', message);
-    document.querySelector('#button-search').disabled = true;
+    renderRecipeList(recipes);
 }
 
 

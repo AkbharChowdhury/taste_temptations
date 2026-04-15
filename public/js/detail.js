@@ -2,9 +2,22 @@
 import { titleCase, isValidNumber, changeMetaData, getClone } from './helper/utils.js';
 import { calcDuration } from './helper/duration.js';
 import { renderSimilarRecipe } from './helper/recipe-card.js';
-import { fetchRequest, errorMessageTag, paymentIsRequired, fetchRecipeID } from './helper/functions.js';
+import { fetchRequest } from './helper/api.js';
+
+import {
+    errorMessageTag,
+    paymentIsRequired,
+} from './helper/ui-utils.js';
+
+
 import { getSteps, showExtraInfo, getIngredientsList, renderListItem } from './helper/detail-snippets.js';
 
+function fetchRecipeID() {
+    const recipeIDParam = 'recipeID';
+    const searchParams = new URLSearchParams(window.location.search);
+    if (searchParams.has(recipeIDParam)) return parseInt(searchParams.get(recipeIDParam));
+    return 0;
+}
 const id = fetchRecipeID();
 const endpoints = {
   recipeDetails: 'detail',
@@ -27,7 +40,7 @@ function showDishTypeTags(dishes) {
 
 isValidNumber(id) && fetchRequest(endpoints.recipeDetails, id).then(handleRecipeDetails);
 
-const loadSimilarRecipes = (id) => fetchRequest(endpoints.similar, id).then(recipes => 
+const loadSimilarRecipes = (id) => fetchRequest(endpoints.similarRecipes, id).then(recipes => 
     recipes.forEach(recipe => renderSimilarRecipe(recipe, renderContext))
 );
 
