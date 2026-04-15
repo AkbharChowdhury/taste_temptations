@@ -11,7 +11,6 @@ import { apiRequest } from './helper/api.js';
 import { constructSearchURLParams } from './helper/search-utils.js';
 import { errorMessageTag, paymentIsRequired } from './helper/ui-utils.js';
 
-
 const endpoints = {
     search: 'search',
     random: 'random',
@@ -22,19 +21,23 @@ const api = {
   search: (params) => apiRequest(`${endpoints.search}?${params.toString()}`),
 };
 
-
 const renderContext = {
     container: document.querySelector('#recipe-list'),
     templateSelector: '#recipe-list-template',
     healthProgressSelector: 'circle-progress',
 };
 
-const renderRecipeList = recipes => recipes.forEach(recipe => recipeCard(recipe, renderContext));
 const searchForm = document.querySelector('form');
 const errorContainer = document.querySelector('#error-tag');
+const renderRecipeList = recipes => recipes.forEach(recipe => recipeCard(recipe, renderContext));
 
 renderSearchForm();
 api.random().then(handleRandomRecipes);
+
+function showError(message) {
+    clearRecipes();
+    errorContainer.innerHTML = errorMessageTag(message);
+}
 
 searchForm.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -42,31 +45,21 @@ searchForm.addEventListener('submit', async (e) => {
 
     try {
         const params = constructSearchURLParams();
-        const data = await api.search(params);
-        const { results: recipes, code, message } = data;
+        const { results: recipes, code, message } = await api.search(params);
         if (paymentIsRequired(code)) {
-            errorContainer.innerHTML = errorMessageTag(message);
+            showError(message);
             return;
         }
-
-        showSearchResults(recipes);
+        if (!recipes.length) {
+            showError("Whoops, we couldn't find any recipes...");
+            return;
+        }
+        showFilteredRecipes(recipes);
 
     } catch (error) {
-        console.error('There was an error fetching search results', error);
+        errorContainer.innerHTML = errorMessageTag(error.message);
     }
 });
-
-
-function showSearchResults(recipes) {
-    if (!recipes) return;
-    const hasResults = recipes.length > 0;
-    if (!hasResults) {
-        errorContainer.innerHTML = errorMessageTag("Whoops, we couldn't find any recipes...");
-        clearRecipes();
-        return;
-    }
-    showFilteredRecipes(recipes);
-}
 
 function showFilteredRecipes(recipes) {
     clearRecipes();
