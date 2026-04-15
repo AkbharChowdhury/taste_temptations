@@ -50,7 +50,8 @@ searchForm.addEventListener('submit', async (e) => {
             showError(message);
             return;
         }
-        if (!recipes.length) {
+        const hasRecipes = Array.isArray(recipes) && recipes.length > 0;
+        if (!hasRecipes) {
             showError("Whoops, we couldn't find any recipes...");
             return;
         }
