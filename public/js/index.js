@@ -1,14 +1,16 @@
 "use strict";
+// UI
 import { clearRecipes } from './helper/recipe-template.js';
 import { recipeCard } from './helper/recipe-card.js';
 import { renderSearchForm } from './helper/search-form.js';
 
+// API
 import { apiRequest } from './helper/api.js';
+
+// Utils
 import { constructSearchURLParams } from './helper/search-utils.js';
-import {
-    errorMessageTag,
-    paymentIsRequired
-} from './helper/ui-utils.js';
+import { errorMessageTag, paymentIsRequired } from './helper/ui-utils.js';
+
 
 const endpoints = {
     search: 'search',

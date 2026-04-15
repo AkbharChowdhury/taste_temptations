@@ -1,16 +1,32 @@
 "use strict";
-import { titleCase, isValidNumber, changeMetaData, getClone } from './helper/utils.js';
+// Utils
+import {
+    titleCase,
+    isValidNumber,
+    changeMetaData,
+    getClone
+} from './helper/utils.js';
+
 import { calcDuration } from './helper/duration.js';
-import { renderSimilarRecipe } from './helper/recipe-card.js';
+
+// API
 import { fetchRequest } from './helper/api.js';
 
+// UI
 import {
     errorMessageTag,
     paymentIsRequired,
 } from './helper/ui-utils.js';
 
+import { renderSimilarRecipe } from './helper/recipe-card.js';
 
-import { getSteps, showExtraInfo, getIngredientsList, renderListItem } from './helper/detail-snippets.js';
+// Detail-specific logic
+import {
+    getSteps,
+    showExtraInfo,
+    getIngredientsList,
+    renderListItem
+} from './helper/detail-snippets.js';
 
 function fetchRecipeID() {
     const recipeIDParam = 'recipeID';
