@@ -11,20 +11,23 @@ app.listen(PORT, _ => console.log(`Server listening on port ${PORT.toLocaleStrin
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
 app.get('/meals', (req, res) => res.send(ui.meals()));
 app.get('/cuisines', (req, res) => res.send(ui.cuisines()));
 app.get('/intolerances', (req, res) => res.send(ui.intolerances()));
 app.get('/record', (req, res) => res.send(ui.record({numItems: 4, nearestNumber: 5})));
 app.get('/random', (req, res) => recipe.random().then(data => res.send(data)));
+app.get('/search', (req, res) => searchRecipes(req, res));
+
 app.post('/detail', (req, res) => recipe.details(getValue(req)).then(data => res.send(data)));
 app.post('/similar', (req, res) => recipe.similar(getValue(req)).then(data => res.send(data)));
 app.post('/nutrition-label', (req, res) => recipe.nutritionLabelWidget(getValue(req)).then(data => res.send(data)));
 
-app.get('/search', (req, res) => {
+function searchRecipes(req, res){
   const params = new URLSearchParams(req.query);
   recipe.search(params).then(data => res.send(data))
     .catch(err => {
       console.error(err);
       res.status(500).send({ error: 'Search failed' });
     });
-});
+}
