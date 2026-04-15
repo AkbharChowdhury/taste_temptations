@@ -4,13 +4,15 @@ const headers = Object.freeze({ 'Content-Type': 'application/json' });
 const PAYMENT_REQUIRED_CODE = 402;
 
 export const apiRequest = async (url) => {
-  const response = await fetch(url);
-  if (!response.ok) {
-    throw new Error(`HTTP error: ${response.status}`);
+  try {
+    const response = await fetch(url);
+    return response.json();
+  } catch (error) {
+    console.error('There was an error with this request:', error);
+    throw error;
   }
-
-  return response.json();
 };
+
 
 const getSelectedCuisines = () => getCheckboxValues('cuisines');
 const getSelectedIntolerances = () => getCheckboxValues('intolerances');
