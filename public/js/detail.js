@@ -6,15 +6,15 @@ import { fetchRequest, errorMessageTag, paymentIsRequired, fetchRecipeID } from 
 import { getSteps, showExtraInfo, getIngredientsList, renderListItem } from './helper/detail-snippets.js';
 
 const id = fetchRecipeID();
-const endpoints = Object.freeze({
-    DETAIL: 'detail',
-    SIMILAR: 'similar',
-    NUTRITION_LABEL: 'nutrition-label',
-});
-const renderContext = Object.freeze({
+const endpoints = {
+  recipeDetails: 'detail',
+  similarRecipes: 'similar',
+  nutritionLabel: 'nutrition-label',
+};
+const renderContext = {
   container: document.querySelector('#similar-recipe-list'),
   templateSelector: '#similar-recipes-template',
-});
+};
 
 function showDishTypeTags(dishes) {
     const container = document.querySelector('#dish-list');
@@ -25,9 +25,9 @@ function showDishTypeTags(dishes) {
     }
 }
 
-isValidNumber(id) && fetchRequest(endpoints.DETAIL, id).then(handleRecipeDetails);
+isValidNumber(id) && fetchRequest(endpoints.recipeDetails, id).then(handleRecipeDetails);
 
-const loadSimilarRecipes = (id) => fetchRequest(endpoints.SIMILAR, id).then(recipes => 
+const loadSimilarRecipes = (id) => fetchRequest(endpoints.similar, id).then(recipes => 
     recipes.forEach(recipe => renderSimilarRecipe(recipe, renderContext))
 );
 
@@ -42,7 +42,7 @@ function handleRecipeDetails(data) {
     }
 
     displayRecipeDetails(data);
-    getNutritionLabel(endpoints.NUTRITION_LABEL, id).then(displayNutritionLabel)
+    getNutritionLabel(endpoints.nutritionLabel, id).then(displayNutritionLabel)
     loadSimilarRecipes(id);
 }
 

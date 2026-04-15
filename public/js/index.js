@@ -9,38 +9,40 @@ import {
     errorMessageTag, paymentIsRequired,
 } from './helper/functions.js';
 
-const endpoints = Object.freeze({
-    SEARCH: 'search',
-    RANDOM: 'random',
-});
+const endpoints = {
+    search: 'search',
+    random: 'random',
+};
 
 const api = {
-  random: () => apiRequest(endpoints.RANDOM),
-  search: (params) => apiRequest(`${endpoints.SEARCH}?${params}`),
+  random: () => apiRequest(endpoints.random),
+  search: (params) => apiRequest(`${endpoints.search}?${params.toString()}`),
 };
 
 
-const renderContext = Object.freeze({
+const renderContext = {
     container: document.querySelector('#recipe-list'),
     templateSelector: '#recipe-list-template',
     healthProgressSelector: 'circle-progress',
-});
+};
 
 const renderRecipeList = recipes => recipes.forEach(recipe => recipeCard(recipe, renderContext));
 const searchForm = document.querySelector('form');
-const errorDiv = document.querySelector('#error-tag');
+const errorContainer = document.querySelector('#error-tag');
 
 renderSearchForm();
 api.random().then(handleRandomRecipes);
 
 searchForm.addEventListener('submit', async (e) => {
     e.preventDefault();
+    errorContainer.innerHTML = '';
+
     try {
         const params = constructSearchURLParams();
-        const data = await api.search(params.toString());
+        const data = await api.search(params);
         const { results: recipes, code, message } = data;
         if (paymentIsRequired(code)) {
-            errorDiv.innerHTML = errorMessageTag(message);
+            errorContainer.innerHTML = errorMessageTag(message);
             return;
         }
 
@@ -56,7 +58,7 @@ function showSearchResults(recipes) {
     if (!recipes) return;
     const hasResults = recipes.length > 0;
     if (!hasResults) {
-        errorDiv.innerHTML = errorMessageTag("Whoops, we couldn't find any recipes...", 'Please try again');
+        errorContainer.innerHTML = errorMessageTag("Whoops, we couldn't find any recipes...");
         clearRecipes();
         return;
     }
@@ -64,17 +66,16 @@ function showSearchResults(recipes) {
 }
 
 function showFilteredRecipes(recipes) {
-    errorDiv.innerHTML = '';
     clearRecipes();
     renderRecipeList(recipes);
 }
 
-function handleRandomRecipes({ recipes }) {
+function handleRandomRecipes({ recipes, message }) {
     if (recipes) {
         renderRecipeList(recipes);
         return;
     }
-    errorDiv.innerHTML = errorMessageTag('There was an error retrieving random recipes', data.message);
+    errorContainer.innerHTML = errorMessageTag('There was an error retrieving random recipes', message);
     document.querySelector('#button-search').disabled = true;
 }
 
