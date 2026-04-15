@@ -1,6 +1,7 @@
 "use strict";
 import {  getCheckboxValues } from './utils.js';
-const headers = Object.freeze({ 'Content-Type': 'application/json' });
+
+const headers = { 'Content-Type': 'application/json' };
 const PAYMENT_REQUIRED_CODE = 402;
 
 export const apiRequest = async (url) => {
@@ -11,6 +12,23 @@ export const apiRequest = async (url) => {
     console.error('There was an error with this request:', error);
     throw error;
   }
+};
+
+export async function fetchRequest(url, values) {
+    const body = JSON.stringify({ values });
+    const init = {
+        method: 'POST',
+        headers,
+        body,
+    };
+    try {
+        const response = await fetch(url, init);
+        return await response.json();
+
+    } catch (error) {
+        console.error(`There was an error with this request for the URL ${url}`, error);
+    }
+
 };
 
 
@@ -36,23 +54,6 @@ export const constructSearchURLParams = () => {
   intolerances?.length && params.append('intolerances', intolerances.join(','));
   return params;
 };
-
-export async function fetchRequest(url, values) {
-    const body = JSON.stringify({ values });
-    const init = {
-        method: 'POST',
-        headers,
-        body,
-    };
-    try {
-        const response = await fetch(url, init);
-        return await response.json();
-
-    } catch (error) {
-        console.error(`There was an error with this request for the URL ${url}`, error);
-    }
-
-}
 
 export const paymentIsRequired = code => code === PAYMENT_REQUIRED_CODE;
 export const errorMessageTag = message =>  /*html*/ `<div class="alert alert-danger" role="alert">
