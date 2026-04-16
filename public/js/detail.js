@@ -7,7 +7,7 @@ import {
     getClone
 } from './helper/utils.js';
 
-import { calcDuration } from './helper/duration.js';
+import { formatDuration } from './helper/duration.js';
 
 // API
 import { fetchRequest } from './helper/api.js';
@@ -116,7 +116,7 @@ function displayRecipeDetails(data) {
     titleTag.textContent = title;
     Object.assign(imageTag, { src: image, alt: title });
 
-    document.querySelector('#additional-details').innerText = `Serves ${servings}, ready in ${calcDuration(minutes)} ${cuisinesText}`;
+    document.querySelector('#additional-details').innerText = `Serves ${servings}, ready in ${formatDuration(minutes)} ${cuisinesText}`;
     document.querySelector('#summary').innerHTML = summary;
     showDishTypeTags(dishTypes);
 

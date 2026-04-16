@@ -28,8 +28,8 @@ async function loadTemplates() {
     }
 }
 
-function renderTemplates(templatesData) {
-    templatesData.forEach(({ selector, html }) => {
+function renderTemplates(templates) {
+    templates.forEach(({ selector, html }) => {
         const el = document.querySelector(selector);
         if (!el) return;
         el.insertAdjacentHTML("beforebegin", html);

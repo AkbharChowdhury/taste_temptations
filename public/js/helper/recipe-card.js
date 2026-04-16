@@ -1,7 +1,7 @@
 "use strict";
 
 import { getClone } from './utils.js';
-import { calcDuration, DurationFormat } from './duration.js';
+import { formatDuration, DurationFormatStyle } from './duration.js';
 const renderIcon = name => `<i class="fa-solid fa-${name}"></i>`;
 const renderCheapBadge = isCheap => `<i class="fa-solid fa-${isCheap ? 'tag' : 'tags'}"></i>`;
 
@@ -45,7 +45,7 @@ export const recipeCard = (recipe, renderContext) => {
   clone.querySelector('.card-title').textContent = title;
   clone.querySelector(getDataTag('servings')).innerText = servings;
   clone.querySelector(getDataTag('likes')).innerText = likes.toLocaleString();
-  clone.querySelector(getDataTag('duration')).textContent = calcDuration(minutes, DurationFormat.NARROW);
+  clone.querySelector(getDataTag('duration')).textContent = formatDuration(minutes, DurationFormatStyle.NARROW);
   clone.querySelector('.card-link').setAttribute('href', recipeDetailURL(id));
   clone.querySelector(getDataTag('weightWatcherSmartPoints')).innerText = healthPoints;
 
@@ -74,7 +74,7 @@ export const renderSimilarRecipe = (recipe, renderContext) => {
   Object.assign(img, { src: getRecipeImage(id), alt: title });
   clone.querySelector(getDataTag('title')).textContent = title;
   clone.querySelector('a').setAttribute('href', recipeDetailURL(id));
-  clone.querySelector(getDataTag('duration')).textContent = calcDuration(minutes, DurationFormat.SHORT);
+  clone.querySelector(getDataTag('duration')).textContent = formatDuration(minutes, DurationFormatStyle.SHORT);
   clone.querySelector('h3').textContent = `serves ${servings}`;
   container.append(clone);
 }
