@@ -31,17 +31,18 @@ export const cuisines = [
 ];
 
 export const intolerances = [
-    {icon: 'fa-solid fa-cow', title: 'Dairy'},
-    {icon: 'fa-solid fa-egg', title: 'Egg'},
-    {icon: 'fa-solid fa-wheat', title: 'Gluten'},
-    {icon: '', title: 'Grain'},
-    {icon: '', title: 'Peanut'},
-    {icon: 'fa-solid fa-fish', title: 'Seafood'},
-    {icon: '', title: 'Sesame'},
-    {icon: 'fa-solid fa-shrimp', title: 'Shellfish'},
-    {icon: '', title: 'Soy'},
-    {icon: '', title: 'Sulfite'},
-    {icon: '', title: 'Tree Nut'},
-    {icon: 'fa-solid fa-wheat-awn-circle-exclamation', title: 'Wheat'},
+    { title: 'Dairy', icon: 'fa-solid fa-cow' },
+    { title: 'Egg', icon: 'fa-solid fa-egg' },
+    { title: 'Gluten', icon: 'fa-solid fa-wheat' },
+    { title: 'Grain' },
+    { title: 'Peanut' },
+    { title: 'Seafood', icon: 'fa-solid fa-fish' },
+    { title: 'Sesame' },
+    { title: 'Shellfish', icon: 'fa-solid fa-shrimp' },
+    { title: 'Soy' },
+    { title: 'Sulfite' },
+    { title: 'Tree Nut' },
+    { title: 'Wheat', icon: 'fa-solid fa-wheat-awn-circle-exclamation' },
 ];
+
 

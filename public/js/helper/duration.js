@@ -5,8 +5,7 @@ export const DurationFormatStyle = Object.freeze({
 });
 
 
-export const formatDuration = (totalMinutes, style = DurationFormatStyle.LONG) 
-=> new Intl.DurationFormat('en', { style })
+export const formatDuration = (totalMinutes, style = DurationFormatStyle.LONG) => new Intl.DurationFormat('en', { style })
 .format(convertMinutesToDuration(totalMinutes));
 /**
  * Converts total minutes to a formatted duration string.

@@ -16,7 +16,7 @@ class SelectOptions {
 export class RecipeUI {
     #RECORDS_PER_PAGE;
     constructor({ recordsPerPage }) {
-        this.#recordsPerPage = recordsPerPage;
+        this.#RECORDS_PER_PAGE = recordsPerPage;
     }
 
     intolerances = _ => intolerances.sort(sortIcons).map(({ title: intolerance, icon }) =>
