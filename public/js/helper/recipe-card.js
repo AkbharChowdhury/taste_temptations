@@ -36,8 +36,6 @@ export const recipeCard = (recipe, renderContext) => {
     cheap: clone.querySelector(getDataTag('is-cheap')),
   };
   
-
-
   const img = clone.querySelector('img');
 
   Object.assign(img, { src: image, alt: title });
