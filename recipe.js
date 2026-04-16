@@ -18,7 +18,7 @@ export class Recipe {
     constructor() {
         if (Recipe.instance) return Recipe.instance;
         Recipe.instance = this;
-        this.#recipeUI = new RecipeUI(RECORDS_PER_PAGE);
+        this.#recipeUI = new RecipeUI({ recordsPerPage: RECORDS_PER_PAGE });
     }
 
     get recipeUI() {

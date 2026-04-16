@@ -15,9 +15,10 @@ class SelectOptions {
 
 export class RecipeUI {
     #RECORDS_PER_PAGE;
-    constructor(RECORDS_PER_PAGE) {
-        this.#RECORDS_PER_PAGE = RECORDS_PER_PAGE;
+    constructor({ recordsPerPage }) {
+        this.#recordsPerPage = recordsPerPage;
     }
+
     intolerances = _ => intolerances.sort(sortIcons).map(({ title: intolerance, icon }) =>
                /*html*/`<span class="p-2">
                  <input type="checkbox" class="btn-check" id="${intolerance}" autocomplete="off" name="intolerances" value="${intolerance}">
