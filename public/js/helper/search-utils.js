@@ -1,16 +1,16 @@
-import {  getCheckboxValues } from './utils.js';
-
-const getSelectedCuisines = () => getCheckboxValues('cuisines');
-const getSelectedIntolerances = () => getCheckboxValues('intolerances');
+import { getCheckboxValues } from './dom-utils.js';
 
 const getSearchParams = () => {
-    const query = document.querySelector('#text').value.trim();
-    const cuisines = getSelectedCuisines();
-    const intolerances = getSelectedIntolerances();
-    const meal = document.querySelector('#meal').value;
-    const number = document.querySelector('#number').value;
-    return Object.freeze({ meal, query, cuisines, intolerances, number });
+  const query = document.querySelector('#text').value.trim();
+  const meal = document.querySelector('#meal').value;
+  const number = document.querySelector('#number').value;
+
+  const cuisines = getCheckboxValues('cuisines');
+  const intolerances = getCheckboxValues('intolerances');
+
+  return { query, meal, number, cuisines, intolerances };
 };
+
 
 export const constructSearchURLParams = () => {
   const { query, meal, cuisines, intolerances, number } = getSearchParams();

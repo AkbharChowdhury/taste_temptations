@@ -66,4 +66,3 @@ export const createLi = text => {
 }
 
 export const getClone = selector => document.querySelector(selector).content.cloneNode(true);
-export const getCheckboxValues = name => [...document.querySelectorAll(`input[name="${name}"]:checked`)].map(e => e.value);
