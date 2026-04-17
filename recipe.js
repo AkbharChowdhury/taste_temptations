@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { getRandomItem } from './public/js/helper/utils.js';
 import dotenv from 'dotenv';
-import { mealTypes, cuisines } from './recipe-filters.js';
+import { mealTypes, cuisines } from './ui/recipe-tags.js';
 import { RecipeUI } from './recipe-ui.js';
 
 dotenv.config();
