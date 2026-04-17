@@ -1,4 +1,4 @@
-import express from 'express'
+import express, { json } from 'express'
 import { Recipe } from './recipe.js';
 
 const PORT = 3_000;
@@ -31,3 +31,5 @@ function searchRecipes(req, res){
       res.status(500).send({ error: 'Search failed' });
     });
 }
+// console.log(ui.cuisines())
+console.log(ui.record({numItems: 4, nearestNumber: 5}))
