@@ -32,7 +32,4 @@ function searchRecipes(req, res){
       res.status(500).send({ error: 'Search failed' });
     });
 }
-console.log({ui})
 console.log(ui.cuisines())
-console.log(ui.intolerances())
-console.log(ui.record({numItems: 4, nearestNumber: 5}))
