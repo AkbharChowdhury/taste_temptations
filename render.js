@@ -7,12 +7,10 @@ const sortIcons = (a, b) => a.label.toLowerCase().localeCompare(b.label.toLowerC
 
 export const renderMeals = () =>
     SelectOptions.selectMenu({
-        arr: sortedArray(mealTypes),
-        defaultVal: 'No preference'
+        options: sortedArray(mealTypes),
+        defaultValue: 'No preference'
     });
     
-
-
 export const renderCuisines = () => sortedArray(cuisines).map(cuisine =>/*html*/ `<div class="form-check">
             <input class="form-check-input" type="checkbox" value="${cuisine}" id="${cuisine}" name="cuisines">
             <label class="form-check-label" for="${cuisine}">

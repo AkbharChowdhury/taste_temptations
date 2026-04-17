@@ -23,7 +23,7 @@ export class RecipeUI {
     record({ numItems, nearestNumber }) {
         const nextNum = genNextNumber({ initialValue: this.#DEFAULT_RECORDS_PER_PAGE, n: nearestNumber });
         const values = Array.from({ length: numItems }, () => nextNum());
-        return SelectOptions.selectMenu({ arr: values, defaultVal: this.#DEFAULT_RECORDS_PER_PAGE });
+        return SelectOptions.selectMenu({ options: values, defaultValue: this.#DEFAULT_RECORDS_PER_PAGE });
     }
 }
 
