@@ -35,3 +35,4 @@ function searchRecipes(req, res){
       res.status(500).send({ error: 'Search failed' });
     });
 }
+recipe.random().then(console.log)

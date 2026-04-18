@@ -68,7 +68,7 @@ export class Recipe {
     }
 
     async similar(id) {
-        const params = new URLSearchParams({number: 8 });
+        const params = new URLSearchParams({ number: 8 });
         return this.#request(`${id}/similar`, { params });
     }
 
