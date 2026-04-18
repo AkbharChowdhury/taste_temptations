@@ -13,9 +13,10 @@ const DEFAULT_RECORDS_PER_PAGE = 6;
 
 const api = axios.create({
     baseURL: 'https://api.spoonacular.com/recipes/',
-    headers: {
-        'x-api-key': API_KEY,
-    },
+    params: {
+        apiKey: API_KEY
+    }
+
 });
 
 export class Recipe {
@@ -53,15 +54,11 @@ export class Recipe {
     }
 
     async search(urlSearchParams) {
-        const baseParams = Object.fromEntries(urlSearchParams);
-
-        const params = new URLSearchParams({
-            ...baseParams,
-            number: urlSearchParams.get('number') ?? DEFAULT_RECORDS_PER_PAGE,
-            addRecipeInformation: true,
-            sort: 'random',
-        });
-
+    
+        const params = new URLSearchParams(urlSearchParams);
+        params.set('number', urlSearchParams.get('number') ?? DEFAULT_RECORDS_PER_PAGE);
+        params.set('addRecipeInformation', 'true');
+        params.set('sort', 'random');
         return this.#request('complexSearch', { params });
     }
 
