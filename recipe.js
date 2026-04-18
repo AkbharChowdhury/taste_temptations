@@ -1,76 +1,87 @@
 import axios from 'axios';
-import { getRandomItem } from './public/js/helper/utils.js';
 import dotenv from 'dotenv';
+
+import { getRandomItem } from './public/js/helper/utils.js';
 import { mealTypes, cuisines } from './ui/recipe-tags.js';
 import { RecipeUI } from './ui/recipe-ui.js';
 
 dotenv.config();
 
 const API_KEY = process.env.API_KEY;
-const BASE_URL = 'https://api.spoonacular.com/recipes/';
+
 const DEFAULT_RECORDS_PER_PAGE = 6;
 
-axios.defaults.headers.common['x-api-key'] = API_KEY;
-axios.defaults.baseURL = BASE_URL;
+const api = axios.create({
+    baseURL: 'https://api.spoonacular.com/recipes/',
+    headers: {
+        'x-api-key': API_KEY,
+    },
+});
 
 export class Recipe {
     #recipeUI;
+
     constructor() {
         if (Recipe.instance) return Recipe.instance;
         Recipe.instance = this;
-        this.#recipeUI = new RecipeUI({ defaultRecordsPerPage: DEFAULT_RECORDS_PER_PAGE });
+
+        this.#recipeUI = new RecipeUI({
+            defaultRecordsPerPage: DEFAULT_RECORDS_PER_PAGE,
+        });
     }
 
     get recipeUI() {
         return this.#recipeUI;
     }
 
-    async #request(url, { params = new URLSearchParams(), headers = {} } = {}) {
-        const response = await axios.get(url, {
-            params,
-            headers,
-        });
+    async #request(url, options = {}) {
+        const response = await api.get(url, options);
         return response.data;
+    }
+
+
+    async random() {
+        const randomCuisine = getRandomItem(cuisines);
+        const randomMeal = getRandomItem(mealTypes);
+
+        const params = new URLSearchParams({
+            number: DEFAULT_RECORDS_PER_PAGE,
+            'include-tags': `${randomMeal},${randomCuisine}`,
+        });
+
+        return this.#request('random', { params });
     }
 
     async search(urlSearchParams) {
         const baseParams = Object.fromEntries(urlSearchParams);
-        const additionalParams = {
-            'number': urlSearchParams.get('number') ?? DEFAULT_RECORDS_PER_PAGE,
-            'addRecipeInformation': true,
-            'sort': 'random',
-        };
 
         const params = new URLSearchParams({
             ...baseParams,
-            ...additionalParams,
+            number: urlSearchParams.get('number') ?? DEFAULT_RECORDS_PER_PAGE,
+            addRecipeInformation: true,
+            sort: 'random',
         });
 
         return this.#request('complexSearch', { params });
-    }
-
-    async similar(id) {
-        const params = new URLSearchParams({ number: 8 });
-        return this.#request(`${id}/similar`, { params });
     }
 
     async details(id) {
         return this.#request(`${id}/information`);
     }
 
-    async random() {
-        const randomCuisine = getRandomItem(cuisines);
-        const randomMeal = getRandomItem(mealTypes);
-        const tags = [randomMeal, randomCuisine];
+    async similar(id) {
         const params = new URLSearchParams({
-            'number': DEFAULT_RECORDS_PER_PAGE,
-            'include-tags': tags.join()
+            number: 8,
         });
-        return this.#request('random', { params });
+
+        return this.#request(`${id}/similar`, { params });
     }
 
     async nutritionLabelWidget(id) {
-        const headers = { 'Accept': 'text/html' }
-        return this.#request(`${id}/nutritionLabel`, { headers });
+        return this.#request(`${id}/nutritionLabel`, {
+            headers: {
+                Accept: 'text/html',
+            },
+        });
     }
 }

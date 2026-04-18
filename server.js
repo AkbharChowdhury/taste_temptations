@@ -21,7 +21,10 @@ app.get('/random', (req, res) => recipe.random().then(data => res.send(data)));
 app.get('/search', (req, res) => searchRecipes(req, res));
 
 app.post('/detail', (req, res) => recipe.details(getValue(req)).then(data => res.send(data)));
-app.post('/similar', (req, res) => recipe.similar(getValue(req)).then(data => res.send(data)));
+app.post('/similar', (req, res) => recipe.similar(getValue(req)).then(data => {
+  console.log(Object.values(req.body));
+  res.send(data)
+}));
 app.post('/nutrition-label', (req, res) => recipe.nutritionLabelWidget(getValue(req)).then(data => res.send(data)));
 
 function searchRecipes(req, res){
@@ -32,4 +35,3 @@ function searchRecipes(req, res){
       res.status(500).send({ error: 'Search failed' });
     });
 }
-console.log(ui.cuisines())
