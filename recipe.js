@@ -44,17 +44,18 @@ export class Recipe {
     async random() {
         const randomCuisine = getRandomItem(cuisines);
         const randomMeal = getRandomItem(mealTypes);
+        const includedTags = [randomCuisine, randomMeal];
 
         const params = new URLSearchParams({
-            number: DEFAULT_RECORDS_PER_PAGE,
-            'include-tags': `${randomMeal},${randomCuisine}`,
+            'number': DEFAULT_RECORDS_PER_PAGE,
+            'include-tags': includedTags.join(','),
         });
 
         return this.#request('random', { params });
     }
 
     async search(urlSearchParams) {
-    
+
         const params = new URLSearchParams(urlSearchParams);
         params.set('number', urlSearchParams.get('number') ?? DEFAULT_RECORDS_PER_PAGE);
         params.set('addRecipeInformation', 'true');
@@ -67,10 +68,7 @@ export class Recipe {
     }
 
     async similar(id) {
-        const params = new URLSearchParams({
-            number: 8,
-        });
-
+        const params = new URLSearchParams({number: 8 });
         return this.#request(`${id}/similar`, { params });
     }
 
