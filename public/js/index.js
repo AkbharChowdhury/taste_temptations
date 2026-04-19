@@ -32,15 +32,13 @@ const errorContainer = document.querySelector('#error-tag');
 const renderRecipeList = recipes => recipes.forEach(recipe => recipeCard(recipe, renderContext));
 
 function handleRandomRecipesError(err) {
-    console.log(err)
     document.querySelector('#button-search').disabled = true;
     showError(err.message || 'Failed to fetch random recipes');
     throw err;
-    
 }
 
 api.random()
-  .then(({recipes})=> renderRecipeList(recipes))
+  .then(({recipes}) => renderRecipeList(recipes))
   .catch(handleRandomRecipesError);
 
 renderSearchForm();
