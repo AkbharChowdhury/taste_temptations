@@ -3,10 +3,9 @@ import { renderMeals, renderCuisines, renderIntolerances } from './render.js';
 import { SelectOptions } from './select-options.js';
 
 export class RecipeUI {
-    
     #DEFAULT_RECORDS_PER_PAGE;
-    constructor({ defaultRecordsPerPage }) {
-        this.#DEFAULT_RECORDS_PER_PAGE = defaultRecordsPerPage;
+    constructor(DEFAULT_RECORDS_PER_PAGE) {
+        this.#DEFAULT_RECORDS_PER_PAGE = DEFAULT_RECORDS_PER_PAGE;
     }
 
     meals() {

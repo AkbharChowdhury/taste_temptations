@@ -17,19 +17,14 @@ const api = axios.create({
         'x-api-key': API_KEY
     }
 
-
 });
 
 export class Recipe {
     #recipeUI;
-
     constructor() {
         if (Recipe.instance) return Recipe.instance;
         Recipe.instance = this;
-
-        this.#recipeUI = new RecipeUI({
-            defaultRecordsPerPage: DEFAULT_RECORDS_PER_PAGE,
-        });
+        this.#recipeUI = new RecipeUI(DEFAULT_RECORDS_PER_PAGE);
     }
 
     get recipeUI() {
@@ -41,11 +36,13 @@ export class Recipe {
             const response = await api.get(url, options);
             return response.data;
         } catch (error) {
-            console.log(`Error at URL: ${url}\nMessage: ${error.message}`);
-            throw {
-                status: error.response?.status,
-                message: error.message,
-            };
+             console.log(`Error at URL: ${url}`, error.message);
+
+  throw {
+    status: error.response?.status || 500,
+    message: error.response?.data?.message || error.message,
+  };
+           
         }
     }
 
@@ -53,13 +50,12 @@ export class Recipe {
         const randomCuisine = getRandomItem(cuisines);
         const randomMeal = getRandomItem(mealTypes);
         const includedTags = [randomCuisine, randomMeal];
-
         const params = new URLSearchParams({
             'number': DEFAULT_RECORDS_PER_PAGE,
             'include-tags': includedTags.join(','),
         });
 
-        return this.#request('random', { params });
+        return this.#request('randoms', { params });
     }
 
     async search(query) {

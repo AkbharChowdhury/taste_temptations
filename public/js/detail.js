@@ -54,7 +54,7 @@ function showDishTypeTags(dishes) {
     }
 }
 
-isValidNumber(id) && fetchRequest(endpoints.recipeDetails, id).then(handleRecipeDetails);
+isValidNumber(id) && fetchRequest(endpoints.recipeDetails, id).then(handleRecipeDetails).catch(console.error);
 
 const loadSimilarRecipes = (id) => fetchRequest(endpoints.similarRecipes, id).then(recipes => 
     recipes.forEach(recipe => renderSimilarRecipe(recipe, renderContext))

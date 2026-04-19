@@ -17,8 +17,8 @@ const endpoints = {
 };
 
 const api = {
-  random: () => apiRequest(endpoints.random),
-  search: (params) => apiRequest(`${endpoints.search}?${params.toString()}`),
+    random: () => apiRequest(endpoints.random),
+    search: (params) => apiRequest(`${endpoints.search}?${params.toString()}`),
 };
 
 const renderContext = {
@@ -31,8 +31,28 @@ const searchForm = document.querySelector('form');
 const errorContainer = document.querySelector('#error-tag');
 const renderRecipeList = recipes => recipes.forEach(recipe => recipeCard(recipe, renderContext));
 
+function handleRandomRecipesError(err) {
+    console.log(err)
+    document.querySelector('#button-search').disabled = true;
+    showError(err.message || 'Failed to fetch random recipes');
+    throw err;
+    
+}
+
+
+// api.random()
+// .then(data => {
+//   if (!data) throw new Error('Invalid response from server!!');
+// })
+// .then(renderRecipeList)
+// .catch(handleRandomRecipesError);
+
+api.random()
+  .then(data => renderRecipeList(data))
+  .catch(handleRandomRecipesError);
+
+
 renderSearchForm();
-api.random().then(handleRandomRecipes)
 
 function showError(message) {
     clearRecipes();
@@ -64,15 +84,6 @@ searchForm.addEventListener('submit', async (e) => {
 
 function showFilteredRecipes(recipes) {
     clearRecipes();
-    renderRecipeList(recipes);
-}
-
-function handleRandomRecipes({ recipes, message }) {
-    if (!recipes) {
-        errorContainer.innerHTML = errorMessageTag(`There was an error retrieving random recipes ${message}`);
-        document.querySelector('#button-search').disabled = true;
-        return;
-    }
     renderRecipeList(recipes);
 }
 

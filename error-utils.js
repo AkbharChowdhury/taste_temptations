@@ -13,9 +13,19 @@ export const errorMessages = {
     meal: 'We could not load meal options.'
   }
 };
-
-export function handleError(res, err, message = 'Whoops something went wrong from our end!') {
+export function handleError(res, err, message = 'Something went wrong') {
   console.error(err);
-  message+= err.message
-  res.status(500).send({ error: message });
+
+  const statusCode = err.status || 500;
+
+  return res.status(statusCode).json({
+    error: {
+      message,
+      details: err.message || 'Unknown error',
+    },
+  });
 }
+
+
+
+

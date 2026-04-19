@@ -1,18 +1,37 @@
 const headers = { 'Content-Type': 'application/json' };
 
+function createApiError(res, data, url, method = 'GET') {
+  return {
+    status: res.status,
+    message: data?.error?.message || res.statusText || 'Request failed',
+    details: data?.error?.details || null,
+    url,
+    method,
+  };
+}
+
+
 export const apiRequest = async (url) => {
-  const response = await fetch(url);
-  if (!response.ok) {
-    throw {
-      status: response.status,
-      message: response.statusText || 'Request failed',
-      url,
-      method: 'GET',
-    };
+  const res = await fetch(url);
+  const data = await res.json().catch(() => null);
+
+  if (!res.ok) {
+    throw createApiError(res, data, url)
+    // throw new Error(data?.error?.message || 'Request failed');
   }
 
-  return response.json();
+  
+
+
+
+  return data;
 };
+
+
+
+
+
+
 export async function fetchRequest(url, values) {
   const body = JSON.stringify({ values });
   const init = {
