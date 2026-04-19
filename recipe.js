@@ -13,9 +13,10 @@ const DEFAULT_RECORDS_PER_PAGE = 6;
 
 const api = axios.create({
     baseURL: 'https://api.spoonacular.com/recipes/',
-    params: {
-        apiKey: API_KEY
+    headers: {
+        'x-api-key': API_KEY
     }
+   
 
 });
 

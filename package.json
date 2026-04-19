@@ -4,6 +4,9 @@
   "description": "a website that displays a random selection of recipes, with search feature and recipe details",
   "main": "server.js",
   "type": "module",
+  "imports": {
+    "#utils/*": "./public/js/helper/*"
+  },
   "scripts": {
     "dev": "nodemon server.js"
   },

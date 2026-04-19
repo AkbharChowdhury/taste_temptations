@@ -1,8 +1,9 @@
-import { genNextNumber } from '../public/js/helper/utils.js';
+import { createNextNumberGenerator } from  './generate-next-number.js';
 import { renderMeals, renderCuisines, renderIntolerances } from './render.js';
 import { SelectOptions } from './select-options.js';
 
 export class RecipeUI {
+    
     #DEFAULT_RECORDS_PER_PAGE;
     constructor({ defaultRecordsPerPage }) {
         this.#DEFAULT_RECORDS_PER_PAGE = defaultRecordsPerPage;
@@ -21,7 +22,7 @@ export class RecipeUI {
     }
 
     record({ numItems, nearestNumber }) {
-        const nextNum = genNextNumber({ initialValue: this.#DEFAULT_RECORDS_PER_PAGE, n: nearestNumber });
+        const nextNum = createNextNumberGenerator({ initialValue: this.#DEFAULT_RECORDS_PER_PAGE, n: nearestNumber });
         const values = Array.from({ length: numItems }, () => nextNum());
         return SelectOptions.selectMenu({ options: values, defaultValue: this.#DEFAULT_RECORDS_PER_PAGE });
     }

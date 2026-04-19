@@ -35,4 +35,5 @@ function searchRecipes(req, res){
       res.status(500).send({ error: 'Search failed' });
     });
 }
-recipe.random().then(console.log)
+// import path from 'path';
+console.log(ui.record({numItems: 4, nearestNumber: 5}))
