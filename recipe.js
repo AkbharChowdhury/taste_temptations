@@ -16,7 +16,7 @@ const api = axios.create({
     headers: {
         'x-api-key': API_KEY
     }
-   
+
 
 });
 
@@ -55,14 +55,14 @@ export class Recipe {
         return this.#request('random', { params });
     }
 
-    async search(urlSearchParams) {
-
-        const params = new URLSearchParams(urlSearchParams);
-        params.set('number', urlSearchParams.get('number') ?? DEFAULT_RECORDS_PER_PAGE);
+    async search(query) {
+        const params = new URLSearchParams(query);
+        params.set('number', params.get('number') ?? DEFAULT_RECORDS_PER_PAGE);
         params.set('addRecipeInformation', 'true');
         params.set('sort', 'random');
         return this.#request('complexSearch', { params });
     }
+
 
     async details(id) {
         return this.#request(`${id}/information`);
