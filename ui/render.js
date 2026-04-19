@@ -1,7 +1,7 @@
 
 import { SelectOptions } from './select-options.js';
 import { mealTypes, cuisines, intolerances } from './recipe-tags.js';
-import { titleCase, sortedArray } from '../public/js/helper/utils.js';
+import { titleCase, sortedArray } from '#utils/utils.js';
 
 const sortIcons = (a, b) => a.label.toLowerCase().localeCompare(b.label.toLowerCase());
 
