@@ -59,7 +59,7 @@ export class Recipe {
             'include-tags': includedTags.join(','),
         });
 
-        return this.#request('randomss', { params });
+        return this.#request('random', { params });
     }
 
     async search(query) {
