@@ -36,13 +36,13 @@ export class Recipe {
             const response = await api.get(url, options);
             return response.data;
         } catch (error) {
-             console.log(`Error at URL: ${url}`, error.message);
+            console.log(`Error at URL: ${url}`, error.message);
 
-  throw {
-    status: error.response?.status || 500,
-    message: error.response?.data?.message || error.message,
-  };
-           
+            throw {
+                status: error.response?.status || 500,
+                message: error.response?.data?.message || error.message,
+            };
+
         }
     }
 
