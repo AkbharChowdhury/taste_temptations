@@ -6,7 +6,6 @@ export function changeMetaData(metaData) {
 
 }
 
-
 export const titleCase = sentence => sentence
     .toLowerCase()
     .split(' ')
@@ -15,31 +14,6 @@ export const titleCase = sentence => sentence
 
 export const sortedArray = (arr = []) => arr.sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()));
 export const getRandomItem = arr => arr[(Math.random() * arr.length) | 0];
-
-const mealHelper = {
-    getMinNumMeals() {
-        return 2;
-    },
-    failsToMeetMinNumMeals(mealSize) {
-        return mealSize < this.getMinNumMeals();
-    },
-}
-export function getRandomMeals(numberOfMeals, arr) {
-    const randomMeals = new Set();
-    for (let i = 0; i < numberOfMeals; i++) randomMeals.add(getRandomItem(arr))
-
-    if (randomMeals.size < numberOfMeals) {
-        while (randomMeals.size < numberOfMeals) {
-            randomMeals.add(getRandomItem(arr))
-        };
-    }
-    if (mealHelper.failsToMeetMinNumMeals(randomMeals.size)) {
-        while (randomMeals.size < mealHelper.getMinNumMeals()) {
-            randomMeals.add(getRandomItem(arr))
-        };
-    }
-    return randomMeals;
-}
 export const isValidNumber = num => !isNaN(num) || num !== 0;
 export const createLi = text => {
     const li = document.createElement('li');

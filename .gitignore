@@ -1,3 +1,4 @@
 commands.txt
 .env
 public/js/sample-recipe.js
+randomItemGen.js
