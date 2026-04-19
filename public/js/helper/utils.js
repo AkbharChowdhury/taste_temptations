@@ -1,21 +1,3 @@
-
-/**
- * rounds the initial number to the nearest nth number.
- * @function genNextNumber
- * @param initialValue the starting value to round from
- * @param n the nearest number to round from
- * @return {Number}
- */
-export function genNextNumber({initialValue=6, n=10}) {
-    let currentValue = initialValue;
-    return function () {
-        // round to the nearest nth number
-        const nextNumber = ((Math.floor(currentValue / n)) * n) + n;
-        currentValue += n;
-        return nextNumber;
-    }
-}
-
 export function changeMetaData(metaData) {
     const metas = document.getElementsByTagName("meta");
     for (const [key, value] of Object.entries(metaData)) {
