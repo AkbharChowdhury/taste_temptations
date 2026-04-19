@@ -39,18 +39,9 @@ function handleRandomRecipesError(err) {
     
 }
 
-
-// api.random()
-// .then(data => {
-//   if (!data) throw new Error('Invalid response from server!!');
-// })
-// .then(renderRecipeList)
-// .catch(handleRandomRecipesError);
-
 api.random()
-  .then(data => renderRecipeList(data))
+  .then(({recipes})=> renderRecipeList(recipes))
   .catch(handleRandomRecipesError);
-
 
 renderSearchForm();
 
