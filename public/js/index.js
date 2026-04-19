@@ -32,7 +32,7 @@ const errorContainer = document.querySelector('#error-tag');
 const renderRecipeList = recipes => recipes.forEach(recipe => recipeCard(recipe, renderContext));
 
 renderSearchForm();
-api.random().then(handleRandomRecipes);
+api.random().then(handleRandomRecipes)
 
 function showError(message) {
     clearRecipes();

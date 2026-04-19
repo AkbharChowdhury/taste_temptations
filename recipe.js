@@ -37,10 +37,17 @@ export class Recipe {
     }
 
     async #request(url, options = {}) {
-        const response = await api.get(url, options);
-        return response.data;
+        try {
+            const response = await api.get(url, options);
+            return response.data;
+        } catch (error) {
+            console.log(`Error at URL: ${url}\nMessage: ${error.message}`);
+            throw {
+                status: error.response?.status,
+                message: error.message,
+            };
+        }
     }
-
 
     async random() {
         const randomCuisine = getRandomItem(cuisines);
@@ -52,7 +59,7 @@ export class Recipe {
             'include-tags': includedTags.join(','),
         });
 
-        return this.#request('random', { params });
+        return this.#request('randomss', { params });
     }
 
     async search(query) {

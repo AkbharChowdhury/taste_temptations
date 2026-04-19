@@ -16,5 +16,6 @@ export const errorMessages = {
 
 export function handleError(res, err, message = 'Whoops something went wrong from our end!') {
   console.error(err);
+  message+= err.message
   res.status(500).send({ error: message });
 }
