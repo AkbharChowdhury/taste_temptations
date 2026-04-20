@@ -11,7 +11,7 @@ const recipeErrors = errorMessages.recipe;
 const uiErrors = errorMessages.ui;
 
 const app = express();
-const getValue = req => Object.values(req.body).toString();
+const extractRequestValue = (req) => Object.values(req.body).toString();
 
 
 app.listen(PORT, _ => console.log(`Server listening on port ${PORT.toLocaleString()}`));
@@ -19,10 +19,37 @@ app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.get('/meals', (req, res) => res.send(ui.meals()));
-app.get('/cuisines', (req, res) => res.send(ui.cuisines()));
-app.get('/intolerances', (req, res) => res.send(ui.intolerances()));
-app.get('/record', (req, res) => res.send(ui.record({ numItems: 4, nearestNumber: 5 })));
+app.get('/meals', (req, res) => {
+    try {
+        res.send(ui.meals());
+    } catch (err) {
+        handleError(res, err, uiErrors.meal);
+    }
+});
+app.get('/cuisines', (req, res) => {
+    try {
+        res.send(ui.cuisines());
+    } catch (err) {
+        handleError(res, err, uiErrors.cuisine);
+    }
+});
+
+
+app.get('/intolerances', (req, res) => {
+    try {
+        res.send(ui.intolerances());
+    } catch (err) {
+        handleError(res, err, uiErrors.intolerance);
+    }
+});
+
+app.get('/record', (req, res) => {
+    try {
+        res.send(ui.record({ numItems: 4, nearestNumber: 5 }));
+    } catch (err) {
+        handleError(res, err, uiErrors.record);
+    }
+});
 
 app.get('/random', (req, res) =>
     recipe.random()
@@ -34,16 +61,16 @@ app.get('/search', (req, res) =>
         .catch(err => handleError(res, err, recipeErrors.search))
 );
 app.post('/detail', (req, res) =>
-    recipe.details(getValue(req))
+    recipe.details(extractRequestValue(req))
         .then(recipes => res.send(recipes))
         .catch(err => handleError(res, err, recipeErrors.details)));
 
 app.post('/similar', (req, res) =>
-    recipe.similar(getValue(req))
+    recipe.similar(extractRequestValue(req))
         .then(recipes => res.send(recipes))
         .catch(err => handleError(res, err, recipeErrors.similar)));
 
 app.post('/nutrition-label', (req, res) =>
-    recipe.nutritionLabelWidget(getValue(req))
+    recipe.nutritionLabelWidget(extractRequestValue(req))
         .then(data => res.send(data))
         .catch(err => handleError(res, err, ui.nutrition)));

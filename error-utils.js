@@ -14,10 +14,7 @@ export const errorMessages = {
   }
 };
 export function handleError(res, err, message = 'Something went wrong') {
-  console.error(err);
-
   const statusCode = err.status || 500;
-
   return res.status(statusCode).json({
     error: {
       message,
@@ -25,6 +22,7 @@ export function handleError(res, err, message = 'Something went wrong') {
     },
   });
 }
+
 
 
 
