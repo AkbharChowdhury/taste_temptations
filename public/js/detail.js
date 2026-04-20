@@ -29,38 +29,39 @@ import {
 } from './helper/detail-snippets.js';
 
 function fetchRecipeID() {
-  const searchParams = new URLSearchParams(window.location.search);
-  const id = searchParams.get('recipeID');
-  return id ? Number(id) : 0;
+    const searchParams = new URLSearchParams(window.location.search);
+    const id = searchParams.get('recipeID');
+    return id ? Number(id) : 0;
 }
 
 const id = fetchRecipeID();
 const endpoints = {
-  recipeDetails: 'detail',
-  similarRecipes: 'similar',
-  nutritionLabel: 'nutrition-label',
+    recipeDetails: 'detail',
+    similarRecipes: 'similar',
+    nutritionLabel: 'nutrition-label',
 };
 const renderContext = {
-  container: document.querySelector('#similar-recipe-list'),
-  templateSelector: '#similar-recipes-template',
+    container: document.querySelector('#similar-recipe-list'),
+    templateSelector: '#similar-recipes-template',
 };
 function showDishTypeTags(dishes = []) {
-  const container = document.querySelector('#dish-list');
-  const fragment = document.createDocumentFragment();
-  for (const dish of dishes) {
-    const clone = getClone('#dish-types-template');
-    const span = clone.querySelector('span');
-    span.textContent = titleCase(dish)
-    fragment.append(clone);
-  }
+    const container = document.querySelector('#dish-list');
+    const fragment = document.createDocumentFragment();
+  
+    for (const dish of dishes) {
+        const clone = getClone('#dish-types-template');
+        const span = clone.querySelector('span');
+        span.textContent = titleCase(dish)
+        fragment.append(clone);
+    }
 
-  container.append(fragment);
+    container.append(fragment);
 }
 
 
 isValidNumber(id) && fetchRequest(endpoints.recipeDetails, id).then(handleRecipeDetails).catch(console.error);
 
-const loadSimilarRecipes = (id) => fetchRequest(endpoints.similarRecipes, id).then(recipes => 
+const loadSimilarRecipes = (id) => fetchRequest(endpoints.similarRecipes, id).then(recipes =>
     recipes.forEach(recipe => renderSimilarRecipe(recipe, renderContext))
 );
 
@@ -132,7 +133,7 @@ function displayRecipeDetails(data) {
 
 function showInstructions(instructions) {
     const hasInstructions = instructions !== undefined;
-    const showSteps = _ =>  renderListItem('#steps', getSteps(instructions));
+    const showSteps = _ => renderListItem('#steps', getSteps(instructions));
     hasInstructions ? showSteps() : hideSteps();
 }
 
