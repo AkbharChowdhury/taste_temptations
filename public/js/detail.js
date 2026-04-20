@@ -29,11 +29,11 @@ import {
 } from './helper/detail-snippets.js';
 
 function fetchRecipeID() {
-    const recipeIDParam = 'recipeID';
-    const searchParams = new URLSearchParams(window.location.search);
-    if (searchParams.has(recipeIDParam)) return parseInt(searchParams.get(recipeIDParam));
-    return 0;
+  const searchParams = new URLSearchParams(window.location.search);
+  const id = searchParams.get('recipeID');
+  return id ? Number(id) : 0;
 }
+
 const id = fetchRecipeID();
 const endpoints = {
   recipeDetails: 'detail',
@@ -44,15 +44,19 @@ const renderContext = {
   container: document.querySelector('#similar-recipe-list'),
   templateSelector: '#similar-recipes-template',
 };
+function showDishTypeTags(dishes = []) {
+  const container = document.querySelector('#dish-list');
+  const fragment = document.createDocumentFragment();
+  for (const dish of dishes) {
+    const clone = getClone('#dish-types-template');
+    const span = clone.querySelector('span');
+    span.textContent = titleCase(dish)
+    fragment.append(clone);
+  }
 
-function showDishTypeTags(dishes) {
-    const container = document.querySelector('#dish-list');
-    for (const dish of dishes) {
-        const clone = getClone('#dish-types-template');
-        clone.querySelector('span').innerText = titleCase(dish);
-        container.append(clone);
-    }
+  container.append(fragment);
 }
+
 
 isValidNumber(id) && fetchRequest(endpoints.recipeDetails, id).then(handleRecipeDetails).catch(console.error);
 

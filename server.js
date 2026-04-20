@@ -11,7 +11,7 @@ const recipeErrors = errorMessages.recipe;
 const uiErrors = errorMessages.ui;
 
 const app = express();
-const extractRequestValue = (req) => Object.values(req.body).toString();
+const getBodyValue = (req) => Object.values(req.body).toString();
 
 
 app.listen(PORT, _ => console.log(`Server listening on port ${PORT.toLocaleString()}`));
@@ -61,16 +61,16 @@ app.get('/search', (req, res) =>
         .catch(err => handleError(res, err, recipeErrors.search))
 );
 app.post('/detail', (req, res) =>
-    recipe.details(extractRequestValue(req))
+    recipe.details(getBodyValue(req))
         .then(recipes => res.send(recipes))
         .catch(err => handleError(res, err, recipeErrors.details)));
 
 app.post('/similar', (req, res) =>
-    recipe.similar(extractRequestValue(req))
+    recipe.similar(getBodyValue(req))
         .then(recipes => res.send(recipes))
         .catch(err => handleError(res, err, recipeErrors.similar)));
 
 app.post('/nutrition-label', (req, res) =>
-    recipe.nutritionLabelWidget(extractRequestValue(req))
+    recipe.nutritionLabelWidget(getBodyValue(req))
         .then(data => res.send(data))
         .catch(err => handleError(res, err, ui.nutrition)));
