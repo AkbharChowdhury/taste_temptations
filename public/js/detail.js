@@ -41,7 +41,7 @@ const endpoints = {
     nutritionLabel: 'nutrition-label',
 };
 const renderContext = {
-    container: document.querySelector('#similar-recipe-list'),
+    containerSelector: '#similar-recipe-list',
     templateSelector: '#similar-recipes-template',
 };
 function showDishTypeTags(dishes = []) {

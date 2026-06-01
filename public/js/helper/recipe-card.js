@@ -15,7 +15,7 @@ function renderDairyIcon(badgeCol = 'danger', text = 'Contains Dairy') {
 }
 
 export const recipeCard = (recipe, renderContext) => {
-  const { container, templateSelector, healthProgressSelector } = renderContext;
+  const { containerSelector, templateSelector, healthProgressSelector } = renderContext;
   const clone = getClone(templateSelector);
 
   const {
@@ -37,8 +37,9 @@ export const recipeCard = (recipe, renderContext) => {
   };
   
   const img = clone.querySelector('img');
+  img.src = image;
+  img.alt = title;
 
-  Object.assign(img, { src: image, alt: title });
 
   clone.querySelector('.card-title').textContent = title;
   clone.querySelector(getDataTag('servings')).innerText = servings;
@@ -56,6 +57,7 @@ export const recipeCard = (recipe, renderContext) => {
   badges.dairyFree.innerHTML = !dairyFree ? renderDairyIcon() : renderDairyIcon('success', 'dairy free');
 
   // ─── ATTACH ───────────────────
+  const container = document.querySelector(containerSelector);
   container.append(clone);
 };
 
@@ -65,15 +67,20 @@ export const recipeCard = (recipe, renderContext) => {
 
 
 export const renderSimilarRecipe = (recipe, renderContext) => {
-  const { container, templateSelector } = renderContext;
+  const { containerSelector, templateSelector } = renderContext;
   const { id, title, readyInMinutes: minutes, servings } = recipe;
   const clone = getClone(templateSelector);
+
   const img = clone.querySelector('img');
-  Object.assign(img, { src: getRecipeImage(id), alt: title });
+  img.src = getRecipeImage(id);
+  img.alt = title;
+  img.title = title;
+
   clone.querySelector(getDataTag('title')).textContent = title;
   clone.querySelector('a').setAttribute('href', recipeDetailURL(id));
   clone.querySelector(getDataTag('duration')).textContent = formatDuration(minutes, DurationFormatStyle.SHORT);
   clone.querySelector('h3').textContent = `serves ${servings}`;
+  const container = document.querySelector(containerSelector);
   container.append(clone);
 }
 

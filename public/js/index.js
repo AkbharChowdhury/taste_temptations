@@ -22,7 +22,7 @@ const api = {
 };
 
 const renderContext = {
-    container: document.querySelector('#recipe-list'),
+    containerSelector: '#recipe-list',
     templateSelector: '#recipe-list-template',
     healthProgressSelector: 'circle-progress',
 };
