@@ -45,7 +45,7 @@ export const recipeCard = (recipe, renderContext) => {
   clone.querySelector(getDataSelector('servings')).innerText = servings;
   clone.querySelector(getDataSelector('likes')).innerText = likes.toLocaleString();
   clone.querySelector(getDataSelector('duration')).textContent = formatDuration(minutes, DurationFormatStyle.NARROW);
-  clone.querySelector('.card-link').setAttribute('href', recipeDetailURL(id));
+  clone.querySelector('a').setAttribute('href', recipeDetailURL(id));
   clone.querySelector(getDataSelector('weightWatcherSmartPoints')).innerText = healthPoints;
 
   clone.querySelector(healthProgressSelector).setAttribute('value', healthScore);
