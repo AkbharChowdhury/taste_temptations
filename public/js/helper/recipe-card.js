@@ -15,7 +15,7 @@ function renderDairyIcon(badgeCol = 'danger', text = 'Contains Dairy') {
 }
 
 export const recipeCard = (recipe, renderContext) => {
-  const { containerSelector, healthProgressSelector, templateSelector } = renderContext;
+  const { healthProgressSelector, templateSelector } = renderContext;
   const {
     image, title, id, servings,
     aggregateLikes: likes,
@@ -56,18 +56,12 @@ export const recipeCard = (recipe, renderContext) => {
   badges.cheap.innerHTML = renderCheapBadge(cheap);
   badges.dairyFree.innerHTML = !dairyFree ? renderDairyIcon() : renderDairyIcon('success', 'dairy free');
 
-  // ─── ATTACH ───────────────────
-  const container = document.querySelector(containerSelector);
-  container.append(clone);
+  return clone;
+
 };
 
-
-
-
-
-
 export const similarRecipeCard = (recipe, renderContext) => {
-  const { containerSelector, templateSelector } = renderContext;
+  const { templateSelector } = renderContext;
   const { id, title, readyInMinutes: minutes, servings } = recipe;
   const clone = getTemplateClone(templateSelector);
 
@@ -80,7 +74,8 @@ export const similarRecipeCard = (recipe, renderContext) => {
   clone.querySelector('a').setAttribute('href', recipeDetailURL(id));
   clone.querySelector(getDataTag('duration')).textContent = formatDuration(minutes, DurationFormatStyle.SHORT);
   clone.querySelector('h3').textContent = `serves ${servings}`;
-  const container = document.querySelector(containerSelector);
-  container.append(clone);
+
+  return clone;
+
 }
 

@@ -47,19 +47,23 @@ const renderContext = {
 function showDishTypeTags(dishes = []) {
     const container = document.querySelector('#dish-list');
     const fragment = document.createDocumentFragment();
-  
+
     for (const dish of dishes) {
         const clone = getTemplateClone('#dish-types-template');
-        const span = clone.querySelector('span');
-        span.textContent = titleCase(dish)
-        fragment.append(clone);
+        clone.querySelector('span').textContent = titleCase(dish)
+        fragment.appendChild(clone);
     }
 
     container.append(fragment);
 }
 
 const renderSimilarRecipeList = recipes => {
-    recipes.forEach(recipe => similarRecipeCard(recipe, renderContext));
+    const container = document.querySelector(renderContext.containerSelector);
+    const fragment = document.createDocumentFragment();
+    for (const recipe of recipes) {
+        fragment.append(similarRecipeCard(recipe, renderContext));
+    }
+    container.append(fragment);
 };
 
 

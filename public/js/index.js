@@ -30,8 +30,14 @@ const renderContext = {
 
 const searchForm = document.querySelector('form');
 const errorContainer = document.querySelector('#error-tag');
+
 const renderRecipeList = recipes => {
-    recipes.forEach(recipe => recipeCard(recipe, renderContext))
+    const container = document.querySelector(renderContext.containerSelector);
+    const fragment = document.createDocumentFragment();
+    for (const recipe of recipes) {
+        fragment.append(recipeCard(recipe, renderContext));
+    }
+    container.append(fragment);
 };
 
 function handleRandomRecipesError(err) {
