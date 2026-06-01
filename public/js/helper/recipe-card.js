@@ -1,6 +1,6 @@
 "use strict";
 
-import { getClone } from './utils.js';
+import { getTemplateClone } from './utils.js';
 import { formatDuration, DurationFormatStyle } from './duration.js';
 const renderIcon = name => `<i class="fa-solid fa-${name}"></i>`;
 const renderCheapBadge = isCheap => `<i class="fa-solid fa-${isCheap ? 'tag' : 'tags'}"></i>`;
@@ -15,9 +15,7 @@ function renderDairyIcon(badgeCol = 'danger', text = 'Contains Dairy') {
 }
 
 export const recipeCard = (recipe, renderContext) => {
-  const { containerSelector, templateSelector, healthProgressSelector } = renderContext;
-  const clone = getClone(templateSelector);
-
+  const { containerSelector, healthProgressSelector, templateSelector } = renderContext;
   const {
     image, title, id, servings,
     aggregateLikes: likes,
@@ -28,6 +26,7 @@ export const recipeCard = (recipe, renderContext) => {
     cheap,
     dairyFree,
   } = recipe;
+    const clone = getTemplateClone(templateSelector);
 
   const badges = {
     glutenFree: clone.querySelector(getDataTag('gluten-free')), 
@@ -35,6 +34,7 @@ export const recipeCard = (recipe, renderContext) => {
     popular: clone.querySelector(getDataTag('popular')),
     cheap: clone.querySelector(getDataTag('is-cheap')),
   };
+
   
   const img = clone.querySelector('img');
   img.src = image;
@@ -66,10 +66,10 @@ export const recipeCard = (recipe, renderContext) => {
 
 
 
-export const renderSimilarRecipe = (recipe, renderContext) => {
+export const similarRecipeCard = (recipe, renderContext) => {
   const { containerSelector, templateSelector } = renderContext;
   const { id, title, readyInMinutes: minutes, servings } = recipe;
-  const clone = getClone(templateSelector);
+  const clone = getTemplateClone(templateSelector);
 
   const img = clone.querySelector('img');
   img.src = getRecipeImage(id);

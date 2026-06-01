@@ -4,7 +4,7 @@ import {
     titleCase,
     isValidNumber,
     changeMetaData,
-    getClone
+    getTemplateClone
 } from './helper/utils.js';
 
 import { formatDuration } from './helper/duration.js';
@@ -18,7 +18,7 @@ import {
     paymentIsRequired,
 } from './helper/ui-utils.js';
 
-import { renderSimilarRecipe } from './helper/recipe-card.js';
+import { similarRecipeCard } from './helper/recipe-card.js';
 
 // Detail-specific logic
 import {
@@ -49,7 +49,7 @@ function showDishTypeTags(dishes = []) {
     const fragment = document.createDocumentFragment();
   
     for (const dish of dishes) {
-        const clone = getClone('#dish-types-template');
+        const clone = getTemplateClone('#dish-types-template');
         const span = clone.querySelector('span');
         span.textContent = titleCase(dish)
         fragment.append(clone);
@@ -58,15 +58,15 @@ function showDishTypeTags(dishes = []) {
     container.append(fragment);
 }
 
+const renderSimilarRecipeList = recipes => {
+    recipes.forEach(recipe => similarRecipeCard(recipe, renderContext));
+};
+
 
 isValidNumber(id) && fetchRequest(endpoints.recipeDetails, id).then(handleRecipeDetails).catch(console.error);
 
-const loadSimilarRecipes = (id) => fetchRequest(endpoints.similarRecipes, id).then(recipes =>
-    recipes.forEach(recipe => renderSimilarRecipe(recipe, renderContext))
-);
-
-
-
+const loadSimilarRecipes = (id) => fetchRequest(endpoints.similarRecipes, id).then(recipes => renderSimilarRecipeList(recipes));
+    
 function handleRecipeDetails(data) {
     const { status, message } = data
     if (paymentIsRequired(status)) {

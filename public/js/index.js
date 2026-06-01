@@ -10,6 +10,7 @@ import { apiRequest } from './helper/api.js';
 // Utils
 import { constructSearchURLParams } from './helper/search-utils.js';
 import { errorMessageTag, paymentIsRequired } from './helper/ui-utils.js';
+import { getTemplateClone } from './helper/utils.js';
 
 const endpoints = {
     search: 'search',
@@ -29,7 +30,9 @@ const renderContext = {
 
 const searchForm = document.querySelector('form');
 const errorContainer = document.querySelector('#error-tag');
-const renderRecipeList = recipes => recipes.forEach(recipe => recipeCard(recipe, renderContext));
+const renderRecipeList = recipes => {
+    recipes.forEach(recipe => recipeCard(recipe, renderContext))
+};
 
 function handleRandomRecipesError(err) {
     document.querySelector('#button-search').disabled = true;

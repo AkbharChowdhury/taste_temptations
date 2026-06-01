@@ -21,4 +21,8 @@ export const createLi = text => {
     return li;
 }
 
-export const getClone = selector => document.querySelector(selector).content.cloneNode(true);
+export const getTemplateClone = templateSelector => {
+    const template = document.querySelector(templateSelector);
+    const clone = template.content.cloneNode(true);
+    return clone;
+};
