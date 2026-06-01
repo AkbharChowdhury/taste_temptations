@@ -1,3 +1,5 @@
+import 'typed-query-selector';
+
 export function changeMetaData(metaData) {
     const metas = document.getElementsByTagName("meta");
     for (const [key, value] of Object.entries(metaData)) {
@@ -6,7 +8,7 @@ export function changeMetaData(metaData) {
 
 }
 
-export const titleCase = sentence => sentence
+export const titleCase = (sentence) => sentence
     .toLowerCase()
     .split(' ')
     .map(word => word.replace(word[0], word[0].toUpperCase()))
@@ -15,13 +17,16 @@ export const titleCase = sentence => sentence
 export const sortedArray = (arr = []) => arr.sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()));
 export const getRandomItem = arr => arr[(Math.random() * arr.length) | 0];
 export const isValidNumber = num => !isNaN(num) || num !== 0;
-export const createLi = text => {
+export const createLi = (text) => {
     const li = document.createElement('li');
     li.appendChild(document.createTextNode(text));
     return li;
 }
-
-export const getTemplateClone = templateSelector => {
+/**
+ * 
+ * @returns {DocumentFragment}
+ */
+export function getTemplateClone(templateSelector) {
     const template = document.querySelector(templateSelector);
     const clone = template.content.cloneNode(true);
     return clone;

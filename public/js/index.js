@@ -16,7 +16,7 @@ const endpoints = {
     search: 'search',
     random: 'random',
 };
-
+const NO_RECIPES_FOUND_MESSAGE = "Whoops, we couldn't find any recipes...";
 const api = {
     random: () => apiRequest(endpoints.random),
     search: (params) => apiRequest(`${endpoints.search}?${params.toString()}`),
@@ -56,7 +56,6 @@ function showError(message) {
     clearRecipes();
     errorContainer.innerHTML = errorMessageTag(message);
 }
-
 searchForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     errorContainer.innerHTML = '';
@@ -70,7 +69,7 @@ searchForm.addEventListener('submit', async (e) => {
         }
         const hasRecipes = Array.isArray(recipes) && recipes.length > 0;
         if (!hasRecipes) {
-            showError("Whoops, we couldn't find any recipes...");
+            showError(NO_RECIPES_FOUND_MESSAGE);
             return;
         }
         showFilteredRecipes(recipes);

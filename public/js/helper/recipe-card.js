@@ -1,13 +1,14 @@
 "use strict";
 
+import 'typed-query-selector';
 import { getTemplateClone } from './utils.js';
 import { formatDuration, DurationFormatStyle } from './duration.js';
-const renderIcon = name => `<i class="fa-solid fa-${name}"></i>`;
-const renderCheapBadge = isCheap => `<i class="fa-solid fa-${isCheap ? 'tag' : 'tags'}"></i>`;
+const renderIcon = (name) => `<i class="fa-solid fa-${name}"></i>`;
+const renderCheapBadge = (isCheap) => `<i class="fa-solid fa-${isCheap ? 'tag' : 'tags'}"></i>`;
 
-const recipeDetailURL = id => `detail.html?recipeID=${id}`;
-const getRecipeImage = id => `https://img.spoonacular.com/recipes/${id}-556x370.jpg`;
-const getDataSelector = name => `[data-${name}]`;
+const recipeDetailURL = (id) => `detail.html?recipeID=${id}`;
+const getRecipeImage = (id) => `https://img.spoonacular.com/recipes/${id}-556x370.jpg`;
+const getDataSelector = (name) => `[data-${name}]`;
 
 
 function renderDairyIcon(badgeCol = 'danger', text = 'Contains Dairy') {
@@ -26,7 +27,9 @@ export const recipeCard = (recipe, renderContext) => {
     cheap,
     dairyFree,
   } = recipe;
+
   const clone = getTemplateClone(templateSelector);
+  
 
   const badges = {
     glutenFree: clone.querySelector(getDataSelector('gluten-free')),
@@ -39,16 +42,16 @@ export const recipeCard = (recipe, renderContext) => {
   const img = clone.querySelector('img');
   img.src = image;
   img.alt = title;
-
+  
 
   clone.querySelector('.card-title').textContent = title;
   clone.querySelector(getDataSelector('servings')).innerText = servings;
   clone.querySelector(getDataSelector('likes')).innerText = likes.toLocaleString();
   clone.querySelector(getDataSelector('duration')).textContent = formatDuration(minutes, DurationFormatStyle.NARROW);
-  clone.querySelector('a').setAttribute('href', recipeDetailURL(id));
+  clone.querySelector('a').href = recipeDetailURL(id)
   clone.querySelector(getDataSelector('weightWatcherSmartPoints')).innerText = healthPoints;
 
-  clone.querySelector(healthProgressSelector).setAttribute('value', healthScore);
+  clone.querySelector(healthProgressSelector).value = healthScore;
 
   // ─── BADGES ───────────────────
   glutenFree && badges.glutenFree.classList.replace('text-bg-danger', 'text-bg-success');

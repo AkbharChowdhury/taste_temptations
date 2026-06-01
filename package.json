@@ -26,7 +26,8 @@
     "dotenv": "^17.2.3",
     "epxress": "^0.0.1-security",
     "express": "^5.1.0",
-    "js-circle-progress": "^1.0.0"
+    "js-circle-progress": "^1.0.0",
+    "typed-query-selector": "^2.12.2"
   },
   "devDependencies": {
     "nodemon": "^3.1.10"

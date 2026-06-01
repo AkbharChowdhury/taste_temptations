@@ -1,5 +1,5 @@
-const hasRecipes = _ => document.querySelectorAll('article');
-const removeRecipes = _ => {
+const hasRecipes = () => document.querySelectorAll('article');
+const removeRecipes = () => {
     const prevRecipes = document.querySelectorAll('article');
     prevRecipes.forEach(recipe => recipe.parentElement.remove());
 }
