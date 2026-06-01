@@ -7,7 +7,7 @@ const renderCheapBadge = isCheap => `<i class="fa-solid fa-${isCheap ? 'tag' : '
 
 const recipeDetailURL = id => `detail.html?recipeID=${id}`;
 const getRecipeImage = id => `https://img.spoonacular.com/recipes/${id}-556x370.jpg`;
-const getDataAttribute = name => `[data-${name}]`;
+const getDataSelector = name => `[data-${name}]`;
 
 
 function renderDairyIcon(badgeCol = 'danger', text = 'Contains Dairy') {
@@ -29,10 +29,10 @@ export const recipeCard = (recipe, renderContext) => {
   const clone = getTemplateClone(templateSelector);
 
   const badges = {
-    glutenFree: clone.querySelector(getDataAttribute('gluten-free')),
-    dairyFree: clone.querySelector(getDataAttribute('dairy-free')),
-    popular: clone.querySelector(getDataAttribute('popular')),
-    cheap: clone.querySelector(getDataAttribute('is-cheap')),
+    glutenFree: clone.querySelector(getDataSelector('gluten-free')),
+    dairyFree: clone.querySelector(getDataSelector('dairy-free')),
+    popular: clone.querySelector(getDataSelector('popular')),
+    cheap: clone.querySelector(getDataSelector('is-cheap')),
   };
 
 
@@ -42,11 +42,11 @@ export const recipeCard = (recipe, renderContext) => {
 
 
   clone.querySelector('.card-title').textContent = title;
-  clone.querySelector(getDataAttribute('servings')).innerText = servings;
-  clone.querySelector(getDataAttribute('likes')).innerText = likes.toLocaleString();
-  clone.querySelector(getDataAttribute('duration')).textContent = formatDuration(minutes, DurationFormatStyle.NARROW);
+  clone.querySelector(getDataSelector('servings')).innerText = servings;
+  clone.querySelector(getDataSelector('likes')).innerText = likes.toLocaleString();
+  clone.querySelector(getDataSelector('duration')).textContent = formatDuration(minutes, DurationFormatStyle.NARROW);
   clone.querySelector('.card-link').setAttribute('href', recipeDetailURL(id));
-  clone.querySelector(getDataAttribute('weightWatcherSmartPoints')).innerText = healthPoints;
+  clone.querySelector(getDataSelector('weightWatcherSmartPoints')).innerText = healthPoints;
 
   clone.querySelector(healthProgressSelector).setAttribute('value', healthScore);
 
@@ -70,9 +70,9 @@ export const similarRecipeCard = (recipe, renderContext) => {
   img.alt = title;
   img.title = title;
   
-  clone.querySelector(getDataAttribute('servings')).textContent = `serves ${servings}`;
-  clone.querySelector(getDataAttribute('title')).textContent = title;
-  clone.querySelector(getDataAttribute('duration')).textContent = formatDuration(minutes, DurationFormatStyle.SHORT);
+  clone.querySelector(getDataSelector('servings')).textContent = `serves ${servings}`;
+  clone.querySelector(getDataSelector('title')).textContent = title;
+  clone.querySelector(getDataSelector('duration')).textContent = formatDuration(minutes, DurationFormatStyle.SHORT);
   clone.querySelector('a').href = recipeDetailURL(id);
 
   return clone;
