@@ -21,9 +21,9 @@ export class RecipeUI {
     }
 
     record({ numItems, nearestNumber }) {
-        const nextNum = createNextNumberGenerator({ initialValue: this.#DEFAULT_RECORDS_PER_PAGE, n: nearestNumber });
-        const values = Array.from({ length: numItems }, () => nextNum());
-        return SelectOptions.selectMenu({ options: values, defaultValue: this.#DEFAULT_RECORDS_PER_PAGE });
+        const DEFAULT_RECORDS_PER_PAGE =  this.#DEFAULT_RECORDS_PER_PAGE;
+        const nextNum = createNextNumberGenerator({ initialValue: DEFAULT_RECORDS_PER_PAGE, n: nearestNumber });
+        const values = Array.from({ length: numItems }, nextNum);
+        return SelectOptions.selectMenu({ options: values, defaultValue: DEFAULT_RECORDS_PER_PAGE });
     }
 }
-

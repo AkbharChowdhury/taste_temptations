@@ -1,4 +1,3 @@
-import 'typed-query-selector';
 
 export function changeMetaData(metaData) {
     const metas = document.getElementsByTagName("meta");

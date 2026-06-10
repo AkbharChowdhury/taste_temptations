@@ -1,6 +1,5 @@
 "use strict";
 
-import 'typed-query-selector';
 import { getTemplateClone } from './utils.js';
 import { formatDuration, DurationFormatStyle } from './duration.js';
 const renderIcon = (name) => `<i class="fa-solid fa-${name}"></i>`;
@@ -72,6 +71,7 @@ export const similarRecipeCard = (recipe, renderContext) => {
   img.src = getRecipeImage(id);
   img.alt = title;
   img.title = title;
+  
   
   clone.querySelector(getDataSelector('servings')).textContent = `serves ${servings}`;
   clone.querySelector(getDataSelector('title')).textContent = title;
