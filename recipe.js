@@ -18,12 +18,14 @@ const api = axios.create({
     }
 
 });
-function displayError(error, url) {
-    const errorInfo = {
-        status: error.response?.status || 500,
-        message: error.response?.data?.message || error.message,
+function displayError(err, url) {
+    const { message } = err;
+    const errorDetails = {
+        status: err.response?.status || 500,
+        message: err.response?.data?.message || message,
     }
-    console.log(`Error at URL: ${url}`, error.message, {errorInfo});
+    console.log(`Error at URL: ${url}`, message);
+    console.log(errorDetails);
 }
 
 export class Recipe {
@@ -42,8 +44,8 @@ export class Recipe {
         try {
             const response = await api.get(url, options);
             return response.data;
-        } catch (error) {
-            displayError(error, url);
+        } catch (err) {
+            displayError(err, url);
         }
     }
 
