@@ -2,20 +2,24 @@
 import { titleCase, createLi } from './utils.js';
 
 const getListItem = (items, key) => items.map(item => createLi(item[key]));
+
 export const getIngredientsList = ({ extendedIngredients }) => getListItem(extendedIngredients, 'original');
+
 export const getSteps = ({ steps }) => getListItem(steps, 'step');
-const createSpanElement = tag =>{
-        const divtag = document.createElement('div');
-        divtag.classList.add('p-2');
-        divtag.innerHTML = tag;
-        return divtag;
+
+const createTagElement = tag =>{
+        const div = document.createElement('div');
+        div.classList.add('p-2');
+        div.innerHTML = tag;
+        return div;
 }
 
 const getTags = tags => {
+
     const div = document.createElement('div');
     div.className = 'd-flex flex-row mb-3';
-    const divTags = tags.map(createSpanElement);
-    const fragment = getDocumentFragment(divTags)
+    const tagElements = tags.map(createTagElement);
+    const fragment = getDocumentFragment(tagElements)
     div.appendChild(fragment)
     return div;
 }
@@ -27,9 +31,11 @@ export function showExtraInfo({ vegan, vegetarian, glutenFree, diets }) {
         showTag('vegetarian', vegetarian),
         showTag('gluten free', glutenFree)
     ].filter(tag => tag);
+
     const container = document.querySelector('#tags-data');
     const hasDiet = diets.length > 0;
     const dietText = `<p class="pt-2">Suitable for diets: <strong>${diets}</strong></p>`;
+    
     if (tags.length > 0) container.insertAdjacentElement('beforebegin', getTags(tags));
     if (hasDiet) container.insertAdjacentHTML('beforebegin', dietText);
     
@@ -41,7 +47,7 @@ export function showExtraInfo({ vegan, vegetarian, glutenFree, diets }) {
 export function renderListItem(selector, arr=[]) {
     const ul = document.querySelector(selector);
     const fragment = getDocumentFragment(arr);
-    ul.append(fragment);
+    ul.appendChild(fragment);
 }
 
 function getDocumentFragment(arr=[]){
