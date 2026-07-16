@@ -4,7 +4,6 @@ export function changeMetaData(metaData) {
     for (const [key, value] of Object.entries(metaData)) {
         metas[key]['content'] = value;
     }
-
 }
 
 export const titleCase = (sentence) => sentence

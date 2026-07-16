@@ -58,16 +58,15 @@ function showDishTypeTags(dishes = []) {
         clone.querySelector('span').textContent = titleCase(dish);
         fragment.appendChild(clone);
     }
-
     container.append(fragment);
 }
 
 const renderSimilarRecipeList = recipes => {
     const container = document.querySelector(renderContext.selectors.container);
     const fragment = new DocumentFragment();
+
     for (const recipe of recipes) {
-        const contentFragment = similarRecipeCard(recipe, renderContext.selectors.template);
-        fragment.append(contentFragment);
+        fragment.append(similarRecipeCard(recipe, renderContext.selectors.template));
     }
     container.append(fragment);
 };

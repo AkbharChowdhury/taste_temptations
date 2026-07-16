@@ -32,7 +32,6 @@ const renderContext = {
         template: '#recipe-list-template',
         healthProgress: 'circle-progress',
     }
-
 };
 
 const renderRecipeList = recipes => {
@@ -72,10 +71,12 @@ searchForm.addEventListener('submit', async (e) => {
             return;
         }
         const hasRecipes = Array.isArray(recipes) && recipes.length > 0;
+
         if (!hasRecipes) {
             showError(NO_RECIPES_FOUND_MESSAGE);
             return;
         }
+        
         showFilteredRecipes(recipes);
 
     } catch (error) {
