@@ -28,29 +28,32 @@ import {
     renderListItem
 } from './helper/detail-snippets.js';
 
-function fetchRecipeID() {
-    const searchParams = new URLSearchParams(window.location.search);
-    const id = searchParams.get('recipeID');
-    return id ? Number(id) : 0;
-}
 
 const id = fetchRecipeID();
+
 const endpoints = {
-    recipeDetails: 'detail',
-    similarRecipes: 'similar',
+    details: 'detail',
+    similar: 'similar',
     nutritionLabel: 'nutrition-label',
 };
 const renderContext = {
     containerSelector: '#similar-recipe-list',
     templateSelector: '#similar-recipes-template',
 };
+
+function fetchRecipeID() {
+    const searchParams = new URLSearchParams(window.location.search);
+    const id = searchParams.get('id');
+    return id ? Number(id) : 0;
+}
+
 function showDishTypeTags(dishes = []) {
     const container = document.querySelector('#dish-list');
-    const fragment = document.createDocumentFragment();
+    const fragment = new DocumentFragment();
 
     for (const dish of dishes) {
         const clone = getTemplateClone('#dish-types-template');
-        clone.querySelector('span').textContent = titleCase(dish)
+        clone.querySelector('span').textContent = titleCase(dish);
         fragment.appendChild(clone);
     }
 
@@ -59,7 +62,7 @@ function showDishTypeTags(dishes = []) {
 
 const renderSimilarRecipeList = recipes => {
     const container = document.querySelector(renderContext.containerSelector);
-    const fragment = document.createDocumentFragment();
+    const fragment = new DocumentFragment();
     for (const recipe of recipes) {
         fragment.append(similarRecipeCard(recipe, renderContext));
     }
@@ -67,9 +70,12 @@ const renderSimilarRecipeList = recipes => {
 };
 
 
-isValidNumber(id) && fetchRequest(endpoints.recipeDetails, id).then(handleRecipeDetails).catch(console.error);
+isValidNumber(id) && fetchRequest(endpoints.details, id)
+.then(handleRecipeDetails)
+.catch(console.error);
 
-const loadSimilarRecipes = (id) => fetchRequest(endpoints.similarRecipes, id).then(recipes => renderSimilarRecipeList(recipes));
+const loadSimilarRecipes = (id) => fetchRequest(endpoints.similar, id)
+.then(recipes => renderSimilarRecipeList(recipes));
     
 function handleRecipeDetails(data) {
     const { status, message } = data
@@ -80,7 +86,8 @@ function handleRecipeDetails(data) {
     }
 
     displayRecipeDetails(data);
-    getNutritionLabel(endpoints.nutritionLabel, id).then(displayNutritionLabel)
+    getNutritionLabel(endpoints.nutritionLabel, id)
+    .then(displayNutritionLabel)
     loadSimilarRecipes(id);
 }
 
@@ -97,11 +104,13 @@ async function getNutritionLabel(url, id) {
 
 function displayNutritionLabel(data) {
     const nutritionLabel = data.split('</style>')[1];
+    console.log({nutritionLabel})
     const container = document.querySelector('#nutrition-label-widget');
     container.insertAdjacentHTML('afterbegin', nutritionLabel);
 }
 
 function displayRecipeDetails(data) {
+    
     const titleTag = document.querySelector('#title');
     const imageTag = document.querySelector('#image');
     const {

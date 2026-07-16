@@ -5,7 +5,7 @@ import { formatDuration, DurationFormatStyle } from './duration.js';
 const renderIcon = (name) => `<i class="fa-solid fa-${name}"></i>`;
 const renderCheapBadge = (isCheap) => `<i class="fa-solid fa-${isCheap ? 'tag' : 'tags'}"></i>`;
 
-const recipeDetailURL = (id) => `detail.html?recipeID=${id}`;
+const recipeDetailURL = (id) => `detail.html?id=${id}`;
 const getRecipeImage = (id) => `https://img.spoonacular.com/recipes/${id}-556x370.jpg`;
 const getDataSelector = (name) => `[data-${name}]`;
 
