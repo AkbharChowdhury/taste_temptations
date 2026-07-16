@@ -12,28 +12,32 @@ import { constructSearchURLParams } from './helper/search-utils.js';
 import { errorMessageTag, paymentIsRequired } from './helper/ui-utils.js';
 import { getTemplateClone } from './helper/utils.js';
 
-const endpoints = {
-    search: 'search',
-    random: 'random',
-};
 const NO_RECIPES_FOUND_MESSAGE = "Whoops, we couldn't find any recipes...";
+const searchForm = document.querySelector('form');
+const errorContainer = document.querySelector('#error-tag');
+
+const endpoints = {
+    random: 'random',
+    search: 'search',
+};
+
 const api = {
     random: () => apiRequest(endpoints.random),
     search: (params) => apiRequest(`${endpoints.search}?${params.toString()}`),
 };
 
 const renderContext = {
-    containerSelector: '#recipe-list',
-    templateSelector: '#recipe-list-template',
-    healthProgressSelector: 'circle-progress',
+    selectors: {
+        container: '#recipe-list',
+        template: '#recipe-list-template',
+        healthProgress: 'circle-progress',
+    }
+
 };
 
-const searchForm = document.querySelector('form');
-const errorContainer = document.querySelector('#error-tag');
-
 const renderRecipeList = recipes => {
-    const container = document.querySelector(renderContext.containerSelector);
-    const fragment = document.createDocumentFragment();
+    const container = document.querySelector(renderContext.selectors.container);
+    const fragment = new DocumentFragment();
     for (const recipe of recipes) {
         fragment.append(recipeCard(recipe, renderContext));
     }
@@ -83,6 +87,3 @@ function showFilteredRecipes(recipes) {
     clearRecipes();
     renderRecipeList(recipes);
 }
-
-
-

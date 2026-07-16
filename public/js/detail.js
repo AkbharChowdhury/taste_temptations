@@ -37,8 +37,10 @@ const endpoints = {
     nutritionLabel: 'nutrition-label',
 };
 const renderContext = {
-    containerSelector: '#similar-recipe-list',
-    templateSelector: '#similar-recipes-template',
+    selectors: {
+        container: '#similar-recipe-list',
+        template: '#similar-recipes-template',
+    }
 };
 
 function fetchRecipeID() {
@@ -61,10 +63,11 @@ function showDishTypeTags(dishes = []) {
 }
 
 const renderSimilarRecipeList = recipes => {
-    const container = document.querySelector(renderContext.containerSelector);
+    const container = document.querySelector(renderContext.selectors.container);
     const fragment = new DocumentFragment();
     for (const recipe of recipes) {
-        fragment.append(similarRecipeCard(recipe, renderContext));
+        const contentFragment = similarRecipeCard(recipe, renderContext.selectors.template);
+        fragment.append(contentFragment);
     }
     container.append(fragment);
 };
@@ -78,6 +81,7 @@ const loadSimilarRecipes = (id) => fetchRequest(endpoints.similar, id)
 .then(recipes => renderSimilarRecipeList(recipes));
     
 function handleRecipeDetails(data) {
+
     const { status, message } = data
     if (paymentIsRequired(status)) {
         const errorDiv = document.querySelector('#recipe-details-container');
@@ -87,7 +91,8 @@ function handleRecipeDetails(data) {
 
     displayRecipeDetails(data);
     getNutritionLabel(endpoints.nutritionLabel, id)
-    .then(displayNutritionLabel)
+    .then(displayNutritionLabel);
+    
     loadSimilarRecipes(id);
 }
 
@@ -104,7 +109,6 @@ async function getNutritionLabel(url, id) {
 
 function displayNutritionLabel(data) {
     const nutritionLabel = data.split('</style>')[1];
-    console.log({nutritionLabel})
     const container = document.querySelector('#nutrition-label-widget');
     container.insertAdjacentHTML('afterbegin', nutritionLabel);
 }

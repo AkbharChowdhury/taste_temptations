@@ -15,7 +15,8 @@ function renderDairyIcon(badgeCol = 'danger', text = 'Contains Dairy') {
 }
 
 export const recipeCard = (recipe, renderContext) => {
-  const { healthProgressSelector, templateSelector } = renderContext;
+  const { selectors } = renderContext;
+
   const {
     image, title, id, servings,
     aggregateLikes: likes,
@@ -27,7 +28,7 @@ export const recipeCard = (recipe, renderContext) => {
     dairyFree,
   } = recipe;
 
-  const clone = getTemplateClone(templateSelector);
+  const clone = getTemplateClone(selectors.template);
   
 
   const badges = {
@@ -50,7 +51,7 @@ export const recipeCard = (recipe, renderContext) => {
   clone.querySelector('a').href = recipeDetailURL(id)
   clone.querySelector(getDataSelector('weightWatcherSmartPoints')).innerText = healthPoints;
 
-  clone.querySelector(healthProgressSelector).value = healthScore;
+  clone.querySelector(selectors.healthProgress).value = healthScore;
 
   // ─── BADGES ───────────────────
   glutenFree && badges.glutenFree.classList.replace('text-bg-danger', 'text-bg-success');
@@ -62,16 +63,15 @@ export const recipeCard = (recipe, renderContext) => {
 
 };
 
-export const similarRecipeCard = (recipe, renderContext) => {
-  const { templateSelector } = renderContext;
+export const similarRecipeCard = (recipe, template) => {
+  
   const { id, title, readyInMinutes: minutes, servings } = recipe;
-  const clone = getTemplateClone(templateSelector);
+  const clone = getTemplateClone(template);
 
   const img = clone.querySelector('img');
   img.src = getRecipeImage(id);
   img.alt = title;
   img.title = title;
-  
   
   clone.querySelector(getDataSelector('servings')).textContent = `serves ${servings}`;
   clone.querySelector(getDataSelector('title')).textContent = title;
