@@ -7,14 +7,14 @@ export const getIngredientsList = ({ extendedIngredients }) => getListItem(exten
 
 export const getSteps = ({ steps }) => getListItem(steps, 'step');
 
-const createTagElement = tag =>{
+const createTagElement = (tag) => {
         const div = document.createElement('div');
         div.classList.add('p-2');
         div.innerHTML = tag;
         return div;
 }
 
-const getTags = tags => {
+const getTags = (tags) => {
 
     const div = document.createElement('div');
     div.className = 'd-flex flex-row mb-3';
