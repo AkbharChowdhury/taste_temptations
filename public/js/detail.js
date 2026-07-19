@@ -135,20 +135,20 @@ function displayRecipeDetails(data) {
 
     changeMetaData({ description: summary, keywords: title });
 
-    appendNodes('#ingredients', ingredients);
-
     titleTag.textContent = title;
-    imgTag.src = image;
-    imgTag.alt = title 
-
     document.querySelector('#additional-details').innerText = additionalDetails;
-    document.querySelector('#summary').innerHTML = summary;
+
     showDishTypeTags(dishTypes);
+    showExtraInfo(data);
+
+    imgTag.src = image;
+    imgTag.alt = title;
+
+    document.querySelector('#summary').innerHTML = summary;
+    appendNodes('#ingredients', ingredients);
 
     const instructions = analyzedInstructions[0];
     showInstructions(instructions);
-    showExtraInfo(data);
-
 }
 
 function showInstructions(instructions) {
