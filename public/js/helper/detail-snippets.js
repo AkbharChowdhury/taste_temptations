@@ -1,11 +1,11 @@
 
 import { titleCase, createLi } from './utils.js';
 
-const getListItem = (items, key) => items.map(item => createLi(item[key]));
+export const createListItems = (items, key) => items.map(item => createLi(item[key]));
 
-export const getIngredientsList = ({ extendedIngredients }) => getListItem(extendedIngredients, 'original');
+export const getIngredientsList = ({ extendedIngredients }) => createListItems(extendedIngredients, 'original');
 
-export const getSteps = ({ steps }) => getListItem(steps, 'step');
+export const getSteps = ({ steps }) => createListItems(steps, 'step');
 
 const createTagElement = (tag) => {
         const div = document.createElement('div');
@@ -19,7 +19,7 @@ const getTags = (tags) => {
     const div = document.createElement('div');
     div.className = 'd-flex flex-row mb-3';
     const tagElements = tags.map(createTagElement);
-    const fragment = getDocumentFragment(tagElements)
+    const fragment = createFragment(tagElements)
     div.appendChild(fragment)
     return div;
 }
@@ -44,13 +44,13 @@ export function showExtraInfo({ vegan, vegetarian, glutenFree, diets }) {
     container.remove()
 
 }
-export function renderListItem(selector, arr=[]) {
-    const ul = document.querySelector(selector);
-    const fragment = getDocumentFragment(arr);
-    ul.appendChild(fragment);
+export function appendNodes(selector, arr=[]) {
+    const container = document.querySelector(selector);
+    const fragment = createFragment(arr);
+    container.appendChild(fragment);
 }
 
-function getDocumentFragment(arr=[]){
+function createFragment(arr=[]){
     const fragment = new DocumentFragment();
     arr.forEach(item => fragment.append(item));
     return fragment;

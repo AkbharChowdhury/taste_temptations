@@ -22,10 +22,11 @@ import { similarRecipeCard } from './helper/recipe-card.js';
 
 // Detail-specific logic
 import {
-    getSteps,
+    // getSteps,
+    // getIngredientsList,
+    createListItems,
+    appendNodes,
     showExtraInfo,
-    getIngredientsList,
-    renderListItem
 } from './helper/detail-snippets.js';
 
 
@@ -125,6 +126,7 @@ function displayRecipeDetails(data) {
         readyInMinutes: minutes,
         dishTypes,
         analyzedInstructions,
+        extendedIngredients,
     } = data;
     document.title = `Taste Temptations: ${title}`;
 
@@ -132,7 +134,9 @@ function displayRecipeDetails(data) {
 
     const cuisinesText = cuisines.length > 0 ? `| ${cuisines.join(', ')}` : '';
 
-    renderListItem('#ingredients', getIngredientsList(data));
+    const ingredients = createListItems(extendedIngredients, 'original');
+    appendNodes('#ingredients',ingredients);
+    // appendNodes('#ingredients', getIngredientsList(data));
 
     titleTag.textContent = title;
     Object.assign(imageTag, { src: image, alt: title });
@@ -149,7 +153,12 @@ function displayRecipeDetails(data) {
 
 function showInstructions(instructions) {
     const hasInstructions = instructions !== undefined;
-    const showSteps = _ => renderListItem('#steps', getSteps(instructions));
+    // const showSteps = _ => appendNodes('#steps', getSteps(instructions));
+    // const s = { steps } = instructions;
+    const { steps } = instructions
+    // const steps = 
+    const showSteps = _ => appendNodes('#steps',  createListItems(steps, 'step'));
+
     hasInstructions ? showSteps() : hideSteps();
 }
 
