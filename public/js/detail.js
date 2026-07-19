@@ -127,8 +127,8 @@ function displayRecipeDetails(data) {
 
     const titleTag = document.querySelector('#title');
     const imgTag = document.querySelector('#image');
-    const cuisinesText = cuisines.length > 0 ? `| ${cuisines.join(', ')}` : '';
-    const additionalDetails = `Serves ${servings}, ready in ${formatDuration(minutes)} ${cuisinesText}`;
+    const cuisinesLabel = cuisines.length > 0 ? `| ${cuisines.join(', ')}` : '';
+    const additionalDetails = `Serves ${servings}, ready in ${formatDuration(minutes)} ${cuisinesLabel}`;
     const ingredients = createListItems(extendedIngredients, 'original');
     
     document.title = `Taste Temptations: ${title}`;

@@ -34,10 +34,10 @@ export function showExtraInfo({ vegan, vegetarian, glutenFree, diets }) {
 
     const container = document.querySelector('#tags-data');
     const hasDiet = diets.length > 0;
-    const dietText = `<p class="pt-2">Suitable for diets: <strong>${diets}</strong></p>`;
+    const dietLabel = `<p class="pt-2">Suitable for diets: <strong>${diets}</strong></p>`;
     
     if (tags.length > 0) container.insertAdjacentElement('beforebegin', getTags(tags));
-    if (hasDiet) container.insertAdjacentHTML('beforebegin', dietText);
+    if (hasDiet) container.insertAdjacentHTML('beforebegin', dietLabel);
     
     const isContainerEmpty = tags.length === 0 && !hasDiet;
     if (isContainerEmpty) document.querySelector('#tags').remove();
