@@ -22,8 +22,6 @@ import { similarRecipeCard } from './helper/recipe-card.js';
 
 // Detail-specific logic
 import {
-    // getSteps,
-    // getIngredientsList,
     createListItems,
     appendNodes,
     showExtraInfo,
@@ -59,6 +57,7 @@ function showDishTypeTags(dishes = []) {
         clone.querySelector('span').textContent = titleCase(dish);
         fragment.appendChild(clone);
     }
+
     container.append(fragment);
 }
 
@@ -69,6 +68,7 @@ const renderSimilarRecipeList = recipes => {
     for (const recipe of recipes) {
         fragment.append(similarRecipeCard(recipe, renderContext.selectors.template));
     }
+
     container.append(fragment);
 };
 
@@ -92,7 +92,6 @@ function handleRecipeDetails(data) {
     displayRecipeDetails(data);
     getNutritionLabel(endpoints.nutritionLabel, id)
     .then(displayNutritionLabel);
-    
     loadSimilarRecipes(id);
 }
 
@@ -107,16 +106,13 @@ async function getNutritionLabel(url, id) {
     }
 }
 
-function displayNutritionLabel(data) {
-    const nutritionLabel = data.split('</style>')[1];
+function displayNutritionLabel(nutritionHtml) {
+    const nutritionLabel = nutritionHtml.split('</style>')[1];
     const container = document.querySelector('#nutrition-label-widget');
     container.insertAdjacentHTML('afterbegin', nutritionLabel);
 }
 
 function displayRecipeDetails(data) {
-    
-    const titleTag = document.querySelector('#title');
-    const imageTag = document.querySelector('#image');
     const {
         title,
         image,
@@ -128,20 +124,24 @@ function displayRecipeDetails(data) {
         analyzedInstructions,
         extendedIngredients,
     } = data;
+
+    const titleTag = document.querySelector('#title');
+    const imgTag = document.querySelector('#image');
+    const cuisinesText = cuisines.length > 0 ? `| ${cuisines.join(', ')}` : '';
+    const additionalDetails = `Serves ${servings}, ready in ${formatDuration(minutes)} ${cuisinesText}`;
+    const ingredients = createListItems(extendedIngredients, 'original');
+    
     document.title = `Taste Temptations: ${title}`;
 
     changeMetaData({ description: summary, keywords: title });
 
-    const cuisinesText = cuisines.length > 0 ? `| ${cuisines.join(', ')}` : '';
-
-    const ingredients = createListItems(extendedIngredients, 'original');
-    appendNodes('#ingredients',ingredients);
-    // appendNodes('#ingredients', getIngredientsList(data));
+    appendNodes('#ingredients', ingredients);
 
     titleTag.textContent = title;
-    Object.assign(imageTag, { src: image, alt: title });
+    imgTag.src = image;
+    imgTag.alt = title 
 
-    document.querySelector('#additional-details').innerText = `Serves ${servings}, ready in ${formatDuration(minutes)} ${cuisinesText}`;
+    document.querySelector('#additional-details').innerText = additionalDetails;
     document.querySelector('#summary').innerHTML = summary;
     showDishTypeTags(dishTypes);
 
@@ -159,7 +159,7 @@ function showInstructions(instructions) {
 }
 
 function hideSteps() {
-    
+
     const instructionSection = {
         'header': 'instructions-header',
         'steps': 'steps',
