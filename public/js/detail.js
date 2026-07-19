@@ -159,6 +159,7 @@ function showInstructions(instructions) {
 }
 
 function hideSteps() {
+    
     const instructionSection = {
         'header': 'instructions-header',
         'steps': 'steps',
