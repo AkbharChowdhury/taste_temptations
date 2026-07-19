@@ -125,8 +125,8 @@ function displayRecipeDetails(data) {
         extendedIngredients,
     } = data;
 
-    const titleTag = document.querySelector('#title');
-    const imgTag = document.querySelector('#image');
+    const titleEl = document.querySelector('#title');
+    const imgEl = document.querySelector('#image');
     const cuisinesLabel = cuisines.length > 0 ? `| ${cuisines.join(', ')}` : '';
     const additionalDetails = `Serves ${servings}, ready in ${formatDuration(minutes)} ${cuisinesLabel}`;
     const ingredients = createListItems(extendedIngredients, 'original');
@@ -135,14 +135,14 @@ function displayRecipeDetails(data) {
 
     changeMetaData({ description: summary, keywords: title });
 
-    titleTag.textContent = title;
+    titleEl.textContent = title;
     document.querySelector('#additional-details').innerText = additionalDetails;
 
     showDishTypeTags(dishTypes);
     showExtraInfo(data);
 
-    imgTag.src = image;
-    imgTag.alt = title;
+    imgEl.src = image;
+    imgEl.alt = title;
 
     document.querySelector('#summary').innerHTML = summary;
     appendNodes('#ingredients', ingredients);
@@ -165,6 +165,6 @@ function hideSteps() {
         'steps': 'steps',
         'hr': 'hr',
     }
-    const hideElement = el => document.querySelector(`#${el}`).style.display = 'none';
+    const hideElement = (el) => document.querySelector(`#${el}`).style.display = 'none';
     Object.values(instructionSection).forEach(hideElement);
 }
