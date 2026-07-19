@@ -153,12 +153,8 @@ function displayRecipeDetails(data) {
 
 function showInstructions(instructions) {
     const hasInstructions = instructions !== undefined;
-    // const showSteps = _ => appendNodes('#steps', getSteps(instructions));
-    // const s = { steps } = instructions;
-    const { steps } = instructions
-    // const steps = 
-    const showSteps = _ => appendNodes('#steps',  createListItems(steps, 'step'));
-
+    const { steps } = instructions;
+    const showSteps = _ => appendNodes('#steps', createListItems(steps, 'step'));
     hasInstructions ? showSteps() : hideSteps();
 }
 
