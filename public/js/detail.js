@@ -154,7 +154,7 @@ function displayRecipeDetails(data) {
 function showInstructions(instructions) {
     const hasInstructions = instructions !== undefined;
     const { steps } = instructions;
-    const showSteps = _ => appendNodes('#steps', createListItems(steps, 'step'));
+    const showSteps = () => appendNodes('#steps', createListItems(steps, 'step'));
     hasInstructions ? showSteps() : hideSteps();
 }
 

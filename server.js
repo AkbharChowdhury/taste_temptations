@@ -12,7 +12,7 @@ const uiErrors = errorMessages.ui;
 const app = express();
 const getBodyValue = (req) => Object.values(req.body).toString();
 
-app.listen(PORT, _ => console.log(`Server listening on port ${PORT.toLocaleString()}`));
+app.listen(PORT, () => console.log(`Server listening on port ${PORT.toLocaleString()}`));
 
 
 app.use(express.static('public'));
