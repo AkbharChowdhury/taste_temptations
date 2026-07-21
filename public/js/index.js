@@ -43,17 +43,21 @@ const renderRecipeList = recipes => {
     container.append(fragment);
 };
 
+(function () {
+    renderSearchForm();
+    
+    api.random()
+    .then(({ recipes }) => renderRecipeList(recipes))
+    .catch(handleRandomRecipesError);
+})();
+
+
 function handleRandomRecipesError(err) {
     document.querySelector('#button-search').disabled = true;
     showError(err.message || 'Failed to fetch random recipes');
     throw err;
 }
 
-api.random()
-  .then(({recipes}) => renderRecipeList(recipes))
-  .catch(handleRandomRecipesError);
-
-renderSearchForm();
 
 function showError(message) {
     clearRecipes();
