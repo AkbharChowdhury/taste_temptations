@@ -6,7 +6,7 @@
  *
  * @function createNextNumberGenerator
  * @param {Object} options
- * @param {number} [options.initialValue=6] - Starting value before rounding
+ * @param {number} [options.initialValue] - Starting value before rounding
  * @param {number} options.n - Step size / rounding interval
  * @returns {Function} A function that returns the next generated number
  */

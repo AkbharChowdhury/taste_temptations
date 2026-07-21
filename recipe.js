@@ -18,23 +18,13 @@ const api = axios.create({
     }
 
 });
-function displayError(err, url) {
-    const { message } = err;
-    const errorDetails = {
-        status: err.response?.status || 500,
-        message: err.response?.data?.message || message,
-    }
-    console.log(`Error at URL: ${url}`, message);
-    console.log(errorDetails);
-}
 
 export class Recipe {
     #recipeUI;
+    
     constructor() {
-        if (Recipe.instance) return Recipe.instance;
-        Recipe.instance = this;
         this.#recipeUI = new RecipeUI(DEFAULT_RECORDS_PER_PAGE);
-    }
+     }
 
     get recipeUI() {
         return this.#recipeUI;
@@ -86,4 +76,14 @@ export class Recipe {
             },
         });
     }
+}
+
+function displayError(err, url) {
+    const { message } = err;
+    const errorDetails = {
+        status: err.response?.status || 500,
+        message: err.response?.data?.message || message,
+    }
+    console.log(`Error at URL: ${url}`, message);
+    console.log(errorDetails);
 }
