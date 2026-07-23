@@ -34,12 +34,15 @@ const renderContext = {
     }
 };
 
-const renderRecipeList = recipes => {
+const renderRecipeList = (recipes) => {
+
     const container = document.querySelector(renderContext.selectors.container);
     const fragment = new DocumentFragment();
+
     for (const recipe of recipes) {
         fragment.append(recipeCard(recipe, renderContext));
     }
+
     container.append(fragment);
 };
 
@@ -49,6 +52,7 @@ const renderRecipeList = recipes => {
     api.random()
     .then(({ recipes }) => renderRecipeList(recipes))
     .catch(handleRandomRecipesError);
+
 })();
 
 
@@ -59,21 +63,24 @@ function handleRandomRecipesError(err) {
 }
 
 
-function showError(message) {
+function showError(msg) {
     clearRecipes();
-    errorContainer.innerHTML = errorMessageTag(message);
+    errorContainer.innerHTML = errorMessageTag(msg);
 }
 searchForm.addEventListener('submit', async (e) => {
+
     e.preventDefault();
     errorContainer.innerHTML = '';
 
     try {
         const params = constructSearchURLParams();
         const { results: recipes, code, message } = await api.search(params);
+
         if (paymentIsRequired(code)) {
             showError(message);
             return;
         }
+        
         const hasRecipes = Array.isArray(recipes) && recipes.length > 0;
 
         if (!hasRecipes) {

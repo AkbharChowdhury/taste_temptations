@@ -35,6 +35,7 @@ const endpoints = {
     similar: 'similar',
     nutritionLabel: 'nutrition-label',
 };
+
 const renderContext = {
     selectors: {
         container: '#similar-recipe-list',
@@ -61,12 +62,12 @@ function showDishTypeTags(dishes = []) {
     container.append(fragment);
 }
 
-const renderSimilarRecipeList = recipes => {
+const renderSimilarRecipeList = (recipes) => {
     const container = document.querySelector(renderContext.selectors.container);
     const fragment = new DocumentFragment();
 
     for (const recipe of recipes) {
-        fragment.append(similarRecipeCard(recipe, renderContext.selectors.template));
+        fragment.appendChild(similarRecipeCard(recipe, renderContext.selectors.template));
     }
 
     container.append(fragment);
