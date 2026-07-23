@@ -74,25 +74,34 @@ const renderSimilarRecipeList = (recipes) => {
 };
 
 
-isValidNumber(id) && fetchRequest(endpoints.details, id)
-.then(handleRecipeDetails)
-.catch(console.error);
 
 const loadSimilarRecipes = (id) => fetchRequest(endpoints.similar, id)
 .then(recipes => renderSimilarRecipeList(recipes));
-    
-function handleRecipeDetails(data) {
 
-    const { status, message } = data
+(function () {
+
+    if (isValidNumber(id)) {
+        fetchRequest(endpoints.details, id)
+            .then(handleRecipeDetails)
+            .catch(console.error);
+    }
+
+})();
+
+
+    
+function handleRecipeDetails(response) {
+
+    const { status, message } = response
     if (paymentIsRequired(status)) {
         const errorDiv = document.querySelector('#recipe-details-container');
         errorDiv.innerHTML = errorMessageTag(message);
         return;
     }
 
-    displayRecipeDetails(data);
-    getNutritionLabel(endpoints.nutritionLabel, id)
-    .then(displayNutritionLabel);
+    displayRecipeDetails(response);
+
+    getNutritionLabel(endpoints.nutritionLabel, id).then(displayNutritionLabel);
     loadSimilarRecipes(id);
 }
 
@@ -113,7 +122,7 @@ function displayNutritionLabel(nutritionHtml) {
     container.insertAdjacentHTML('afterbegin', nutritionLabel);
 }
 
-function displayRecipeDetails(data) {
+function displayRecipeDetails(recipeData) {
     const {
         title,
         image,
@@ -124,7 +133,7 @@ function displayRecipeDetails(data) {
         dishTypes,
         analyzedInstructions,
         extendedIngredients,
-    } = data;
+    } = recipeData;
 
     const titleEl = document.querySelector('#title');
     const imgEl = document.querySelector('#image');
@@ -140,7 +149,7 @@ function displayRecipeDetails(data) {
     document.querySelector('#additional-details').innerText = additionalDetails;
 
     showDishTypeTags(dishTypes);
-    showExtraInfo(data);
+    showExtraInfo(recipeData);
 
     imgEl.src = image;
     imgEl.alt = title;
